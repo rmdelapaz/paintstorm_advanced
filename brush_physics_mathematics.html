@@ -1,0 +1,3162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master advanced brush physics and mathematics in Paintstorm Studio - Learn algorithms, procedural creation, and professional brush engineering">
+    <meta name="keywords" content="Paintstorm Studio, advanced, brush physics, brush mathematics, procedural brushes, brush engineering">
+    <meta name="author" content="Paintstorm Advanced Tutorial">
+    <title>Brush Physics and Mathematics - Advanced Paintstorm Studio</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+    
+    <!-- Progress indicator -->
+    <div class="progress-indicator" role="progressbar" aria-label="Page scroll progress">
+        <div class="progress-bar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🔬 Paintstorm Studio - Advanced</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">
+                ☰
+            </button>
+            <div class="nav-links" id="nav-links" aria-hidden="false">
+                <a href="index.html">Home</a>
+                <a href="index.html#modules">All Modules</a>
+                <a href="../paintstorm_int/index.html">Intermediate Course</a>
+                <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#module-1">Master-Level Brush Engineering</a></li>
+            <li aria-current="page">Brush Physics and Mathematics</li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <div class="container">
+            <!-- Lesson Header -->
+            <header>
+                <h1>🔬 Brush Physics and Mathematics</h1>
+                <p class="lead">Welcome to the science behind the art! In this advanced lesson, we're going to pull back the curtain on how digital brushes actually work at a fundamental level. Think of this as moving from being a <strong>brush user</strong> to becoming a <strong>brush engineer</strong>.</p>
+                
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin: 2rem 0;">
+                    <h3>⚠️ Prerequisites Check</h3>
+                    <p>This is an advanced lesson! You should already be comfortable with:</p>
+                    <ul>
+                        <li>✅ Creating custom brushes from scratch</li>
+                        <li>✅ Understanding basic brush parameters (size, opacity, flow)</li>
+                        <li>✅ Using dual brushes and textures</li>
+                        <li>✅ Setting up basic brush dynamics</li>
+                        <li>✅ Basic understanding of digital painting workflows</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">If any of these feel unfamiliar, consider reviewing the <a href="../paintstorm_int/custom_brush_creation.html" style="color: white; text-decoration: underline;">Intermediate Custom Brush Creation lesson</a> first!</p>
+                </div>
+                
+                <!-- Learning objectives -->
+                <div class="card">
+                    <h2>🎯 Mastery Objectives</h2>
+                    <p>By the end of this comprehensive lesson, you will achieve:</p>
+                    <ul>
+                        <li><strong>Deep Understanding:</strong> The mathematical algorithms behind brush behavior</li>
+                        <li><strong>Advanced Skills:</strong> Creating procedurally-generated brush patterns</li>
+                        <li><strong>Technical Mastery:</strong> Custom scatter pattern mathematics</li>
+                        <li><strong>Performance Optimization:</strong> Creating efficient, lag-free brushes</li>
+                        <li><strong>Scripting Basics:</strong> Introduction to brush automation</li>
+                        <li><strong>Professional Systems:</strong> Multi-brush combination workflows</li>
+                        <li><strong>Portfolio Project:</strong> Industry-specific brush pack creation</li>
+                    </ul>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <nav class="card" aria-label="Table of Contents">
+                <h2 style="cursor: pointer; user-select: none; display: flex; justify-content: space-between; align-items: center;" onclick="toggleTOC()">
+                    <span>📑 Complete Table of Contents</span>
+                    <span id="toc-toggle-icon" style="transition: transform 0.3s;">▼</span>
+                </h2>
+                <ol id="toc-list" style="overflow: hidden; transition: max-height 0.3s ease-out; max-height: 500px; margin: 0; padding-left: 1.5rem;">
+                    <li><a href="#fundamentals" class="toc-link">The Mathematics of Digital Painting</a></li>
+                    <li><a href="#brush-algorithms" class="toc-link">Core Brush Algorithms Explained</a></li>
+                    <li><a href="#scatter-patterns" class="toc-link">Custom Scatter Pattern Mathematics</a></li>
+                    <li><a href="#procedural-generation" class="toc-link">Procedural Brush Creation</a></li>
+                    <li><a href="#dynamic-systems" class="toc-link">Advanced Dynamics Systems</a></li>
+                    <li><a href="#performance" class="toc-link">Performance Optimization Techniques</a></li>
+                    <li><a href="#multi-brush" class="toc-link">Multi-Brush Combinations</a></li>
+                    <li><a href="#scripting" class="toc-link">Brush Scripting Basics</a></li>
+                    <li><a href="#project" class="toc-link">Master Project: Industry Brush Pack</a></li>
+                    <li><a href="#summary" class="toc-link">Summary & Advanced Resources</a></li>
+                </ol>
+            </nav>
+
+            <!-- Section 1: Mathematics Fundamentals -->
+            <section id="fundamentals" class="lesson-section">
+                <h2>The Mathematics of Digital Painting 🧮</h2>
+                
+                <p>Let's start with a fundamental truth: <strong>every brush stroke you make is mathematics in action</strong>. When you drag your stylus across the tablet, Paintstorm is calculating hundreds of values per second - position, pressure, velocity, rotation, and more. Understanding these calculations transforms you from a tool user into a tool creator.</p>
+
+                <blockquote>
+                    <strong>💡 Think Like an Engineer:</strong> Imagine you're designing a car engine, not just driving the car. You need to know how the pistons fire, how fuel combusts, how gears mesh together. Similarly, understanding brush physics means knowing how the "engine" of your digital brush operates under the hood.
+                </blockquote>
+
+                <h3>The Core Equation</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🔬 The Fundamental Brush Equation</h4>
+                    <p>At its most basic, a brush stroke can be expressed as:</p>
+                    <pre><code>Rendered_Pixel = f(Position, Time, Input_State, Brush_Parameters, Canvas_State)
+
+Where:
+- Position = (x, y) coordinates on canvas
+- Time = timestamp of the stroke
+- Input_State = {pressure, velocity, tilt, rotation}
+- Brush_Parameters = {size, opacity, flow, texture, scatter, etc.}
+- Canvas_State = existing pixels and blend modes
+
+The function f() combines all these variables through:
+1. Sampling (reading brush tip at position)
+2. Modulation (applying dynamics to modify tip)
+3. Compositing (blending with existing canvas)</code></pre>
+                </div>
+
+                <h3>Understanding Coordinate Systems</h3>
+                
+                <canvas id="coordinate-demo" width="800" height="400" style="max-width: 100%; height: auto; border: 2px solid #ddd; border-radius: 8px; background: white; margin: 1rem 0;"></canvas>
+                
+                <script>
+                    const coordCanvas = document.getElementById('coordinate-demo');
+                    const ctx = coordCanvas.getContext('2d');
+                    
+                    // Handle high DPI
+                    const scale = window.devicePixelRatio || 1;
+                    coordCanvas.width = 800 * scale;
+                    coordCanvas.height = 400 * scale;
+                    ctx.scale(scale, scale);
+                    
+                    // Clear and setup
+                    ctx.fillStyle = '#f8f9fa';
+                    ctx.fillRect(0, 0, 800, 400);
+                    
+                    // Title
+                    ctx.fillStyle = '#333';
+                    ctx.font = 'bold 18px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Brush Coordinate Systems and Transformations', 400, 30);
+                    
+                    // Canvas coordinate system
+                    ctx.strokeStyle = '#495057';
+                    ctx.lineWidth = 1;
+                    ctx.setLineDash([5, 5]);
+                    
+                    // Grid
+                    for(let i = 0; i <= 8; i++) {
+                        ctx.beginPath();
+                        ctx.moveTo(50 + i * 50, 60);
+                        ctx.lineTo(50 + i * 50, 180);
+                        ctx.stroke();
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(50, 60 + i * 30);
+                        ctx.lineTo(450, 60 + i * 30);
+                        ctx.stroke();
+                    }
+                    
+                    ctx.setLineDash([]);
+                    
+                    // Axes
+                    ctx.strokeStyle = '#2c3e50';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(50, 180);
+                    ctx.lineTo(450, 180);
+                    ctx.stroke();
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(50, 60);
+                    ctx.lineTo(50, 180);
+                    ctx.stroke();
+                    
+                    // Labels
+                    ctx.fillStyle = '#2c3e50';
+                    ctx.font = '14px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('X (Canvas Space)', 250, 200);
+                    ctx.save();
+                    ctx.translate(30, 120);
+                    ctx.rotate(-Math.PI / 2);
+                    ctx.fillText('Y (Canvas Space)', 0, 0);
+                    ctx.restore();
+                    
+                    // Draw brush position
+                    const brushX = 200;
+                    const brushY = 120;
+                    
+                    ctx.fillStyle = 'rgba(103, 58, 183, 0.3)';
+                    ctx.beginPath();
+                    ctx.arc(brushX, brushY, 30, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    ctx.strokeStyle = '#673ab7';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    
+                    // Brush local axes
+                    ctx.strokeStyle = '#f44336';
+                    ctx.beginPath();
+                    ctx.moveTo(brushX, brushY);
+                    ctx.lineTo(brushX + 40, brushY);
+                    ctx.stroke();
+                    
+                    ctx.strokeStyle = '#4caf50';
+                    ctx.beginPath();
+                    ctx.moveTo(brushX, brushY);
+                    ctx.lineTo(brushX, brushY - 40);
+                    ctx.stroke();
+                    
+                    // Labels
+                    ctx.fillStyle = '#f44336';
+                    ctx.font = '12px Arial';
+                    ctx.textAlign = 'left';
+                    ctx.fillText('Local X', brushX + 45, brushY + 5);
+                    
+                    ctx.fillStyle = '#4caf50';
+                    ctx.fillText('Local Y', brushX + 5, brushY - 45);
+                    
+                    ctx.fillStyle = '#673ab7';
+                    ctx.font = 'bold 12px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Brush Tip', brushX, brushY - 35);
+                    
+                    // Transformation example
+                    ctx.fillStyle = '#333';
+                    ctx.font = 'bold 14px Arial';
+                    ctx.textAlign = 'left';
+                    ctx.fillText('Local to Canvas Transform:', 500, 80);
+                    
+                    ctx.font = '12px monospace';
+                    ctx.fillText('1. Translate to position (x, y)', 500, 100);
+                    ctx.fillText('2. Rotate by angle θ', 500, 120);
+                    ctx.fillText('3. Scale by size s', 500, 140);
+                    ctx.fillText('4. Apply scatter offset', 500, 160);
+                    
+                    // Formula box
+                    ctx.strokeStyle = '#dee2e6';
+                    ctx.strokeRect(480, 180, 300, 100);
+                    ctx.fillStyle = '#495057';
+                    ctx.font = '11px monospace';
+                    ctx.fillText('Transform Matrix:', 490, 200);
+                    ctx.fillText('[ cos(θ)*s  -sin(θ)*s   x ]', 490, 220);
+                    ctx.fillText('[ sin(θ)*s   cos(θ)*s   y ]', 490, 240);
+                    ctx.fillText('[    0          0       1 ]', 490, 260);
+                    
+                    // Stroke path visualization
+                    ctx.fillStyle = '#333';
+                    ctx.font = 'bold 14px Arial';
+                    ctx.fillText('Stroke Path with Sampling Points:', 50, 240);
+                    
+                    // Draw a curved stroke path
+                    const points = [];
+                    for(let t = 0; t <= 1; t += 0.05) {
+                        const x = 50 + t * 700;
+                        const y = 280 + Math.sin(t * Math.PI * 2) * 40;
+                        points.push({x, y});
+                    }
+                    
+                    // Draw path
+                    ctx.strokeStyle = '#adb5bd';
+                    ctx.lineWidth = 2;
+                    ctx.setLineDash([3, 3]);
+                    ctx.beginPath();
+                    ctx.moveTo(points[0].x, points[0].y);
+                    points.forEach(p => ctx.lineTo(p.x, p.y));
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                    
+                    // Draw sample points
+                    points.forEach((p, i) => {
+                        if(i % 4 === 0) {
+                            ctx.fillStyle = 'rgba(103, 58, 183, 0.3)';
+                            ctx.beginPath();
+                            ctx.arc(p.x, p.y, 15, 0, Math.PI * 2);
+                            ctx.fill();
+                            
+                            ctx.strokeStyle = '#673ab7';
+                            ctx.lineWidth = 1.5;
+                            ctx.stroke();
+                        }
+                    });
+                    
+                    // Legend
+                    ctx.fillStyle = '#495057';
+                    ctx.font = '12px Arial';
+                    ctx.textAlign = 'left';
+                    ctx.fillText('Each circle = one brush stamp placement', 50, 360);
+                    ctx.fillText('Spacing between stamps controls stroke smoothness', 50, 380);
+                </script>
+
+                <div class="card">
+                    <h4>Key Coordinate Concepts</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Coordinate Space</th>
+                                <th>Origin Point</th>
+                                <th>Used For</th>
+                                <th>Transform Needed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Canvas Space</strong></td>
+                                <td>Top-left corner (0,0)</td>
+                                <td>Final pixel placement</td>
+                                <td>None (base space)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Brush Local Space</strong></td>
+                                <td>Center of brush tip</td>
+                                <td>Brush tip sampling</td>
+                                <td>Translate + Rotate + Scale</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Texture Space</strong></td>
+                                <td>Texture image origin</td>
+                                <td>Texture mapping</td>
+                                <td>UV mapping transform</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tablet Space</strong></td>
+                                <td>Tablet surface origin</td>
+                                <td>Input reading</td>
+                                <td>Device to canvas mapping</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Screen Space</strong></td>
+                                <td>Monitor pixel (0,0)</td>
+                                <td>Display rendering</td>
+                                <td>Canvas to viewport transform</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote>
+                    <strong>🎓 Mathematical Insight:</strong> The beauty of matrix transformations is that complex operations (rotation, scaling, translation) can be combined into a single matrix multiplication. This is why brush engines can perform thousands of calculations per second - it's all linear algebra working at lightning speed!
+                </blockquote>
+
+                <h3>Sampling Theory</h3>
+                
+                <p>When you make a brush stroke, Paintstorm doesn't draw a continuous line - it places <strong>discrete stamps</strong> along your path. This is called <strong>sampling</strong>, and the math behind it is crucial for understanding brush behavior.</p>
+
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>📊 The Nyquist-Shannon Sampling Theorem Applied to Brushes</h4>
+                    <p>In signal processing, the Nyquist-Shannon theorem states that to accurately reconstruct a signal, you must sample it at <strong>at least twice the frequency</strong> of the highest frequency component. For brushes, this translates to:</p>
+                    <pre><code>Minimum Sampling Rate = 2 × (1 / Brush_Spacing)
+
+For smooth strokes:
+- Spacing should be &lt;= 25% of brush diameter
+- Faster movements require SMALLER spacing
+- Smaller brushes need proportionally smaller spacing
+
+Example:
+Brush size = 100px
+For smooth appearance: spacing = 25px (25%)
+Sampling rate = 1 stamp every 25px of movement</code></pre>
+                </div>
+
+                <div class="mermaid">
+                    graph LR
+                        A[Stylus Position t=0] --> B[Calculate Δt]
+                        B --> C[Velocity = Δposition/Δt]
+                        C --> D{Velocity > Threshold?}
+                        D -->|Yes| E[Increase Sampling Rate]
+                        D -->|No| F[Standard Sampling]
+                        E --> G[Place Stamp]
+                        F --> G
+                        G --> H[Update Position]
+                        H --> A
+                </div>
+            </section>
+
+            <!-- Section 2: Core Algorithms -->
+            <section id="brush-algorithms" class="lesson-section">
+                <h2>Core Brush Algorithms Explained ⚙️</h2>
+                
+                <p>Now let's dive into the actual algorithms that make brushes work. Think of these as the "recipes" that transform your hand movements into beautiful digital marks.</p>
+
+                <h3>The Stamp Placement Algorithm</h3>
+                
+                <div class="card">
+                    <h4>Algorithm 1: Basic Stamp Placement</h4>
+                    <pre><code>FUNCTION PlaceBrushStamp(position, pressure, velocity):
+    // Step 1: Calculate size based on dynamics
+    baseSize = brushSettings.size
+    pressureModifier = EvaluateCurve(pressure, brushSettings.sizeCurve)
+    finalSize = baseSize * pressureModifier
+    
+    // Step 2: Calculate opacity
+    baseOpacity = brushSettings.opacity
+    opacityModifier = EvaluateCurve(pressure, brushSettings.opacityCurve)
+    flowModifier = brushSettings.flow
+    finalOpacity = baseOpacity * opacityModifier * flowModifier
+    
+    // Step 3: Calculate rotation
+    IF brushSettings.rotationMode == "Direction":
+        angle = atan2(velocity.y, velocity.x)
+    ELSE IF brushSettings.rotationMode == "Random":
+        angle = Random(0, 360) * DEG_TO_RAD
+    ELSE:
+        angle = brushSettings.fixedAngle
+    
+    // Step 4: Apply scatter
+    IF brushSettings.scatterEnabled:
+        scatterRadius = finalSize * brushSettings.scatterAmount
+        offset.x = Random(-scatterRadius, scatterRadius)
+        offset.y = Random(-scatterRadius, scatterRadius)
+        position = position + offset
+    
+    // Step 5: Sample brush tip
+    brushTexture = SampleBrushTip(finalSize, angle)
+    
+    // Step 6: Apply texture if dual brush
+    IF brushSettings.dualBrushEnabled:
+        secondaryTexture = SampleSecondaryBrush(finalSize, angle)
+        brushTexture = BlendTextures(brushTexture, secondaryTexture, 
+                                      brushSettings.blendMode)
+    
+    // Step 7: Composite onto canvas
+    CompositeStamp(position, brushTexture, finalOpacity)
+END FUNCTION</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>💡 Pro Understanding:</strong> Notice how each step builds on the previous? This is called a <strong>rendering pipeline</strong>. Each stage transforms the data, and the order matters! Changing the order of these operations can create dramatically different brush behaviors.
+                </blockquote>
+
+                <h3>Interpolation Between Stamps</h3>
+                
+                <p>When you move your stylus quickly, there might be large gaps between sample points. Paintstorm uses <strong>interpolation</strong> to fill these gaps smoothly.</p>
+
+                <canvas id="interpolation-demo" width="800" height="300" style="max-width: 100%; height: auto; border: 2px solid #ddd; border-radius: 8px; background: white; margin: 1rem 0;"></canvas>
+                
+                <script>
+                    const interpCanvas = document.getElementById('interpolation-demo');
+                    const iCtx = interpCanvas.getContext('2d');
+                    
+                    // Handle high DPI
+                    const iScale = window.devicePixelRatio || 1;
+                    interpCanvas.width = 800 * iScale;
+                    interpCanvas.height = 300 * iScale;
+                    iCtx.scale(iScale, iScale);
+                    
+                    // Clear
+                    iCtx.fillStyle = '#f8f9fa';
+                    iCtx.fillRect(0, 0, 800, 300);
+                    
+                    // Title
+                    iCtx.fillStyle = '#333';
+                    iCtx.font = 'bold 16px Arial';
+                    iCtx.textAlign = 'center';
+                    iCtx.fillText('Interpolation Methods Comparison', 400, 25);
+                    
+                    // Linear interpolation example
+                    iCtx.fillStyle = '#495057';
+                    iCtx.font = '14px Arial';
+                    iCtx.textAlign = 'left';
+                    iCtx.fillText('Linear Interpolation', 50, 60);
+                    
+                    const p1 = {x: 50, y: 100};
+                    const p2 = {x: 350, y: 120};
+                    
+                    // Draw path
+                    iCtx.strokeStyle = '#adb5bd';
+                    iCtx.lineWidth = 2;
+                    iCtx.setLineDash([5, 5]);
+                    iCtx.beginPath();
+                    iCtx.moveTo(p1.x, p1.y);
+                    iCtx.lineTo(p2.x, p2.y);
+                    iCtx.stroke();
+                    iCtx.setLineDash([]);
+                    
+                    // Draw sampled points
+                    for(let t = 0; t <= 1; t += 0.1) {
+                        const x = p1.x + (p2.x - p1.x) * t;
+                        const y = p1.y + (p2.y - p1.y) * t;
+                        
+                        iCtx.fillStyle = 'rgba(103, 58, 183, 0.4)';
+                        iCtx.beginPath();
+                        iCtx.arc(x, y, 12, 0, Math.PI * 2);
+                        iCtx.fill();
+                    }
+                    
+                    // Control points
+                    iCtx.fillStyle = '#f44336';
+                    iCtx.beginPath();
+                    iCtx.arc(p1.x, p1.y, 6, 0, Math.PI * 2);
+                    iCtx.fill();
+                    iCtx.beginPath();
+                    iCtx.arc(p2.x, p2.y, 6, 0, Math.PI * 2);
+                    iCtx.fill();
+                    
+                    // Bezier interpolation
+                    iCtx.fillStyle = '#495057';
+                    iCtx.font = '14px Arial';
+                    iCtx.fillText('Bezier Curve Interpolation (Smoother)', 50, 180);
+                    
+                    const bp1 = {x: 50, y: 220};
+                    const bp2 = {x: 350, y: 240};
+                    const cp1 = {x: 150, y: 200};
+                    const cp2 = {x: 250, y: 260};
+                    
+                    // Draw control polygon
+                    iCtx.strokeStyle = '#e0e0e0';
+                    iCtx.lineWidth = 1;
+                    iCtx.setLineDash([3, 3]);
+                    iCtx.beginPath();
+                    iCtx.moveTo(bp1.x, bp1.y);
+                    iCtx.lineTo(cp1.x, cp1.y);
+                    iCtx.lineTo(cp2.x, cp2.y);
+                    iCtx.lineTo(bp2.x, bp2.y);
+                    iCtx.stroke();
+                    iCtx.setLineDash([]);
+                    
+                    // Draw bezier curve
+                    iCtx.strokeStyle = '#adb5bd';
+                    iCtx.lineWidth = 2;
+                    iCtx.setLineDash([5, 5]);
+                    iCtx.beginPath();
+                    iCtx.moveTo(bp1.x, bp1.y);
+                    iCtx.bezierCurveTo(cp1.x, cp1.y, cp2.x, cp2.y, bp2.x, bp2.y);
+                    iCtx.stroke();
+                    iCtx.setLineDash([]);
+                    
+                    // Sample points along bezier
+                    for(let t = 0; t <= 1; t += 0.1) {
+                        const mt = 1 - t;
+                        const x = mt*mt*mt*bp1.x + 3*mt*mt*t*cp1.x + 3*mt*t*t*cp2.x + t*t*t*bp2.x;
+                        const y = mt*mt*mt*bp1.y + 3*mt*mt*t*cp1.y + 3*mt*t*t*cp2.y + t*t*t*bp2.y;
+                        
+                        iCtx.fillStyle = 'rgba(76, 175, 80, 0.4)';
+                        iCtx.beginPath();
+                        iCtx.arc(x, y, 12, 0, Math.PI * 2);
+                        iCtx.fill();
+                    }
+                    
+                    // Control points
+                    iCtx.fillStyle = '#f44336';
+                    iCtx.beginPath();
+                    iCtx.arc(bp1.x, bp1.y, 6, 0, Math.PI * 2);
+                    iCtx.fill();
+                    iCtx.beginPath();
+                    iCtx.arc(bp2.x, bp2.y, 6, 0, Math.PI * 2);
+                    iCtx.fill();
+                    
+                    iCtx.fillStyle = '#2196f3';
+                    iCtx.beginPath();
+                    iCtx.arc(cp1.x, cp1.y, 5, 0, Math.PI * 2);
+                    iCtx.fill();
+                    iCtx.beginPath();
+                    iCtx.arc(cp2.x, cp2.y, 5, 0, Math.PI * 2);
+                    iCtx.fill();
+                    
+                    // Formulas
+                    iCtx.strokeStyle = '#dee2e6';
+                    iCtx.strokeRect(420, 60, 360, 220);
+                    
+                    iCtx.fillStyle = '#333';
+                    iCtx.font = 'bold 14px Arial';
+                    iCtx.textAlign = 'left';
+                    iCtx.fillText('Mathematical Formulas:', 430, 80);
+                    
+                    iCtx.font = '12px monospace';
+                    iCtx.fillStyle = '#495057';
+                    iCtx.fillText('Linear: P(t) = P₀(1-t) + P₁(t)', 430, 105);
+                    iCtx.fillText('  Simple, fast, but angular', 430, 125);
+                    
+                    iCtx.fillText('Bezier: P(t) =', 430, 155);
+                    iCtx.fillText('  (1-t)³P₀ + 3(1-t)²tP₁', 430, 175);
+                    iCtx.fillText('  + 3(1-t)t²P₂ + t³P₃', 430, 195);
+                    iCtx.fillText('  Smooth, natural curves', 430, 215);
+                    
+                    iCtx.fillText('where t ∈ [0,1]', 430, 240);
+                    iCtx.fillText('P₀, P₃ = endpoints', 430, 260);
+                    iCtx.fillText('P₁, P₂ = control points', 430, 280);
+                </script>
+
+                <div class="card">
+                    <h4>Interpolation Algorithm Types</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Formula Complexity</th>
+                                <th>Performance</th>
+                                <th>Quality</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Linear</strong></td>
+                                <td>Low (2 operations)</td>
+                                <td>⚡⚡⚡⚡⚡</td>
+                                <td>⭐⭐</td>
+                                <td>Fast sketching, hard edges</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quadratic Bezier</strong></td>
+                                <td>Medium (6 operations)</td>
+                                <td>⚡⚡⚡⚡</td>
+                                <td>⭐⭐⭐⭐</td>
+                                <td>Most painting scenarios</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cubic Bezier</strong></td>
+                                <td>High (12 operations)</td>
+                                <td>⚡⚡⚡</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td>Smooth calligraphy, curves</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Catmull-Rom</strong></td>
+                                <td>High (16+ operations)</td>
+                                <td>⚡⚡</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td>Ultra-smooth animation paths</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 3: Scatter Pattern Mathematics -->
+            <section id="scatter-patterns" class="lesson-section">
+                <h2>Custom Scatter Pattern Mathematics 🎲</h2>
+                
+                <p>Scatter is what makes digital brushes feel <strong>organic and alive</strong>. But random scatter isn't truly random - it's carefully controlled chaos. Let's explore the mathematics that makes natural-looking scatter possible.</p>
+
+                <h3>Understanding Distribution Functions</h3>
+                
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <h4>🎯 The Philosophy of Controlled Randomness</h4>
+                    <p>True randomness looks <em>unnatural</em> to human eyes. We evolved to recognize patterns, so completely random distributions look "clumpy" to us. Professional brushes use <strong>pseudo-random distributions</strong> that feel more organic than pure randomness!</p>
+                </div>
+
+                <canvas id="scatter-demo" width="800" height="500" style="max-width: 100%; height: auto; border: 2px solid #ddd; border-radius: 8px; background: white; margin: 1rem 0;"></canvas>
+                
+                <script>
+                    const scatterCanvas = document.getElementById('scatter-demo');
+                    const sCtx = scatterCanvas.getContext('2d');
+                    
+                    // Handle high DPI
+                    const sScale = window.devicePixelRatio || 1;
+                    scatterCanvas.width = 800 * sScale;
+                    scatterCanvas.height = 500 * sScale;
+                    sCtx.scale(sScale, sScale);
+                    
+                    // Clear
+                    sCtx.fillStyle = '#f8f9fa';
+                    sCtx.fillRect(0, 0, 800, 500);
+                    
+                    // Title
+                    sCtx.fillStyle = '#333';
+                    sCtx.font = 'bold 18px Arial';
+                    sCtx.textAlign = 'center';
+                    sCtx.fillText('Scatter Distribution Methods Comparison', 400, 25);
+                    
+                    // Helper function for different distributions
+                    function drawScatterExample(x, y, width, height, title, generateFunc) {
+                        // Box
+                        sCtx.strokeStyle = '#dee2e6';
+                        sCtx.strokeRect(x, y, width, height);
+                        
+                        // Title
+                        sCtx.fillStyle = '#495057';
+                        sCtx.font = '13px Arial';
+                        sCtx.textAlign = 'center';
+                        sCtx.fillText(title, x + width/2, y - 5);
+                        
+                        // Generate points
+                        const points = [];
+                        for(let i = 0; i < 50; i++) {
+                            points.push(generateFunc());
+                        }
+                        
+                        // Draw points
+                        points.forEach(p => {
+                            const px = x + p.x * width;
+                            const py = y + p.y * height;
+                            
+                            sCtx.fillStyle = 'rgba(103, 58, 183, 0.6)';
+                            sCtx.beginPath();
+                            sCtx.arc(px, py, 4, 0, Math.PI * 2);
+                            sCtx.fill();
+                        });
+                    }
+                    
+                    // 1. Uniform Random
+                    drawScatterExample(50, 60, 180, 180, 'Uniform Random', () => ({
+                        x: Math.random(),
+                        y: Math.random()
+                    }));
+                    
+                    // 2. Gaussian (Normal) Distribution
+                    drawScatterExample(250, 60, 180, 180, 'Gaussian Distribution', () => {
+                        // Box-Muller transform for normal distribution
+                        const u1 = Math.random();
+                        const u2 = Math.random();
+                        const z0 = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+                        const z1 = Math.sqrt(-2 * Math.log(u1)) * Math.sin(2 * Math.PI * u2);
+                        
+                        return {
+                            x: Math.max(0, Math.min(1, 0.5 + z0 * 0.15)),
+                            y: Math.max(0, Math.min(1, 0.5 + z1 * 0.15))
+                        };
+                    });
+                    
+                    // 3. Poisson Disk (Blue Noise)
+                    drawScatterExample(450, 60, 180, 180, 'Poisson Disk (Organic)', () => ({
+                        x: Math.random(),
+                        y: Math.random()
+                        // Note: True Poisson disk requires complex algorithm
+                        // This is simplified for demonstration
+                    }));
+                    
+                    // 4. Radial Distribution
+                    drawScatterExample(50, 260, 180, 180, 'Radial (Center-weighted)', () => {
+                        const angle = Math.random() * Math.PI * 2;
+                        const radius = Math.sqrt(Math.random()) * 0.4;
+                        return {
+                            x: 0.5 + Math.cos(angle) * radius,
+                            y: 0.5 + Math.sin(angle) * radius
+                        };
+                    });
+                    
+                    // 5. Directional Scatter
+                    drawScatterExample(250, 260, 180, 180, 'Directional (Stroke-aligned)', () => {
+                        const t = Math.random();
+                        const perp = (Math.random() - 0.5) * 0.3;
+                        return {
+                            x: t,
+                            y: 0.5 + perp
+                        };
+                    });
+                    
+                    // 6. Layered/Stratified
+                    drawScatterExample(450, 260, 180, 180, 'Stratified (Even Coverage)', () => {
+                        const gridX = Math.floor(Math.random() * 5);
+                        const gridY = Math.floor(Math.random() * 5);
+                        return {
+                            x: (gridX + Math.random()) / 5,
+                            y: (gridY + Math.random()) / 5
+                        };
+                    });
+                    
+                    // Add formula section
+                    sCtx.fillStyle = '#333';
+                    sCtx.font = 'bold 14px Arial';
+                    sCtx.textAlign = 'left';
+                    sCtx.fillText('Key Formulas:', 50, 470);
+                    
+                    sCtx.font = '11px monospace';
+                    sCtx.fillStyle = '#495057';
+                    sCtx.fillText('Uniform: x = random(0,1)', 50, 490);
+                    sCtx.fillText('Gaussian: x = sqrt(-2*ln(u₁))*cos(2π*u₂)', 250, 490);
+                    sCtx.fillText('Radial: x = r*cos(θ), y = r*sin(θ)', 500, 490);
+                </script>
+
+                <h3>Distribution Algorithms</h3>
+                
+                <div class="card">
+                    <h4>Algorithm 2: Advanced Scatter Generation</h4>
+                    <pre><code>FUNCTION GenerateScatter(scatterType, amount, minDistance):
+    SWITCH scatterType:
+        CASE "Uniform":
+            // Simple random within bounds
+            x = Random(0, 1) * 2 - 1  // Range: -1 to 1
+            y = Random(0, 1) * 2 - 1
+            RETURN (x * amount, y * amount)
+        
+        CASE "Gaussian":
+            // Box-Muller transform for normal distribution
+            u1 = Random(0, 1)
+            u2 = Random(0, 1)
+            z0 = sqrt(-2 * ln(u1)) * cos(2 * PI * u2)
+            z1 = sqrt(-2 * ln(u1)) * sin(2 * PI * u2)
+            // Scale to desired amount
+            RETURN (z0 * amount * 0.3, z1 * amount * 0.3)
+        
+        CASE "PoissonDisk":
+            // Ensures minimum distance between points
+            attempts = 0
+            WHILE attempts < 30:
+                candidate = GenerateRandomPoint()
+                IF NoPointsWithinRadius(candidate, minDistance):
+                    RETURN candidate
+                attempts++
+            // Fallback to uniform if can't place
+            RETURN GenerateScatter("Uniform", amount, 0)
+        
+        CASE "Radial":
+            // Points scattered in circular pattern
+            angle = Random(0, 2 * PI)
+            // Square root for uniform distribution in circle
+            radius = sqrt(Random(0, 1)) * amount
+            x = cos(angle) * radius
+            y = sin(angle) * radius
+            RETURN (x, y)
+        
+        CASE "Directional":
+            // Scatter perpendicular to stroke direction
+            parallel = Random(-0.1, 0.1) * amount
+            perpendicular = Random(-1, 1) * amount
+            // Transform based on stroke direction
+            RETURN RotateVector(parallel, perpendicular, strokeAngle)
+        
+        CASE "Stratified":
+            // Divide space into grid, place one point per cell
+            gridSize = ceil(sqrt(desiredPoints))
+            cellX = Random(0, gridSize - 1)
+            cellY = Random(0, gridSize - 1)
+            offsetX = Random(0, 1)
+            offsetY = Random(0, 1)
+            x = (cellX + offsetX) / gridSize * 2 - 1
+            y = (cellY + offsetY) / gridSize * 2 - 1
+            RETURN (x * amount, y * amount)
+    END SWITCH
+END FUNCTION
+
+FUNCTION NoPointsWithinRadius(point, radius):
+    FOR EACH existingPoint IN placedPoints:
+        distance = Distance(point, existingPoint)
+        IF distance < radius:
+            RETURN FALSE
+    RETURN TRUE
+END FUNCTION</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>🎨 Artistic Application:</strong> Different scatter types create different artistic effects! Use <strong>Gaussian</strong> for soft, natural textures like skin pores. Use <strong>Poisson Disk</strong> for foliage where leaves shouldn't overlap. Use <strong>Directional</strong> for hair strands that follow the stroke. The math directly serves the art!
+                </blockquote>
+
+                <h3>Perlin and Simplex Noise</h3>
+                
+                <p>For truly organic scatter patterns, we use <strong>noise functions</strong> - mathematical algorithms that generate natural-looking randomness. These are the same functions used to generate terrain in video games!</p>
+
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🌊 Noise Functions in Brush Design</h4>
+                    <p><strong>Perlin Noise</strong> (1983) creates smooth, coherent patterns that look like natural phenomena:</p>
+                    <pre><code>FUNCTION PerlinNoise2D(x, y, frequency):
+    // Scale coordinates by frequency
+    x = x * frequency
+    y = y * frequency
+    
+    // Get integer and fractional parts
+    x0 = floor(x)
+    x1 = x0 + 1
+    y0 = floor(y)
+    y1 = y0 + 1
+    
+    // Get fractional position within cell
+    fx = x - x0
+    fy = y - y0
+    
+    // Generate gradient vectors at corners
+    g00 = GradientVector(x0, y0)
+    g10 = GradientVector(x1, y0)
+    g01 = GradientVector(x0, y1)
+    g11 = GradientVector(x1, y1)
+    
+    // Calculate dot products
+    d00 = DotProduct(g00, fx, fy)
+    d10 = DotProduct(g10, fx - 1, fy)
+    d01 = DotProduct(g01, fx, fy - 1)
+    d11 = DotProduct(g11, fx - 1, fy - 1)
+    
+    // Interpolate using smoothstep function
+    // 6t⁵ - 15t⁴ + 10t³ for smooth curves
+    sx = SmoothStep(fx)
+    sy = SmoothStep(fy)
+    
+    // Bilinear interpolation
+    n0 = Lerp(d00, d10, sx)
+    n1 = Lerp(d01, d11, sx)
+    value = Lerp(n0, n1, sy)
+    
+    RETURN value  // Range: approximately -1 to 1
+END FUNCTION
+
+FUNCTION SmoothStep(t):
+    RETURN t * t * (3 - 2 * t)
+END FUNCTION
+
+// Even smoother version (Ken Perlin's improved formula)
+FUNCTION SmootherStep(t):
+    RETURN t * t * t * (t * (t * 6 - 15) + 10)
+END FUNCTION</code></pre>
+                </div>
+
+                <div class="card">
+                    <h4>Noise-Based Brush Applications</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Noise Type</th>
+                                <th>Characteristics</th>
+                                <th>Computational Cost</th>
+                                <th>Best Brush Uses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Perlin Noise</strong></td>
+                                <td>Smooth, flowing patterns</td>
+                                <td>Medium (4-8 lookups)</td>
+                                <td>Clouds, terrain, organic surfaces</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Simplex Noise</strong></td>
+                                <td>Less directional bias, faster</td>
+                                <td>Low-Medium (3-5 lookups)</td>
+                                <td>Water ripples, marble, smoke</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Worley Noise</strong></td>
+                                <td>Cellular, organic cells</td>
+                                <td>High (distance calculations)</td>
+                                <td>Stone, reptile scales, cells</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fractal Brownian Motion</strong></td>
+                                <td>Multi-scale detail (octaves)</td>
+                                <td>Very High (multiple passes)</td>
+                                <td>Mountain textures, complex clouds</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Turbulence</strong></td>
+                                <td>Chaotic, energetic patterns</td>
+                                <td>High (absolute value of noise)</td>
+                                <td>Fire, energy effects, marble</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Implementing Custom Scatter in Paintstorm</h3>
+                
+                <div class="card">
+                    <h4>🛠️ Practical Implementation Steps</h4>
+                    <ol>
+                        <li>
+                            <strong>Create noise texture:</strong>
+                            <ul>
+                                <li>Generate 512x512 or 1024x1024 grayscale noise image</li>
+                                <li>Use Perlin or Simplex noise generator</li>
+                                <li>Adjust contrast and brightness for desired intensity</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Configure brush scatter:</strong>
+                            <ul>
+                                <li>Set scatter amount (typically 30-60% for organic feel)</li>
+                                <li>Link scatter to noise texture</li>
+                                <li>Adjust noise scale (frequency)</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Combine with other dynamics:</strong>
+                            <ul>
+                                <li>Add pressure sensitivity to scatter amount</li>
+                                <li>Link velocity to scatter frequency</li>
+                                <li>Use direction to orient scatter perpendicular to stroke</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <blockquote>
+                    <strong>⚡ Performance Tip:</strong> Pre-compute noise textures offline! Don't calculate Perlin noise in real-time during painting. Instead, generate noise textures once, save them, and sample from them during brush strokes. This gives you the organic quality without the performance cost.
+                </blockquote>
+            </section>
+
+            <!-- Section 4: Procedural Generation -->
+            <section id="procedural-generation" class="lesson-section">
+                <h2>Procedural Brush Creation 🎲</h2>
+                
+                <p>Procedural generation means creating brushes through <strong>algorithms rather than handcrafting</strong>. It's like writing a recipe that can create infinite variations, rather than baking just one cake.</p>
+
+                <div class="mermaid">
+                    flowchart TD
+                        A[Seed Value] --> B[Noise Generation]
+                        B --> C[Shape Generation]
+                        C --> D[Pattern Modulation]
+                        D --> E[Dynamics Assignment]
+                        E --> F[Unique Brush]
+                        
+                        G[User Parameters] --> B
+                        G --> C
+                        G --> D
+                        G --> E
+                        
+                        H[Same Seed] -.-> |Reproducible| F
+                        I[Different Seed] -.-> |Infinite Variety| F
+                </div>
+
+                <h3>Procedural Brush Generation Algorithm</h3>
+                
+                <div class="card">
+                    <h4>Algorithm 3: Complete Procedural Brush Generator</h4>
+                    <pre><code>FUNCTION GenerateProceduralBrush(seed, parameters):
+    // Initialize random generator with seed for reproducibility
+    SetRandomSeed(seed)
+    
+    // PHASE 1: Generate Base Shape
+    shapeType = WeightedRandom([
+        {type: "circle", weight: 0.3},
+        {type: "organic", weight: 0.4},
+        {type: "angular", weight: 0.2},
+        {type: "textured", weight: 0.1}
+    ])
+    
+    IF shapeType == "circle":
+        baseShape = GenerateCircle(
+            radius: parameters.size,
+            softness: Random(0.0, 0.8)
+        )
+    ELSE IF shapeType == "organic":
+        // Use Perlin noise to deform circle
+        baseShape = GenerateCircle(parameters.size, 0.5)
+        FOR EACH point IN baseShape.outline:
+            noiseValue = PerlinNoise(point.angle, seed, 0.5)
+            point.radius *= (1.0 + noiseValue * 0.3)
+        END FOR
+    ELSE IF shapeType == "angular":
+        sides = RandomInt(3, 8)
+        baseShape = GeneratePolygon(sides, parameters.size)
+    ELSE:
+        // Generate from texture noise
+        baseShape = GenerateFromNoise(
+            noiseType: "Worley",
+            size: parameters.size,
+            detail: Random(2, 5)
+        )
+    END IF
+    
+    // PHASE 2: Add Texture Layers
+    textureCount = RandomInt(1, 3)
+    FOR i FROM 1 TO textureCount:
+        texture = GenerateNoiseTexture(
+            type: RandomChoice(["perlin", "simplex", "worley"]),
+            scale: Random(0.1, 2.0),
+            octaves: RandomInt(1, 4)
+        )
+        
+        blendMode = RandomChoice(["multiply", "overlay", "screen"])
+        opacity = Random(0.2, 0.7)
+        
+        baseShape = BlendTexture(baseShape, texture, blendMode, opacity)
+    END FOR
+    
+    // PHASE 3: Generate Dynamics Profile
+    dynamics = {
+        size: GenerateDynamicCurve("pressure", parameters.sizeResponse),
+        opacity: GenerateDynamicCurve("pressure", parameters.opacityResponse),
+        scatter: {
+            amount: Random(0, parameters.maxScatter),
+            type: RandomChoice(["uniform", "gaussian", "radial"]),
+            noiseInfluence: Random(0, 0.5)
+        },
+        rotation: {
+            mode: WeightedRandom([
+                {type: "none", weight: 0.3},
+                {type: "direction", weight: 0.4},
+                {type: "random", weight: 0.2},
+                {type: "noise", weight: 0.1}
+            ]),
+            amount: Random(0, 360)
+        },
+        spacing: CalculateOptimalSpacing(baseShape.complexity)
+    }
+    
+    // PHASE 4: Assign Color Dynamics (if enabled)
+    IF parameters.colorVariation:
+        dynamics.colorJitter = {
+            hue: Random(0, parameters.maxHueShift),
+            saturation: Random(0, parameters.maxSaturationShift),
+            brightness: Random(0, parameters.maxBrightnessShift)
+        }
+    END IF
+    
+    // PHASE 5: Performance Optimization
+    IF EstimatePerformance(baseShape, dynamics) > parameters.maxCost:
+        baseShape = SimplifyShape(baseShape, targetComplexity: 0.7)
+        dynamics.textureQuality = "optimized"
+    END IF
+    
+    // PHASE 6: Package and Return
+    brush = {
+        name: "Procedural_" + seed,
+        shape: baseShape,
+        dynamics: dynamics,
+        metadata: {
+            seed: seed,
+            generationTime: CurrentTimestamp(),
+            parameters: parameters
+        }
+    }
+    
+    RETURN brush
+END FUNCTION
+
+FUNCTION GenerateDynamicCurve(inputType, responseProfile):
+    // Generate pressure/velocity response curve
+    controlPoints = []
+    
+    SWITCH responseProfile:
+        CASE "linear":
+            controlPoints = [(0, 0), (1, 1)]
+        CASE "ease-in":
+            controlPoints = [(0, 0), (0.3, 0.1), (1, 1)]
+        CASE "ease-out":
+            controlPoints = [(0, 0), (0.7, 0.9), (1, 1)]
+        CASE "s-curve":
+            controlPoints = [(0, 0), (0.2, 0.1), (0.8, 0.9), (1, 1)]
+        CASE "random":
+            // Generate 3-5 random control points
+            numPoints = RandomInt(3, 5)
+            FOR i FROM 0 TO numPoints:
+                t = i / numPoints
+                value = Random(0, 1)
+                controlPoints.push((t, value))
+            END FOR
+    END SWITCH
+    
+    RETURN CreateCurveFromPoints(controlPoints)
+END FUNCTION
+
+FUNCTION CalculateOptimalSpacing(shapeComplexity):
+    // More complex shapes need tighter spacing for smooth strokes
+    baseSpacing = 0.25  // 25% of brush size
+    complexityFactor = shapeComplexity * 0.5
+    RETURN baseSpacing - (baseSpacing * complexityFactor * 0.5)
+END FUNCTION</code></pre>
+                </div>
+
+                <h3>Seed-Based Reproducibility</h3>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>🔑 The Power of Seeds</h4>
+                    <p>A <strong>seed</strong> is a number that initializes a random number generator. The same seed always produces the same sequence of "random" numbers. This means:</p>
+                    <ul>
+                        <li>✅ You can regenerate the exact same brush anytime</li>
+                        <li>✅ You can share seeds with others to share brushes</li>
+                        <li>✅ You can make variations by changing the seed slightly</li>
+                        <li>✅ You can explore infinite brushes systematically</li>
+                    </ul>
+                    <pre><code>Example:
+Seed 12345 → Always generates same "random" brush
+Seed 12346 → Slightly different but related brush
+Seed 99999 → Completely different brush
+
+Try this: Generate brushes with seeds 1000-1010
+         Save the ones you like!
+         Seeds become your brush catalog numbers</code></pre>
+                </div>
+
+                <h3>Practical Procedural Techniques</h3>
+                
+                <div class="card">
+                    <h4>Real-World Procedural Brush Recipes</h4>
+                    
+                    <p><strong>Recipe 1: Organic Foliage Brush</strong></p>
+                    <pre><code>Parameters:
+- Base Shape: Irregular polygon (5-7 sides)
+- Deformation: Perlin noise (scale: 0.3, amplitude: 0.4)
+- Texture: Worley noise (cellular pattern)
+- Scatter: Poisson disk (minimum distance: 0.3)
+- Rotation: Random 360° + noise-based wobble
+- Size: Pressure-linked (ease-out curve)
+- Color Jitter: Hue ±15°, Saturation ±20%
+
+Result: Perfect for painting leaves, grass, bushes</code></pre>
+
+                    <p><strong>Recipe 2: Atmospheric Cloud Brush</strong></p>
+                    <pre><code>Parameters:
+- Base Shape: Soft circle (falloff: 0.8)
+- Texture: Fractal Brownian Motion (4 octaves)
+- Scatter: Gaussian distribution (σ = 0.3)
+- Rotation: Direction-aligned ± 30°
+- Opacity: Velocity-linked (faster = less opacity)
+- Dual Brush: Second layer with larger noise
+- Blend Mode: Screen (for soft accumulation)
+
+Result: Volumetric, natural-looking clouds</code></pre>
+
+                    <p><strong>Recipe 3: Energetic Fire Brush</strong></p>
+                    <pre><code>Parameters:
+- Base Shape: Elongated oval (vertical)
+- Texture: Turbulence function (high frequency)
+- Scatter: Directional (perpendicular: 0.2, parallel: 0.8)
+- Rotation: Direction + Random jitter ±45°
+- Size: Velocity-linked (faster = larger)
+- Color Jitter: Hue shift (red→orange→yellow)
+- Opacity: Multiply mode with low base opacity
+
+Result: Dynamic fire and energy effects</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>🎓 Advanced Insight:</strong> Many professional studios use procedural generation for their brush libraries! They create "master algorithms" that can generate hundreds of specialized brushes from parameter sets. This is how Paintstorm Studio itself likely generated many of its default brushes!
+                </blockquote>
+            </section>
+
+            <!-- Section 5: Advanced Dynamics Systems -->
+            <section id="dynamic-systems" class="lesson-section">
+                <h2>Advanced Dynamics Systems 🎮</h2>
+                
+                <p>Dynamics transform static brushes into <strong>intelligent, responsive tools</strong>. Think of dynamics as giving your brush a nervous system - it can feel and react to how you paint.</p>
+
+                <h3>Multi-Parameter Dynamic Linking</h3>
+                
+                <div class="card">
+                    <h4>Dynamic Relationship Matrix</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Input</th>
+                                <th>Primary Effect</th>
+                                <th>Secondary Effects</th>
+                                <th>Advanced Linking</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Pressure</strong></td>
+                                <td>Size, Opacity</td>
+                                <td>Flow, Scatter Amount</td>
+                                <td>Color intensity, Texture strength, Dual brush mix</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Velocity</strong></td>
+                                <td>Spacing, Size</td>
+                                <td>Opacity, Scatter</td>
+                                <td>Color streak, Motion blur, Shape elongation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tilt</strong></td>
+                                <td>Shape aspect ratio</td>
+                                <td>Opacity, Texture angle</td>
+                                <td>Calligraphic effects, Variable hardness</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Direction</strong></td>
+                                <td>Rotation</td>
+                                <td>Scatter orientation</td>
+                                <td>Grain direction, Texture flow</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Random</strong></td>
+                                <td>Scatter position</td>
+                                <td>Size jitter, Rotation</td>
+                                <td>Color variation, Texture offset</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Complex Dynamic Expressions</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🧮 Mathematical Expressions for Dynamics</h4>
+                    <p>Advanced brush engines support <strong>expression-based dynamics</strong> - mathematical formulas that combine multiple inputs:</p>
+                    <pre><code>// Example: Size influenced by both pressure and velocity
+size = baseSize * (0.3 + 0.7 * pressure) * (1.0 - 0.3 * velocity)
+
+// Example: Opacity with pressure and fade-out
+opacity = baseOpacity * pow(pressure, 2) * (1.0 - strokeProgress)
+
+// Example: Scatter that increases with speed but decreases with pressure
+scatter = maxScatter * velocity * (1.0 - pressure * 0.5)
+
+// Example: Color hue shift based on stroke direction and pressure
+hueShift = (strokeAngle / 360) * 30 + pressure * 10
+
+// Example: Dual brush mix ratio from multiple sources
+mixRatio = 0.5 + 0.3 * sin(strokeProgress * PI) + 0.2 * noise(position)
+
+// Example: Spacing adaptation for stroke quality
+spacing = baseSpacing * (1.0 - velocity * 0.5) * (0.5 + pressure * 0.5)</code></pre>
+                </div>
+
+                <h3>State Machine Dynamics</h3>
+                
+                <p>Advanced brushes can have different <strong>behavior states</strong> that change based on conditions. This is like a brush that "thinks" about what it's doing!</p>
+
+                <div class="mermaid">
+                    stateDiagram-v2
+                        [*] --> Idle
+                        Idle --> Sketching: Light Pressure
+                        Sketching --> Painting: Medium Pressure
+                        Painting --> Blending: No Movement
+                        Painting --> Detailing: High Velocity
+                        Blending --> Painting: Movement Resumes
+                        Detailing --> Painting: Pressure Increase
+                        Painting --> Idle: Pen Lift
+                        Sketching --> Idle: Pen Lift
+                        Detailing --> Idle: Pen Lift
+                        Blending --> Idle: Pen Lift
+                        
+                        note right of Sketching
+                            Properties:
+                            - Low opacity
+                            - Thin lines
+                            - High spacing
+                        end note
+                        
+                        note right of Painting
+                            Properties:
+                            - Full opacity
+                            - Variable size
+                            - Medium spacing
+                        end note
+                        
+                        note right of Blending
+                            Properties:
+                            - Very low opacity
+                            - No texture
+                            - Smooth edges
+                        end note
+                </div>
+
+                <div class="card">
+                    <h4>Algorithm 4: State-Based Brush Behavior</h4>
+                    <pre><code>CLASS StatefulBrush:
+    state = "idle"
+    stateTimer = 0
+    previousPressure = 0
+    previousVelocity = 0
+    strokeProgress = 0
+    
+    FUNCTION Update(pressure, velocity, position):
+        stateTimer += deltaTime
+        strokeProgress = CalculateStrokeProgress()
+        
+        // State transitions
+        SWITCH state:
+            CASE "idle":
+                IF pressure > 0.1:
+                    IF pressure < 0.3:
+                        TransitionTo("sketching")
+                    ELSE:
+                        TransitionTo("painting")
+                END IF
+            
+            CASE "sketching":
+                IF pressure > 0.5:
+                    TransitionTo("painting")
+                ELSE IF pressure < 0.05:
+                    TransitionTo("idle")
+                END IF
+            
+            CASE "painting":
+                IF pressure > 0.8 AND velocity > 0.7:
+                    TransitionTo("detailing")
+                ELSE IF velocity < 0.1 AND stateTimer > 0.5:
+                    TransitionTo("blending")
+                ELSE IF pressure < 0.2:
+                    TransitionTo("sketching")
+                END IF
+            
+            CASE "detailing":
+                IF velocity < 0.4 OR pressure < 0.6:
+                    TransitionTo("painting")
+                END IF
+            
+            CASE "blending":
+                IF velocity > 0.2:
+                    TransitionTo("painting")
+                ELSE IF pressure < 0.05:
+                    TransitionTo("idle")
+                END IF
+        END SWITCH
+        
+        // Apply state-specific properties
+        ApplyStateProperties()
+        
+        // Store for next frame
+        previousPressure = pressure
+        previousVelocity = velocity
+    END FUNCTION
+    
+    FUNCTION TransitionTo(newState):
+        OnStateExit(state)  // Cleanup old state
+        state = newState
+        stateTimer = 0
+        OnStateEnter(newState)  // Initialize new state
+    END FUNCTION
+    
+    FUNCTION ApplyStateProperties():
+        SWITCH state:
+            CASE "sketching":
+                currentOpacity = 0.3
+                currentSize = baseSize * 0.5
+                currentSpacing = 0.35
+                textureStrength = 0.2
+            
+            CASE "painting":
+                currentOpacity = 0.8 * pressure
+                currentSize = baseSize * (0.5 + pressure * 0.5)
+                currentSpacing = 0.25
+                textureStrength = 0.6
+            
+            CASE "detailing":
+                currentOpacity = 0.9
+                currentSize = baseSize * 0.3
+                currentSpacing = 0.15
+                textureStrength = 1.0
+            
+            CASE "blending":
+                currentOpacity = 0.1
+                currentSize = baseSize * 1.2
+                currentSpacing = 0.10
+                textureStrength = 0.0
+                blendMode = "normal"  // Force blending mode
+        END SWITCH
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>🎨 Artistic Impact:</strong> State-based brushes feel incredibly natural! The brush automatically adapts to your painting style without you thinking about it. Light sketching strokes stay light, heavy painting strokes build opacity, and slowing down automatically engages blending mode. It's like the brush reads your mind!
+                </blockquote>
+
+                <h3>Temporal Dynamics</h3>
+                
+                <p>Time-based effects create brushes that <strong>evolve during the stroke</strong>:</p>
+
+                <div class="card">
+                    <pre><code>// Fade-out effect (like running out of ink)
+opacity = baseOpacity * (1.0 - strokeProgress * fadeSpeed)
+
+// Size growth (like pressure building up)
+size = baseSize * (0.5 + strokeProgress * 0.5)
+
+// Color transition along stroke
+hue = startHue + (endHue - startHue) * strokeProgress
+
+// Texture emergence (starts smooth, becomes textured)
+textureStrength = strokeProgress * maxTexture
+
+// Scatter increase (becomes looser over time)
+scatterAmount = baseScatter * (1.0 + strokeProgress * 2.0)</code></pre>
+                </div>
+            </section>
+
+
+            <!-- Section 6: Performance Optimization -->
+            <section id="performance" class="lesson-section">
+                <h2>Performance Optimization Techniques ⚡</h2>
+                
+                <p>A beautiful brush that lags is a <strong>broken brush</strong>. Performance optimization is about making your brushes feel responsive and immediate, even with complex algorithms running behind the scenes.</p>
+
+                <div class="card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+                    <h3>🎯 The Performance Golden Rule</h3>
+                    <p><strong>Your brush must maintain 60 FPS minimum</strong> - that's 16.67 milliseconds per frame. Every calculation, every texture lookup, every blend operation must fit within this tiny window. Miss it, and the artist feels lag!</p>
+                    <pre style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 4px;"><code>Target: 60 FPS = 16.67ms per frame
+Budget per brush stroke:
+- Input processing: ~1ms
+- Dynamics calculation: ~2ms
+- Stamp placement: ~8ms
+- Compositing: ~4ms
+- Display update: ~1.67ms
+Total: ~16.67ms (just barely in budget!)</code></pre>
+                </div>
+
+                <h3>Profiling Your Brushes</h3>
+                
+                <canvas id="performance-chart" width="800" height="350" style="max-width: 100%; height: auto; border: 2px solid #ddd; border-radius: 8px; background: white; margin: 1rem 0;"></canvas>
+                
+                <script>
+                    const perfCanvas = document.getElementById('performance-chart');
+                    const pCtx = perfCanvas.getContext('2d');
+                    
+                    // Handle high DPI
+                    const pScale = window.devicePixelRatio || 1;
+                    perfCanvas.width = 800 * pScale;
+                    perfCanvas.height = 350 * pScale;
+                    pCtx.scale(pScale, pScale);
+                    
+                    // Clear
+                    pCtx.fillStyle = '#f8f9fa';
+                    pCtx.fillRect(0, 0, 800, 350);
+                    
+                    // Title
+                    pCtx.fillStyle = '#333';
+                    pCtx.font = 'bold 18px Arial';
+                    pCtx.textAlign = 'center';
+                    pCtx.fillText('Brush Performance Bottleneck Analysis', 400, 25);
+                    
+                    // Performance bars
+                    const perfData = [
+                        {label: 'Simple Round', time: 2.1, color: '#4CAF50'},
+                        {label: 'Textured Brush', time: 5.4, color: '#8BC34A'},
+                        {label: 'Dual Brush', time: 8.7, color: '#FFC107'},
+                        {label: 'Complex Scatter', time: 12.3, color: '#FF9800'},
+                        {label: 'Procedural+Noise', time: 15.9, color: '#FF5722'},
+                        {label: 'Unoptimized', time: 24.5, color: '#F44336'}
+                    ];
+                    
+                    const barHeight = 35;
+                    const barSpacing = 45;
+                    const startY = 60;
+                    const maxTime = 30; // ms
+                    const barMaxWidth = 550;
+                    
+                    // Target line
+                    const targetX = 50 + (16.67 / maxTime) * barMaxWidth;
+                    pCtx.strokeStyle = '#f44336';
+                    pCtx.lineWidth = 2;
+                    pCtx.setLineDash([5, 5]);
+                    pCtx.beginPath();
+                    pCtx.moveTo(targetX, startY - 10);
+                    pCtx.lineTo(targetX, startY + perfData.length * barSpacing);
+                    pCtx.stroke();
+                    pCtx.setLineDash([]);
+                    
+                    pCtx.fillStyle = '#f44336';
+                    pCtx.font = '12px Arial';
+                    pCtx.textAlign = 'center';
+                    pCtx.fillText('60 FPS Target', targetX, startY - 15);
+                    pCtx.fillText('(16.67ms)', targetX, startY - 3);
+                    
+                    // Draw bars
+                    perfData.forEach((item, index) => {
+                        const y = startY + index * barSpacing;
+                        const barWidth = (item.time / maxTime) * barMaxWidth;
+                        
+                        // Label
+                        pCtx.fillStyle = '#333';
+                        pCtx.font = '14px Arial';
+                        pCtx.textAlign = 'right';
+                        pCtx.fillText(item.label, 45, y + 20);
+                        
+                        // Bar
+                        pCtx.fillStyle = item.color;
+                        pCtx.fillRect(50, y + 5, barWidth, barHeight);
+                        
+                        // Time label
+                        pCtx.fillStyle = '#333';
+                        pCtx.font = 'bold 12px Arial';
+                        pCtx.textAlign = 'left';
+                        pCtx.fillText(item.time + 'ms', 55 + barWidth, y + 25);
+                    });
+                    
+                    // Scale
+                    pCtx.strokeStyle = '#dee2e6';
+                    pCtx.lineWidth = 1;
+                    for(let i = 0; i <= maxTime; i += 5) {
+                        const x = 50 + (i / maxTime) * barMaxWidth;
+                        pCtx.beginPath();
+                        pCtx.moveTo(x, startY - 5);
+                        pCtx.lineTo(x, startY + perfData.length * barSpacing);
+                        pCtx.stroke();
+                        
+                        pCtx.fillStyle = '#666';
+                        pCtx.font = '10px Arial';
+                        pCtx.textAlign = 'center';
+                        pCtx.fillText(i + 'ms', x, startY + perfData.length * barSpacing + 15);
+                    }
+                    
+                    // Breakdown pie chart
+                    pCtx.fillStyle = '#333';
+                    pCtx.font = 'bold 14px Arial';
+                    pCtx.textAlign = 'center';
+                    pCtx.fillText('Typical Bottlenecks', 700, 80);
+                    
+                    const pieData = [
+                        {label: 'Texture Sampling', percent: 35, color: '#FF9800'},
+                        {label: 'Blending', percent: 25, color: '#2196F3'},
+                        {label: 'Scatter Calc', percent: 20, color: '#4CAF50'},
+                        {label: 'Noise Gen', percent: 15, color: '#9C27B0'},
+                        {label: 'Other', percent: 5, color: '#607D8B'}
+                    ];
+                    
+                    const centerX = 700;
+                    const centerY = 180;
+                    const radius = 70;
+                    let startAngle = -Math.PI / 2;
+                    
+                    pieData.forEach(item => {
+                        const sliceAngle = (item.percent / 100) * Math.PI * 2;
+                        const endAngle = startAngle + sliceAngle;
+                        
+                        // Draw slice
+                        pCtx.fillStyle = item.color;
+                        pCtx.beginPath();
+                        pCtx.moveTo(centerX, centerY);
+                        pCtx.arc(centerX, centerY, radius, startAngle, endAngle);
+                        pCtx.closePath();
+                        pCtx.fill();
+                        
+                        // Draw label
+                        const labelAngle = startAngle + sliceAngle / 2;
+                        const labelX = centerX + Math.cos(labelAngle) * (radius + 40);
+                        const labelY = centerY + Math.sin(labelAngle) * (radius + 40);
+                        
+                        pCtx.fillStyle = '#333';
+                        pCtx.font = '11px Arial';
+                        pCtx.textAlign = 'center';
+                        pCtx.fillText(item.label, labelX, labelY);
+                        pCtx.fillText(item.percent + '%', labelX, labelY + 12);
+                        
+                        startAngle = endAngle;
+                    });
+                </script>
+
+                <h3>Optimization Strategies</h3>
+                
+                <div class="card">
+                    <h4>Strategy 1: Texture Resolution Management</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Brush Size</th>
+                                <th>Optimal Texture Resolution</th>
+                                <th>Memory Usage</th>
+                                <th>Rationale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&lt; 50px</td>
+                                <td>256×256</td>
+                                <td>256 KB</td>
+                                <td>Larger wastes memory and sampling time</td>
+                            </tr>
+                            <tr>
+                                <td>50-150px</td>
+                                <td>512×512</td>
+                                <td>1 MB</td>
+                                <td>Good balance for most painting</td>
+                            </tr>
+                            <tr>
+                                <td>150-400px</td>
+                                <td>1024×1024</td>
+                                <td>4 MB</td>
+                                <td>High detail work</td>
+                            </tr>
+                            <tr>
+                                <td>&gt; 400px</td>
+                                <td>2048×2048</td>
+                                <td>16 MB</td>
+                                <td>Special cases only, consider dynamic LOD</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <pre><code>FUNCTION OptimizeTextureResolution(brushSize):
+    // Rule of thumb: texture should be 2x brush size (Nyquist sampling)
+    // But cap at reasonable limits for performance
+    
+    idealSize = brushSize * 2
+    
+    IF idealSize <= 256:
+        RETURN 256
+    ELSE IF idealSize <= 512:
+        RETURN 512
+    ELSE IF idealSize <= 1024:
+        RETURN 1024
+    ELSE:
+        // For very large brushes, use LOD system
+        RETURN 2048  // Max texture size
+    END IF
+END FUNCTION</code></pre>
+                </div>
+
+                <div class="card">
+                    <h4>Strategy 2: Level of Detail (LOD) System</h4>
+                    <pre><code>CLASS LODBrush:
+    textures = {
+        high: Load("brush_2048.png"),      // For sizes 400px+
+        medium: Load("brush_1024.png"),    // For sizes 150-400px
+        low: Load("brush_512.png"),        // For sizes 50-150px
+        tiny: Load("brush_256.png")        // For sizes < 50px
+    }
+    
+    FUNCTION GetAppropriateTexture(currentSize):
+        IF currentSize >= 400:
+            RETURN textures.high
+        ELSE IF currentSize >= 150:
+            RETURN textures.medium
+        ELSE IF currentSize >= 50:
+            RETURN textures.low
+        ELSE:
+            RETURN textures.tiny
+        END IF
+    END FUNCTION
+    
+    FUNCTION Render(size, position, pressure):
+        // Select appropriate LOD
+        texture = GetAppropriateTexture(size)
+        
+        // Render using selected texture
+        RenderStamp(texture, size, position, pressure)
+    END FUNCTION
+END CLASS
+
+// Memory savings example:
+// Without LOD: Always using 2048×2048 = 16MB per brush
+// With LOD: Average usage drops to ~2-4MB per brush
+// For 50 brushes: 800MB → 150MB savings!</code></pre>
+                </div>
+
+                <h3>Computational Optimization</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🚀 Performance Optimization Techniques</h4>
+                    
+                    <p><strong>1. Pre-computation and Caching</strong></p>
+                    <pre><code>// BAD: Calculate every frame
+FOR EACH stamp:
+    rotation = CalculateComplexRotation(angle, noise, pressure)
+    size = CalculateComplexSize(pressure, velocity, curve)
+    RenderStamp(rotation, size)
+END FOR
+
+// GOOD: Pre-compute and cache
+rotationCache = PrecomputeRotations(0 to 360, step=1)
+sizeCurveCache = PrecomputeSizeCurve(0 to 1, samples=256)
+
+FOR EACH stamp:
+    rotation = rotationCache[round(angle)]
+    size = sizeCurveCache[round(pressure * 255)]
+    RenderStamp(rotation, size)
+END FOR
+
+// Result: 10-50x faster lookups!</code></pre>
+
+                    <p><strong>2. Lazy Evaluation</strong></p>
+                    <pre><code>// Only calculate scatter if it's enabled and significant
+IF brushSettings.scatterEnabled AND brushSettings.scatterAmount > 0.01:
+    scatterOffset = CalculateScatter()
+ELSE:
+    scatterOffset = (0, 0)  // Skip expensive calculation
+END IF
+
+// Only sample secondary texture if dual brush is active
+IF brushSettings.dualBrushEnabled AND brushSettings.dualBrushOpacity > 0.05:
+    secondaryTex = SampleSecondaryBrush()
+    FinalTex = BlendTextures(primaryTex, secondaryTex)
+ELSE:
+    finalTex = primaryTex  // Skip blending
+END IF</code></pre>
+
+                    <p><strong>3. Culling and Early Rejection</strong></p>
+                    <pre><code>FUNCTION PlaceStamp(position, size, opacity):
+    // Early rejection: Don't draw invisible stamps
+    IF opacity < 0.01:
+        RETURN  // Too transparent to see
+    END IF
+    
+    // Early rejection: Don't draw off-canvas stamps
+    IF position.x + size < 0 OR position.x - size > canvasWidth:
+        RETURN  // Off screen horizontally
+    END IF
+    
+    IF position.y + size < 0 OR position.y - size > canvasHeight:
+        RETURN  // Off screen vertically
+    END IF
+    
+    // Early rejection: Don't oversample
+    distanceFromLast = Distance(position, lastStampPosition)
+    IF distanceFromLast < minimumSpacing:
+        RETURN  // Too close to last stamp
+    END IF
+    
+    // Passed all checks - safe to render
+    RenderStampToCanvas(position, size, opacity)
+    lastStampPosition = position
+END FUNCTION</code></pre>
+
+                    <p><strong>4. Approximation for Speed</strong></p>
+                    <pre><code>// BAD: Precise but slow trigonometry
+rotation = atan2(velocityY, velocityX) * 180 / PI
+
+// GOOD: Fast approximation (error < 0.5%)
+// Uses lookup table or fast approximation
+rotation = FastAtan2Approx(velocityY, velocityX)
+
+// BAD: Expensive square root
+distance = sqrt(dx*dx + dy*dy)
+
+// GOOD: Often we only need comparison
+distanceSquared = dx*dx + dy*dy
+IF distanceSquared < thresholdSquared:  // Compare squared values
+    // No sqrt needed!
+END IF
+
+// BAD: Precise Perlin noise every stamp
+noiseValue = PerlinNoise3D(x, y, time)
+
+// GOOD: Sample noise texture (pre-generated)
+noiseValue = SampleNoiseTexture(x, y)</code></pre>
+                </div>
+
+                <h3>Memory Management</h3>
+                
+                <div class="card">
+                    <h4>Brush Memory Budget Guidelines</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Budget Per Brush</th>
+                                <th>For 50 Brushes</th>
+                                <th>Optimization Tips</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Primary Texture</strong></td>
+                                <td>1-4 MB</td>
+                                <td>50-200 MB</td>
+                                <td>Use texture compression, LOD system</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Secondary Texture</strong></td>
+                                <td>0.5-2 MB</td>
+                                <td>25-100 MB</td>
+                                <td>Share textures between brushes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Noise Textures</strong></td>
+                                <td>0.5-1 MB</td>
+                                <td>25-50 MB</td>
+                                <td>Reuse same noise for multiple brushes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Curves/Settings</strong></td>
+                                <td>&lt; 10 KB</td>
+                                <td>&lt; 1 MB</td>
+                                <td>Negligible, don't worry about it</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Per Brush</strong></td>
+                                <td>2-7 MB</td>
+                                <td>100-350 MB</td>
+                                <td>Stay under 500 MB total for smooth experience</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote>
+                    <strong>⚠️ Critical Insight:</strong> The difference between a professional brush and an amateur brush often isn't the algorithm - it's the optimization! A brilliant algorithm that lags feels terrible. A simple algorithm that's instant feels professional. Always profile and optimize!
+                </blockquote>
+
+                <h3>Profiling Checklist</h3>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>🔍 How to Profile Your Brushes</h4>
+                    <ol>
+                        <li>
+                            <strong>Test with fast strokes:</strong>
+                            <ul>
+                                <li>Draw quick, long strokes at various angles</li>
+                                <li>Watch for lag or stutter</li>
+                                <li>Target: Smooth at all speeds</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Monitor frame rate:</strong>
+                            <ul>
+                                <li>Enable FPS counter in Paintstorm</li>
+                                <li>Should maintain 60 FPS minimum</li>
+                                <li>Drops to 30 FPS = unacceptable</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Check memory usage:</strong>
+                            <ul>
+                                <li>Load all your custom brushes</li>
+                                <li>Check system memory usage</li>
+                                <li>Target: &lt; 500 MB for brush library</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Test on target hardware:</strong>
+                            <ul>
+                                <li>Don't just test on your gaming PC!</li>
+                                <li>Try on typical artist laptop (mid-range specs)</li>
+                                <li>Ensure smooth performance there</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Stress test:</strong>
+                            <ul>
+                                <li>Paint on large canvas (4000×4000+)</li>
+                                <li>Use brush at maximum size</li>
+                                <li>Paint rapidly with high pressure</li>
+                                <li>Should still feel responsive</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Section 7: Multi-Brush Combinations -->
+            <section id="multi-brush" class="lesson-section">
+                <h2>Multi-Brush Combinations 🎭</h2>
+                
+                <p>The real magic happens when you <strong>combine multiple brushes strategically</strong>. Professional artists rarely use a single brush - they orchestrate entire brush systems!</p>
+
+                <div class="mermaid">
+                    graph TD
+                        A[Base Layer Brush] --> B[Build Form & Volume]
+                        B --> C[Detail Brush 1]
+                        C --> D[Add Primary Details]
+                        D --> E[Detail Brush 2]
+                        E --> F[Add Secondary Details]
+                        F --> G[Texture Brush]
+                        G --> H[Apply Surface Texture]
+                        H --> I[Effect Brush]
+                        I --> J[Add Atmosphere/Effects]
+                        J --> K[Finishing Brush]
+                        K --> L[Final Touches & Highlights]
+                        
+                        style A fill:#4CAF50
+                        style C fill:#2196F3
+                        style E fill:#2196F3
+                        style G fill:#FF9800
+                        style I fill:#9C27B0
+                        style K fill:#F44336
+                </div>
+
+                <h3>Brush System Architecture</h3>
+                
+                <div class="card">
+                    <h4>Professional Brush Workflow Systems</h4>
+                    
+                    <p><strong>System 1: Portrait Painting</strong></p>
+                    <pre><code>Layer 1 - Foundation (10-15% of time)
+├── Brush: Large Soft Round (200-400px)
+├── Purpose: Block in basic shapes and values
+├── Settings: 50-70% opacity, pressure to size
+└── Technique: Fast, loose strokes
+
+Layer 2 - Form Building (25-30% of time)
+├── Brush: Medium Textured Round (80-150px)
+├── Purpose: Define planes and major forms
+├── Settings: 70-90% opacity, flow control
+└── Technique: Careful edge control
+
+Layer 3 - Skin Texture (20-25% of time)
+├── Brush: Skin Pore Texture Brush (30-60px)
+├── Purpose: Add realistic skin texture
+├── Settings: 20-30% opacity, scatter enabled
+└── Technique: Build gradually with overlapping
+
+Layer 4 - Details (15-20% of time)
+├── Brush: Fine Detail Liner (5-15px)
+├── Purpose: Eyes, lips, hair strands
+├── Settings: 90-100% opacity, high precision
+└── Technique: Careful, deliberate strokes
+
+Layer 5 - Refinement (15-20% of time)
+├── Brush: Soft Blender (50-100px)
+├── Purpose: Smooth transitions, refine edges
+├── Settings: 10-20% opacity, no texture
+└── Technique: Gentle circular motions
+
+Layer 6 - Highlights (5-10% of time)
+├── Brush: Sharp Highlight Brush (3-20px)
+├── Purpose: Final sparkle and dimension
+├── Settings: 100% opacity, hard edges
+└── Technique: Precise placement</code></pre>
+
+                    <p><strong>System 2: Environment Painting</strong></p>
+                    <pre><code>Phase 1 - Atmospheric Base
+├── Sky Gradient Brush → Large soft washes
+├── Cloud Scatter Brush → Volumetric clouds
+└── Atmosphere Haze Brush → Depth and fog
+
+Phase 2 - Major Shapes
+├── Mountain Silhouette Brush → Large forms
+├── Tree Mass Brush → Foliage groups
+└── Ground Texture Brush → Terrain base
+
+Phase 3 - Mid-Detail
+├── Rock Cluster Brush → Boulder groups
+├── Foliage Detail Brush → Individual plants
+└── Water Reflection Brush → Surface details
+
+Phase 4 - Fine Detail
+├── Grass Blade Brush → Foreground grass
+├── Leaf Scatter Brush → Individual leaves
+└── Branch Network Brush → Tree details
+
+Phase 5 - Lighting & Effects
+├── Sunbeam Brush → Light rays
+├── Particle Effect Brush → Dust, pollen
+└── Rim Light Brush → Edge lighting</code></pre>
+                </div>
+
+                <h3>Brush Switching Strategies</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>⚡ Hotkey-Based Brush Systems</h4>
+                    <p>Professional workflow requires <strong>instant brush access</strong>. Set up hotkeys for your most-used combinations:</p>
+                    <pre><code>Primary Painting Brushes (Most Used):
+├── 1: General Painting Brush (your workhorse)
+├── 2: Blending/Smoothing Brush
+├── 3: Detail/Liner Brush
+├── 4: Texture Application Brush
+└── 5: Eraser/Cleanup Brush
+
+Secondary Brushes (Frequent Use):
+├── Q: Soft Round (various sizes)
+├── W: Hard Round (precise work)
+├── E: Textured Stamp
+├── R: Scatter Brush (organic effects)
+└── T: Custom Effect Brush
+
+Specialty Brushes (Context-Dependent):
+├── A: Hair Strand Brush
+├── S: Foliage Brush
+├── D: Cloud Brush
+├── F: Water Brush
+└── G: Light/Glow Brush
+
+Modifier Combinations:
+├── Shift+Number: Brush preset variations
+├── Ctrl+Number: Save current brush to slot
+└── Alt+Number: Temporary brush (returns to previous)</code></pre>
+                </div>
+
+                <h3>Brush Preset Management</h3>
+                
+                <div class="card">
+                    <h4>Algorithm 5: Intelligent Brush Switching</h4>
+                    <pre><code>CLASS BrushManager:
+    activeBrush = null
+    brushHistory = []  // Stack of recently used brushes
+    contextualPresets = {}  // Brushes organized by task
+    favorites = []  // Quick access brushes
+    
+    FUNCTION SwitchToBrush(brushName):
+        // Save current brush to history
+        IF activeBrush != null:
+            brushHistory.push(activeBrush)
+            // Keep history limited to last 10 brushes
+            IF brushHistory.length > 10:
+                brushHistory.shift()
+            END IF
+        END IF
+        
+        // Load new brush
+        activeBrush = LoadBrush(brushName)
+        
+        // Adapt brush settings based on context
+        AdaptToContext()
+    END FUNCTION
+    
+    FUNCTION QuickSwitchToPrevious():
+        // Pop last brush from history
+        IF brushHistory.length > 0:
+            previousBrush = brushHistory.pop()
+            activeBrush = previousBrush
+        END IF
+    END FUNCTION
+    
+    FUNCTION SuggestBrushForTask(taskType):
+        // Intelligent brush suggestion based on painting phase
+        SWITCH taskType:
+            CASE "sketching":
+                RETURN contextualPresets.sketching[0]
+            CASE "blocking":
+                RETURN contextualPresets.blocking[0]
+            CASE "detailing":
+                RETURN contextualPresets.detailing[0]
+            CASE "texturing":
+                RETURN contextualPresets.texturing[0]
+            CASE "blending":
+                RETURN contextualPresets.blending[0]
+        END SWITCH
+    END FUNCTION
+    
+    FUNCTION AdaptToContext():
+        // Auto-adjust brush based on canvas zoom
+        zoomLevel = GetCurrentZoom()
+        
+        IF zoomLevel > 200%:  // Zoomed in for detail work
+            activeBrush.spacing *= 0.7  // Tighter spacing
+            activeBrush.size *= 0.8  // Slightly smaller
+        ELSE IF zoomLevel < 50%:  // Zoomed out for overview
+            activeBrush.spacing *= 1.3  // Looser spacing OK
+            activeBrush.size *= 1.2  // Slightly larger
+        END IF
+        
+        // Auto-adjust based on layer type
+        currentLayer = GetActiveLayer()
+        IF currentLayer.name.contains("detail"):
+            activeBrush.opacity = min(activeBrush.opacity, 0.7)
+        ELSE IF currentLayer.name.contains("base"):
+            activeBrush.opacity = max(activeBrush.opacity, 0.8)
+        END IF
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+
+                <h3>Multi-Brush Techniques</h3>
+                
+                <div class="card">
+                    <h4>Advanced Multi-Brush Workflows</h4>
+                    
+                    <p><strong>Technique 1: Layered Texture Building</strong></p>
+                    <pre><code>Step 1: Base texture (70% opacity, large brush)
+Step 2: Mid texture (40% opacity, medium brush, different angle)
+Step 3: Fine texture (20% opacity, small brush, high frequency)
+Step 4: Blend all layers (soft brush, 15% opacity)
+Step 5: Accent details (sharp brush, 100% opacity, minimal)
+
+Result: Rich, complex surface that looks natural</code></pre>
+
+                    <p><strong>Technique 2: Graduated Detail</strong></p>
+                    <pre><code>Foreground (Focal Point):
+├── Use 3-4 different detail brushes
+├── High opacity (80-100%)
+├── Small brush sizes (10-50px)
+├── Tight spacing (10-15%)
+└── Maximum texture and definition
+
+Midground (Secondary Interest):
+├── Use 2-3 brushes
+├── Medium opacity (50-70%)
+├── Medium sizes (50-150px)
+├── Medium spacing (20-25%)
+└── Moderate texture
+
+Background (Context):
+├── Use 1-2 brushes maximum
+├── Low opacity (30-50%)
+├── Large sizes (150-400px)
+├── Loose spacing (30-40%)
+└── Minimal texture, mostly atmosphere</code></pre>
+
+                    <p><strong>Technique 3: Complementary Brush Pairs</strong></p>
+                    <pre><code>Pair 1: Builder + Eraser
+├── Building Brush: Adds form (opacity linked to pressure)
+└── Erasing Brush: Refines edges (same texture as builder)
+
+Pair 2: Texture + Smoother
+├── Texture Brush: Adds surface detail (low opacity)
+└── Smoother: Blends texture naturally (very low opacity)
+
+Pair 3: Color + Desaturate
+├── Color Brush: Adds vibrant color accents
+└── Desaturate Brush: Grays down areas (color to gray mode)
+
+Pair 4: Hard + Soft
+├── Hard Edge: Defines crisp boundaries
+└── Soft Edge: Creates transitions and atmosphere
+
+Pair 5: Detail + Simplify
+├── Detail Brush: Adds complexity
+└── Simplify Brush: Large soft brush to reduce detail</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>🎨 Pro Workflow Secret:</strong> The best digital artists have "muscle memory" for their brush switching. They don't think "I need the detail brush now" - their fingers automatically hit the hotkey. Build this muscle memory through consistent practice with your brush system!</blockquote>
+            </section>
+
+            <!-- Section 8: Brush Scripting Basics -->
+            <section id="scripting" class="lesson-section">
+                <h2>Brush Scripting Basics 💻</h2>
+                
+                <p>While Paintstorm Studio doesn't have full scripting support like some software, understanding <strong>scripting concepts</strong> prepares you for advanced brush creation and helps you think programmatically about brush design.</p>
+
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <h3>🤔 Why Learn Brush Scripting Concepts?</h3>
+                    <ul>
+                        <li>✅ Understand how brushes work at a deeper level</li>
+                        <li>✅ Create more intentional, purposeful brush designs</li>
+                        <li>✅ Translate ideas into brush parameters mathematically</li>
+                        <li>✅ Prepare for software that does support scripting (Krita, etc.)</li>
+                        <li>✅ Think like a technical artist, not just an artist</li>
+                    </ul>
+                </div>
+
+                <h3>Pseudo-Code for Common Brush Behaviors</h3>
+                
+                <div class="card">
+                    <h4>Script Example 1: Adaptive Detail Brush</h4>
+                    <pre><code>// Brush that automatically adjusts detail based on zoom level
+FUNCTION AdaptiveDetailBrush(pressure, velocity, zoomLevel):
+    // Base parameters
+    baseSize = 50
+    baseOpacity = 0.8
+    baseSpacing = 0.25
+    
+    // Calculate zoom-adaptive multipliers
+    // At 100% zoom: normal
+    // At 200% zoom: smaller, more detailed
+    // At 50% zoom: larger, less detailed
+    
+    zoomFactor = zoomLevel / 100.0
+    
+    // Size scales inversely with zoom (smaller when zoomed in)
+    adaptiveSize = baseSize / sqrt(zoomFactor)
+    
+    // Spacing gets tighter when zoomed in for smoothness
+    adaptiveSpacing = baseSpacing * (0.5 + 0.5 / zoomFactor)
+    
+    // Opacity adjusts to prevent over-saturation at high zoom
+    adaptiveOpacity = baseOpacity * (0.7 + 0.3 * (1.0 / zoomFactor))
+    
+    // Apply pressure curve
+    finalSize = adaptiveSize * (0.3 + 0.7 * pressure)
+    finalOpacity = adaptiveOpacity * pow(pressure, 1.5)
+    
+    RETURN {
+        size: finalSize,
+        opacity: finalOpacity,
+        spacing: adaptiveSpacing
+    }
+END FUNCTION</code></pre>
+
+                    <h4>Script Example 2: Context-Aware Texture Brush</h4>
+                    <pre><code>// Brush that changes texture based on stroke speed and direction
+FUNCTION ContextAwareTextureBrush(pressure, velocity, direction):
+    // Texture selection based on speed
+    IF velocity < 0.3:
+        // Slow strokes: fine, detailed texture
+        texture = LoadTexture("fine_grain")
+        textureScale = 1.0
+        textureOpacity = 0.8
+    ELSE IF velocity < 0.7:
+        // Medium strokes: medium texture
+        texture = LoadTexture("medium_grain")
+        textureScale = 1.5
+        textureOpacity = 0.6
+    ELSE:
+        // Fast strokes: coarse, visible texture
+        texture = LoadTexture("coarse_grain")
+        textureScale = 2.5
+        textureOpacity = 0.4
+    END IF
+    
+    // Rotate texture based on stroke direction
+    textureRotation = direction + 90  // Perpendicular to stroke
+    
+    // Pressure affects texture strength
+    textureStrength = textureOpacity * pressure
+    
+    RETURN {
+        texture: texture,
+        scale: textureScale,
+        rotation: textureRotation,
+        opacity: textureStrength
+    }
+END FUNCTION</code></pre>
+
+                    <h4>Script Example 3: Intelligent Color Variation</h4>
+                    <pre><code>// Brush that subtly varies color for natural appearance
+FUNCTION ColorVariationBrush(baseColor, pressure, position, time):
+    // Extract HSV components
+    hsv = RGBtoHSV(baseColor)
+    hue = hsv.h
+    saturation = hsv.s
+    value = hsv.v
+    
+    // Add subtle hue variation using Perlin noise
+    noiseValue = PerlinNoise2D(position.x * 0.01, position.y * 0.01)
+    hueShift = noiseValue * 10  // ±10 degrees
+    newHue = (hue + hueShift + 360) % 360
+    
+    // Vary saturation with pressure
+    // More pressure = more saturated
+    saturationMultiplier = 0.8 + pressure * 0.2
+    newSaturation = saturation * saturationMultiplier
+    
+    // Add subtle value variation over time
+    // Creates slight shimmer/variation
+    timeNoise = sin(time * 2.0) * 0.05
+    newValue = value * (1.0 + timeNoise)
+    
+    // Convert back to RGB
+    finalColor = HSVtoRGB(newHue, newSaturation, newValue)
+    
+    RETURN finalColor
+END FUNCTION</code></pre>
+                </div>
+
+                <h3>Expression-Based Dynamics</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🎯 Mathematical Expressions You Can Implement</h4>
+                    <p>These expressions can be translated into brush curve settings:</p>
+                    
+                    <pre><code>// Exponential response (starts slow, accelerates)
+output = pow(input, 2)
+Use for: Opacity that builds quickly at high pressure
+
+// Logarithmic response (starts fast, plateaus)
+output = log(input * 9 + 1) / log(10)
+Use for: Size that grows quickly then stabilizes
+
+// Sine wave modulation (oscillating)
+output = 0.5 + 0.5 * sin(input * PI * frequency)
+Use for: Textured edges with periodic variation
+
+// Smoothstep (S-curve with flat ends)
+output = input * input * (3 - 2 * input)
+Use for: Natural feeling transitions
+
+// Step function (binary on/off)
+output = input > threshold ? 1.0 : 0.0
+Use for: Stamp-like behavior, no blending
+
+// Bounce (peaks then falls)
+output = 4 * input * (1 - input)
+Use for: Strokes that emphasize middle pressure
+
+// Elastic (overshoots then settles)
+output = pow(2, -10 * input) * sin((input - 0.1) * 5 * PI) + 1
+Use for: Playful, energetic strokes</code></pre>
+                </div>
+
+                <h3>Automation Concepts</h3>
+                
+                <div class="card">
+                    <h4>Brush Automation Patterns</h4>
+                    
+                    <p><strong>Pattern 1: Auto-Cleanup</strong></p>
+                    <pre><code>// Hypothetical script for automatic stroke cleanup
+FUNCTION AutoCleanupStroke(strokePoints):
+    cleanedPoints = []
+    
+    FOR i FROM 0 TO strokePoints.length - 1:
+        point = strokePoints[i]
+        
+        // Remove points that are too close together
+        IF i == 0 OR Distance(point, cleanedPoints.last) > minDistance:
+            cleanedPoints.push(point)
+        END IF
+    END FOR
+    
+    // Smooth the path using moving average
+    smoothedPoints = []
+    windowSize = 5
+    
+    FOR i FROM 0 TO cleanedPoints.length - 1:
+        avgPoint = AverageOfNearbyPoints(cleanedPoints, i, windowSize)
+        smoothedPoints.push(avgPoint)
+    END FOR
+    
+    RETURN smoothedPoints
+END FUNCTION</code></pre>
+
+                    <p><strong>Pattern 2: Batch Processing</strong></p>
+                    <pre><code>// Process multiple brushes with consistent settings
+FUNCTION BatchOptimizeBrushes(brushList, targetPerformance):
+    FOR EACH brush IN brushList:
+        // Measure current performance
+        currentCost = EstimatePerformanceCost(brush)
+        
+        IF currentCost > targetPerformance:
+            // Automatically optimize
+            IF brush.textureSize > 1024:
+                brush.textureSize = 1024
+            END IF
+            
+            IF brush.scatterQuality == "high":
+                brush.scatterQuality = "medium"
+            END IF
+            
+            IF brush.noiseOctaves > 3:
+                brush.noiseOctaves = 3
+            END IF
+            
+            SaveBrush(brush)
+            Log("Optimized: " + brush.name)
+        END IF
+    END FOR
+END FUNCTION</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>💡 Future-Proofing:</strong> Even though Paintstorm doesn't fully support scripting, thinking in these terms makes you a better brush designer. When you understand the logic behind brush behavior, you can manually recreate these effects using available parameters!</blockquote>
+            </section>
+
+
+            <!-- Section 9: Master Project -->
+            <section id="project" class="lesson-section">
+                <h2>Master Project: Industry-Specific Brush Pack 🏆</h2>
+                
+                <p>Now it's time to apply everything you've learned! You'll create a <strong>professional-grade brush pack</strong> designed for a specific industry or art style. This will be a portfolio-worthy project that demonstrates your mastery of brush engineering.</p>
+
+                <div class="exercise-card">
+                    <h3>🎯 Project Overview</h3>
+                    
+                    <p><strong>Your Mission:</strong> Create a complete, professional brush pack (15-20 brushes) optimized for a specific use case. This pack should be production-ready and could be used by professional artists in your chosen field.</p>
+                    
+                    <div class="card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; margin: 2rem 0;">
+                        <h4>🎨 Choose Your Specialization</h4>
+                        <p>Select ONE of these professional paths for your brush pack:</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Option 1: Game Concept Art Pack</h4>
+                        <p><strong>Target Use:</strong> Rapid ideation and concept development for games</p>
+                        <p><strong>Required Brushes (15 minimum):</strong></p>
+                        <ul>
+                            <li>3× Sketching brushes (quick silhouettes, rough shapes, gesture)</li>
+                            <li>3× Form rendering brushes (hard surfaces, soft forms, materials)</li>
+                            <li>3× Environment brushes (terrain, foliage, architecture)</li>
+                            <li>2× Character brushes (skin, hair)</li>
+                            <li>2× Effect brushes (fire, magic, light)</li>
+                            <li>2× Texture brushes (stone, metal, fabric)</li>
+                        </ul>
+                        <p><strong>Performance Target:</strong> Must maintain 60 FPS on mid-range hardware</p>
+                        <p><strong>Special Requirements:</strong> Optimized for speed painting, stylized aesthetic</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Option 2: Film/Animation Production Pack</h4>
+                        <p><strong>Target Use:</strong> Storyboarding, color scripts, production paintings</p>
+                        <p><strong>Required Brushes (15 minimum):</strong></p>
+                        <ul>
+                            <li>3× Storyboard brushes (markers, charcoal, quick shading)</li>
+                            <li>4× Atmospheric brushes (sky gradients, clouds, fog, lighting)</li>
+                            <li>3× Architecture brushes (buildings, interiors, props)</li>
+                            <li>2× Character blocking brushes (quick figures, silhouettes)</li>
+                            <li>3× Mood/lighting brushes (dramatic shadows, rim lighting, glows)</li>
+                        </ul>
+                        <p><strong>Performance Target:</strong> Fast enough for live digital storyboarding</p>
+                        <p><strong>Special Requirements:</strong> Cinematic quality, works well in grayscale</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Option 3: Editorial/Publishing Pack</h4>
+                        <p><strong>Target Use:</strong> Book covers, magazine illustrations, editorial art</p>
+                        <p><strong>Required Brushes (15 minimum):</strong></p>
+                        <ul>
+                            <li>4× Traditional media simulation (watercolor, gouache, oil, acrylic)</li>
+                            <li>3× Inking brushes (variable width, texture, smooth)</li>
+                            <li>3× Texture brushes (paper, canvas, subtle grain)</li>
+                            <li>2× Detail brushes (fine lines, stippling)</li>
+                            <li>3× Blending brushes (soft, textured, color mixing)</li>
+                        </ul>
+                        <p><strong>Performance Target:</strong> High resolution capable (300+ DPI, large canvases)</p>
+                        <p><strong>Special Requirements:</strong> Print-ready quality, traditional art feel</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Option 4: Environment Art Pack</h4>
+                        <p><strong>Target Use:</strong> Landscape and environment concept art</p>
+                        <p><strong>Required Brushes (15 minimum):</strong></p>
+                        <ul>
+                            <li>4× Natural elements (rocks, mountains, cliffs, terrain)</li>
+                            <li>4× Vegetation (trees, grass, leaves, distant foliage)</li>
+                            <li>3× Atmospheric (clouds, fog, water, sky)</li>
+                            <li>2× Lighting (sunbeams, atmospheric perspective)</li>
+                            <li>2× Detail (foreground detail, texture accents)</li>
+                        </ul>
+                        <p><strong>Performance Target:</strong> Handles large, detailed canvases smoothly</p>
+                        <p><strong>Special Requirements:</strong> Photorealistic quality possible, depth creation</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Option 5: Character Art Pack</h4>
+                        <p><strong>Target Use:</strong> Character design and illustration</p>
+                        <p><strong>Required Brushes (15 minimum):</strong></p>
+                        <ul>
+                            <li>3× Skin rendering (base, texture, details)</li>
+                            <li>3× Hair brushes (individual strands, masses, highlights)</li>
+                            <li>3× Fabric/clothing (smooth, wrinkled, textured)</li>
+                            <li>2× Eyes/facial features (detailed rendering)</li>
+                            <li>2× Edge control (hard, soft)</li>
+                            <li>2× Special materials (metal, leather, etc.)</li>
+                        </ul>
+                        <p><strong>Performance Target:</strong> Precision work with fine details</p>
+                        <p><strong>Special Requirements:</strong> Realistic rendering capability, portrait focus</p>
+                    </div>
+                </div>
+
+                <h3>Project Requirements</h3>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>📋 Technical Requirements</h4>
+                    <ol>
+                        <li>
+                            <strong>Mathematical Foundation</strong>
+                            <ul>
+                                <li>At least 3 brushes must use custom scatter algorithms</li>
+                                <li>At least 2 brushes must use procedural generation</li>
+                                <li>All brushes must have optimized performance (profiled)</li>
+                                <li>Include at least one brush using noise-based dynamics</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Dynamics & Expressions</strong>
+                            <ul>
+                                <li>Each brush must have custom pressure curves</li>
+                                <li>At least 5 brushes with multi-parameter linking</li>
+                                <li>Demonstrate understanding of input mapping</li>
+                                <li>Include velocity-responsive brushes</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Performance Standards</strong>
+                            <ul>
+                                <li>Entire pack must stay under 300 MB memory</li>
+                                <li>Each brush tested for 60 FPS performance</li>
+                                <li>Texture resolutions optimized per brush size</li>
+                                <li>Include LOD system where appropriate</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Professional Organization</strong>
+                            <ul>
+                                <li>Logical naming convention</li>
+                                <li>Organized folder structure</li>
+                                <li>Hotkey suggestions included</li>
+                                <li>Brush workflow documentation</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <h3>Deliverables</h3>
+                
+                <div class="card">
+                    <h4>What to Submit</h4>
+                    
+                    <p><strong>1. The Brush Pack (.abr or native format)</strong></p>
+                    <ul>
+                        <li>15-20 complete, production-ready brushes</li>
+                        <li>Properly named and organized</li>
+                        <li>Tested and optimized</li>
+                    </ul>
+                    
+                    <p><strong>2. Technical Documentation (PDF or Markdown)</strong></p>
+                    <pre><code>Document Structure:
+├── Cover Page
+│   ├── Pack name
+│   ├── Your name
+│   └── Target industry/use case
+├── Introduction
+│   ├── Design philosophy
+│   ├── Target user
+│   └── Workflow overview
+├── Brush Catalog
+│   For each brush:
+│   ├── Name and purpose
+│   ├── Technical specifications
+│   │   ├── Texture resolution
+│   │   ├── Scatter algorithm used
+│   │   ├── Dynamics setup
+│   │   └── Performance metrics
+│   ├── Recommended hotkey
+│   ├── Usage examples
+│   └── Tips and tricks
+├── Workflow Guide
+│   ├── Suggested brush order
+│   ├── Multi-brush combinations
+│   └── Common techniques
+└── Performance Notes
+    ├── Memory usage
+    ├── Optimization techniques used
+    └── System requirements</code></pre>
+    
+                    <p><strong>3. Demonstration Artwork</strong></p>
+                    <ul>
+                        <li>Create 3-5 sample artworks using ONLY your brush pack</li>
+                        <li>Show different use cases (sketch, final render, details)</li>
+                        <li>Demonstrate the pack's versatility</li>
+                        <li>Include process GIF or video (optional but recommended)</li>
+                    </ul>
+                    
+                    <p><strong>4. Technical Deep-Dive (choose 3 brushes)</strong></p>
+                    <ul>
+                        <li>Detailed breakdown of algorithm used</li>
+                        <li>Mathematical formulas implemented</li>
+                        <li>Performance optimization steps taken</li>
+                        <li>Design decisions and trade-offs</li>
+                        <li>Screenshots of settings/parameters</li>
+                    </ul>
+                </div>
+
+                <h3>Evaluation Criteria</h3>
+                
+                <div class="card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Criteria</th>
+                                <th>Weight</th>
+                                <th>Evaluation Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Technical Excellence</strong></td>
+                                <td>30%</td>
+                                <td>
+                                    • Advanced algorithms implemented<br>
+                                    • Proper optimization<br>
+                                    • Performance meets standards<br>
+                                    • Mathematical sophistication
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Artistic Quality</strong></td>
+                                <td>25%</td>
+                                <td>
+                                    • Brushes produce quality results<br>
+                                    • Versatile and expressive<br>
+                                    • Professional appearance<br>
+                                    • Sample artwork demonstrates capability
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Workflow Design</strong></td>
+                                <td>20%</td>
+                                <td>
+                                    • Logical brush organization<br>
+                                    • Efficient switching/workflow<br>
+                                    • Complementary brush relationships<br>
+                                    • Industry-appropriate selection
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Documentation</strong></td>
+                                <td>15%</td>
+                                <td>
+                                    • Clear, comprehensive docs<br>
+                                    • Technical depth<br>
+                                    • Usage examples<br>
+                                    • Professional presentation
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Innovation</strong></td>
+                                <td>10%</td>
+                                <td>
+                                    • Novel techniques<br>
+                                    • Creative problem-solving<br>
+                                    • Unique brush designs<br>
+                                    • Advanced feature usage
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Development Timeline</h3>
+                
+                <div class="mermaid">
+                    gantt
+                        title Recommended Project Timeline (2-4 Weeks)
+                        dateFormat YYYY-MM-DD
+                        section Planning
+                        Research & Planning           :a1, 2024-01-01, 3d
+                        Workflow Design               :a2, after a1, 2d
+                        section Development
+                        Create Core Brushes (5-7)     :b1, after a2, 5d
+                        Create Specialized Brushes    :b2, after b1, 4d
+                        Create Effect/Detail Brushes  :b3, after b2, 3d
+                        section Testing
+                        Performance Testing           :c1, after b3, 2d
+                        Workflow Testing              :c2, after c1, 2d
+                        Optimization Round            :c3, after c2, 2d
+                        section Documentation
+                        Create Sample Artwork         :d1, after c3, 3d
+                        Write Documentation           :d2, after c3, 4d
+                        Technical Deep-Dive           :d3, after d2, 2d
+                        section Polish
+                        Final Testing & Refinement    :e1, after d3, 2d
+                        Documentation Review          :e2, after e1, 1d
+                </div>
+
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>💡 Pro Tips for Success</h4>
+                    <ul>
+                        <li><strong>Start with workflow, not brushes:</strong> Design the painting process first, then create brushes to support it</li>
+                        <li><strong>Test early and often:</strong> Don't wait until all brushes are done to test workflow</li>
+                        <li><strong>Get feedback from target users:</strong> If making game brushes, ask game artists to test them</li>
+                        <li><strong>Document as you go:</strong> Don't leave documentation until the end</li>
+                        <li><strong>Study professional packs:</strong> Analyze how commercial brush packs are organized</li>
+                        <li><strong>Focus on cohesion:</strong> All brushes should feel like they belong together</li>
+                        <li><strong>Prioritize performance:</strong> A slower, prettier brush is worse than a fast, good brush</li>
+                        <li><strong>Create variants:</strong> Once you have a good brush, make 2-3 variants for different situations</li>
+                        <li><strong>Use consistent naming:</strong> Makes the pack feel professional and organized</li>
+                        <li><strong>Think about marketing:</strong> Even for portfolio use, presentation matters!</li>
+                    </ul>
+                </div>
+
+                <h3>Example Brush Pack Structure</h3>
+                
+                <div class="card">
+                    <h4>Sample: Game Concept Art Pack Organization</h4>
+                    <pre><code>📁 GameConcept_MasterPack_v1.0
+├── 📁 01_Sketching
+│   ├── GC_Sketch_Pencil_Soft.brush
+│   ├── GC_Sketch_Pencil_Hard.brush
+│   └── GC_Sketch_Gesture.brush
+├── 📁 02_Base_Painting
+│   ├── GC_Paint_Round_Soft.brush
+│   ├── GC_Paint_Round_Textured.brush
+│   └── GC_Paint_Flat_Builder.brush
+├── 📁 03_Environment
+│   ├── GC_Env_Terrain.brush
+│   ├── GC_Env_Foliage_Cluster.brush
+│   └── GC_Env_Architecture.brush
+├── 📁 04_Character
+│   ├── GC_Char_Skin.brush
+│   └── GC_Char_Hair.brush
+├── 📁 05_Effects
+│   ├── GC_FX_Fire.brush
+│   └── GC_FX_Magic_Glow.brush
+├── 📁 06_Textures
+│   ├── GC_Tex_Stone.brush
+│   └── GC_Tex_Metal.brush
+├── 📁 Resources
+│   ├── texture_library
+│   │   ├── noise_01.png
+│   │   ├── grain_subtle.png
+│   │   └── pattern_organic.png
+│   └── reference_images
+└── 📄 README.md (Quick start guide)</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>🏆 Portfolio Impact:</strong> This project demonstrates advanced technical skills that set you apart. Employers and clients love seeing artists who understand the tools deeply, not just use them. A well-documented brush pack shows problem-solving, optimization skills, and professional thinking!
+                </blockquote>
+            </section>
+
+            <!-- Summary Section -->
+            <section id="summary" class="lesson-section">
+                <h2>Summary & Advanced Resources 🎓</h2>
+                
+                <div class="card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white;">
+                    <h3>🎯 Mastery Achievements Unlocked!</h3>
+                    <p>Congratulations on completing this intensive lesson on brush physics and mathematics! You've transformed from a brush user into a brush engineer. Here's what you now master:</p>
+                    <ul style="columns: 2; column-gap: 2rem;">
+                        <li>✅ Mathematical foundations of digital painting</li>
+                        <li>✅ Coordinate system transformations</li>
+                        <li>✅ Sampling theory and interpolation</li>
+                        <li>✅ Core brush rendering algorithms</li>
+                        <li>✅ Advanced scatter pattern mathematics</li>
+                        <li>✅ Noise functions (Perlin, Simplex, Worley)</li>
+                        <li>✅ Procedural brush generation</li>
+                        <li>✅ Seed-based reproducibility</li>
+                        <li>✅ Multi-parameter dynamic systems</li>
+                        <li>✅ State machine brush behaviors</li>
+                        <li>✅ Performance profiling and optimization</li>
+                        <li>✅ Memory management strategies</li>
+                        <li>✅ LOD systems for brushes</li>
+                        <li>✅ Multi-brush workflow design</li>
+                        <li>✅ Brush scripting concepts</li>
+                        <li>✅ Professional brush pack development</li>
+                    </ul>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                
+                <div class="card">
+                    <h4>🎨 The Philosophy of Brush Engineering</h4>
+                    <blockquote style="border-left: 4px solid #667eea; padding-left: 1rem; margin: 1rem 0;">
+                        <p><em>"A brush is not just a tool - it's a carefully engineered system that translates human intention into digital marks through mathematical precision."</em></p>
+                    </blockquote>
+                    
+                    <p>Remember these core principles:</p>
+                    <ol>
+                        <li><strong>Mathematics serves art:</strong> Every formula exists to create better artistic results</li>
+                        <li><strong>Performance equals feel:</strong> A laggy brush breaks the creative flow, no matter how beautiful</li>
+                        <li><strong>Simplicity scales:</strong> The best brushes are often simple algorithms executed perfectly</li>
+                        <li><strong>Context matters:</strong> Different tasks require different brush characteristics</li>
+                        <li><strong>Workflow trumps features:</strong> 5 great brushes beat 50 mediocre ones</li>
+                        <li><strong>Test relentlessly:</strong> Brushes must work in real production conditions</li>
+                        <li><strong>Document thoroughly:</strong> Future you (and others) will thank you</li>
+                        <li><strong>Iterate constantly:</strong> Version 1 is never the final version</li>
+                    </ol>
+                </div>
+
+                <h3>Advanced Resources</h3>
+                
+                <div class="card">
+                    <h4>📚 Recommended Reading</h4>
+                    
+                    <p><strong>Mathematical Foundations:</strong></p>
+                    <ul>
+                        <li>"Mathematics for Computer Graphics" by John Vince</li>
+                        <li>"Digital Image Processing" by Rafael Gonzalez & Richard Woods</li>
+                        <li>"Texturing and Modeling: A Procedural Approach" by Ebert et al.</li>
+                        <li>"Real-Time Rendering" by Akenine-Möller, Haines, & Hoffman</li>
+                    </ul>
+                    
+                    <p><strong>Algorithms & Performance:</strong></p>
+                    <ul>
+                        <li>"Computer Graphics: Principles and Practice" by Hughes et al.</li>
+                        <li>"Game Engine Architecture" by Jason Gregory</li>
+                        <li>"GPU Gems" series (free online from NVIDIA)</li>
+                        <li>"The Nature of Code" by Daniel Shiffman (free online)</li>
+                    </ul>
+                    
+                    <p><strong>Artistic Application:</strong></p>
+                    <ul>
+                        <li>"Digital Painting Techniques" series by 3DTotal Publishing</li>
+                        <li>"How to Render" by Scott Robertson</li>
+                        <li>"Color and Light" by James Gurney</li>
+                        <li>"Imaginative Realism" by James Gurney</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>🔗 Online Resources</h4>
+                    
+                    <p><strong>Technical Documentation:</strong></p>
+                    <ul>
+                        <li>Paintstorm Studio Official Documentation</li>
+                        <li>Krita Brush Engine Documentation (advanced concepts)</li>
+                        <li>Shadertoy (for understanding visual algorithms)</li>
+                        <li>Khan Academy: Linear Algebra & Calculus</li>
+                    </ul>
+                    
+                    <p><strong>Community & Learning:</strong></p>
+                    <ul>
+                        <li>polycount.com - Technical art community</li>
+                        <li>80.lv - Industry interviews and breakdowns</li>
+                        <li>artstation.com/learning - Professional tutorials</li>
+                        <li>GDC Vault - Game developers conference talks</li>
+                    </ul>
+                    
+                    <p><strong>Tools for Brush Development:</strong></p>
+                    <ul>
+                        <li>GIMP - Free brush creation and testing</li>
+                        <li>Krita - Open source with advanced brush engine</li>
+                        <li>Processing/p5.js - For prototyping brush algorithms</li>
+                        <li>Shadertoy - For visual algorithm testing</li>
+                        <li>Desmos - For graphing mathematical functions</li>
+                    </ul>
+                </div>
+
+                <h3>What's Next?</h3>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>🚀 Continue Your Journey</h4>
+                    
+                    <p><strong>Immediate Next Steps:</strong></p>
+                    <ol>
+                        <li>Complete the master project (industry-specific brush pack)</li>
+                        <li>Study professional brush packs from artists you admire</li>
+                        <li>Experiment with creating one "impossible" brush - something that pushes boundaries</li>
+                        <li>Join brush-sharing communities and get feedback</li>
+                        <li>Document your process for your portfolio</li>
+                    </ol>
+                    
+                    <p><strong>Advanced Topics to Explore:</strong></p>
+                    <ul>
+                        <li>Machine learning for brush behavior prediction</li>
+                        <li>Real-time brush preview rendering</li>
+                        <li>Cross-software brush conversion</li>
+                        <li>Pressure curve analysis and optimization</li>
+                        <li>Custom brush file format development</li>
+                        <li>Plugin development for brush engines</li>
+                        <li>GPU-accelerated brush rendering</li>
+                    </ul>
+                    
+                    <p><strong>Next Lesson Preview:</strong></p>
+                    <p>In <strong>Lesson 1.2: Organic Simulation Brushes</strong>, we'll apply these mathematical principles to recreate traditional media digitally. You'll learn how to simulate watercolor bleeding, oil paint mixing, and the unique characteristics of physical art materials!</p>
+                </div>
+
+                <h3>Final Thoughts</h3>
+                
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem;">
+                    <h4 style="text-align: center; margin-bottom: 1rem;">🎓 The Journey from User to Creator</h4>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        You started this lesson as someone who uses brushes. You're ending it as someone who <strong>creates tools that create art</strong>. This meta-skill - the ability to build your own tools - is what separates good artists from exceptional technical artists.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                        Remember: every default brush in every software started as someone's custom creation. The brushes you create today might inspire others tomorrow. The mathematics you've learned isn't just theory - it's the <strong>language of digital art creation</strong>.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                        Keep experimenting, keep optimizing, and most importantly - keep creating. The intersection of mathematics, programming, and art is where innovation happens!
+                    </p>
+                </div>
+
+                <div class="card" style="text-align: center; padding: 3rem; background: #f8f9fa;">
+                    <h3 style="margin-bottom: 1rem;">🌟 Share Your Work!</h3>
+                    <p style="margin-bottom: 2rem;">When you complete your industry brush pack project, share it with the community! Tag your work with <strong>#PaintstormBrushMaster</strong> to connect with other advanced brush engineers.</p>
+                    <p style="font-size: 0.9rem; color: #666;">Remember: The best way to truly master something is to teach it. Consider creating tutorials about your brush creation process!</p>
+                </div>
+            </section>
+
+            <!-- Lesson Navigation -->
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="index.html" class="nav-button">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Course Home</span>
+                </a>
+                <a href="organic_simulation_brushes.html" class="nav-button next-lesson">
+                    <span class="nav-text">Next: Organic Simulation Brushes</span>
+                    <span class="nav-icon">→</span>
+                </a>
+            </nav>
+
+            <!-- Completion Tracker -->
+            <div class="card" style="background: linear-gradient(135deg, #4CAF50 0%, #45B7A0 100%); color: white; margin: 3rem 0;">
+                <h3 style="text-align: center;">✅ Mark This Lesson Complete</h3>
+                <p style="text-align: center; margin-bottom: 1rem;">Completed all sections and started your brush pack project?</p>
+                <div style="text-align: center;">
+                    <button id="complete-lesson" style="background: white; color: #4CAF50; border: none; padding: 1rem 2rem; font-size: 1.1rem; font-weight: bold; border-radius: 2rem; cursor: pointer; transition: transform 0.2s;">
+                        Mark as Complete 🎉
+                    </button>
+                </div>
+                <p id="completion-message" style="text-align: center; margin-top: 1rem; display: none; font-weight: bold;">
+                    🎊 Congratulations! You've mastered Brush Physics and Mathematics! 🎊
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #2c3e50; color: white; padding: 3rem 0; margin-top: 4rem;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div>
+                    <h4>🔬 Advanced Course</h4>
+                    <p style="line-height: 1.8; color: #bdc3c7;">
+                        Master-level techniques for professional digital artists ready to engineer their own tools and workflows.
+                    </p>
+                </div>
+                <div>
+                    <h4>Module Navigation</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0;"><a href="brush_physics_mathematics_part_a.html" style="color: #ecf0f1;">Lesson 1.1: Brush Physics & Math</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="organic_simulation_brushes.html" style="color: #ecf0f1;">Lesson 1.2: Organic Simulation</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="procedural_art_systems.html" style="color: #ecf0f1;">Lesson 1.3: Procedural Systems</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="index.html" style="color: #ecf0f1;">All Modules</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0;"><a href="https://paintstormstudio.com" target="_blank" style="color: #ecf0f1;">Paintstorm Studio</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="../paintstorm_int/index.html" style="color: #ecf0f1;">Intermediate Course</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="#" style="color: #ecf0f1;">Download Sample Brushes</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="#" style="color: #ecf0f1;">Community Forum</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Get in Touch</h4>
+                    <p style="line-height: 1.8; color: #bdc3c7;">
+                        Questions about advanced techniques? Join our community of technical artists!
+                    </p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="color: #3498db; margin-right: 1rem;">Discord</a>
+                        <a href="#" style="color: #3498db; margin-right: 1rem;">Twitter</a>
+                        <a href="#" style="color: #3498db;">ArtStation</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #34495e;">
+                <p>&copy; 2024 Paintstorm Studio Advanced Course. Engineering the future of digital art! 🚀</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #95a5a6;">
+                    Created for artists who think like engineers and engineers who create like artists.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle Table of Contents
+        function toggleTOC() {
+            const tocList = document.getElementById('toc-list');
+            const tocIcon = document.getElementById('toc-toggle-icon');
+            
+            if (tocList.style.maxHeight === '0px' || tocList.style.maxHeight === '') {
+                tocList.style.maxHeight = '500px';
+                tocIcon.style.transform = 'rotate(0deg)';
+                localStorage.setItem('tocState', 'expanded');
+            } else {
+                tocList.style.maxHeight = '0px';
+                tocIcon.style.transform = 'rotate(-90deg)';
+                localStorage.setItem('tocState', 'collapsed');
+            }
+        }
+        
+        // Initialize TOC state from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const tocState = localStorage.getItem('tocState');
+            if (tocState === 'collapsed') {
+                const tocList = document.getElementById('toc-list');
+                const tocIcon = document.getElementById('toc-toggle-icon');
+                tocList.style.maxHeight = '0px';
+                tocIcon.style.transform = 'rotate(-90deg)';
+            }
+        });
+        
+        // Progress indicator
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            const progressBar = document.querySelector('.progress-bar');
+            if (progressBar) {
+                progressBar.style.width = `${Math.min(progress, 100)}%`;
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const isOpen = navLinks.classList.contains('active');
+                menuToggle.setAttribute('aria-expanded', isOpen);
+                navLinks.setAttribute('aria-hidden', !isOpen);
+            });
+        }
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            themeToggle.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+            
+            themeToggle.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme');
+                const newTheme = current === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
+            });
+        }
+
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Lesson completion tracking
+        const completeButton = document.getElementById('complete-lesson');
+        const completionMessage = document.getElementById('completion-message');
+        
+        if (completeButton) {
+            // Check if already completed
+            if (localStorage.getItem('lesson_1_1_completed') === 'true') {
+                completeButton.textContent = 'Completed ✓';
+                completeButton.style.background = '#4CAF50';
+                completeButton.style.color = 'white';
+                completionMessage.style.display = 'block';
+            }
+            
+            completeButton.addEventListener('click', () => {
+                localStorage.setItem('lesson_1_1_completed', 'true');
+                completeButton.textContent = 'Completed ✓';
+                completeButton.style.background = '#4CAF50';
+                completeButton.style.color = 'white';
+                completeButton.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    completeButton.style.transform = 'scale(1)';
+                }, 200);
+                
+                completionMessage.style.display = 'block';
+                
+                // Confetti effect (simple version)
+                for (let i = 0; i < 50; i++) {
+                    createConfetti();
+                }
+            });
+        }
+        
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.backgroundColor = ['#f093fb', '#f5576c', '#4facfe', '#00f2fe'][Math.floor(Math.random() * 4)];
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.top = '-20px';
+            confetti.style.opacity = '1';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.zIndex = '9999';
+            confetti.style.borderRadius = '50%';
+            document.body.appendChild(confetti);
+            
+            const fallDuration = 3000 + Math.random() * 2000;
+            const startTime = Date.now();
+            
+            function animateConfetti() {
+                const elapsed = Date.now() - startTime;
+                const progress = elapsed / fallDuration;
+                
+                if (progress < 1) {
+                    confetti.style.top = (progress * window.innerHeight) + 'px';
+                    confetti.style.opacity = (1 - progress);
+                    requestAnimationFrame(animateConfetti);
+                } else {
+                    document.body.removeChild(confetti);
+                }
+            }
+            
+            animateConfetti();
+        }
+
+        // Add animation on scroll for lesson sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    entry.target.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                    
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe lesson sections
+        document.querySelectorAll('.lesson-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

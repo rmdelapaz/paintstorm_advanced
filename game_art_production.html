@@ -1,0 +1,3172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master game art production pipeline in Paintstorm Studio - Learn asset creation, texture painting, and game-ready workflows">
+    <meta name="keywords" content="Paintstorm Studio, game art, texture painting, asset creation, game development">
+    <meta name="author" content="Paintstorm Advanced Tutorial">
+    <title>Game Art Production Pipeline - Advanced Paintstorm Studio</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+    
+    <!-- Progress indicator -->
+    <div class="progress-indicator" role="progressbar" aria-label="Page scroll progress">
+        <div class="progress-bar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🎮 Paintstorm Studio - Advanced</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">
+                ☰
+            </button>
+            <div class="nav-links" id="nav-links" aria-hidden="false">
+                <a href="index.html">Home</a>
+                <a href="index.html#modules">All Modules</a>
+                <a href="../paintstorm_int/index.html">Intermediate Course</a>
+                <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#module-2">Industry-Specific Pipelines</a></li>
+            <li aria-current="page">Game Art Production Pipeline</li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <div class="container">
+            <!-- Lesson Header -->
+            <header>
+                <h1>🎮 Game Art Production Pipeline</h1>
+                <p class="lead">Welcome to the professional game art workflow! In this lesson, you'll learn the <strong>complete production pipeline</strong> for creating game-ready art assets - from concept to implementation. This is how AAA studios and indie developers create optimized, beautiful game art!</p>
+                
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin: 2rem 0;">
+                    <h3>🎯 The Game Art Reality</h3>
+                    <p>Game art isn't just about looking good - it must <strong>perform</strong>. Every texture has a memory budget. Every asset has a polygon count. Every effect has a frame rate cost. Professional game artists master the balance between <strong>visual quality and technical constraints</strong>.</p>
+                    <blockquote style="border-left: 4px solid rgba(255,255,255,0.5); padding-left: 1rem; margin: 1rem 0;">
+                        <em>"In games, beauty is measured in frames per second. A gorgeous asset that tanks performance is worthless. A technically optimized asset that looks bland is equally useless. Master both, and you're invaluable."</em>
+                    </blockquote>
+                </div>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h3>⚠️ Prerequisites</h3>
+                    <p>This is a professional-level lesson. You should have:</p>
+                    <ul>
+                        <li>✅ Completed Module 1 (Brush Engineering) or equivalent experience</li>
+                        <li>✅ Basic understanding of 3D concepts (UV mapping, normals, materials)</li>
+                        <li>✅ Familiarity with game engines (Unity, Unreal, or similar)</li>
+                        <li>✅ Understanding of texture types (diffuse, normal, roughness, etc.)</li>
+                        <li>✅ Performance optimization awareness</li>
+                    </ul>
+                </div>
+                
+                <!-- Learning objectives -->
+                <div class="card">
+                    <h2>🎯 Professional Objectives</h2>
+                    <p>By the end of this comprehensive lesson, you will master:</p>
+                    <ul>
+                        <li><strong>Complete Asset Pipeline:</strong> From concept to engine-ready implementation</li>
+                        <li><strong>Texture Painting Workflows:</strong> PBR materials, normal maps, and optimization</li>
+                        <li><strong>Performance Optimization:</strong> Budget management and LOD creation</li>
+                        <li><strong>Tileable Textures:</strong> Seamless patterns for environments</li>
+                        <li><strong>Character Texturing:</strong> Skin, clothing, and detail work</li>
+                        <li><strong>Environment Assets:</strong> Props, terrain, and world-building</li>
+                        <li><strong>VFX Textures:</strong> Effects, particles, and animated materials</li>
+                        <li><strong>Portfolio Project:</strong> Complete game-ready asset package</li>
+                    </ul>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <nav class="card" aria-label="Table of Contents">
+                <h2 style="cursor: pointer; user-select: none; display: flex; justify-content: space-between; align-items: center;" onclick="toggleTOC()">
+                    <span>📑 Complete Table of Contents</span>
+                    <span id="toc-toggle-icon" style="transition: transform 0.3s;">▼</span>
+                </h2>
+                <ol id="toc-list" style="overflow: hidden; transition: max-height 0.3s ease-out; max-height: 500px; margin: 0; padding-left: 1.5rem;">
+                    <li><a href="#pipeline-overview" class="toc-link">Game Art Pipeline Overview</a></li>
+                    <li><a href="#pbr-texturing" class="toc-link">PBR Texture Painting</a></li>
+                    <li><a href="#character-texturing" class="toc-link">Character Texture Workflows</a></li>
+                    <li><a href="#environment-assets" class="toc-link">Environment Asset Creation</a></li>
+                    <li><a href="#tileable-textures" class="toc-link">Tileable Texture Systems</a></li>
+                    <li><a href="#vfx-textures" class="toc-link">VFX & Particle Textures</a></li>
+                    <li><a href="#optimization" class="toc-link">Performance Optimization</a></li>
+                    <li><a href="#project" class="toc-link">Master Project: Game Asset Package</a></li>
+                    <li><a href="#summary" class="toc-link">Summary & Resources</a></li>
+                </ol>
+            </nav>
+
+            <!-- Section 1: Pipeline Overview -->
+            <section id="pipeline-overview" class="lesson-section">
+                <h2>Game Art Pipeline Overview 🔄</h2>
+                
+                <p>Understanding the <strong>complete pipeline</strong> is essential. Game art goes through multiple stages, each with specific requirements and constraints. Let's map the entire journey from concept to shipping game!</p>
+
+                <h3>The Complete Pipeline</h3>
+                
+                <div class="mermaid">
+                    flowchart TD
+                        A[Pre-Production] --> B[Concept Art]
+                        B --> C[Art Direction Sign-Off]
+                        
+                        C --> D[Production Phase]
+                        
+                        D --> E[3D Modeling]
+                        D --> F[2D Asset Creation]
+                        
+                        E --> G[High-Poly Sculpt]
+                        G --> H[Low-Poly Retopology]
+                        H --> I[UV Unwrapping]
+                        
+                        I --> J[Texture Painting]
+                        F --> J
+                        
+                        J --> K{Texture Type}
+                        K -->|Character| L[Character Textures]
+                        K -->|Environment| M[Environment Textures]
+                        K -->|VFX| N[Effect Textures]
+                        
+                        L --> O[Material Setup]
+                        M --> O
+                        N --> O
+                        
+                        O --> P[Engine Integration]
+                        P --> Q[Performance Testing]
+                        
+                        Q --> R{Meets Budget?}
+                        R -->|No| S[Optimization Pass]
+                        S --> J
+                        R -->|Yes| T[LOD Creation]
+                        
+                        T --> U[Final QA]
+                        U --> V[Ship to Game]
+                        
+                        V --> W{Post-Launch}
+                        W --> X[Maintenance Updates]
+                        W --> Y[DLC Assets]
+                        
+                        style A fill:#667eea
+                        style D fill:#4CAF50
+                        style J fill:#e91e63
+                        style V fill:#FF9800
+                </div>
+
+                <h3>Understanding Technical Constraints</h3>
+                
+                <div class="card">
+                    <h4>Platform-Specific Budgets</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Platform</th>
+                                <th>Texture Budget (Character)</th>
+                                <th>Poly Count (Character)</th>
+                                <th>Draw Calls (Scene)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Mobile (High-End)</strong></td>
+                                <td>2K total (1024×1024 main)</td>
+                                <td>10k-20k triangles</td>
+                                <td>50-100</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mobile (Low-End)</strong></td>
+                                <td>1K total (512×512 main)</td>
+                                <td>5k-10k triangles</td>
+                                <td>30-50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Console (PS5/Xbox Series X)</strong></td>
+                                <td>4K-8K total (2048×2048 main)</td>
+                                <td>50k-100k triangles</td>
+                                <td>500-1000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PC (High-End)</strong></td>
+                                <td>8K+ (4096×4096 possible)</td>
+                                <td>100k+ triangles</td>
+                                <td>1000+</td>
+                            </tr>
+                            <tr>
+                                <td><strong>VR</strong></td>
+                                <td>2K total (1024×1024 main)</td>
+                                <td>15k-30k triangles</td>
+                                <td>100-200 (per eye!)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote>
+                    <strong>💡 Industry Reality:</strong> These budgets aren't just guidelines - they're <strong>hard limits</strong> in most studios. Exceed them, and your asset won't ship. Always ask for technical specs before starting work!
+                </blockquote>
+
+                <h3>Texture Map Types in Modern Games</h3>
+                
+                <div class="card">
+                    <h4>PBR Material Maps</h4>
+                    
+                    <p><strong>Base Color / Albedo</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Raw surface color without lighting information</li>
+                        <li><strong>Resolution:</strong> Typically highest (2K-4K for heroes)</li>
+                        <li><strong>Format:</strong> RGB, sRGB color space</li>
+                        <li><strong>Critical Rule:</strong> NO lighting baked in! Pure surface color only</li>
+                    </ul>
+                    
+                    <p><strong>Normal Map</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Surface detail and bump information</li>
+                        <li><strong>Resolution:</strong> Same as albedo or half-res</li>
+                        <li><strong>Format:</strong> RGB, Linear color space</li>
+                        <li><strong>Channels:</strong> R=X, G=Y, B=Z (tangent space normals)</li>
+                    </ul>
+                    
+                    <p><strong>Roughness / Smoothness</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> How rough/smooth surface is (controls specular spread)</li>
+                        <li><strong>Resolution:</strong> Can be half-res of albedo</li>
+                        <li><strong>Format:</strong> Grayscale, Linear</li>
+                        <li><strong>Values:</strong> 0=mirror smooth, 1=completely rough</li>
+                    </ul>
+                    
+                    <p><strong>Metallic</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Defines if surface is metal or dielectric</li>
+                        <li><strong>Resolution:</strong> Often lower res (512-1024)</li>
+                        <li><strong>Format:</strong> Grayscale, Linear</li>
+                        <li><strong>Values:</strong> Usually 0 or 1 (binary), rarely in-between</li>
+                    </ul>
+                    
+                    <p><strong>Ambient Occlusion (AO)</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Shadows in crevices and contact points</li>
+                        <li><strong>Resolution:</strong> Can be lower res</li>
+                        <li><strong>Format:</strong> Grayscale</li>
+                        <li><strong>Note:</strong> Often baked from high-poly, multiplied with albedo</li>
+                    </ul>
+                    
+                    <p><strong>Emissive</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Self-illuminated areas (screens, lights, magic)</li>
+                        <li><strong>Resolution:</strong> Lower res usually fine</li>
+                        <li><strong>Format:</strong> RGB (can be very compressed)</li>
+                        <li><strong>HDR:</strong> Can exceed 1.0 for bloom effects</li>
+                    </ul>
+                </div>
+
+                <h3>Workflow Patterns</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🎨 Modern Game Art Workflows</h4>
+                    
+                    <p><strong>Workflow 1: High-to-Low Baking (AAA Standard)</strong></p>
+                    <pre><code>1. Sculpt high-poly model (millions of polygons)
+   └── ZBrush, Blender, Mudbox
+   
+2. Create low-poly game model (thousands of polygons)
+   └── Maya, Blender, 3ds Max
+   
+3. UV unwrap low-poly
+   └── Optimize for minimal stretching
+   
+4. Bake high-poly detail to maps
+   └── Normal, AO, Curvature → Substance Painter, Marmoset
+   
+5. Hand-paint textures in Paintstorm
+   └── Use baked maps as base
+   └── Add artistic detail, variation, story
+   
+6. Export texture set
+   └── Combine maps for engine
+   
+7. Set up material in engine
+   └── Unity, Unreal, Custom engine</code></pre>
+
+                    <p><strong>Workflow 2: Pure 2D Assets (UI, Sprites, Concepts)</strong></p>
+                    <pre><code>1. Concept sketch
+   └── Paintstorm or Photoshop
+   
+2. Refine linework
+   └── Clean, game-ready lines
+   
+3. Color and shade
+   └── Consider lighting in-game
+   
+4. Export at multiple resolutions
+   └── @1x, @2x, @3x for different screen densities
+   
+5. Create sprite sheets if animated
+   └── Optimize atlas packing
+   
+6. Import to engine with proper settings
+   └── Compression, filtering, mipmaps</code></pre>
+
+                    <p><strong>Workflow 3: Tiling Textures (Environments)</strong></p>
+                    <pre><code>1. Create seamless base pattern
+   └── Paintstorm with offset preview
+   
+2. Add variation layers
+   └── Macro detail, micro detail
+   
+3. Generate material maps
+   └── Normal from height, roughness variation
+   
+4. Test tiling at scale
+   └── 10x10 tiles minimum
+   
+5. Create trim sheets if needed
+   └── Modular pieces for variety
+   
+6. Export and implement
+   └── Test in actual game environment</code></pre>
+                </div>
+
+                <h3>File Management & Naming Conventions</h3>
+                
+                <div class="card">
+                    <h4>Professional File Structure</h4>
+                    <pre><code>GameProject/
+├── Art/
+│   ├── Textures/
+│   │   ├── Characters/
+│   │   │   ├── Hero/
+│   │   │   │   ├── T_Hero_Body_BaseColor.png (4096x4096)
+│   │   │   │   ├── T_Hero_Body_Normal.png (4096x4096)
+│   │   │   │   ├── T_Hero_Body_ORM.png (4096x4096)
+│   │   │   │   │   └── Packed: R=AO, G=Roughness, B=Metallic
+│   │   │   │   └── T_Hero_Body_Emissive.png (2048x2048)
+│   │   │   └── Enemy_Grunt/
+│   │   │       ├── T_Grunt_Body_BaseColor.png (2048x2048)
+│   │   │       └── T_Grunt_Body_Normal.png (2048x2048)
+│   │   │
+│   │   ├── Environment/
+│   │   │   ├── Ground/
+│   │   │   │   ├── T_Stone_Cobble_BC.png (1024x1024, tiling)
+│   │   │   │   ├── T_Stone_Cobble_N.png
+│   │   │   │   └── T_Stone_Cobble_ORM.png
+│   │   │   └── Props/
+│   │   │       └── Crate/
+│   │   │           ├── T_Crate_Wood_BC.png (512x512)
+│   │   │           └── T_Crate_Wood_N.png
+│   │   │
+│   │   ├── VFX/
+│   │   │   ├── T_Fire_Sheet.png (1024x1024, 4x4 frames)
+│   │   │   ├── T_Smoke_Atlas.png (2048x2048)
+│   │   │   └── T_Magic_Sparkle.png (256x256)
+│   │   │
+│   │   └── UI/
+│   │       ├── Icons/
+│   │       ├── Buttons/
+│   │       └── Backgrounds/
+│   │
+│   ├── Source/
+│   │   ├── PSD/
+│   │   │   └── Working Photoshop files
+│   │   ├── Paintstorm/
+│   │   │   └── .psd with layers
+│   │   └── HighPoly/
+│   │       └── Sculpt source files
+│   │
+│   └── Export/
+│       └── Final game-ready assets
+
+Naming Convention:
+T_[AssetName]_[Part]_[MapType].extension
+
+Map Type Abbreviations:
+BC  = Base Color (Albedo)
+N   = Normal
+ORM = Packed (AO + Roughness + Metallic)
+E   = Emissive
+H   = Height
+M   = Mask</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>🎯 Pro Tip:</strong> Every studio has their own conventions, but consistency is universal. Whatever naming scheme you choose, <strong>stick to it religiously</strong>. Future you (and your team) will thank you!
+                </blockquote>
+
+                <h3>Quality Checklist for Game Assets</h3>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>✅ Before Marking an Asset "Done"</h4>
+                    
+                    <p><strong>Technical Requirements:</strong></p>
+                    <ul>
+                        <li>☐ Poly count within budget</li>
+                        <li>☐ Texture resolution appropriate for use case</li>
+                        <li>☐ All UV islands within 0-1 space</li>
+                        <li>☐ No UV stretching or distortion</li>
+                        <li>☐ Proper texel density (consistent detail across model)</li>
+                        <li>☐ Maps exported in correct format and color space</li>
+                        <li>☐ Power-of-two dimensions (512, 1024, 2048, 4096)</li>
+                        <li>☐ File sizes reasonable (compression settings correct)</li>
+                    </ul>
+                    
+                    <p><strong>Artistic Quality:</strong></p>
+                    <ul>
+                        <li>☐ Consistent with art direction</li>
+                        <li>☐ Appropriate level of detail for viewing distance</li>
+                        <li>☐ Clean silhouette and readable forms</li>
+                        <li>☐ Material values physically accurate (PBR)</li>
+                        <li>☐ Variation and interest without noise</li>
+                        <li>☐ Story elements and wear patterns make sense</li>
+                    </ul>
+                    
+                    <p><strong>Engine Integration:</strong></p>
+                    <ul>
+                        <li>☐ Imports without errors or warnings</li>
+                        <li>☐ Renders correctly in all lighting conditions</li>
+                        <li>☐ Material setup matches intended look</li>
+                        <li>☐ LODs transition smoothly</li>
+                        <li>☐ Performs within frame budget</li>
+                        <li>☐ Works on target platforms (especially low-end)</li>
+                    </ul>
+                    
+                    <p><strong>Documentation:</strong></p>
+                    <ul>
+                        <li>☐ Technical specs documented</li>
+                        <li>☐ Material parameters noted</li>
+                        <li>☐ Source files organized and backed up</li>
+                        <li>☐ Any special requirements flagged</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 2: PBR Texturing -->
+            <section id="pbr-texturing" class="lesson-section">
+                <h2>PBR Texture Painting ⚡</h2>
+                
+                <p><strong>Physically Based Rendering (PBR)</strong> revolutionized game art. Instead of "painting lighting," we paint <strong>surface properties</strong> that react realistically to any lighting. Master PBR, and your assets look incredible in any environment!</p>
+
+                <h3>Understanding PBR Principles</h3>
+                
+                <div class="card">
+                    <h4>The Core Concept</h4>
+                    <blockquote style="border-left: 4px solid #667eea; padding-left: 1rem;">
+                        <p><strong>Traditional:</strong> "This area is bright because there's a light source."<br>
+                        <strong>PBR:</strong> "This surface is rough metal, so it will react to light this way."</p>
+                    </blockquote>
+                    
+                    <p>PBR separates <strong>what the surface IS</strong> (material properties) from <strong>how it's LIT</strong> (lighting calculations). This means:</p>
+                    <ul>
+                        <li>Assets look correct in any lighting scenario</li>
+                        <li>No need to repaint for different environments</li>
+                        <li>Physically accurate reflections and light interaction</li>
+                        <li>Easier for technical artists to implement</li>
+                    </ul>
+                </div>
+
+                <h3>PBR Values Reference</h3>
+                
+                <div class="card">
+                    <h4>Real-World Material Values</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Base Color (sRGB)</th>
+                                <th>Metallic</th>
+                                <th>Roughness</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Iron (Raw)</strong></td>
+                                <td>RGB(196, 199, 199)</td>
+                                <td>1.0</td>
+                                <td>0.5-0.7</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Iron (Rusted)</strong></td>
+                                <td>RGB(82, 45, 26)</td>
+                                <td>0.0 (rust is dielectric!)</td>
+                                <td>0.7-0.9</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gold (Pure)</strong></td>
+                                <td>RGB(255, 226, 155)</td>
+                                <td>1.0</td>
+                                <td>0.2-0.4</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Copper</strong></td>
+                                <td>RGB(250, 208, 192)</td>
+                                <td>1.0</td>
+                                <td>0.3-0.5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aluminum</strong></td>
+                                <td>RGB(245, 246, 246)</td>
+                                <td>1.0</td>
+                                <td>0.3-0.5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Plastic (Glossy)</strong></td>
+                                <td>Various (any color)</td>
+                                <td>0.0</td>
+                                <td>0.2-0.4</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Plastic (Matte)</strong></td>
+                                <td>Various (any color)</td>
+                                <td>0.0</td>
+                                <td>0.6-0.8</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wood (Polished)</strong></td>
+                                <td>RGB(180, 140, 90) approx</td>
+                                <td>0.0</td>
+                                <td>0.3-0.5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wood (Raw)</strong></td>
+                                <td>RGB(180, 140, 90) approx</td>
+                                <td>0.0</td>
+                                <td>0.6-0.9</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Leather</strong></td>
+                                <td>RGB(110, 70, 45) approx</td>
+                                <td>0.0</td>
+                                <td>0.5-0.7</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fabric (Cotton)</strong></td>
+                                <td>Various (light colors)</td>
+                                <td>0.0</td>
+                                <td>0.8-1.0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Skin (Human)</strong></td>
+                                <td>RGB(238, 198, 170) approx</td>
+                                <td>0.0</td>
+                                <td>0.3-0.5 (varies by area)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Concrete</strong></td>
+                                <td>RGB(170, 170, 170)</td>
+                                <td>0.0</td>
+                                <td>0.7-0.9</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Asphalt (Wet)</strong></td>
+                                <td>RGB(40, 40, 40)</td>
+                                <td>0.0</td>
+                                <td>0.1-0.3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Asphalt (Dry)</strong></td>
+                                <td>RGB(60, 60, 60)</td>
+                                <td>0.0</td>
+                                <td>0.8-0.95</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <blockquote>
+                    <strong>⚠️ Critical PBR Rules:</strong>
+                    <ul style="margin-top: 0.5rem;">
+                        <li><strong>Never</strong> go below RGB(50,50,50) for base color (too dark)</li>
+                        <li><strong>Never</strong> go above RGB(240,240,240) for dielectrics (too bright)</li>
+                        <li><strong>Metals</strong> should have colored base color, no albedo darkening</li>
+                        <li><strong>Dielectrics</strong> (non-metals) should have very low metallic (0.0-0.04)</li>
+                        <li><strong>Use reference!</strong> When in doubt, check real-world material values</li>
+                    </ul>
+                </blockquote>
+
+
+                <h3>Painting PBR Textures in Paintstorm</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🎨 Workflow: Creating a PBR Material Set</h4>
+                    <pre><code>STEP 1: Set Up Your Canvas
+─────────────────────────────
+• Create new document at target resolution (2048×2048 common)
+• Set color mode to RGB, 8-bit or 16-bit
+• Import UV layout as reference layer
+• Import baked maps if available (AO, normal, curvature)
+
+STEP 2: Base Color (Albedo) Pass
+─────────────────────────────
+• Block in large material zones
+  └── Use flat colors based on PBR values
+  └── No lighting information!
+  
+• Add color variation
+  └── Slight hue shifts (±10 degrees)
+  └── Saturation variation in organic materials
+  └── Consider surface contamination (dirt, dust)
+  
+• Add macro detail
+  └── Large scratches, wear patterns
+  └── Material transitions
+  └── Decals, logos, graphics
+  
+• Add micro detail
+  └── Small scratches, pitting
+  └── Subtle noise for realism
+  └── DON'T overdo it - less is more!
+
+STEP 3: Roughness Map Creation
+─────────────────────────────
+• Start with base material roughness value
+  └── Flat fill based on material type
+  
+• Add variation based on wear
+  └── Worn areas = smoother (darker in roughness map)
+  └── Dirty areas = rougher (lighter in roughness map)
+  └── Wet areas = much smoother
+  
+• Detail work
+  └── Scratches are usually smoother
+  └── Edges get worn = smoother
+  └── Cavities collect dirt = rougher
+  
+• Use curvature map as guide
+  └── Exposed edges = wear = smoother
+  └── Crevices = protection = original roughness
+
+STEP 4: Metallic Map (if needed)
+─────────────────────────────
+• Usually binary: 0 for dielectric, 1 for metal
+• Paint solid values based on material
+• Sharp transitions OK - metals don't gradually appear
+• Consider only at material boundaries
+• Rare: 0.04 for specular adjustment on dielectrics
+
+STEP 5: Normal Map Enhancement
+─────────────────────────────
+• If you baked from high-poly: Start there
+• If creating from scratch: Use height-to-normal tools
+  
+• Paint height information in grayscale
+  └── White = raised, Black = recessed
+  
+• Add details:
+  └── Panel lines, rivets, bolts
+  └── Fabric weave, leather grain
+  └── Fine scratches (perpendicular to surface)
+  └── Damage, dents, impacts
+  
+• Convert to normal map
+  └── Use Photoshop filter or external tool
+  └── Adjust strength as needed
+
+STEP 6: Ambient Occlusion
+─────────────────────────────
+• If baked: Use as base
+• If not: Paint contact shadows manually
+  
+• Darken:
+  └── Crevices and gaps
+  └── Where objects touch
+  └── Panel intersections
+  └── Deep wrinkles/folds
+  
+• Keep it subtle - strong AO can look baked-in
+
+STEP 7: Emissive (Optional)
+─────────────────────────────
+• Only for self-illuminating areas
+• Can use full RGB color
+• Can exceed 1.0 for bloom effect
+• Common uses:
+  └── Screens, displays
+  └── Lights, LEDs
+  └── Magical effects
+  └── Energy fields
+
+STEP 8: Quality Check
+─────────────────────────────
+• View each map individually
+• Check in 3D viewer with different lighting
+• Ensure no baked lighting in base color
+• Verify PBR value ranges
+• Test with rough and smooth lighting
+• Export and test in actual game engine</code></pre>
+                </div>
+
+                <h3>Paintstorm-Specific Techniques</h3>
+                
+                <div class="card">
+                    <h4>Setting Up for PBR Painting</h4>
+                    <pre><code>Layer Organization:
+└── TextureSet_2K.psd
+    ├── [Group] BaseColor
+    │   ├── Details
+    │   ├── Wear
+    │   ├── Variation
+    │   └── Base Material
+    │
+    ├── [Group] Roughness
+    │   ├── Wear Pattern
+    │   ├── Edge Smoothing
+    │   └── Base Roughness (fill layer)
+    │
+    ├── [Group] Metallic
+    │   └── Metal Mask (usually simple)
+    │
+    ├── [Group] Normal (if painting)
+    │   ├── Fine Details
+    │   └── Height Base
+    │
+    ├── [Group] AO (if needed)
+    │   └── Contact Shadows
+    │
+    └── [Reference] UV Layout</code></pre>
+
+                    <h4>Brush Settings for Material Painting</h4>
+                    <pre><code>// For Base Color Detail Work
+Brush: Textured Round
+Size: 20-50 pixels
+Opacity: 20-40% (build up gradually)
+Flow: 60-80%
+Spacing: 15-25%
+Texture: Subtle noise or surface pattern
+Color Dynamics: Slight hue jitter (±5 degrees)
+
+// For Roughness Variation
+Brush: Soft Round with Scatter
+Size: Larger (50-150 pixels)
+Opacity: 10-30% (very subtle)
+Flow: 40-60%
+Texture: Organic noise
+Pressure: Controls opacity for build-up
+
+// For Edge Wear
+Brush: Edge Detect + Scatter
+Size: 3-10 pixels
+Opacity: 100% (hard edges OK for wear)
+Scatter: Moderate
+Use With: Curvature map as guide
+Effect: Paint lighter roughness on exposed edges
+
+// For Scratches
+Brush: Thin line with angle jitter
+Size: 1-3 pixels
+Opacity: 60-100%
+Angle Jitter: Slight
+Length: Stroke-dependent
+Apply To: Base color (subtle), roughness (visible), normal (if needed)</code></pre>
+                </div>
+
+                <h3>Common PBR Mistakes to Avoid</h3>
+                
+                <div class="card" style="background: #ffebee; border-left: 4px solid #f44336;">
+                    <h4>❌ Don't Do This!</h4>
+                    
+                    <p><strong>Mistake 1: Baked Lighting in Albedo</strong></p>
+                    <ul>
+                        <li>❌ BAD: Painting shadows and highlights in base color</li>
+                        <li>✅ GOOD: Pure surface color only, let engine handle lighting</li>
+                        <li><strong>Why:</strong> Baked lighting breaks under different light conditions</li>
+                    </ul>
+                    
+                    <p><strong>Mistake 2: Unrealistic Base Color Values</strong></p>
+                    <ul>
+                        <li>❌ BAD: RGB(0,0,0) black or RGB(255,255,255) white dielectrics</li>
+                        <li>✅ GOOD: Stay in RGB(50-240) range for realistic materials</li>
+                        <li><strong>Why:</strong> Real materials don't reflect 0% or 100% light</li>
+                    </ul>
+                    
+                    <p><strong>Mistake 3: Wrong Metallic Values</strong></p>
+                    <ul>
+                        <li>❌ BAD: 0.5 metallic "to make it shiny"</li>
+                        <li>✅ GOOD: 0.0 or 1.0 only (materials are metal or not)</li>
+                        <li><strong>Why:</strong> There's no such thing as "half metal" in nature</li>
+                    </ul>
+                    
+                    <p><strong>Mistake 4: Confusing Roughness with Brightness</strong></p>
+                    <ul>
+                        <li>❌ BAD: Using roughness to make materials look darker</li>
+                        <li>✅ GOOD: Roughness only controls specular spread, not brightness</li>
+                        <li><strong>Why:</strong> Brightness comes from base color, not roughness</li>
+                    </ul>
+                    
+                    <p><strong>Mistake 5: Overdetailing</strong></p>
+                    <ul>
+                        <li>❌ BAD: Every pixel has unique detail, pure noise</li>
+                        <li>✅ GOOD: Strategic detail with clean areas for visual rest</li>
+                        <li><strong>Why:</strong> Too much detail = visual mud, hard to read</li>
+                    </ul>
+                    
+                    <p><strong>Mistake 6: Inconsistent Wear Patterns</strong></p>
+                    <ul>
+                        <li>❌ BAD: Random scratches everywhere with no logic</li>
+                        <li>✅ GOOD: Wear appears where it would naturally occur</li>
+                        <li><strong>Why:</strong> Believable wear tells a story</li>
+                    </ul>
+                    
+                    <p><strong>Mistake 7: Matching Roughness to Base Color</strong></p>
+                    <ul>
+                        <li>❌ BAD: Dark areas in base color = dark in roughness</li>
+                        <li>✅ GOOD: Roughness is independent of color</li>
+                        <li><strong>Why:</strong> Black rubber is rough, black plastic is smooth - color ≠ roughness</li>
+                    </ul>
+                </div>
+
+                <h3>Advanced PBR Techniques</h3>
+                
+                <div class="card">
+                    <h4>Technique 1: Wear and Tear Pattern Logic</h4>
+                    <pre><code>WHERE Wear Appears:
+────────────────────
+✓ High-traffic areas (handles, edges, corners)
+✓ Areas that get gripped or touched
+✓ Exposed edges that catch on things
+✓ Areas subject to friction or impact
+✗ Protected crevices and gaps
+✗ Rarely-touched areas
+✗ Newly added components
+
+HOW to Paint Wear:
+────────────────────
+Base Color Layer:
+  • Slightly lighter color (metal showing through)
+  • Or dirt/grime buildup in protected areas
+  • Edge highlights where paint chips
+
+Roughness Layer:
+  • SMOOTHER (darker value) on worn areas
+  • Polished by friction
+  • Especially on metal edges
+
+Normal Map:
+  • Subtle rounding of sharp edges
+  • Small dents and impacts
+  • Directional scratches
+
+Example: Worn Leather Boot
+────────────────────
+Base Color:
+  • Fresh leather: RGB(110, 70, 45)
+  • Worn areas: Slightly lighter, desaturated
+  • Creases: Darker accumulation
+  
+Roughness:
+  • New leather: 0.65
+  • Worn smooth areas: 0.45
+  • Scuffed areas: 0.75
+  
+Normal:
+  • Deep creases in bend areas
+  • Scratches parallel to use direction
+  • Scuff marks with height variation</code></pre>
+
+                    <h4>Technique 2: Material Blending Zones</h4>
+                    <pre><code>When Different Materials Meet:
+────────────────────
+Example: Metal plate on leather
+
+Transition Zone (2-5 pixels):
+  Base Color:
+    • Metal: Proper metal color
+    • Leather: Proper leather color
+    • Edge: Slight color bleed (oxidation on metal, staining on leather)
+  
+  Roughness:
+    • Sharp transition OK
+    • Maybe slight smoothing at contact point (friction)
+  
+  Metallic:
+    • HARD transition - either metal or not
+    • No gradient between materials
+  
+  Normal:
+    • Small gap/crack at interface
+    • Contact wear on both materials
+  
+  AO:
+    • Darken the crevice/contact area
+    • Simulate light occlusion</code></pre>
+
+                    <h4>Technique 3: Tri-Planar Detail Projection</h4>
+                    <pre><code>For organic or complex models without clean UVs:
+
+1. Paint detail maps in world space
+   └── Top-down, side, front views
+   
+2. Use tri-planar projection in shader
+   └── Blend based on surface normal
+   
+3. Benefits:
+   ✓ No UV stretching artifacts
+   ✓ Consistent detail density
+   ✓ Easy to add/modify
+   
+4. Drawbacks:
+   ✗ Slightly more expensive to render
+   ✗ Less precise control
+   
+Best For:
+  • Rocks, cliffs, terrain
+  • Organic characters (when combined with UV)
+  • Background props</code></pre>
+
+                    <h4>Technique 4: Color ID Masking</h4>
+                    <pre><code>Workflow for Complex Assets:
+
+1. Create Color ID Map
+   └── Flat colors per material zone
+   └── R=255 for metal parts
+   └── G=255 for leather parts
+   └── B=255 for fabric parts
+   └── etc.
+
+2. In Paintstorm, use Color Range selection
+   └── Select specific ID color
+   └── Paint details only in that zone
+   └── Ensures clean material separation
+
+3. Benefits:
+   ✓ Easy to isolate areas
+   ✓ Quick selection of material zones
+   ✓ No edge bleeding between materials
+   ✓ Can automate with actions/scripts
+
+4. Export final maps without ID layer
+   └── ID map is workflow tool only</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>🎨 Pro Workflow:</strong> Always work from large to small detail. Block in major material zones, add medium-scale variation, then add fine details last. This prevents you from wasting time on details that might get covered or changed!
+                </blockquote>
+            </section>
+
+            <!-- Section 3: Character Texturing -->
+            <section id="character-texturing" class="lesson-section">
+                <h2>Character Texture Workflows 👤</h2>
+                
+                <p>Character texturing is its own specialty. Unlike props or environments, characters need to convey <strong>personality, story, and emotion</strong> through their surface details. Every scar tells a story. Every worn patch hints at their life!</p>
+
+                <h3>Character Texture Breakdown</h3>
+                
+                <div class="card">
+                    <h4>Texture Set Organization</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Body Part</th>
+                                <th>Resolution</th>
+                                <th>Priority Details</th>
+                                <th>Special Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Head</strong></td>
+                                <td>2048×2048<br>(hero: 4096)</td>
+                                <td>Eyes, mouth, wrinkles, facial hair</td>
+                                <td>Most detail, highest res, visible in cutscenes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Body</strong></td>
+                                <td>2048×2048</td>
+                                <td>Tattoos, scars, muscle definition</td>
+                                <td>Less detail than face, partially covered by clothes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hands</strong></td>
+                                <td>1024×1024<br>(hero: 2048)</td>
+                                <td>Knuckles, nails, calluses</td>
+                                <td>Visible in first-person or cutscenes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Clothing</strong></td>
+                                <td>2048×2048</td>
+                                <td>Fabric wear, logos, dirt, repairs</td>
+                                <td>Tells character's story and lifestyle</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Armor/Gear</strong></td>
+                                <td>2048×2048</td>
+                                <td>Battle damage, maintenance, customization</td>
+                                <td>Should match character's experience level</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Accessories</strong></td>
+                                <td>512-1024</td>
+                                <td>Wear, personalization</td>
+                                <td>Can share texture space with other small items</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Skin Texturing Techniques</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🎨 Painting Realistic Skin</h4>
+                    
+                    <p><strong>Step 1: Base Skin Tone</strong></p>
+                    <pre><code>Color Values for Different Skin Tones:
+────────────────────────────────────
+Fair Caucasian:   RGB(240, 210, 195) + variations
+Medium Caucasian: RGB(232, 190, 172)
+Olive/Tan:        RGB(205, 164, 133)
+Light Brown:      RGB(165, 126, 100)
+Medium Brown:     RGB(130, 92, 67)
+Dark Brown:       RGB(90, 60, 45)
+Very Dark:        RGB(55, 40, 30)
+
+IMPORTANT: These are starting points!
+• Add color variation (±15 degrees hue)
+• Adjust saturation per area
+• Never use pure grayscale for "white" skin
+• All skin has color - reds, yellows, blues</code></pre>
+
+                    <p><strong>Step 2: Subsurface Scattering Zones</strong></p>
+                    <pre><code>Areas with More Blood Flow (redder):
+✓ Nose tip
+✓ Cheeks
+✓ Ears (very red!)
+✓ Lips (much redder)
+✓ Fingertips
+✓ Elbows, knees (if visible)
+
+Areas with Less Blood (more yellow/olive):
+✓ Forehead
+✓ Chin
+✓ Neck
+✓ Chest
+
+Areas with Blue Undertones:
+✓ Around eyes (thin skin, veins visible)
+✓ Temples
+✓ Under cheekbones (sometimes)
+
+Technique:
+1. Block in base skin tone
+2. Add subtle red layer on blood-rich areas (5-15% opacity)
+3. Add subtle blue/green on areas with thin skin
+4. Blend smoothly - no harsh transitions
+5. More contrast = more vibrant and alive
+6. Less contrast = more pale/sickly/dead</code></pre>
+
+                    <p><strong>Step 3: Skin Detail Layers</strong></p>
+                    <pre><code>Layer Order (Bottom to Top):
+────────────────────────────
+1. Base Skin Tone (flat color)
+2. Subsurface Color Variation (red/yellow/blue zones)
+3. Large Pores/Texture (10-20% opacity, subtle)
+4. Fine Pores (5-10% opacity, very subtle)
+5. Wrinkles and Creases (painted with care)
+6. Freckles/Beauty Marks (if applicable)
+7. Scars and Blemishes
+8. Facial Hair/Stubble (if applicable)
+9. Makeup (if applicable)
+10. Dirt/Grime (environment-dependent)
+
+Painting Each Layer:
+────────────────────
+Large Pores:
+  • Use textured brush, 10-30 pixel size
+  • Very low opacity (10-20%)
+  • Slightly darker than base skin
+  • More visible on nose, cheeks, forehead
+  • Less visible on smooth areas (under eyes)
+
+Wrinkles:
+  • Paint in Base Color: Subtle darkening in crease
+  • Paint in Normal Map: Define depth
+  • Paint in Roughness: Creases are slightly rougher
+  • Direction matters: Follow muscle structure
+  • Depth varies: Smile lines deeper than crow's feet
+
+Scars:
+  • Base Color: Lighter, less pigmented (or darker if fresh)
+  • Normal: Raised if fresh, flat if old
+  • Roughness: Smoother than surrounding skin (scar tissue)
+  • Placement tells story: Where would they get hurt?</code></pre>
+                </div>
+
+                <h3>Clothing and Fabric Texturing</h3>
+                
+                <div class="card">
+                    <h4>Fabric Material Properties</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fabric Type</th>
+                                <th>Base Color Note</th>
+                                <th>Roughness Range</th>
+                                <th>Key Features</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Cotton (New)</strong></td>
+                                <td>Medium saturation</td>
+                                <td>0.75-0.85</td>
+                                <td>Matte, slight texture visible</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cotton (Worn)</strong></td>
+                                <td>Faded, lower saturation</td>
+                                <td>0.80-0.90</td>
+                                <td>Pilling, thinning, color fade</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Denim</strong></td>
+                                <td>Blue with high/low variation</td>
+                                <td>0.70-0.85</td>
+                                <td>Warp/weft visible, wear patterns iconic</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Leather (New)</strong></td>
+                                <td>Rich, saturated browns</td>
+                                <td>0.45-0.55</td>
+                                <td>Subtle grain, some sheen</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Leather (Worn)</strong></td>
+                                <td>Faded, scratched</td>
+                                <td>0.55-0.70</td>
+                                <td>Cracks, deep wrinkles, burnishing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Silk</strong></td>
+                                <td>Pure, saturated colors</td>
+                                <td>0.25-0.35</td>
+                                <td>Very smooth, shiny, thin</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wool</strong></td>
+                                <td>Muted, earthy tones</td>
+                                <td>0.85-0.95</td>
+                                <td>Fuzzy, thick texture, very matte</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Synthetic (Nylon)</strong></td>
+                                <td>Can be any color</td>
+                                <td>0.30-0.50</td>
+                                <td>Smooth, water-resistant sheen</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Canvas</strong></td>
+                                <td>Natural, low saturation</td>
+                                <td>0.80-0.90</td>
+                                <td>Heavy weave visible, very matte</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Clothing Wear Patterns</h4>
+                    <pre><code>Realistic Wear Locations:
+────────────────────────────
+
+Shirts/Tops:
+✓ Collar edge (friction from neck/hair)
+✓ Elbows (constant bending)
+✓ Cuffs (friction from surfaces)
+✓ Button areas (stress points)
+✓ Underarms (sweat, friction)
+✓ Shoulders (bag straps if carried)
+
+Pants:
+✓ Knees (kneeling, bending)
+✓ Pockets (items carried, hands in pockets)
+✓ Seat (sitting)
+✓ Cuffs (ground contact)
+✓ Belt loops (stress from belt)
+✓ Thighs (friction when walking)
+
+Shoes/Boots:
+✓ Toe caps (kicking, walking)
+✓ Heels (wear from walking)
+✓ Sides (scuffing against surfaces)
+✓ Soles (ground contact - model if visible)
+✓ Laces (fraying, color fade)
+
+Armor/Gear:
+✓ Straps (stretching, color fade)
+✓ Buckles (scratching, tarnish)
+✓ Edges and corners (impact damage)
+✓ Joints (articulation wear)
+✓ Weapons contact points
+
+How to Paint Wear:
+────────────────────────────
+1. Identify wear type:
+   • Friction wear = smoothing, lightening
+   • Impact wear = scratches, dents
+   • Age wear = color fade, UV damage
+   • Use wear = pattern marks (pocket shapes)
+
+2. Base Color Changes:
+   • Fade color (reduce saturation)
+   • Lighten slightly (UV bleaching)
+   • Add dirt in protected areas
+   • Stains where liquids collect
+
+3. Roughness Changes:
+   • Worn areas SMOOTHER (polished by friction)
+   • Damaged areas ROUGHER (torn, pilled)
+
+4. Normal Map:
+   • Thinning fabric (less height)
+   • Tears and holes (sharp transitions)
+   • Bunching and wrinkles (stress areas)</code></pre>
+                </div>
+
+                <h3>Character Story Through Texture</h3>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>💭 Texture as Narrative</h4>
+                    <p>Every mark on a character tells their story. Think about WHO they are when deciding WHAT to paint:</p>
+                    
+                    <p><strong>Warrior Character:</strong></p>
+                    <ul>
+                        <li>Scars: Placement indicates combat style (frontal scars = aggressor, back scars = survivor)</li>
+                        <li>Armor wear: Battle damage on front, clean on back = confident fighter</li>
+                        <li>Weapon calluses: Specific hand areas roughened by weapon grip</li>
+                        <li>Dirt patterns: Recent battle vs. long campaign</li>
+                    </ul>
+                    
+                    <p><strong>Scholar Character:</strong></p>
+                    <ul>
+                        <li>Ink stains: Fingers, cuffs (writing a lot)</li>
+                        <li>Fabric wear: Elbows from leaning on desks, not knees</li>
+                        <li>Calluses: From pen, not sword</li>
+                        <li>Clean areas: Not exposed to harsh environments</li>
+                    </ul>
+                    
+                    <p><strong>Traveler/Adventurer:</strong></p>
+                    <ul>
+                        <li>Sun damage: Uneven tan, weathered skin on exposed areas</li>
+                        <li>Dust accumulation: Everywhere, lighter colors</li>
+                        <li>Repairs: Patches, stitching (maintains gear on road)</li>
+                        <li>Wear: Even distribution (constant movement)</li>
+                    </ul>
+                    
+                    <p><strong>Mechanic/Engineer:</strong></p>
+                    <ul>
+                        <li>Oil stains: Hands, clothes (impossible to remove)</li>
+                        <li>Burns: Small marks from hot equipment</li>
+                        <li>Worn fingertips: From tool use</li>
+                        <li>Practical clothing: Less decorative wear, more functional damage</li>
+                    </ul>
+                </div>
+
+                <blockquote>
+                    <strong>🎭 Character Artist Mindset:</strong> Before painting a single pixel, ask: "How old is this character? What's their job? What have they been through? How do they maintain their appearance?" The answers guide every texture decision!
+                </blockquote>
+            </section>
+
+
+            <!-- Section 4: Environment Assets -->
+            <section id="environment-assets" class="lesson-section">
+                <h2>Environment Asset Creation 🌍</h2>
+                
+                <p>Environment art sets the stage for your game. Unlike hero characters that get close scrutiny, environment assets must work at <strong>multiple scales</strong> - from distant vistas to up-close inspection. Efficiency and modularity are key!</p>
+
+                <h3>Environment Art Principles</h3>
+                
+                <div class="card">
+                    <h4>The Three Distance Rules</h4>
+                    
+                    <p><strong>Rule 1: Detail by Distance</strong></p>
+                    <pre><code>Far Distance (50+ meters):
+────────────────────────────
+• Silhouette is everything
+• Large shapes and color blocks
+• Minimal texture detail needed
+• Focus on atmospheric perspective
+• LOD0 or LOD1 (lowest detail)
+
+Example: Distant mountain
+  Resolution: 512×512 or less
+  Details: Large rock formations only
+  Normal Map: Broad shapes
+  Performance: Very cheap
+
+Mid Distance (10-50 meters):
+────────────────────────────
+• Medium detail visible
+• Material types should read clearly
+• Texture can be lower res
+• LOD1 or LOD2
+
+Example: Building across street
+  Resolution: 1024×1024
+  Details: Windows, doors, general wear
+  Normal Map: Medium detail
+  Performance: Moderate
+
+Close Distance (0-10 meters):
+────────────────────────────
+• High detail necessary
+• Texture imperfections visible
+• Player can inspect
+• LOD2 or LOD3 (highest detail)
+
+Example: Interactive door
+  Resolution: 2048×2048 or higher
+  Details: Scratches, dirt, grain
+  Normal Map: Fine detail
+  Performance: More expensive</code></pre>
+
+                    <p><strong>Rule 2: Modularity Over Uniqueness</strong></p>
+                    <pre><code>Create Reusable Pieces:
+────────────────────────────
+Instead of: 100 unique rocks
+Do: 10 rock types × 10 variations each
+    = Same visual variety, 90% less work
+
+Building a Wall:
+❌ Bad: One huge unique texture for entire wall
+✅ Good: Modular pieces that combine:
+  • Base brick tileable (repeats)
+  • Trim pieces (corners, edges)
+  • Detail decals (cracks, graffiti)
+  • Vertex color for variation
+
+Benefits:
+✓ Faster creation
+✓ Easier to modify
+✓ Better performance (texture reuse)
+✓ More variety possible
+✓ Easier QA and bug fixing</code></pre>
+
+                    <p><strong>Rule 3: Performance Budget Awareness</strong></p>
+                    <pre><code>Asset Budget Guidelines:
+────────────────────────────
+Hero Props (player interacts):
+  • Triangles: 5k-15k
+  • Texture: 2048×2048
+  • Unique materials: 1-2
+
+Standard Props (common objects):
+  • Triangles: 1k-5k
+  • Texture: 1024×1024
+  • Shared materials: Yes
+
+Background Props (filler):
+  • Triangles: 300-1k
+  • Texture: 512×512
+  • Highly shared materials
+
+Landscape (terrain, large surfaces):
+  • Tiling textures: 1024-2048
+  • Repeated infinitely
+  • Blend multiple materials</code></pre>
+                </div>
+
+                <h3>Tileable Texture Creation</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🔄 Making Perfect Seamless Textures</h4>
+                    
+                    <p><strong>Method 1: Offset Method (Most Common)</strong></p>
+                    <pre><code>In Paintstorm Studio:
+
+1. Create Your Texture
+   └── Paint naturally, don't worry about seams yet
+   └── Keep detail in center
+   └── Leave edges relatively clean
+
+2. Apply Offset
+   └── Filter > Other > Offset
+   └── X: 50% of width
+   └── Y: 50% of height
+   └── This moves the seams to the center
+
+3. Fix the Seam
+   └── Use Clone Stamp tool
+   └── Paint over visible seam
+   └── Match texture patterns
+   └── Blend carefully
+
+4. Repeat if Needed
+   └── Offset again to check other seam
+   └── Fix any remaining issues
+
+5. Test Tiling
+   └── Create large canvas (4x4 tiles)
+   └── Fill with pattern
+   └── Look for repetition artifacts
+   └── No obvious grid or crosses = success!</code></pre>
+
+                    <p><strong>Method 2: Edge Blending</strong></p>
+                    <pre><code>For organic textures (ground, rock, etc.):
+
+1. Paint texture normally
+
+2. Select edge regions (50-100 pixels)
+   └── Top edge
+   └── Copy and flip vertically
+   └── Paste at bottom edge
+   └── Blend at 50% opacity
+
+3. Repeat for sides
+   └── Left edge
+   └── Copy and flip horizontally
+   └── Paste at right edge
+   └── Blend at 50% opacity
+
+4. Fix corners
+   └── Clone stamp from nearby areas
+   └── Blend carefully
+
+5. Add variation across entire tile
+   └── Prevents obvious repeating pattern</code></pre>
+
+                    <p><strong>Method 3: Procedural Noise Base</strong></p>
+                    <pre><code>For natural materials (dirt, stone, etc.):
+
+1. Start with tileable noise
+   └── Generate Perlin/Simplex noise
+   └── These are naturally tileable
+   └── Multiple octaves for detail
+
+2. Add color variation
+   └── Color layers with blend modes
+   └── Hue/saturation adjustments
+   └── Keep subtle
+
+3. Paint details on top
+   └── Cracks, features
+   └── These can cross seams (will still tile)
+   └── Use offset method to check
+
+4. Add final touches
+   └── Highlights, shadows
+   └── Wear patterns
+   └── Localized color variation
+
+Result: Tileable base that looks organic!</code></pre>
+
+                    <h4>Avoiding Repetition Artifacts</h4>
+                    <pre><code>Common Tiling Problems:
+────────────────────────────
+
+Problem 1: The "Cross" Pattern
+Symptom: X-shaped pattern appears when tiled
+Cause: Too much contrast at seams
+Fix: Reduce contrast near edges, add variation
+
+Problem 2: Obvious Grid
+Symptom: Can see individual tile boundaries
+Cause: Features too centered or regular
+Fix: Break up symmetry, add random elements
+
+Problem 3: Directional Flow
+Symptom: Clear diagonal or vertical lines
+Cause: Brush strokes too uniform
+Fix: Vary brush direction, add perpendicular detail
+
+Problem 4: High-Contrast Feature
+Symptom: One bright/dark spot draws eye
+Cause: Feature too unique, repeated obviously
+Fix: Duplicate and vary the feature elsewhere
+
+Solutions:
+────────────────────────────
+✓ Add macro variation (large-scale noise)
+✓ Add micro variation (small-scale detail)
+✓ Break symmetry
+✓ Use multiple textures blended
+✓ Add vertex color variation
+✓ Use decals over tileable base
+✓ Rotate/flip textures randomly in engine</code></pre>
+                </div>
+
+                <h3>Material Types for Environments</h3>
+                
+                <div class="card">
+                    <h4>Common Environment Materials</h4>
+                    
+                    <p><strong>Natural Terrain Materials</strong></p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Key Features</th>
+                                <th>Roughness</th>
+                                <th>Painting Tips</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Grass</strong></td>
+                                <td>Directional, organic variation</td>
+                                <td>0.80-0.95</td>
+                                <td>Use color variation, clumping patterns, some bare patches</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dirt/Mud</strong></td>
+                                <td>Clumpy, varied moisture</td>
+                                <td>0.70-0.90 (wet=lower)</td>
+                                <td>Crack patterns, stones mixed in, color variation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rock/Stone</strong></td>
+                                <td>Angular breaks, mineral variation</td>
+                                <td>0.65-0.85</td>
+                                <td>Cracks follow stress lines, weather patterns, lichen</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sand</strong></td>
+                                <td>Fine grain, wind patterns</td>
+                                <td>0.75-0.90</td>
+                                <td>Ripples, subtle color shifts, footprints/disturbances</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Snow</strong></td>
+                                <td>Soft, reflective, depth variation</td>
+                                <td>0.30-0.60 (packed=lower)</td>
+                                <td>Sparkle variation, tracks, windswept areas, ice patches</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Water</strong></td>
+                                <td>Reflective, transparent, animated</td>
+                                <td>0.01-0.15</td>
+                                <td>Usually shader-based, paint foam/sediment only</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>Man-Made Materials</strong></p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Key Features</th>
+                                <th>Roughness</th>
+                                <th>Painting Tips</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Brick</strong></td>
+                                <td>Regular pattern, mortar lines</td>
+                                <td>0.70-0.85</td>
+                                <td>Color variation per brick, mortar wear, effloresence</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Concrete</strong></td>
+                                <td>Poured, cracks, aggregate visible</td>
+                                <td>0.75-0.90</td>
+                                <td>Pour lines, crack patterns, staining, weathering</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Asphalt</strong></td>
+                                <td>Aggregate texture, wear patterns</td>
+                                <td>0.85-0.95 (wet=0.10-0.30)</td>
+                                <td>Cracks, tar repairs, oil stains, tire marks</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wood (Aged)</strong></td>
+                                <td>Grain direction, weathering</td>
+                                <td>0.60-0.85</td>
+                                <td>Follow grain, splits along grain, grey weathering, nails</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Painted Metal</strong></td>
+                                <td>Rust, paint chips, dents</td>
+                                <td>0.40-0.60 (rust=0.70-0.85)</td>
+                                <td>Paint chips at edges, rust bloom, dents from impacts</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Glass</strong></td>
+                                <td>Reflective, transparent</td>
+                                <td>0.01-0.05</td>
+                                <td>Usually shader, paint dirt/cracks only, edge scratches</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Environment Storytelling Through Assets</h3>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>🎬 Creating Lived-In Worlds</h4>
+                    
+                    <p><strong>Principle: Everything Has a History</strong></p>
+                    <ul>
+                        <li>New vs. Old: Age tells story (maintained building = cared for, decay = abandoned)</li>
+                        <li>Clean vs. Dirty: Usage frequency (clean door handle = often used)</li>
+                        <li>Worn vs. Protected: Exposed edges wear first, protected areas stay pristine</li>
+                        <li>Repaired vs. Broken: Repairs show someone cares, neglect shows abandon</li>
+                    </ul>
+                    
+                    <p><strong>Environmental Narrative Examples:</strong></p>
+                    
+                    <p><em>Example 1: Abandoned Factory</em></p>
+                    <pre><code>Visual Story Elements:
+• Rust: Advanced, spreading from water damage
+• Broken Windows: Nature reclaiming space
+• Graffiti: Recent, over older layers
+• Vegetation: Growing through cracks
+• Equipment: Still in place, left behind hastily
+• Dirt: Years of accumulation, undisturbed
+• Paint: Peeling, faded by UV exposure
+• Floor Wear: Paths still visible from past foot traffic
+
+Texture Decisions:
+✓ Heavy rust on metal (0.70-0.85 roughness)
+✓ Faded paint, exposed primer
+✓ Green/brown moss on north sides
+✓ Bird droppings near high perches
+✓ Dust accumulation in protected corners</code></pre>
+
+                    <p><em>Example 2: Active Medieval Village</em></p>
+                    <pre><code>Visual Story Elements:
+• Doors: Worn at handles, clean from use
+• Streets: Center worn smooth, edges muddy
+• Wells: Rope-worn grooves in stone
+• Signs: Recently repainted, maintained
+• Windows: Clean, curtains visible
+• Chimneys: Active soot patterns
+• Gardens: Tended, living plants
+
+Texture Decisions:
+✓ Stone worn smooth on high-traffic areas
+✓ Wood shows maintenance (some new boards)
+✓ Thatch roofs recently repaired
+✓ Mud patterns show recent rain
+✓ Market areas show stains from goods</code></pre>
+
+                    <p><em>Example 3: Sci-Fi Space Station</em></p>
+                    <pre><code>Visual Story Elements:
+• Panels: Scratched at edges from opening
+• Floors: Worn paths show main routes
+• Labels: Faded but still legible
+• Screens: Active, some glitching
+• Cables: Organized but showing age
+• Lighting: Some panels failed/replaced
+• Maintenance: Some areas pristine, others neglected
+
+Texture Decisions:
+✓ Metal panels scratched at joints
+✓ Rubber seals degrading, color fade
+✓ Display screens with dead pixels
+✓ Hand-holds worn smooth from use
+✓ Warning labels partially scraped off</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>🎨 Environment Artist Wisdom:</strong> "Players notice consistency more than perfection. A consistently aged, lived-in world is more believable than pristine assets with random damage. Pick an environmental story and stick to it!"
+                </blockquote>
+            </section>
+
+            <!-- Section 5: Tileable Textures Deep Dive -->
+            <section id="tileable-textures" class="lesson-section">
+                <h2>Tileable Texture Systems 🔲</h2>
+                
+                <p>Tileable textures are the backbone of efficient environment art. Master them, and you can texture entire worlds with minimal memory and maximum visual quality!</p>
+
+                <h3>Advanced Tiling Techniques</h3>
+                
+                <div class="card">
+                    <h4>Trim Sheets and Atlases</h4>
+                    
+                    <p><strong>What is a Trim Sheet?</strong></p>
+                    <pre><code>A trim sheet is a texture atlas containing:
+• Horizontal trims (molding, edges)
+• Vertical trims (corners, columns)
+• Tileable sections (walls, floors)
+• Unique details (decals, features)
+
+All designed to work together modularly!
+
+Example 1024×1024 Trim Sheet Layout:
+┌─────────────────────────────────────┐
+│ Horizontal Trim A (256×64)          │ ← Window sill
+├─────────────────────────────────────┤
+│ Horizontal Trim B (256×64)          │ ← Crown molding
+├─────────────────────────────────────┤
+│ Horizontal Trim C (256×64)          │ ← Baseboard
+├──────────┬──────────┬───────────────┤
+│ Vertical │ Vertical │               │
+│ Trim A   │ Trim B   │  Tileable     │
+│ 64×256   │ 64×256   │  Wall Section │
+│          │          │  512×512      │
+│ Corner   │ Column   │               │
+├──────────┴──────────┼───────────────┤
+│ Detail Decals       │ Unique Detail │
+│ 256×256             │ 256×256       │
+└─────────────────────┴───────────────┘
+
+Benefits:
+✓ One texture = entire building interior
+✓ Flexible combinations = variety
+✓ Memory efficient = more detail possible
+✓ Artist-friendly = modular workflow</code></pre>
+
+                    <p><strong>Creating a Trim Sheet</strong></p>
+                    <pre><code>Step 1: Plan Your Modules
+──────────────────────────
+• List all architectural elements needed
+• Group by similarity (all horizontal trims together)
+• Calculate how many variations needed
+• Allocate texture space proportionally
+
+Step 2: Create Base Modules
+──────────────────────────
+• Each trim must tile in its direction
+  └── Horizontal trims tile horizontally
+  └── Vertical trims tile vertically
+  └── Corners must work with both
+
+• Test each piece individually
+• Ensure correct texel density (consistent detail)
+
+Step 3: Add Details
+──────────────────────────
+• Unique features that don't need to tile
+• Decals (cracks, stains, graffiti)
+• Variations of trim pieces
+• Special elements (doorframes, windows)
+
+Step 4: Material Maps
+──────────────────────────
+• Create matching normal map
+• Create matching roughness map
+• Keep PBR principles consistent
+• Test full sheet with lighting
+
+Step 5: UV Mapping Models
+──────────────────────────
+• Model geometry matches trim layout
+• UVs precisely align to trim edges
+• Test in engine with actual lighting</code></pre>
+                </div>
+
+                <h3>Texture Blending Systems</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🎨 Multi-Material Blending</h4>
+                    
+                    <p><strong>Technique 1: Vertex Painting</strong></p>
+                    <pre><code>Blend multiple tileable textures using vertex colors:
+
+Setup:
+• 4 tileable textures (RGBA channels)
+  R = Grass
+  G = Dirt  
+  B = Stone
+  A = Sand (or use Alpha for blending)
+
+In Engine Material:
+• Sample all 4 textures
+• Multiply each by vertex color channel
+• Add results together
+
+Advantages:
+✓ Runtime control (artists can paint in engine)
+✓ Smooth transitions
+✓ Infinite detail (textures tile)
+✓ Very memory efficient
+
+Disadvantages:
+✗ Need sufficient vertex density
+✗ Can't have hard transitions
+✗ Limited to 4 materials per shader
+
+Best For:
+• Terrain
+• Large outdoor environments
+• Organic transitions</code></pre>
+
+                    <p><strong>Technique 2: Mask-Based Blending</strong></p>
+                    <pre><code>Use texture masks to control blending:
+
+Setup:
+• Base tileable textures (2-8 materials)
+• Blend mask texture (RGBA = 4 masks)
+  R channel = Where Material A shows
+  G channel = Where Material B shows
+  B channel = Where Material C shows
+  A channel = Where Material D shows
+
+Advantages:
+✓ Pixel-perfect control
+✓ Can have sharp transitions
+✓ More than 4 materials possible (multi-layer)
+✓ Can be painted in Paintstorm
+
+Disadvantages:
+✗ Requires UV space for mask
+✗ Additional texture memory
+✗ Less runtime control
+
+Best For:
+• Hero props with multiple materials
+• Precise material placement needed
+• Stylized looks with sharp transitions</code></pre>
+
+                    <p><strong>Technique 3: Height-Based Blending</strong></p>
+                    <pre><code>Blend based on height/normal information:
+
+Material Shader Logic:
+1. Sample height from both materials
+2. Compare heights at blend boundary
+3. Higher material "wins" at boundary
+4. Creates natural stacking effect
+
+Example: Snow on Rock
+• Rock height: 0.5 (base)
+• Snow height: 0.8 (accumulates on top)
+• At blend zone: Snow appears on top of rock peaks
+• Result: Natural accumulation pattern
+
+Code Concept:
+height_blend = height_A - height_B + blend_factor
+blend_mask = saturate(height_blend / sharpness)
+final_color = lerp(material_B, material_A, blend_mask)
+
+Advantages:
+✓ Physically realistic
+✓ Natural accumulation patterns
+✓ Works great for snow, moss, rust
+✓ Automatic detail in transitions
+
+Disadvantages:
+✗ More expensive computationally
+✗ Requires height maps for materials
+✗ Can be hard to art-direct precisely
+
+Best For:
+• Natural accumulation (snow, dust, moss)
+• Weathering effects
+• Realistic material layering</code></pre>
+                </div>
+
+                <h3>Performance Optimization for Tileables</h3>
+                
+                <div class="card">
+                    <h4>Compression and Memory</h4>
+                    <pre><code>Texture Compression Guidelines:
+────────────────────────────────
+
+Base Color (Albedo):
+Format: BC1/DXT1 (no alpha) or BC3/DXT5 (with alpha)
+Quality: Can use moderate compression
+Note: sRGB color space
+
+Normal Maps:
+Format: BC5/3Dc (two channel)
+Quality: Higher quality needed
+Note: Store only XY, reconstruct Z
+      Linear color space
+
+Roughness/Metallic/AO (Packed):
+Format: BC1/DXT1 or BC7 for better quality
+Quality: Roughness needs good quality
+      Metallic can be more compressed
+      AO can be heavily compressed
+Note: Pack in RGB channels
+      R = AO, G = Roughness, B = Metallic
+
+Memory Calculation:
+────────────────────────────────
+1024×1024 texture memory:
+• Uncompressed: 4MB (RGBA8)
+• BC1: 0.5MB (8:1 compression)
+• BC5: 1MB (4:1 compression)
+• BC7: 1MB (4:1 compression, better quality)
+
+Tileable Texture Strategy:
+• Use higher resolution (more detail)
+• Use good compression (less memory)
+• Result: Better quality than unique lower-res textures!
+
+Example Budget:
+10 tileable textures at 1024×1024 BC1:
+= 5MB total texture memory
+Can cover entire level!
+
+vs.
+
+100 unique textures at 512×512 uncompressed:
+= 100MB total texture memory
+Only covers small area!</code></pre>
+                </div>
+            </section>
+
+            <!-- Section 6: VFX Textures -->
+            <section id="vfx-textures" class="lesson-section">
+                <h2>VFX & Particle Textures 💥</h2>
+                
+                <p>Visual effects textures are their own specialty. They need to work with particle systems, blend beautifully, animate smoothly, and perform efficiently - often with dozens visible simultaneously!</p>
+
+                <h3>VFX Texture Types</h3>
+                
+                <div class="card">
+                    <h4>Essential VFX Texture Categories</h4>
+                    
+                    <p><strong>1. Sprite Sheets (Frame Animation)</strong></p>
+                    <pre><code>Layout: Grid of animation frames
+Common: 4×4 (16 frames) or 8×8 (64 frames)
+
+Example: Fire Sprite Sheet (1024×1024, 4×4)
+┌────┬────┬────┬────┐
+│ F1 │ F2 │ F3 │ F4 │  ← Frames 1-4
+├────┼────┼────┼────┤
+│ F5 │ F6 │ F7 │ F8 │  ← Frames 5-8
+├────┼────┼────┼────┤
+│ F9 │F10 │F11 │F12 │  ← Frames 9-12
+├────┼────┼────┼────┤
+│F13 │F14 │F15 │F16 │  ← Frames 13-16
+└────┴────┴────┴────┘
+
+Each frame: 256×256 pixels
+
+Painting Tips:
+• Plan animation before painting
+• Consistent timing between frames
+• Exaggerate motion (reads better)
+• First frame = spawn state
+• Last frame = dissipate state
+• Consider looping vs one-shot</code></pre>
+
+                    <p><strong>2. Texture Atlases (Multiple Elements)</strong></p>
+                    <pre><code>Layout: Various elements in one texture
+Purpose: Random particle variation
+
+Example: Spark Atlas (2048×2048)
+┌──────────────┬──────────────┐
+│ Spark Type A │ Spark Type B │
+│              │              │
+├──────────────┼──────────────┤
+│ Spark Type C │ Spark Type D │
+│              │              │
+├──────────────┴──────────────┤
+│ Streak Type A │ Streak Type B│
+├───────────────┴─────────────┤
+│  Glow shapes various sizes  │
+└─────────────────────────────┘
+
+System randomly picks element per particle
+Result: Organic variation without CPU cost</code></pre>
+
+                    <p><strong>3. Flow Maps (Distortion)</strong></p>
+                    <pre><code>Layout: RG channels = XY flow direction
+Purpose: Animate scrolling/distortion
+
+Color meaning:
+R channel: X direction (0=left, 128=none, 255=right)
+G channel: Y direction (0=down, 128=none, 255=up)
+
+Use: 
+• Distort other textures over time
+• Create flowing water
+• Energy field movement
+• Smoke swirl patterns
+
+Painting:
+• Think of flow as vectors
+• Paint direction arrows conceptually
+• Red = horizontal flow
+• Green = vertical flow
+• Middle gray (128) = no movement</code></pre>
+
+                    <p><strong>4. Noise Textures (Organic Variation)</strong></p>
+                    <pre><code>Types:
+• Perlin Noise: Smooth, cloud-like
+• Worley/Cellular: Organic cells
+• Voronoi: Crystalline, technical
+• Turbulence: Chaotic, energetic
+
+Uses:
+• Dissolve effects (sprite appears/disappears)
+• Opacity variation (non-uniform transparency)
+• Color variation (random hue shifts)
+• Distortion (warp other effects)
+• Mask generation (procedural shapes)
+
+Often generated procedurally, but can paint for control</code></pre>
+                </div>
+
+                <h3>VFX Painting Techniques</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🔥 Painting Effects Elements</h4>
+                    
+                    <p><strong>Fire Effect</strong></p>
+                    <pre><code>Approach: Additive blending, animate from bottom
+
+Base Color:
+• Core: Bright yellow-white (RGB: 255, 240, 200)
+• Mid: Orange (RGB: 255, 160, 0)
+• Edge: Red fading to transparent (RGB: 255, 60, 0 → 0)
+• NO black - fire is additive!
+
+Shape:
+• Bottom: Narrower, denser
+• Middle: Wider, most intense
+• Top: Wispy, breaking apart
+• Edges: Feathered softly
+
+Alpha Channel:
+• Core: 100% opaque
+• Edges: Gradient to transparent
+• Wispy tendrils: Low opacity
+• Creates soft blending
+
+Animation Frames:
+1-4: Ignition (small, building)
+5-8: Build-up (growing, brightening)
+9-12: Peak (largest, brightest)
+13-16: Flicker (slight size variation)</code></pre>
+
+                    <p><strong>Smoke Effect</strong></p>
+                    <pre><code>Approach: Alpha blended, animate upward
+
+Base Color:
+• Dark smoke: RGB(40, 40, 40) light smoke: RGB(200, 200, 200)
+• Slight color tint OK (brown, blue)
+• Subtle color variation within plume
+
+Shape:
+• Bottom: Denser, more defined
+• Rising: Expands, diffuses
+• Top: Very soft, dissipating
+• Turbulent edges (use noise)
+
+Alpha Channel:
+• Bottom: 60-80% opacity
+• Middle: 40-60% opacity  
+• Top: Fading to 0%
+• Variation: Use noise for organic density
+
+Animation Frames:
+1-4: Dense, small
+5-8: Expanding, thinning
+9-12: Large, diffuse
+13-16: Dissipating, breaking apart</code></pre>
+
+                    <p><strong>Magic/Energy Effect</strong></p>
+                    <pre><code>Approach: Additive, saturated colors, glow
+
+Base Color:
+• Core: Super bright (RGB: 255, 255, 255)
+• Primary: Saturated hue (RGB: 100, 200, 255 for blue)
+• Secondary: Complementary hints
+• Edges: Color fade to transparency
+
+HDR Values:
+• Center can exceed 255 for bloom effect
+• In Paintstorm: Paint white, will be multiplied in engine
+• Creates "impossibly bright" magical look
+
+Shape:
+• Geometric or organic based on type
+• Sharp edges = arcane/technical magic
+• Soft edges = natural/wild magic
+• Swirls and tendrils common
+
+Alpha Channel:
+• High opacity at core
+• Sharp falloff to transparent
+• Can have hard shapes (runes, symbols)
+
+Animation:
+• Pulse (scale variation)
+• Shimmer (opacity flicker)
+• Rotation (spiral patterns)
+• Flow (moving tendrils)</code></pre>
+
+                    <p><strong>Impact/Explosion Effect</strong></p>
+                    <pre><code>Approach: Multiple layers, quick animation
+
+Initial Flash (Frame 1-2):
+• Pure white or bright color
+• Large, round, soft
+• Very high opacity
+• Quick (1-2 frames only)
+
+Shockwave (Frame 2-5):
+• Ring expanding outward
+• Starts opaque, fades fast
+• Color based on effect type
+• Can be just alpha (distortion)
+
+Debris (Frame 3-10):
+• Particles flying outward
+• Various sizes and shapes
+• Color based on material
+• Trails and motion blur
+
+Smoke/Dust (Frame 5-16):
+• Rising after impact
+• Dissipating
+• Larger over time
+• Fading opacity
+
+Layering:
+Flash → Shockwave → Debris → Smoke
+All on separate particle systems</code></pre>
+                </div>
+
+                <h3>VFX Technical Considerations</h3>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>⚡ Performance & Best Practices</h4>
+                    
+                    <p><strong>Overdraw is the Enemy</strong></p>
+                    <pre><code>Overdraw = How many times a pixel is drawn
+
+Problem:
+• 10 particles overlap at one pixel
+• GPU draws that pixel 10 times
+• 9 are wasted (covered by later ones)
+
+Solutions:
+✓ Reduce particle count
+✓ Smaller particles where possible
+✓ Don't overlap unnecessarily  
+✓ Use LOD (fewer particles at distance)
+✓ Clip/cull particles behind camera
+✓ Use additive where appropriate (cheaper)
+
+Alpha Blending Costs:
+Cheapest → Most Expensive
+1. Opaque (no alpha)
+2. Alpha Test (cutout, binary)
+3. Additive (blend, but doesn't need sorting)
+4. Alpha Blend (requires sorting, expensive)</code></pre>
+
+                    <p><strong>Texture Budget for VFX</strong></p>
+                    <pre><code>VFX Texture Guidelines:
+────────────────────────────
+
+Sprite Sheets:
+• 1024×1024 maximum usually
+• 512×512 for simple effects
+• BC3/DXT5 compression (need alpha)
+• One texture = one effect usually
+
+Atlases:
+• 2048×2048 for variety pack
+• Multiple effects share
+• Good for sparks, debris, etc.
+
+Particle Counts:
+Mobile: 10-50 particles max per effect
+Console: 50-500 particles  
+PC: 500-5000 particles (with LOD)
+
+Memory Example:
+20 VFX textures at 1024×1024 BC3
+= 20MB total VFX texture budget
+Reasonable for most games</code></pre>
+
+                    <p><strong>Alpha Channel Best Practices</strong></p>
+                    <pre><code>Critical for VFX:
+────────────────────────────
+
+✓ Use soft edges (gradients)
+✓ Pre-multiply alpha when possible
+✓ Avoid hard edges (aliasing)
+✓ Test with dark backgrounds
+✓ Test with light backgrounds
+✓ Consider alpha erosion (slight shrink)
+
+Common Mistake:
+❌ White core with black edge in alpha
+Result: Dark halo around effect
+
+Fix:
+✅ White core with gradient to transparent
+✅ Match color to expected background
+✅ Or use additive blending (no halo possible)</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>💥 VFX Artist Wisdom:</strong> "The best VFX are felt, not seen. They enhance the moment without distracting. Subtle effects used well beat flashy effects used poorly. Always ask: does this serve the game experience?"
+                </blockquote>
+            </section>
+
+
+            <!-- Section 7: Performance Optimization -->
+            <section id="optimization" class="lesson-section">
+                <h2>Performance Optimization ⚡</h2>
+                
+                <p>Beautiful art that doesn't run at 60 FPS is useless in games. Professional game artists are <strong>technical artists</strong> - they understand performance as deeply as aesthetics. Let's master the optimization strategies that separate hobbyists from professionals!</p>
+
+                <h3>LOD (Level of Detail) Strategy</h3>
+                
+                <div class="card">
+                    <h4>Understanding LOD Systems</h4>
+                    <pre><code>LOD Philosophy:
+────────────────────────────
+Only render detail the player can actually see!
+
+LOD Levels Standard:
+────────────────────────────
+LOD0 (Highest Detail):
+  Distance: 0-5 meters
+  Triangles: 100% of budget
+  Textures: Full resolution
+  Materials: All details active
+  Use: Player can inspect closely
+
+LOD1 (High Detail):
+  Distance: 5-15 meters
+  Triangles: 40-60% of LOD0
+  Textures: Full or half resolution
+  Materials: All details, maybe simplified
+  Use: Nearby, visible but not inspected
+
+LOD2 (Medium Detail):
+  Distance: 15-40 meters
+  Triangles: 20-40% of LOD0
+  Textures: Half resolution
+  Materials: Simplified, fewer maps
+  Use: Background objects, still clearly visible
+
+LOD3 (Low Detail):
+  Distance: 40-100 meters
+  Triangles: 5-15% of LOD0
+  Textures: Quarter resolution
+  Materials: Basic, single texture often
+  Use: Far background, silhouette visible
+
+LOD4+ (Imposters/Billboards):
+  Distance: 100+ meters
+  Triangles: 2 (single quad)
+  Textures: Baked image of object
+  Materials: Simple textured quad
+  Use: Very far, just needs to exist
+
+Example: Tree Asset
+────────────────────────────
+LOD0: 15,000 triangles, 2048×2048 textures
+  Individual leaves, branches, bark detail
+  
+LOD1: 6,000 triangles, 2048×2048 textures
+  Leaf clusters, simplified branches
+  
+LOD2: 2,000 triangles, 1024×1024 textures
+  Simple crown, basic trunk
+  
+LOD3: 500 triangles, 512×512 textures
+  Cone shape, flat leaf cards
+  
+LOD4: 2 triangles, 256×256 texture
+  Flat billboard with tree image</code></pre>
+                </div>
+
+                <h3>Texture Optimization Strategies</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🎨 Maximizing Quality, Minimizing Memory</h4>
+                    
+                    <p><strong>Strategy 1: Texture Atlasing</strong></p>
+                    <pre><code>Combine Multiple Textures:
+────────────────────────────
+
+Instead of:
+❌ 10 textures × 512×512 = 10 draw calls + 10MB
+   Each is its own material
+
+Do:
+✅ 1 atlas × 2048×2048 = 1 draw call + 4MB (compressed)
+   All share one material
+   
+Savings:
+• 90% fewer draw calls
+• 60% less memory
+• Faster rendering
+
+When to Atlas:
+✓ Small props that appear together
+✓ UI elements
+✓ Character accessories
+✓ Particle effects
+✓ VFX elements
+
+When NOT to Atlas:
+✗ Need mipmaps per texture
+✗ Different tiling rates needed
+✗ Different material properties
+✗ Very large individual textures</code></pre>
+
+                    <p><strong>Strategy 2: Channel Packing</strong></p>
+                    <pre><code>Pack Multiple Maps into One Texture:
+────────────────────────────────────
+
+Standard Packing: ORM Map
+R channel = Ambient Occlusion (or nothing)
+G channel = Roughness
+B channel = Metallic
+A channel = (unused or other mask)
+
+Benefits:
+• 3 textures → 1 texture
+• 66% memory savings
+• Fewer texture samples in shader
+• Industry standard practice
+
+Alternative Packings:
+────────────────────────────
+RMA Pack:
+R = Roughness
+G = Metallic  
+B = AO
+A = Emissive mask (or height)
+
+MRAE Pack (if needed):
+R = Metallic
+G = Roughness
+B = AO
+A = Emissive
+
+Rules:
+✓ Pack maps with similar importance
+✓ Don't pack maps needing different compression
+✓ Normal maps stay separate (need BC5 compression)
+✓ Base color stays separate (needs sRGB color space)</code></pre>
+
+                    <p><strong>Strategy 3: Intelligent Resolution</strong></p>
+                    <pre><code>Not Everything Needs 4K!
+────────────────────────────
+
+Resolution Guidelines:
+Hero Character Face: 4096×4096 (close-up cutscenes)
+Hero Character Body: 2048×2048 (visible but not as close)
+Hero Character Hands: 1024×1024 (sometimes close in first-person)
+Hero Props/Weapons: 2048×2048 (inspected in inventory)
+
+Common Enemy: 2048×2048 (body + head combined)
+Common Props: 1024×1024 or shared atlas
+Background Props: 512×512 or shared atlas
+
+Environment Tileables: 1024×1024 or 2048×2048
+  (High res OK because they tile infinitely)
+
+UI Elements: 512×512 or less (screen-space, not world-space)
+Icons: 256×256 or 128×128
+
+VFX: 512×512 to 1024×1024 (usually far and fast-moving)
+
+Calculation Example:
+────────────────────────────
+Bad Allocation:
+Background crate: 2048×2048 = 16MB uncompressed
+Player weapon: 512×512 = 1MB uncompressed
+Result: Wasted memory on thing player rarely sees
+
+Good Allocation:
+Background crate: 512×512 = 1MB uncompressed  
+Player weapon: 2048×2048 = 16MB uncompressed
+Result: Detail where player actually looks!</code></pre>
+
+                    <p><strong>Strategy 4: Compression Settings</strong></p>
+                    <pre><code>Choose the Right Compression:
+────────────────────────────
+
+BC1/DXT1 (6:1 compression):
+✓ Base color without alpha
+✓ Roughness/metallic/AO packed
+✗ Visible artifacts in gradients
+Use: Most diffuse textures
+
+BC3/DXT5 (4:1 compression):
+✓ Base color with alpha
+✓ Masked textures (foliage)
+✗ Artifacts in alpha gradients
+Use: Textures needing transparency
+
+BC5/3Dc (4:1 compression):
+✓ Normal maps (two-channel)
+✓ Best quality for normals
+✓ Reconstruct Z in shader
+Use: ONLY for normal maps
+
+BC7 (4:1 compression):
+✓ High quality color
+✓ High quality alpha
+✓ Best general-purpose
+✗ Slower to compress
+✗ Not supported everywhere
+Use: Hero assets on modern platforms
+
+Mobile:
+• Use ASTC compression (better quality than DXT)
+• Adjust block size based on importance
+• 4×4 blocks = higher quality
+• 8×8 blocks = lower quality, smaller size</code></pre>
+
+                    <p><strong>Strategy 5: Mipmap Optimization</strong></p>
+                    <pre><code>Mipmaps = Pre-filtered smaller versions
+────────────────────────────────────
+
+Without Mipmaps:
+❌ Texture shimmering at distance
+❌ Performance hit (sampling too many texels)
+❌ Moiré patterns
+
+With Mipmaps:
+✅ Smooth appearance at all distances
+✅ Better performance (cache friendly)
+✅ +33% memory cost (worth it!)
+
+Mipmap Chain:
+2048×2048 → 1024×1024 → 512×512 → 256×256 
+  → 128×128 → 64×64 → 32×32 → 16×16 
+  → 8×8 → 4×4 → 2×2 → 1×1
+
+GPU automatically picks appropriate level based on distance
+
+Optimization:
+• Last few mips (16×16 and below): Replace with solid color
+• Tint the mips to verify they're being used (debugging)
+• Consider sharpening mips for better distance clarity</code></pre>
+                </div>
+
+                <h3>Draw Call Optimization</h3>
+                
+                <div class="card">
+                    <h4>Reducing Draw Calls</h4>
+                    <pre><code>Draw Calls = Major Performance Cost
+────────────────────────────────────
+
+What is a Draw Call?
+CPU tells GPU: "Draw this object with this material"
+
+Cost Breakdown:
+• CPU overhead: Preparing command
+• State changes: Switching textures/shaders
+• GPU overhead: Starting new draw
+
+Target Draw Calls (per frame):
+Mobile: 50-100
+Console: 500-1000  
+PC: 1000-2000+
+
+Optimization Strategies:
+────────────────────────────────────
+
+1. Texture Atlasing
+   • Multiple objects, one texture, one material
+   • 100 objects with individual textures = 100 draw calls
+   • 100 objects with shared atlas = 1 draw call
+
+2. Material Sharing
+   • Different objects can share same material
+   • Vary through vertex colors, secondary UVs
+   • All "stone" props use one stone material
+
+3. Static Batching
+   • Combine static meshes at build time
+   • 50 rocks → 1 combined mesh
+   • Single draw call for entire group
+
+4. Dynamic Batching (real-time)
+   • Engine combines similar objects per frame
+   • Works for small objects (< 300 verts usually)
+   • Must share material
+
+5. Instancing
+   • Draw same mesh multiple times efficiently
+   • One draw call for 1000 trees
+   • Each can have different position/rotation
+   • Requires instancing support in engine
+
+6. LOD Reduces Active Objects
+   • Distant objects swap to simpler versions
+   • Or cull entirely beyond distance
+   • Fewer active objects = fewer draw calls</code></pre>
+                </div>
+
+                <h3>Memory Budget Management</h3>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>📊 Professional Budget Tracking</h4>
+                    
+                    <pre><code>Example Memory Budget (Console Game):
+────────────────────────────────────
+
+Total Texture Memory Available: 2GB
+Reserved for System: 200MB
+Available for Game: 1.8GB
+
+Allocation:
+─────────────────────────
+Characters: 400MB (22%)
+  • Player: 100MB
+  • Enemies: 200MB
+  • NPCs: 100MB
+
+Environments: 800MB (44%)
+  • Tileables: 200MB
+  • Props: 300MB
+  • Terrain: 200MB
+  • Sky/Atmosphere: 100MB
+
+Effects: 200MB (11%)
+  • Particles: 100MB
+  • Post-processing: 50MB
+  • UI Effects: 50MB
+
+UI: 200MB (11%)
+  • Menus: 100MB
+  • HUD: 50MB
+  • Icons: 50MB
+
+Streaming Buffer: 200MB (11%)
+  • For loading next area
+  • Prevents hitches
+
+Budget Tracking Spreadsheet:
+────────────────────────────
+| Asset Name | Resolution | Format | Memory | Category |
+|------------|-----------|--------|--------|----------|
+| Hero_Body  | 2048×2048 | BC1    | 4MB    | Char     |
+| Hero_Face  | 4096×4096 | BC3    | 16MB   | Char     |
+| Stone_Tile | 1024×1024 | BC1    | 1MB    | Env      |
+| ...        | ...       | ...    | ...    | ...      |
+| TOTAL      |           |        | 385MB  |          |
+
+At any time, know:
+• Current usage vs budget
+• Largest offenders
+• Where to optimize if needed</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>⚡ Optimization Mantra:</strong> "Profile first, optimize second. Measure everything. Never optimize based on assumptions. The thing you think is slow probably isn't the actual bottleneck!"
+                </blockquote>
+            </section>
+
+            <!-- Section 8: Master Project -->
+            <section id="project" class="lesson-section">
+                <h2>Master Project: Game-Ready Asset Package 🏆</h2>
+                
+                <p>Time to prove your game art mastery! Create a <strong>complete, production-ready asset package</strong> that demonstrates professional quality, technical excellence, and portfolio-worthy presentation!</p>
+
+                <div class="exercise-card">
+                    <h3>🎯 Project Overview</h3>
+                    
+                    <p><strong>Your Mission:</strong> Create a themed asset package containing multiple game-ready assets, all properly optimized, documented, and ready to ship in a commercial game. Think like a professional game artist delivering work to a studio!</p>
+                    
+                    <div class="card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; margin: 2rem 0;">
+                        <h4>📦 Package Requirements</h4>
+                        <ul>
+                            <li>✅ 1 Hero Character (full texture set with LODs)</li>
+                            <li>✅ 3-5 Environment Props (modular, optimized)</li>
+                            <li>✅ 2 Tileable Texture Sets (environment materials)</li>
+                            <li>✅ 1 VFX Set (particle textures + sprite sheets)</li>
+                            <li>✅ Complete technical documentation</li>
+                            <li>✅ Engine-ready implementation</li>
+                            <li>✅ Professional presentation</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Theme Selection</h4>
+                    
+                    <div class="card">
+                        <p>Choose ONE theme for your package. All assets must be cohesive:</p>
+                        
+                        <p><strong>Option 1: Fantasy Medieval</strong></p>
+                        <ul>
+                            <li>Character: Knight, Mage, or Rogue</li>
+                            <li>Props: Weapon rack, barrels, crates, torches, chairs</li>
+                            <li>Tileables: Stone floor, brick wall</li>
+                            <li>VFX: Torch fire, magic sparkles</li>
+                        </ul>
+                        
+                        <p><strong>Option 2: Sci-Fi Industrial</strong></p>
+                        <ul>
+                            <li>Character: Space marine, Engineer, or Pilot</li>
+                            <li>Props: Crates (metal), console, equipment racks, lights</li>
+                            <li>Tileables: Metal floor (grid), metal wall (panels)</li>
+                            <li>VFX: Hologram effects, sparks</li>
+                        </ul>
+                        
+                        <p><strong>Option 3: Post-Apocalyptic</strong></p>
+                        <ul>
+                            <li>Character: Survivor with makeshift gear</li>
+                            <li>Props: Debris, makeshift barricades, scrap piles</li>
+                            <li>Tileables: Cracked concrete, rusted metal</li>
+                            <li>VFX: Smoke, dust particles</li>
+                        </ul>
+                        
+                        <p><strong>Option 4: Stylized Cartoon</strong></p>
+                        <ul>
+                            <li>Character: Stylized hero (big shapes, simple details)</li>
+                            <li>Props: Oversized items, playful objects</li>
+                            <li>Tileables: Hand-painted textures, bold colors</li>
+                            <li>VFX: Cartoony effects, pop art style</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Detailed Requirements</h4>
+                    
+                    <div class="card">
+                        <h5>Component 1: Hero Character</h5>
+                        <p><strong>Technical Specs:</strong></p>
+                        <ul>
+                            <li>Triangle count: 20k-40k (LOD0)</li>
+                            <li>Texture resolution: Head 2048×2048, Body 2048×2048</li>
+                            <li>Maps required: Base Color, Normal, ORM (AO+Roughness+Metallic)</li>
+                            <li>LODs: At least 3 levels (LOD0, LOD1, LOD2)</li>
+                            <li>PBR values must be accurate</li>
+                        </ul>
+                        
+                        <p><strong>Must Include:</strong></p>
+                        <ul>
+                            <li>Character tells a story through texture</li>
+                            <li>Realistic wear and tear</li>
+                            <li>Proper skin texturing (if visible)</li>
+                            <li>Fabric/material variety</li>
+                            <li>Clean topology for animation</li>
+                        </ul>
+                        
+                        <h5>Component 2: Environment Props (3-5 assets)</h5>
+                        <p><strong>Technical Specs:</strong></p>
+                        <ul>
+                            <li>Triangle count: 500-3k each (LOD0)</li>
+                            <li>Texture resolution: 1024×1024 or 512×512</li>
+                            <li>Can share texture space (atlas)</li>
+                            <li>At least 2 LOD levels</li>
+                        </ul>
+                        
+                        <p><strong>Must Include:</strong></p>
+                        <ul>
+                            <li>Modular design (combinable)</li>
+                            <li>Consistent style and scale</li>
+                            <li>Proper PBR materials</li>
+                            <li>Optimized UVs (no wasted space)</li>
+                        </ul>
+                        
+                        <h5>Component 3: Tileable Textures (2 sets)</h5>
+                        <p><strong>Technical Specs:</strong></p>
+                        <ul>
+                            <li>Resolution: 1024×1024 or 2048×2048</li>
+                            <li>Maps: Base Color, Normal, ORM</li>
+                            <li>Must tile seamlessly</li>
+                            <li>Test with 10×10 grid minimum</li>
+                        </ul>
+                        
+                        <p><strong>Must Include:</strong></p>
+                        <ul>
+                            <li>Appropriate for theme</li>
+                            <li>No visible repetition artifacts</li>
+                            <li>Proper texel density</li>
+                            <li>Work together cohesively</li>
+                        </ul>
+                        
+                        <h5>Component 4: VFX Set</h5>
+                        <p><strong>Technical Specs:</strong></p>
+                        <ul>
+                            <li>At least 2 different effects</li>
+                            <li>Sprite sheet: 1024×1024 (4×4 or 8×8)</li>
+                            <li>Atlas format acceptable</li>
+                            <li>Proper alpha channels</li>
+                        </ul>
+                        
+                        <p><strong>Must Include:</strong></p>
+                        <ul>
+                            <li>Animated effects (looping or one-shot)</li>
+                            <li>Appropriate for theme</li>
+                            <li>Optimized for performance</li>
+                            <li>Multiple variations for variety</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Deliverables</h3>
+                
+                <div class="card">
+                    <h4>What to Submit</h4>
+                    
+                    <p><strong>1. Final Assets</strong></p>
+                    <pre><code>AssetPackage_[YourTheme]/
+├── Characters/
+│   ├── Hero_LOD0.fbx
+│   ├── Hero_LOD1.fbx
+│   ├── Hero_LOD2.fbx
+│   └── Textures/
+│       ├── Hero_Head_BC.png
+│       ├── Hero_Head_N.png
+│       ├── Hero_Head_ORM.png
+│       ├── Hero_Body_BC.png
+│       ├── Hero_Body_N.png
+│       └── Hero_Body_ORM.png
+│
+├── Props/
+│   ├── [PropName]_LOD0.fbx
+│   ├── [PropName]_LOD1.fbx
+│   └── Textures/
+│       ├── Props_Atlas_BC.png
+│       ├── Props_Atlas_N.png
+│       └── Props_Atlas_ORM.png
+│
+├── Materials/
+│   ├── Tileable_Floor/
+│   │   ├── Floor_BC.png
+│   │   ├── Floor_N.png
+│   │   └── Floor_ORM.png
+│   └── Tileable_Wall/
+│       ├── Wall_BC.png
+│       ├── Wall_N.png
+│       └── Wall_ORM.png
+│
+├── VFX/
+│   ├── Effect01_SpriteSheet.png
+│   ├── Effect02_SpriteSheet.png
+│   └── VFX_Atlas.png
+│
+└── Documentation/
+    ├── TechnicalSpecs.pdf
+    ├── MemoryBudget.xlsx
+    └── README.txt</code></pre>
+
+                    <p><strong>2. Technical Documentation</strong></p>
+                    <ul>
+                        <li>Complete technical specifications for each asset</li>
+                        <li>Triangle counts per LOD level</li>
+                        <li>Texture memory breakdown</li>
+                        <li>Material setup instructions</li>
+                        <li>Known limitations or requirements</li>
+                        <li>Performance metrics (draw calls, etc.)</li>
+                    </ul>
+                    
+                    <p><strong>3. Engine Implementation</strong></p>
+                    <ul>
+                        <li>All assets imported to game engine (Unity or Unreal)</li>
+                        <li>Materials properly set up</li>
+                        <li>LODs configured and tested</li>
+                        <li>Simple scene showcasing all assets</li>
+                        <li>Screenshots from engine</li>
+                    </ul>
+                    
+                    <p><strong>4. Presentation Materials</strong></p>
+                    <ul>
+                        <li>Beauty renders (4-6 high-quality images)</li>
+                        <li>Wireframe views showing topology</li>
+                        <li>Texture sheets (showing all maps)</li>
+                        <li>Turntable video of character (30-60 seconds)</li>
+                        <li>Brief description of creative process</li>
+                    </ul>
+                </div>
+
+                <h3>Evaluation Criteria</h3>
+                
+                <div class="card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Criteria</th>
+                                <th>Weight</th>
+                                <th>Evaluation Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Technical Excellence</strong></td>
+                                <td>30%</td>
+                                <td>
+                                    • Proper PBR values throughout<br>
+                                    • Optimized topology and UVs<br>
+                                    • Correct texture formats and compression<br>
+                                    • LOD implementation quality<br>
+                                    • Performance within budget
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Artistic Quality</strong></td>
+                                <td>25%</td>
+                                <td>
+                                    • Professional-level texturing<br>
+                                    • Cohesive theme and style<br>
+                                    • Convincing materials and surfaces<br>
+                                    • Good use of detail and wear<br>
+                                    • Strong visual appeal
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Production Readiness</strong></td>
+                                <td>20%</td>
+                                <td>
+                                    • Assets are game-ready<br>
+                                    • Proper naming conventions<br>
+                                    • Clean file organization<br>
+                                    • Engine implementation works<br>
+                                    • Could ship in actual game
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Optimization</strong></td>
+                                <td>15%</td>
+                                <td>
+                                    • Efficient use of resources<br>
+                                    • Smart texture atlasing<br>
+                                    • Appropriate LOD strategy<br>
+                                    • Meets memory budget<br>
+                                    • Good performance metrics
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Documentation</strong></td>
+                                <td>10%</td>
+                                <td>
+                                    • Complete technical specs<br>
+                                    • Clear setup instructions<br>
+                                    • Professional presentation<br>
+                                    • Good communication
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>💡 Success Tips</h4>
+                    <ul>
+                        <li><strong>Start with references:</strong> Gather real-world photo references for your theme</li>
+                        <li><strong>Plan before painting:</strong> Sketch your UV layouts and texture maps first</li>
+                        <li><strong>Test early, test often:</strong> Import to engine frequently to catch issues</li>
+                        <li><strong>Iterate on feedback:</strong> Show work-in-progress to others</li>
+                        <li><strong>Stay within budget:</strong> Track memory usage as you go</li>
+                        <li><strong>Polish counts:</strong> Final 10% of polish makes it portfolio-worthy</li>
+                        <li><strong>Document everything:</strong> Future employers will ask technical questions</li>
+                        <li><strong>Think modular:</strong> Assets that combine create more value</li>
+                    </ul>
+                </div>
+
+                <blockquote>
+                    <strong>🎮 Portfolio Reality:</strong> This project IS your portfolio piece. Studios hire based on what you can ship, not what you can paint. Show them game-ready, optimized, professional work, and you'll stand out from artists who only show beauty renders!
+                </blockquote>
+            </section>
+
+            <!-- Summary Section -->
+            <section id="summary" class="lesson-section">
+                <h2>Summary & Resources 🎓</h2>
+                
+                <div class="card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white;">
+                    <h3>🎯 Game Art Mastery Achieved!</h3>
+                    <p>You've completed professional game art training! You now understand:</p>
+                    <ul style="columns: 2; column-gap: 2rem;">
+                        <li>✅ Complete game art pipeline</li>
+                        <li>✅ PBR texture painting</li>
+                        <li>✅ Character texturing workflows</li>
+                        <li>✅ Environment asset creation</li>
+                        <li>✅ Tileable texture systems</li>
+                        <li>✅ VFX and particle textures</li>
+                        <li>✅ Performance optimization</li>
+                        <li>✅ LOD strategies</li>
+                        <li>✅ Memory budget management</li>
+                        <li>✅ Technical constraints</li>
+                        <li>✅ Production workflows</li>
+                        <li>✅ Portfolio presentation</li>
+                    </ul>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                
+                <div class="card">
+                    <h4>🎮 The Professional Game Artist Mindset</h4>
+                    <blockquote style="border-left: 4px solid #667eea; padding-left: 1rem;">
+                        <p><em>"Game art is the balance between beauty and performance. Every texture is a budget decision. Every polygon is a performance consideration. Master this balance, and you're invaluable to any studio."</em></p>
+                    </blockquote>
+                    
+                    <p><strong>Core Principles to Remember:</strong></p>
+                    <ol>
+                        <li><strong>PBR is not optional:</strong> Modern games require physically accurate materials</li>
+                        <li><strong>Optimization is art:</strong> Making beautiful art run at 60 FPS is creative problem-solving</li>
+                        <li><strong>Budget consciousness:</strong> Always know your memory and performance costs</li>
+                        <li><strong>Modularity creates value:</strong> Reusable assets are worth more than unique ones</li>
+                        <li><strong>LOD is essential:</strong> Detail where it matters, optimize elsewhere</li>
+                        <li><strong>Technical documentation matters:</strong> Studios need to understand your work</li>
+                        <li><strong>Engine integration is part of the job:</strong> Art isn't done until it's in-game</li>
+                    </ol>
+                </div>
+
+                <h3>Industry Resources</h3>
+                
+                <div class="card">
+                    <h4>📚 Essential Learning</h4>
+                    
+                    <p><strong>PBR Theory:</strong></p>
+                    <ul>
+                        <li>"PBR Guide" by Allegorithmic (free PDF)</li>
+                        <li>Marmoset Toolbag PBR documentation</li>
+                        <li>"Physically Based Rendering" by Matt Pharr et al.</li>
+                    </ul>
+                    
+                    <p><strong>Game Art Techniques:</strong></p>
+                    <ul>
+                        <li>"The Art of Game Design" by Jesse Schell</li>
+                        <li>"Digital Texturing and Painting" by Owen Demers</li>
+                        <li>80 Level - Game art interviews and breakdowns</li>
+                        <li>ArtStation Learning - Professional game art courses</li>
+                    </ul>
+                    
+                    <p><strong>Technical Art:</strong></p>
+                    <ul>
+                        <li>"Real-Time Rendering" by Tomas Akenine-Möller</li>
+                        <li>GPU Gems series (free online)</li>
+                        <li>Technical Art blogs (Ben Cloward, Harry Alisavakis)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>🔗 Professional Tools & Communities</h4>
+                    
+                    <p><strong>Essential Software:</strong></p>
+                    <ul>
+                        <li>Substance 3D Painter - Industry standard for texture painting</li>
+                        <li>Marmoset Toolbag - Real-time rendering and baking</li>
+                        <li>ZBrush - High-poly sculpting</li>
+                        <li>Maya/Blender - 3D modeling and UV unwrapping</li>
+                        <li>Unity/Unreal Engine - Game engines</li>
+                    </ul>
+                    
+                    <p><strong>Communities:</strong></p>
+                    <ul>
+                        <li>Polycount - The game art forum</li>
+                        <li>ArtStation - Portfolio and inspiration</li>
+                        <li>GameArtists.org - Tutorials and discussion</li>
+                        <li>r/gamedev, r/gameassets - Reddit communities</li>
+                        <li>Tech-Artists.org - Technical art focused</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>🚀 Next Steps in Your Career</h4>
+                    
+                    <p><strong>Build Your Portfolio:</strong></p>
+                    <ul>
+                        <li>Complete the asset package project</li>
+                        <li>Create 3-5 more portfolio pieces in different styles</li>
+                        <li>Include technical breakdowns (wireframes, maps)</li>
+                        <li>Show process, not just final renders</li>
+                        <li>Demonstrate range and specialization</li>
+                    </ul>
+                    
+                    <p><strong>Specialize or Generalize:</strong></p>
+                    <ul>
+                        <li><strong>Character Artist:</strong> Focus on organic forms, anatomy, cloth</li>
+                        <li><strong>Environment Artist:</strong> Master world-building, modularity</li>
+                        <li><strong>Technical Artist:</strong> Deepen shader, tool, and pipeline knowledge</li>
+                        <li><strong>VFX Artist:</strong> Specialize in particles, shaders, animation</li>
+                        <li><strong>Generalist:</strong> Stay broad, valuable for indie and small studios</li>
+                    </ul>
+                    
+                    <p><strong>Keep Learning:</strong></p>
+                    <ul>
+                        <li>Follow industry trends (ray tracing, Nanite, virtual texturing)</li>
+                        <li>Learn new tools as they emerge</li>
+                        <li>Study shipped games' art techniques</li>
+                        <li>Participate in art challenges (Artstation, Polycount)</li>
+                        <li>Network with professionals online and at events</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem;">
+                    <h4 style="text-align: center;">🎓 Professional Game Artist Status</h4>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        You've mastered the complete game art production pipeline. You understand not just how to make beautiful art, but how to make <strong>shippable game art</strong> - optimized, professional, and production-ready. This knowledge separates hobbyists from professionals.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                        The games industry needs artists who understand both aesthetics AND technology. You're now equipped to contribute to AAA studios, indie teams, or create your own projects. Go build incredible game worlds!
+                    </p>
+                </div>
+
+                <div class="card" style="text-align: center; padding: 3rem; background: #f8f9fa;">
+                    <h3>🌟 Share Your Game Assets!</h3>
+                    <p style="margin-bottom: 2rem;">When you complete your asset package, share it with the community! Tag with <strong>#GameArt</strong> and <strong>#IndieGameDev</strong></p>
+                    <p style="font-size: 0.9rem; color: #666;">Studios are always looking for talented artists - your portfolio is your best resume!</p>
+                </div>
+            </section>
+
+            <!-- Lesson Navigation -->
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="procedural_art_systems_part_a.html" class="nav-button">
+                    <span class="nav-icon">←</span>
+                    <span class="nav-text">Previous Module: Procedural Systems</span>
+                </a>
+                <a href="index.html" class="nav-button">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Course Home</span>
+                </a>
+                <a href="index.html#module-2" class="nav-button next-lesson">
+                    <span class="nav-text">Next: Film/Animation Pipeline</span>
+                    <span class="nav-icon">→</span>
+                </a>
+            </nav>
+
+            <!-- Completion Tracker -->
+            <div class="card" style="background: linear-gradient(135deg, #4CAF50 0%, #45B7A0 100%); color: white; margin: 3rem 0;">
+                <h3 style="text-align: center;">✅ Lesson Complete!</h3>
+                <p style="text-align: center; margin-bottom: 1rem;">Mastered game art production pipeline?</p>
+                <div style="text-align: center;">
+                    <button id="complete-lesson" style="background: white; color: #4CAF50; border: none; padding: 1rem 2rem; font-size: 1.1rem; font-weight: bold; border-radius: 2rem; cursor: pointer; transition: transform 0.2s;">
+                        Mark as Complete 🎮
+                    </button>
+                </div>
+                <p id="completion-message" style="text-align: center; margin-top: 1rem; display: none; font-weight: bold;">
+                    🎊 Excellent! You're a professional game artist! 🎊
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #2c3e50; color: white; padding: 3rem 0; margin-top: 4rem;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div>
+                    <h4>🎮 Advanced Course</h4>
+                    <p style="line-height: 1.8; color: #bdc3c7;">
+                        Professional game art workflows for shipping commercial games!
+                    </p>
+                </div>
+                <div>
+                    <h4>Module 2: Industry Pipelines</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0;">✅ <a href="game_art_production_part_a.html" style="color: #ecf0f1;">Game Art Production</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="#" style="color: #ecf0f1;">Film/Animation Pipeline</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="#" style="color: #ecf0f1;">Publishing Workflows</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="index.html" style="color: #ecf0f1;">All Modules</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0;"><a href="https://paintstormstudio.com" target="_blank" style="color: #ecf0f1;">Paintstorm Studio</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="../paintstorm_int/index.html" style="color: #ecf0f1;">Intermediate Course</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="#" style="color: #ecf0f1;">PBR Guide</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="#" style="color: #ecf0f1;">Asset Library</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <p style="line-height: 1.8; color: #bdc3c7;">
+                        Join game artists worldwide and share your work!
+                    </p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="color: #3498db; margin-right: 1rem;">Polycount</a>
+                        <a href="#" style="color: #3498db; margin-right: 1rem;">ArtStation</a>
+                        <a href="#" style="color: #3498db;">Discord</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #34495e;">
+                <p>&copy; 2024 Paintstorm Studio Advanced Course. Building game-ready art! 🎮</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #95a5a6;">
+                    Where artistic vision meets technical excellence.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle TOC
+        function toggleTOC() {
+            const tocList = document.getElementById('toc-list');
+            const tocIcon = document.getElementById('toc-toggle-icon');
+            
+            if (tocList.style.maxHeight === '0px' || tocList.style.maxHeight === '') {
+                tocList.style.maxHeight = '500px';
+                tocIcon.style.transform = 'rotate(0deg)';
+            } else {
+                tocList.style.maxHeight = '0px';
+                tocIcon.style.transform = 'rotate(-90deg)';
+            }
+        }
+        
+        // Progress indicator
+        window.addEventListener('scroll', () => {
+            const progress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.querySelector('.progress-bar').style.width = `${Math.min(progress, 100)}%`;
+        });
+
+        // Mobile menu
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            themeToggle.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+            
+            themeToggle.addEventListener('click', () => {
+                const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+            });
+        }
+
+        // Completion tracking
+        const completeButton = document.getElementById('complete-lesson');
+        if (completeButton) {
+            if (localStorage.getItem('lesson_2_1_completed') === 'true') {
+                completeButton.textContent = 'Completed ✓';
+                completeButton.style.background = '#4CAF50';
+                completeButton.style.color = 'white';
+                document.getElementById('completion-message').style.display = 'block';
+            }
+            
+            completeButton.addEventListener('click', () => {
+                localStorage.setItem('lesson_2_1_completed', 'true');
+                completeButton.textContent = 'Completed ✓';
+                completeButton.style.background = '#4CAF50';
+                completeButton.style.color = 'white';
+                document.getElementById('completion-message').style.display = 'block';
+                
+                // Confetti!
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => createConfetti(), i * 30);
+                }
+            });
+        }
+        
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.style.cssText = `position:fixed;width:10px;height:10px;background:${['#f093fb','#f5576c','#4facfe','#00f2fe','#4CAF50','#FFD700'][Math.floor(Math.random()*6)]};left:${Math.random()*100}vw;top:-20px;opacity:1;pointer-events:none;z-index:9999;border-radius:50%`;
+            document.body.appendChild(confetti);
+            
+            const duration = 3000 + Math.random() * 2000;
+            const start = Date.now();
+            
+            function animate() {
+                const progress = (Date.now() - start) / duration;
+                if (progress < 1) {
+                    confetti.style.top = (progress * window.innerHeight) + 'px';
+                    confetti.style.opacity = (1 - progress);
+                    requestAnimationFrame(animate);
+                } else {
+                    document.body.removeChild(confetti);
+                }
+            }
+            animate();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,3473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master procedural art systems in Paintstorm Studio - Learn generative brushes, rule-based painting, and automated detail generation">
+    <meta name="keywords" content="Paintstorm Studio, procedural art, generative brushes, automated painting, rule-based systems">
+    <meta name="author" content="Paintstorm Advanced Tutorial">
+    <title>Procedural Art Systems - Advanced Paintstorm Studio</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+    
+    <!-- Progress indicator -->
+    <div class="progress-indicator" role="progressbar" aria-label="Page scroll progress">
+        <div class="progress-bar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌀 Paintstorm Studio - Advanced</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">
+                ☰
+            </button>
+            <div class="nav-links" id="nav-links" aria-hidden="false">
+                <a href="index.html">Home</a>
+                <a href="index.html#modules">All Modules</a>
+                <a href="../paintstorm_int/index.html">Intermediate Course</a>
+                <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#module-1">Master-Level Brush Engineering</a></li>
+            <li aria-current="page">Procedural Art Systems</li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <div class="container">
+            <!-- Lesson Header -->
+            <header>
+                <h1>🌀 Procedural Art Systems</h1>
+                <p class="lead">Welcome to the frontier of digital art creation! In this lesson, we'll explore <strong>generative and procedural systems</strong> - brushes and workflows that create art semi-autonomously based on rules and algorithms. This is where you stop painting every leaf and start <strong>orchestrating systems</strong> that paint forests!</p>
+                
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin: 2rem 0;">
+                    <h3>🎯 The Procedural Paradigm Shift</h3>
+                    <p>Traditional painting: You paint every mark manually.<br>
+                    Procedural painting: You define <strong>rules and systems</strong> that generate art based on parameters.</p>
+                    <blockquote style="border-left: 4px solid rgba(255,255,255,0.5); padding-left: 1rem; margin: 1rem 0;">
+                        <em>"The artist of the future doesn't just paint - they <strong>program creativity</strong>. A procedural system can generate infinite variations, explore design space automatically, and create complexity that would take days to paint manually."</em>
+                    </blockquote>
+                </div>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h3>⚠️ Prerequisites</h3>
+                    <p>This is an advanced lesson building on previous concepts. You should be comfortable with:</p>
+                    <ul>
+                        <li>✅ Brush physics and mathematics (Lesson 1.1)</li>
+                        <li>✅ Noise functions and pattern generation</li>
+                        <li>✅ Algorithmic thinking and pseudo-code</li>
+                        <li>✅ Custom brush creation from scratch</li>
+                        <li>✅ Performance optimization concepts</li>
+                    </ul>
+                </div>
+                
+                <!-- Learning objectives -->
+                <div class="card">
+                    <h2>🎯 Mastery Objectives</h2>
+                    <p>By the end of this comprehensive lesson, you will master:</p>
+                    <ul>
+                        <li><strong>Generative Brush Patterns:</strong> Create brushes that generate complex patterns automatically</li>
+                        <li><strong>Rule-Based Painting Systems:</strong> Define rules that control how art is created</li>
+                        <li><strong>Automated Detail Generation:</strong> Let algorithms add detail intelligently</li>
+                        <li><strong>Pattern-Based Workflows:</strong> Work with repeating elements efficiently</li>
+                        <li><strong>Fractal and Noise Brushes:</strong> Harness mathematical patterns for organic results</li>
+                        <li><strong>L-Systems and Recursive Art:</strong> Create trees, plants, and natural patterns algorithmically</li>
+                        <li><strong>Portfolio Project:</strong> Build a procedural landscape generator</li>
+                    </ul>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <nav class="card" aria-label="Table of Contents">
+                <h2 style="cursor: pointer; user-select: none; display: flex; justify-content: space-between; align-items: center;" onclick="toggleTOC()">
+                    <span>📑 Complete Table of Contents</span>
+                    <span id="toc-toggle-icon" style="transition: transform 0.3s;">▼</span>
+                </h2>
+                <ol id="toc-list" style="overflow: hidden; transition: max-height 0.3s ease-out; max-height: 500px; margin: 0; padding-left: 1.5rem;">
+                    <li><a href="#generative-patterns" class="toc-link">Generative Brush Patterns</a></li>
+                    <li><a href="#rule-based-systems" class="toc-link">Rule-Based Painting Systems</a></li>
+                    <li><a href="#automated-detail" class="toc-link">Automated Detail Generation</a></li>
+                    <li><a href="#fractal-noise" class="toc-link">Fractal & Noise Brushes</a></li>
+                    <li><a href="#l-systems" class="toc-link">L-Systems & Recursive Patterns</a></li>
+                    <li><a href="#pattern-workflows" class="toc-link">Pattern-Based Workflows</a></li>
+                    <li><a href="#project" class="toc-link">Master Project: Landscape Generator</a></li>
+                    <li><a href="#summary" class="toc-link">Summary & Resources</a></li>
+                </ol>
+            </nav>
+
+            <!-- Section 1: Generative Patterns -->
+            <section id="generative-patterns" class="lesson-section">
+                <h2>Generative Brush Patterns 🎲</h2>
+                
+                <p>Generative brushes don't just paint what you tell them - they <strong>create patterns based on rules</strong>. Think of them as artistic algorithms that generate unique results every time, while still following your creative direction.</p>
+
+                <blockquote>
+                    <strong>🌟 The Power of Generation:</strong> One brush stroke that generates a tree branch with leaves, bark texture, and natural variation. One stroke that creates a crowd of people. One stroke that paints an entire flower field. That's the power of procedural generation!
+                </blockquote>
+
+                <h3>Understanding Generative Systems</h3>
+                
+                <canvas id="generative-demo" width="800" height="450" style="max-width: 100%; height: auto; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; margin: 1rem 0;"></canvas>
+                
+                <script>
+                    const genCanvas = document.getElementById('generative-demo');
+                    const genCtx = genCanvas.getContext('2d');
+                    
+                    // Handle high DPI
+                    const genScale = window.devicePixelRatio || 1;
+                    genCanvas.width = 800 * genScale;
+                    genCanvas.height = 450 * genScale;
+                    genCtx.scale(genScale, genScale);
+                    
+                    // Background
+                    genCtx.fillStyle = '#f5f5f5';
+                    genCtx.fillRect(0, 0, 800, 450);
+                    
+                    // Title
+                    genCtx.fillStyle = '#333';
+                    genCtx.font = 'bold 18px Arial';
+                    genCtx.textAlign = 'center';
+                    genCtx.fillText('Generative Pattern Examples', 400, 25);
+                    
+                    // Example 1: Tree Branch Generator
+                    genCtx.fillStyle = '#666';
+                    genCtx.font = '13px Arial';
+                    genCtx.textAlign = 'left';
+                    genCtx.fillText('Tree Branch (Recursive)', 50, 60);
+                    
+                    function drawBranch(x, y, length, angle, depth) {
+                        if (depth === 0 || length < 2) return;
+                        
+                        const endX = x + Math.cos(angle) * length;
+                        const endY = y + Math.sin(angle) * length;
+                        
+                        // Draw branch
+                        genCtx.strokeStyle = `rgba(101, 67, 33, ${depth / 6})`;
+                        genCtx.lineWidth = depth;
+                        genCtx.beginPath();
+                        genCtx.moveTo(x, y);
+                        genCtx.lineTo(endX, endY);
+                        genCtx.stroke();
+                        
+                        // Recursive branches
+                        const newLength = length * 0.7;
+                        const angleSpread = 0.4;
+                        
+                        drawBranch(endX, endY, newLength, angle - angleSpread, depth - 1);
+                        drawBranch(endX, endY, newLength, angle + angleSpread, depth - 1);
+                        
+                        // Add leaves at tips
+                        if (depth <= 2) {
+                            genCtx.fillStyle = 'rgba(76, 175, 80, 0.6)';
+                            genCtx.beginPath();
+                            genCtx.arc(endX, endY, 3, 0, Math.PI * 2);
+                            genCtx.fill();
+                        }
+                    }
+                    
+                    drawBranch(150, 130, 40, -Math.PI / 2, 6);
+                    
+                    // Example 2: Particle Swarm
+                    genCtx.fillText('Particle Swarm', 280, 60);
+                    
+                    const swarmCenter = {x: 380, y: 100};
+                    for(let i = 0; i < 50; i++) {
+                        const angle = (i / 50) * Math.PI * 2 + Date.now() * 0.0001;
+                        const radius = 30 + Math.sin(i * 0.5) * 20;
+                        const x = swarmCenter.x + Math.cos(angle) * radius;
+                        const y = swarmCenter.y + Math.sin(angle) * radius;
+                        
+                        genCtx.fillStyle = `rgba(33, 150, 243, ${0.3 + Math.sin(i) * 0.3})`;
+                        genCtx.beginPath();
+                        genCtx.arc(x, y, 2 + Math.sin(i * 0.3) * 2, 0, Math.PI * 2);
+                        genCtx.fill();
+                        
+                        // Connection lines
+                        genCtx.strokeStyle = 'rgba(33, 150, 243, 0.1)';
+                        genCtx.lineWidth = 1;
+                        genCtx.beginPath();
+                        genCtx.moveTo(x, y);
+                        genCtx.lineTo(swarmCenter.x, swarmCenter.y);
+                        genCtx.stroke();
+                    }
+                    
+                    // Example 3: Geometric Pattern
+                    genCtx.fillText('Geometric Tessellation', 520, 60);
+                    
+                    const gridSize = 15;
+                    const startX = 540;
+                    const startY = 75;
+                    
+                    for(let row = 0; row < 4; row++) {
+                        for(let col = 0; col < 6; col++) {
+                            const x = startX + col * gridSize;
+                            const y = startY + row * gridSize;
+                            
+                            // Alternate pattern
+                            if ((row + col) % 2 === 0) {
+                                genCtx.fillStyle = 'rgba(156, 39, 176, 0.4)';
+                                genCtx.fillRect(x, y, gridSize, gridSize);
+                            } else {
+                                genCtx.strokeStyle = 'rgba(156, 39, 176, 0.4)';
+                                genCtx.lineWidth = 2;
+                                genCtx.beginPath();
+                                genCtx.moveTo(x, y);
+                                genCtx.lineTo(x + gridSize, y + gridSize);
+                                genCtx.moveTo(x + gridSize, y);
+                                genCtx.lineTo(x, y + gridSize);
+                                genCtx.stroke();
+                            }
+                        }
+                    }
+                    
+                    // Example 4: Cellular Automata
+                    genCtx.fillText('Cellular Pattern Growth', 50, 175);
+                    
+                    const caSize = 120;
+                    const cellSize = 4;
+                    const cells = Array(caSize / cellSize).fill().map(() => 
+                        Array(caSize / cellSize).fill(false)
+                    );
+                    
+                    // Seed
+                    cells[Math.floor(cells.length / 2)][Math.floor(cells[0].length / 2)] = true;
+                    
+                    // Simple growth rule
+                    for(let gen = 0; gen < 8; gen++) {
+                        const newCells = cells.map(row => [...row]);
+                        
+                        for(let i = 1; i < cells.length - 1; i++) {
+                            for(let j = 1; j < cells[0].length - 1; j++) {
+                                const neighbors = 
+                                    (cells[i-1][j] ? 1 : 0) +
+                                    (cells[i+1][j] ? 1 : 0) +
+                                    (cells[i][j-1] ? 1 : 0) +
+                                    (cells[i][j+1] ? 1 : 0);
+                                
+                                if (neighbors === 1 && Math.random() > 0.5) {
+                                    newCells[i][j] = true;
+                                }
+                            }
+                        }
+                        
+                        cells.forEach((row, i) => row.forEach((cell, j) => {
+                            if (newCells[i][j]) cells[i][j] = true;
+                        }));
+                    }
+                    
+                    // Draw cells
+                    cells.forEach((row, i) => {
+                        row.forEach((cell, j) => {
+                            if (cell) {
+                                genCtx.fillStyle = 'rgba(233, 30, 99, 0.5)';
+                                genCtx.fillRect(50 + j * cellSize, 190 + i * cellSize, cellSize, cellSize);
+                            }
+                        });
+                    });
+                    
+                    // Example 5: Voronoi Pattern
+                    genCtx.fillText('Voronoi Cells', 280, 175);
+                    
+                    const points = [];
+                    for(let i = 0; i < 15; i++) {
+                        points.push({
+                            x: 280 + Math.random() * 120,
+                            y: 190 + Math.random() * 120,
+                            color: `hsl(${Math.random() * 360}, 70%, 60%)`
+                        });
+                    }
+                    
+                    // Draw voronoi cells (simplified)
+                    for(let x = 280; x < 400; x += 2) {
+                        for(let y = 190; y < 310; y += 2) {
+                            let closest = points[0];
+                            let minDist = Infinity;
+                            
+                            points.forEach(point => {
+                                const dist = Math.sqrt(
+                                    Math.pow(x - point.x, 2) + 
+                                    Math.pow(y - point.y, 2)
+                                );
+                                if (dist < minDist) {
+                                    minDist = dist;
+                                    closest = point;
+                                }
+                            });
+                            
+                            genCtx.fillStyle = closest.color.replace('60%', '60%, 0.3)').replace('hsl', 'hsla');
+                            genCtx.fillRect(x, y, 2, 2);
+                        }
+                    }
+                    
+                    // Draw points
+                    points.forEach(point => {
+                        genCtx.fillStyle = point.color;
+                        genCtx.beginPath();
+                        genCtx.arc(point.x, point.y, 3, 0, Math.PI * 2);
+                        genCtx.fill();
+                    });
+                    
+                    // Example 6: Flow Field
+                    genCtx.fillText('Flow Field Particles', 520, 175);
+                    
+                    for(let i = 0; i < 200; i++) {
+                        const x = 520 + (i % 15) * 8;
+                        const y = 190 + Math.floor(i / 15) * 8;
+                        
+                        // Calculate flow direction
+                        const angle = Math.sin(x * 0.02) * Math.cos(y * 0.02) * Math.PI;
+                        const length = 6;
+                        
+                        const endX = x + Math.cos(angle) * length;
+                        const endY = y + Math.sin(angle) * length;
+                        
+                        genCtx.strokeStyle = `rgba(255, 152, 0, ${0.3 + Math.sin(i * 0.1) * 0.3})`;
+                        genCtx.lineWidth = 1;
+                        genCtx.beginPath();
+                        genCtx.moveTo(x, y);
+                        genCtx.lineTo(endX, endY);
+                        genCtx.stroke();
+                    }
+                    
+                    // Bottom section: Algorithm comparison
+                    genCtx.fillStyle = '#333';
+                    genCtx.font = 'bold 16px Arial';
+                    genCtx.textAlign = 'center';
+                    genCtx.fillText('Manual vs Generative Comparison', 400, 345);
+                    
+                    // Manual approach
+                    genCtx.fillStyle = '#666';
+                    genCtx.font = '13px Arial';
+                    genCtx.textAlign = 'left';
+                    genCtx.fillText('Manual: Each leaf painted individually', 100, 370);
+                    
+                    // Draw a few leaves manually
+                    for(let i = 0; i < 8; i++) {
+                        const x = 100 + i * 15;
+                        const y = 385;
+                        genCtx.fillStyle = 'rgba(76, 175, 80, 0.6)';
+                        genCtx.beginPath();
+                        genCtx.ellipse(x, y, 5, 8, i * 0.2, 0, Math.PI * 2);
+                        genCtx.fill();
+                    }
+                    
+                    genCtx.fillText('Time: ~30 minutes for 100 leaves', 100, 415);
+                    
+                    // Generative approach
+                    genCtx.fillText('Generative: Algorithm creates variation', 450, 370);
+                    
+                    // Draw many leaves with variation
+                    for(let i = 0; i < 50; i++) {
+                        const x = 450 + Math.random() * 200;
+                        const y = 375 + Math.random() * 30;
+                        const size = 3 + Math.random() * 5;
+                        const rotation = Math.random() * Math.PI * 2;
+                        const hue = 100 + Math.random() * 40;
+                        
+                        genCtx.fillStyle = `hsla(${hue}, 60%, 50%, ${0.4 + Math.random() * 0.3})`;
+                        genCtx.beginPath();
+                        genCtx.ellipse(x, y, size, size * 1.5, rotation, 0, Math.PI * 2);
+                        genCtx.fill();
+                    }
+                    
+                    genCtx.fillText('Time: ~2 seconds, infinite variations', 450, 415);
+                </script>
+
+                <div class="card">
+                    <h4>Types of Generative Patterns</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Pattern Type</th>
+                                <th>Generation Method</th>
+                                <th>Best For</th>
+                                <th>Complexity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Recursive</strong></td>
+                                <td>Function calls itself with modified parameters</td>
+                                <td>Trees, branches, fractals</td>
+                                <td>Medium-High</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Particle Systems</strong></td>
+                                <td>Many small elements following rules</td>
+                                <td>Fire, smoke, crowds, swarms</td>
+                                <td>Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cellular Automata</strong></td>
+                                <td>Grid cells evolve based on neighbors</td>
+                                <td>Organic growth, textures</td>
+                                <td>Low-Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Voronoi Diagrams</strong></td>
+                                <td>Space divided by nearest point</td>
+                                <td>Cellular structures, cracks</td>
+                                <td>Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Flow Fields</strong></td>
+                                <td>Elements follow vector field</td>
+                                <td>Hair, grass, water flow</td>
+                                <td>Medium-High</td>
+                            </tr>
+                            <tr>
+                                <td><strong>L-Systems</strong></td>
+                                <td>String rewriting rules</td>
+                                <td>Plants, organic patterns</td>
+                                <td>High</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Building Your First Generative Brush</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🌱 Example: Foliage Scatter Brush</h4>
+                    <pre><code>CLASS FoliageGeneratorBrush:
+    // Parameters that control generation
+    leafDensity = 0.7        // How many leaves (0-1)
+    sizeVariation = 0.3      // How much size varies
+    colorVariation = 20      // Hue variation in degrees
+    clusteriness = 0.5       // How much leaves cluster
+    
+    FUNCTION GenerateFoliage(position, radius, pressure):
+        // Step 1: Calculate number of leaves
+        leafCount = floor(leafDensity * 100 * pressure * (radius / 50))
+        
+        // Step 2: Generate leaf positions
+        leafPositions = []
+        
+        IF clusteriness > 0.5:
+            // Clustered distribution
+            clusterCount = max(3, leafCount / 10)
+            clusters = GenerateClusterCenters(clusterCount, radius)
+            
+            FOR i FROM 0 TO leafCount:
+                cluster = ChooseRandomCluster(clusters)
+                offset = RandomGaussian() * radius * 0.3
+                leafPos = cluster + offset
+                leafPositions.push(leafPos)
+            END FOR
+        ELSE:
+            // Uniform distribution
+            FOR i FROM 0 TO leafCount:
+                angle = Random(0, TWO_PI)
+                distance = sqrt(Random()) * radius
+                leafPos = position + PolarToCartesian(distance, angle)
+                leafPositions.push(leafPos)
+            END FOR
+        END IF
+        
+        // Step 3: Generate and draw each leaf
+        FOR EACH leafPos IN leafPositions:
+            // Vary size
+            leafSize = radius * 0.1 * (1 + Random(-sizeVariation, sizeVariation))
+            
+            // Vary color
+            baseHue = 120  // Green
+            leafHue = baseHue + Random(-colorVariation, colorVariation)
+            leafSat = 60 + Random(-10, 10)
+            leafBright = 40 + Random(-15, 15)
+            leafColor = HSL(leafHue, leafSat, leafBright)
+            
+            // Vary rotation
+            leafRotation = Random(0, TWO_PI)
+            
+            // Vary shape (use different leaf shapes)
+            leafShape = ChooseRandom(['oval', 'pointed', 'lobed'])
+            
+            // Draw leaf
+            DrawLeaf(leafPos, leafSize, leafRotation, leafColor, leafShape)
+            
+            // Optional: Add stem
+            IF Random() < 0.3:
+                DrawStem(leafPos, leafSize * 0.5, leafRotation)
+            END IF
+        END FOR
+        
+        // Step 4: Add depth cues
+        // Leaves farther from center are darker/smaller (depth)
+        FOR EACH leafPos IN leafPositions:
+            distFromCenter = Distance(leafPos, position)
+            depthFactor = distFromCenter / radius
+            
+            // Darken distant leaves
+            ApplyDepthShading(leafPos, depthFactor * 0.3)
+        END FOR
+    END FUNCTION
+    
+    FUNCTION DrawLeaf(position, size, rotation, color, shape):
+        SWITCH shape:
+            CASE 'oval':
+                DrawEllipse(position, size, size * 1.5, rotation, color)
+            CASE 'pointed':
+                DrawTriangle(position, size, size * 2, rotation, color)
+            CASE 'lobed':
+                DrawLobedLeaf(position, size, rotation, color)
+        END SWITCH
+        
+        // Add vein detail
+        IF size > 5:  // Only on larger leaves
+            veinColor = Darken(color, 0.2)
+            DrawVein(position, size, rotation, veinColor)
+        END IF
+    END FUNCTION
+    
+    FUNCTION DrawVein(position, size, rotation, color):
+        // Central vein
+        startPos = position - Vector(0, size * 0.7).Rotate(rotation)
+        endPos = position + Vector(0, size * 0.7).Rotate(rotation)
+        
+        DrawLine(startPos, endPos, 1, color)
+        
+        // Side veins
+        FOR i FROM -3 TO 3:
+            IF i == 0: CONTINUE
+            
+            offset = i * size * 0.3
+            veinStart = position + Vector(0, offset).Rotate(rotation)
+            veinEnd = veinStart + Vector(size * 0.3, 0).Rotate(rotation + PI/6)
+            
+            DrawLine(veinStart, veinEnd, 0.5, color)
+        END FOR
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>💡 Key Insight:</strong> The power of generative brushes isn't just speed - it's <strong>controlled variation</strong>. Every leaf is unique, but they all follow your artistic direction. It's like having an assistant who understands your style and fills in details consistently!
+                </blockquote>
+
+                <h3>Advanced Generative Techniques</h3>
+                
+                <div class="card">
+                    <h4>Technique 1: Weighted Randomness</h4>
+                    <p>Not all random outcomes should be equally likely. Use weighted randomness for more natural results:</p>
+                    <pre><code>FUNCTION WeightedRandom(choices):
+    // choices = [{value: "small", weight: 0.6}, 
+    //            {value: "medium", weight: 0.3},
+    //            {value: "large", weight: 0.1}]
+    
+    totalWeight = SUM(choice.weight FOR choice IN choices)
+    random = Random(0, totalWeight)
+    
+    cumulative = 0
+    FOR EACH choice IN choices:
+        cumulative += choice.weight
+        IF random <= cumulative:
+            RETURN choice.value
+        END IF
+    END FOR
+END FUNCTION
+
+// Usage: Most leaves small, some medium, few large
+leafSize = WeightedRandom([
+    {value: 5, weight: 0.6},   // 60% small
+    {value: 10, weight: 0.3},  // 30% medium
+    {value: 15, weight: 0.1}   // 10% large
+])</code></pre>
+
+                    <h4>Technique 2: Coherent Noise for Natural Variation</h4>
+                    <p>Use Perlin/Simplex noise instead of pure randomness for smoother, more natural variation:</p>
+                    <pre><code>// BAD: Pure random - chaotic, unnatural
+FOR EACH leaf:
+    leafSize = Random(5, 15)  // Jumpy, no correlation
+END FOR
+
+// GOOD: Noise-based - smooth transitions
+FOR EACH leaf AT position:
+    noiseValue = PerlinNoise(position.x * 0.01, position.y * 0.01)
+    leafSize = MapRange(noiseValue, -1, 1, 5, 15)
+    // Nearby leaves have similar sizes - more natural!
+END FOR</code></pre>
+
+                    <h4>Technique 3: Constraint-Based Generation</h4>
+                    <p>Add constraints to ensure aesthetically pleasing results:</p>
+                    <pre><code>FUNCTION GenerateWithConstraints(position, count):
+    generated = []
+    attempts = 0
+    
+    WHILE generated.length < count AND attempts < count * 10:
+        candidate = GenerateCandidate(position)
+        
+        // Check constraints
+        IF MeetsAestheticRules(candidate, generated):
+            generated.push(candidate)
+        END IF
+        
+        attempts++
+    END WHILE
+    
+    RETURN generated
+END FUNCTION
+
+FUNCTION MeetsAestheticRules(candidate, existing):
+    // Rule 1: Not too close to existing elements
+    FOR EACH element IN existing:
+        IF Distance(candidate, element) < minDistance:
+            RETURN FALSE
+        END IF
+    END FOR
+    
+    // Rule 2: Within acceptable density
+    density = CalculateLocalDensity(candidate, existing)
+    IF density > maxDensity OR density < minDensity:
+        RETURN FALSE
+    END IF
+    
+    // Rule 3: Respects composition (thirds, balance)
+    IF NOT InCompositionZone(candidate):
+        RETURN FALSE
+    END IF
+    
+    RETURN TRUE
+END FUNCTION</code></pre>
+                </div>
+
+
+            </section>
+
+            <!-- Section 2: Rule-Based Systems -->
+            <section id="rule-based-systems" class="lesson-section">
+                <h2>Rule-Based Painting Systems 📐</h2>
+                
+                <p>Rule-based systems take procedural art to the next level. Instead of just generating patterns, you create <strong>intelligent systems</strong> that make decisions based on context, follow artistic principles, and adapt to what they're painting.</p>
+
+                <blockquote>
+                    <strong>🎯 The Rules Paradigm:</strong> "If painting sky, use cool colors. If near horizon, add atmospheric perspective. If painting tree, branches get thinner as they divide." Rules encode artistic knowledge into algorithms!
+                </blockquote>
+
+                <h3>Understanding Rule Systems</h3>
+                
+                <div class="mermaid">
+                    flowchart TD
+                        A[Analyze Context] --> B{What am I painting?}
+                        
+                        B -->|Sky| C[Sky Rules]
+                        B -->|Ground| D[Ground Rules]
+                        B -->|Water| E[Water Rules]
+                        B -->|Foliage| F[Foliage Rules]
+                        
+                        C --> C1[Use cool colors]
+                        C --> C2[Lighter at horizon]
+                        C --> C3[Add clouds if sparse]
+                        
+                        D --> D1[Use warm earth tones]
+                        D --> D2[Add texture variation]
+                        D --> D3[Darker at top]
+                        
+                        E --> E1[Use blues/greens]
+                        E --> E2[Add reflections]
+                        E --> E3[Horizontal strokes]
+                        
+                        F --> F1[Cluster placement]
+                        F --> F2[Size diminishes with distance]
+                        F --> F3[Vary colors naturally]
+                        
+                        C1 --> G[Apply Rules]
+                        C2 --> G
+                        C3 --> G
+                        D1 --> G
+                        D2 --> G
+                        D3 --> G
+                        E1 --> G
+                        E2 --> G
+                        E3 --> G
+                        F1 --> G
+                        F2 --> G
+                        F3 --> G
+                        
+                        G --> H[Generate Art]
+                        H --> I{Evaluate Result}
+                        I -->|Needs Refinement| A
+                        I -->|Acceptable| J[Done]
+                        
+                        style B fill:#667eea
+                        style G fill:#4CAF50
+                        style J fill:#e91e63
+                </div>
+
+                <h3>Rule System Architecture</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🏗️ Complete Rule-Based Painting Engine</h4>
+                    <pre><code>CLASS RuleBasedPaintingSystem:
+    rules = []
+    context = {}
+    history = []
+    
+    FUNCTION Initialize():
+        // Load rule sets
+        rules = [
+            ColorHarmonyRules(),
+            CompositionRules(),
+            DepthRules(),
+            DetailRules(),
+            StyleRules()
+        ]
+        
+        // Initialize context
+        context = {
+            canvasSize: {width, height},
+            viewportLocation: "landscape",  // or "portrait", "abstract"
+            lightDirection: Vector3(-1, -1, 0),
+            timeOfDay: "noon",  // affects color temperature
+            weatherCondition: "clear",
+            currentLayer: "base"
+        }
+    END FUNCTION
+    
+    FUNCTION Paint(position, brushType, userData):
+        // Step 1: Gather context for this stroke
+        localContext = AnalyzeLocalContext(position)
+        
+        // Step 2: Find applicable rules
+        applicableRules = []
+        FOR EACH rule IN rules:
+            IF rule.AppliesTo(localContext, context):
+                applicableRules.push(rule)
+            END IF
+        END FOR
+        
+        // Step 3: Execute rules to modify painting parameters
+        paintParams = {
+            color: userData.color,
+            size: userData.size,
+            opacity: userData.opacity,
+            texture: userData.texture
+        }
+        
+        FOR EACH rule IN applicableRules:
+            paintParams = rule.Modify(paintParams, localContext, context)
+        END FOR
+        
+        // Step 4: Apply the stroke
+        ApplyStroke(position, paintParams)
+        
+        // Step 5: Update history for future rules
+        history.push({
+            position: position,
+            params: paintParams,
+            timestamp: Now()
+        })
+    END FUNCTION
+    
+    FUNCTION AnalyzeLocalContext(position):
+        return {
+            // Spatial analysis
+            distanceFromEdge: CalculateEdgeDistance(position),
+            verticalPosition: position.y / canvasHeight,
+            horizontalPosition: position.x / canvasWidth,
+            
+            // Content analysis
+            existingColors: SampleNearbyColors(position, radius: 50),
+            existingDensity: CalculatePaintDensity(position),
+            dominantDirection: AnalyzeStrokeDirection(position),
+            
+            // Compositional analysis
+            isOnThirdsLine: IsOnRuleOfThirds(position),
+            isInGoldenRatio: IsInGoldenRatioZone(position),
+            isFocalArea: IsNearFocalPoint(position),
+            
+            // Recent activity
+            recentStrokes: GetRecentStrokesNear(position),
+            strokeDensity: CalculateRecentDensity(position)
+        }
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+
+                <h3>Example Rule Sets</h3>
+                
+                <div class="card">
+                    <h4>Rule Set 1: Atmospheric Perspective</h4>
+                    <pre><code>CLASS AtmosphericPerspectiveRules:
+    
+    FUNCTION AppliesTo(localContext, globalContext):
+        // Only apply to landscape scenes
+        RETURN globalContext.viewportLocation == "landscape"
+    END FUNCTION
+    
+    FUNCTION Modify(paintParams, localContext, globalContext):
+        // Higher on canvas = farther away
+        distance = 1.0 - localContext.verticalPosition
+        
+        // Rule 1: Distant objects are lighter
+        IF distance > 0.5:
+            lighteningFactor = (distance - 0.5) * 0.6
+            paintParams.color = Lighten(paintParams.color, lighteningFactor)
+        END IF
+        
+        // Rule 2: Distant objects are less saturated
+        desaturationAmount = distance * 0.4
+        paintParams.color = Desaturate(paintParams.color, desaturationAmount)
+        
+        // Rule 3: Distant objects are cooler (bluer)
+        IF distance > 0.6:
+            blueShift = (distance - 0.6) * 30  // degrees
+            paintParams.color = ShiftHue(paintParams.color, 
+                                         towardBlue: blueShift)
+        END IF
+        
+        // Rule 4: Distant objects have softer edges
+        IF distance > 0.7:
+            paintParams.hardness *= (1.0 - distance * 0.5)
+        END IF
+        
+        // Rule 5: Distant objects have less detail
+        IF distance > 0.5:
+            paintParams.detailLevel *= (1.0 - distance * 0.7)
+        END IF
+        
+        RETURN paintParams
+    END FUNCTION
+END CLASS</code></pre>
+
+                    <h4>Rule Set 2: Color Harmony</h4>
+                    <pre><code>CLASS ColorHarmonyRules:
+    dominantHue = null
+    colorScheme = "analogous"  // or "complementary", "triadic"
+    
+    FUNCTION AppliesTo(localContext, globalContext):
+        // Always applicable
+        RETURN true
+    END FUNCTION
+    
+    FUNCTION Modify(paintParams, localContext, globalContext):
+        // Analyze dominant hue if not set
+        IF dominantHue == null:
+            dominantHue = AnalyzeDominantHue(localContext.existingColors)
+        END IF
+        
+        currentHue = GetHue(paintParams.color)
+        
+        SWITCH colorScheme:
+            CASE "analogous":
+                // Keep colors within 30 degrees
+                deviation = abs(currentHue - dominantHue)
+                IF deviation > 30:
+                    // Pull toward dominant hue
+                    targetHue = dominantHue + 
+                               (currentHue > dominantHue ? 25 : -25)
+                    paintParams.color = SetHue(paintParams.color, targetHue)
+                END IF
+            
+            CASE "complementary":
+                // Allow dominant and opposite hues
+                oppositeHue = (dominantHue + 180) % 360
+                
+                distToDominant = min(
+                    abs(currentHue - dominantHue),
+                    360 - abs(currentHue - dominantHue)
+                )
+                distToOpposite = min(
+                    abs(currentHue - oppositeHue),
+                    360 - abs(currentHue - oppositeHue)
+                )
+                
+                // If not near either, push to closer one
+                IF distToDominant > 30 AND distToOpposite > 30:
+                    IF distToDominant < distToOpposite:
+                        paintParams.color = SetHue(paintParams.color, 
+                                                   dominantHue)
+                    ELSE:
+                        paintParams.color = SetHue(paintParams.color, 
+                                                   oppositeHue)
+                    END IF
+                END IF
+            
+            CASE "triadic":
+                // Allow three evenly-spaced hues
+                triad = [
+                    dominantHue,
+                    (dominantHue + 120) % 360,
+                    (dominantHue + 240) % 360
+                ]
+                
+                // Find closest triad color
+                closest = triad[0]
+                minDist = 360
+                
+                FOR EACH triadHue IN triad:
+                    dist = min(
+                        abs(currentHue - triadHue),
+                        360 - abs(currentHue - triadHue)
+                    )
+                    IF dist < minDist:
+                        minDist = dist
+                        closest = triadHue
+                    END IF
+                END FOR
+                
+                // Pull toward closest if too far
+                IF minDist > 25:
+                    paintParams.color = SetHue(paintParams.color, closest)
+                END IF
+        END SWITCH
+        
+        RETURN paintParams
+    END FUNCTION
+END CLASS</code></pre>
+
+                    <h4>Rule Set 3: Compositional Emphasis</h4>
+                    <pre><code>CLASS CompositionRules:
+    focalPoints = []
+    
+    FUNCTION Initialize():
+        // Define focal points (rule of thirds intersections)
+        focalPoints = [
+            {x: 0.33, y: 0.33, strength: 1.0},
+            {x: 0.67, y: 0.33, strength: 1.0},
+            {x: 0.33, y: 0.67, strength: 0.8},
+            {x: 0.67, y: 0.67, strength: 0.8}
+        ]
+    END FUNCTION
+    
+    FUNCTION Modify(paintParams, localContext, globalContext):
+        // Calculate distance to nearest focal point
+        nearestFocal = FindNearestFocalPoint(localContext.position)
+        distToFocal = Distance(localContext.position, nearestFocal)
+        
+        // Normalize distance (0 = at focal point, 1 = far away)
+        normalizedDist = min(1.0, distToFocal / (canvasWidth * 0.3))
+        
+        // Rule 1: More detail near focal points
+        IF normalizedDist < 0.3:
+            detailBoost = (1.0 - normalizedDist / 0.3) * 0.5
+            paintParams.detailLevel *= (1.0 + detailBoost)
+        END IF
+        
+        // Rule 2: Higher contrast near focal points
+        IF normalizedDist < 0.4:
+            contrastBoost = (1.0 - normalizedDist / 0.4) * 0.3
+            paintParams.contrast *= (1.0 + contrastBoost)
+        END IF
+        
+        // Rule 3: More saturated colors near focal points
+        IF normalizedDist < 0.35:
+            saturationBoost = (1.0 - normalizedDist / 0.35) * 0.25
+            currentSat = GetSaturation(paintParams.color)
+            newSat = min(1.0, currentSat * (1.0 + saturationBoost))
+            paintParams.color = SetSaturation(paintParams.color, newSat)
+        END IF
+        
+        // Rule 4: Softer edges away from focal points
+        IF normalizedDist > 0.6:
+            softening = (normalizedDist - 0.6) * 0.5
+            paintParams.hardness *= (1.0 - softening)
+        END IF
+        
+        RETURN paintParams
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>🎓 Advanced Concept:</strong> Rule-based systems can be <strong>trained</strong> on your art style! Analyze your finished work to extract rules: "I always use warm shadows," "I saturate focal points by 20%," "I use complementary colors for contrast." Code these observations into rules!
+                </blockquote>
+
+                <h3>Smart Decision Making</h3>
+                
+                <div class="card">
+                    <h4>Implementing Fuzzy Logic for Artistic Decisions</h4>
+                    <pre><code>// Instead of binary rules (yes/no), use fuzzy logic (degrees)
+
+CLASS FuzzyRule:
+    FUNCTION Evaluate(input):
+        // Returns 0-1 indicating rule strength
+        
+        // Example: "If near horizon, apply atmospheric perspective"
+        distanceFromHorizon = abs(input.y - horizonY)
+        
+        IF distanceFromHorizon < 50:
+            // Very close to horizon = strong rule application
+            RETURN 1.0
+        ELSE IF distanceFromHorizon < 200:
+            // Somewhat close = partial application
+            RETURN 1.0 - ((distanceFromHorizon - 50) / 150)
+        ELSE:
+            // Far from horizon = no application
+            RETURN 0.0
+        END IF
+    END FUNCTION
+    
+    FUNCTION Apply(paintParams, strength):
+        // Apply rule proportionally to strength
+        
+        // Instead of:
+        // IF condition: params.opacity = 0.5
+        
+        // Do:
+        params.opacity = Lerp(params.opacity, targetOpacity, strength)
+        
+        RETURN params
+    END FUNCTION
+END CLASS
+
+// Combine multiple fuzzy rules
+FUNCTION CombineFuzzyRules(rules, input, params):
+    FOR EACH rule IN rules:
+        strength = rule.Evaluate(input)
+        IF strength > 0:
+            params = rule.Apply(params, strength)
+        END IF
+    END FOR
+    
+    RETURN params
+END FUNCTION</code></pre>
+                </div>
+
+                <h3>Context-Aware Brushes</h3>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>🎨 Intelligent Brush Example: Smart Sky Painter</h4>
+                    <pre><code>CLASS SmartSkyBrush:
+    
+    FUNCTION Paint(position, pressure):
+        // Analyze what we're painting over
+        underlyingColor = SampleCanvas(position)
+        verticalPosition = position.y / canvasHeight
+        
+        // Rule 1: Determine sky zone
+        IF verticalPosition < 0.3:
+            // Upper sky - deeper blue
+            baseColor = RGB(100, 149, 237)  // Cornflower blue
+            cloudProbability = 0.3
+        ELSE IF verticalPosition < 0.6:
+            // Middle sky - medium blue
+            baseColor = RGB(135, 206, 235)  // Sky blue
+            cloudProbability = 0.5
+        ELSE:
+            // Near horizon - lighter, warmer
+            baseColor = RGB(176, 224, 230)  // Powder blue
+            // Add warmth near horizon
+            baseColor = ShiftHue(baseColor, towardWarm: 15)
+            cloudProbability = 0.2
+        END IF
+        
+        // Rule 2: Add atmospheric variation
+        noiseValue = PerlinNoise(position.x * 0.01, position.y * 0.01)
+        colorVariation = noiseValue * 20  // Hue variation
+        finalColor = ShiftHue(baseColor, colorVariation)
+        
+        // Rule 3: Maybe add cloud
+        IF Random() < cloudProbability * pressure:
+            cloudColor = RGB(255, 255, 255)
+            cloudOpacity = 0.6 + Random() * 0.3
+            
+            // Clouds are softer and larger
+            DrawCloudPuff(position, 
+                         size: 40 + Random() * 30,
+                         color: cloudColor,
+                         opacity: cloudOpacity)
+        ELSE:
+            // Paint sky
+            DrawSkyWash(position,
+                       size: 30 + pressure * 20,
+                       color: finalColor,
+                       opacity: 0.3 + pressure * 0.4)
+        END IF
+        
+        // Rule 4: Blend with existing content
+        IF underlyingColor != backgroundColor:
+            // Something already painted here - blend gently
+            BlendWithExisting(position, softness: 0.7)
+        END IF
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+            </section>
+
+            <!-- Section 3: Automated Detail Generation -->
+            <section id="automated-detail" class="lesson-section">
+                <h2>Automated Detail Generation 🔍</h2>
+                
+                <p>Why spend hours painting every brick in a wall, every leaf in a forest, or every blade of grass in a field? <strong>Automated detail generation</strong> analyzes your base painting and intelligently adds appropriate detail based on context!</p>
+
+                <h3>Detail Generation Strategy</h3>
+                
+                <canvas id="detail-demo" width="800" height="400" style="max-width: 100%; height: auto; border: 2px solid #ddd; border-radius: 8px; background: white; margin: 1rem 0;"></canvas>
+                
+                <script>
+                    const detailCanvas = document.getElementById('detail-demo');
+                    const detailCtx = detailCanvas.getContext('2d');
+                    
+                    // Handle high DPI
+                    const detailScale = window.devicePixelRatio || 1;
+                    detailCanvas.width = 800 * detailScale;
+                    detailCanvas.height = 400 * detailScale;
+                    detailCtx.scale(detailScale, detailScale);
+                    
+                    // Background
+                    detailCtx.fillStyle = 'white';
+                    detailCtx.fillRect(0, 0, 800, 400);
+                    
+                    // Title
+                    detailCtx.fillStyle = '#333';
+                    detailCtx.font = 'bold 18px Arial';
+                    detailCtx.textAlign = 'center';
+                    detailCtx.fillText('Automated Detail Generation Process', 400, 25);
+                    
+                    // Stage 1: Base painting
+                    detailCtx.fillStyle = '#666';
+                    detailCtx.font = '13px Arial';
+                    detailCtx.textAlign = 'center';
+                    detailCtx.fillText('Stage 1: Base Painting', 130, 60);
+                    
+                    // Simple tree shape
+                    detailCtx.fillStyle = '#8D6E63';
+                    detailCtx.fillRect(115, 150, 30, 80);
+                    
+                    detailCtx.fillStyle = '#4CAF50';
+                    detailCtx.beginPath();
+                    detailCtx.arc(130, 140, 50, 0, Math.PI * 2);
+                    detailCtx.fill();
+                    
+                    // Stage 2: Analysis
+                    detailCtx.fillText('Stage 2: Analysis', 330, 60);
+                    
+                    // Show analysis overlay
+                    detailCtx.strokeStyle = '#2196F3';
+                    detailCtx.lineWidth = 2;
+                    detailCtx.setLineDash([5, 5]);
+                    
+                    // Analyze trunk
+                    detailCtx.strokeRect(315, 150, 30, 80);
+                    detailCtx.fillStyle = '#2196F3';
+                    detailCtx.font = '10px Arial';
+                    detailCtx.fillText('Trunk detected', 330, 245);
+                    
+                    // Analyze foliage
+                    detailCtx.beginPath();
+                    detailCtx.arc(330, 140, 50, 0, Math.PI * 2);
+                    detailCtx.stroke();
+                    detailCtx.fillText('Foliage area', 330, 110);
+                    
+                    detailCtx.setLineDash([]);
+                    
+                    // Stage 3: Detail generation
+                    detailCtx.fillStyle = '#666';
+                    detailCtx.font = '13px Arial';
+                    detailCtx.fillText('Stage 3: Detail Added', 530, 60);
+                    
+                    // Trunk with bark texture
+                    detailCtx.fillStyle = '#8D6E63';
+                    detailCtx.fillRect(515, 150, 30, 80);
+                    
+                    // Add bark lines
+                    detailCtx.strokeStyle = 'rgba(62, 39, 35, 0.4)';
+                    detailCtx.lineWidth = 1;
+                    for(let i = 0; i < 12; i++) {
+                        detailCtx.beginPath();
+                        detailCtx.moveTo(515, 150 + i * 7);
+                        detailCtx.lineTo(545, 152 + i * 7);
+                        detailCtx.stroke();
+                    }
+                    
+                    // Foliage with leaves
+                    detailCtx.fillStyle = '#4CAF50';
+                    detailCtx.beginPath();
+                    detailCtx.arc(530, 140, 50, 0, Math.PI * 2);
+                    detailCtx.fill();
+                    
+                    // Add individual leaves
+                    for(let i = 0; i < 30; i++) {
+                        const angle = Math.random() * Math.PI * 2;
+                        const radius = Math.random() * 45;
+                        const x = 530 + Math.cos(angle) * radius;
+                        const y = 140 + Math.sin(angle) * radius;
+                        
+                        detailCtx.fillStyle = `rgba(76, 175, 80, ${0.5 + Math.random() * 0.5})`;
+                        detailCtx.beginPath();
+                        detailCtx.ellipse(x, y, 3, 5, angle, 0, Math.PI * 2);
+                        detailCtx.fill();
+                    }
+                    
+                    // Stage 4: Statistics
+                    detailCtx.fillStyle = '#666';
+                    detailCtx.font = '13px Arial';
+                    detailCtx.textAlign = 'center';
+                    detailCtx.fillText('Performance Metrics', 400, 280);
+                    
+                    detailCtx.font = '11px Arial';
+                    detailCtx.textAlign = 'left';
+                    
+                    const metrics = [
+                        'Manual: 15-20 minutes per tree',
+                        'Automated: 2-3 seconds per tree',
+                        'Detail elements added: 42',
+                        'Consistency: High (rule-based)',
+                        'Variations possible: Infinite'
+                    ];
+                    
+                    metrics.forEach((metric, i) => {
+                        detailCtx.fillText(metric, 250, 305 + i * 18);
+                    });
+                    
+                    // Arrow annotations
+                    detailCtx.strokeStyle = '#FF9800';
+                    detailCtx.lineWidth = 2;
+                    detailCtx.fillStyle = '#FF9800';
+                    
+                    // Arrow 1
+                    detailCtx.beginPath();
+                    detailCtx.moveTo(190, 150);
+                    detailCtx.lineTo(250, 150);
+                    detailCtx.stroke();
+                    detailCtx.beginPath();
+                    detailCtx.moveTo(250, 150);
+                    detailCtx.lineTo(245, 145);
+                    detailCtx.lineTo(245, 155);
+                    detailCtx.closePath();
+                    detailCtx.fill();
+                    
+                    // Arrow 2
+                    detailCtx.beginPath();
+                    detailCtx.moveTo(390, 150);
+                    detailCtx.lineTo(450, 150);
+                    detailCtx.stroke();
+                    detailCtx.beginPath();
+                    detailCtx.moveTo(450, 150);
+                    detailCtx.lineTo(445, 145);
+                    detailCtx.lineTo(445, 155);
+                    detailCtx.closePath();
+                    detailCtx.fill();
+                </script>
+
+                <div class="card">
+                    <h4>Detail Generation Strategies</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Strategy</th>
+                                <th>When to Use</th>
+                                <th>How It Works</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Edge Detection</strong></td>
+                                <td>After base shapes defined</td>
+                                <td>Find edges, add detail along them</td>
+                                <td>Outlines, highlights, definition</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Color Analysis</strong></td>
+                                <td>When surface type known</td>
+                                <td>Analyze color to determine material</td>
+                                <td>Material-specific details</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Density Mapping</strong></td>
+                                <td>For scattered elements</td>
+                                <td>Use density map to place details</td>
+                                <td>Foliage, crowds, particles</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pattern Recognition</strong></td>
+                                <td>When patterns present</td>
+                                <td>Detect pattern, extend it</td>
+                                <td>Bricks, tiles, repetitive elements</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Depth-Based</strong></td>
+                                <td>With depth information</td>
+                                <td>More detail in foreground</td>
+                                <td>Landscapes, scenes with depth</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Automated Detail Algorithms</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🔍 Intelligent Detail Generator</h4>
+                    <pre><code>CLASS AutomatedDetailGenerator:
+    
+    FUNCTION GenerateDetails(canvas, detailLevel):
+        // Step 1: Analyze canvas content
+        analysis = AnalyzeCanvas(canvas)
+        
+        // Step 2: Generate detail for each region
+        FOR EACH region IN analysis.regions:
+            GenerateRegionDetails(region, detailLevel)
+        END FOR
+    END FUNCTION
+    
+    FUNCTION AnalyzeCanvas(canvas):
+        regions = []
+        
+        // Segment canvas into regions by color similarity
+        segments = ColorSegmentation(canvas)
+        
+        FOR EACH segment IN segments:
+            region = {
+                bounds: segment.boundingBox,
+                averageColor: segment.meanColor,
+                area: segment.pixelCount,
+                edges: DetectEdges(segment),
+                texture: AnalyzeTexture(segment),
+                materialType: ClassifyMaterial(segment),
+                depthEstimate: EstimateDepth(segment)
+            }
+            
+            regions.push(region)
+        END FOR
+        
+        RETURN {regions: regions}
+    END FUNCTION
+    
+    FUNCTION GenerateRegionDetails(region, detailLevel):
+        // Determine detail type based on material
+        SWITCH region.materialType:
+            CASE "foliage":
+                GenerateFoliageDetails(region, detailLevel)
+            CASE "wood":
+                GenerateWoodGrain(region, detailLevel)
+            CASE "stone":
+                GenerateStoneTexture(region, detailLevel)
+            CASE "water":
+                GenerateWaterRipples(region, detailLevel)
+            CASE "sky":
+                GenerateCloudDetails(region, detailLevel)
+            CASE "fabric":
+                GenerateFabricWeave(region, detailLevel)
+            DEFAULT:
+                GenerateGenericDetails(region, detailLevel)
+        END SWITCH
+        
+        // Always add edge details
+        GenerateEdgeDetails(region.edges, detailLevel)
+    END FUNCTION
+    
+    FUNCTION GenerateFoliageDetails(region, detailLevel):
+        // Calculate detail density based on depth
+        density = detailLevel * (1.0 - region.depthEstimate)
+        leafCount = region.area * density * 0.001
+        
+        // Extract base color
+        baseHue = GetHue(region.averageColor)
+        
+        FOR i FROM 0 TO leafCount:
+            // Random position within region
+            position = RandomPointInRegion(region.bounds)
+            
+            // Vary size (smaller = more distant)
+            depthAtPoint = EstimateLocalDepth(position, region)
+            leafSize = (3 + Random() * 4) * (1.0 - depthAtPoint * 0.7)
+            
+            // Vary color slightly
+            leafHue = baseHue + Random(-15, 15)
+            leafSat = 0.6 + Random() * 0.3
+            leafBright = 0.4 + Random() * 0.3
+            leafColor = HSL(leafHue, leafSat, leafBright)
+            
+            // Draw leaf
+            leafRotation = Random() * TWO_PI
+            DrawLeaf(position, leafSize, leafRotation, leafColor)
+        END FOR
+    END FUNCTION
+    
+    FUNCTION GenerateWoodGrain(region, detailLevel):
+        // Wood has directional grain patterns
+        grainDirection = EstimateGrainDirection(region)
+        lineCount = region.area * detailLevel * 0.0005
+        
+        FOR i FROM 0 TO lineCount:
+            // Start position
+            startPos = RandomPointInRegion(region.bounds)
+            
+            // Follow grain direction with noise
+            lineLength = 20 + Random() * 30
+            points = []
+            currentPos = startPos
+            
+            FOR step FROM 0 TO lineLength:
+                // Add point
+                points.push(currentPos)
+                
+                // Move along grain with slight waviness
+                noise = PerlinNoise(currentPos.x * 0.1, currentPos.y * 0.1)
+                direction = grainDirection + noise * 0.3
+                
+                currentPos = currentPos + PolarToCartesian(1, direction)
+                
+                // Stop if out of region
+                IF NOT IsInRegion(currentPos, region.bounds):
+                    BREAK
+                END IF
+            END FOR
+            
+            // Draw grain line
+            grainColor = Darken(region.averageColor, 0.15)
+            DrawCurve(points, width: 0.5, color: grainColor, opacity: 0.3)
+        END FOR
+    END FUNCTION
+    
+    FUNCTION GenerateEdgeDetails(edges, detailLevel):
+        // Add highlights and shadows along edges
+        
+        FOR EACH edge IN edges:
+            // Determine edge type (convex or concave)
+            edgeType = ClassifyEdge(edge)
+            
+            IF edgeType == "convex":
+                // Add highlight on light-facing side
+                highlightColor = RGB(255, 255, 255)
+                DrawAlongEdge(edge, highlightColor, 
+                             width: 1 + detailLevel,
+                             opacity: 0.3 * detailLevel)
+            ELSE IF edgeType == "concave":
+                // Add shadow in crevice
+                shadowColor = RGB(0, 0, 0)
+                DrawAlongEdge(edge, shadowColor,
+                             width: 1 + detailLevel,
+                             opacity: 0.2 * detailLevel)
+            END IF
+        END FOR
+    END FUNCTION
+    
+    FUNCTION ClassifyMaterial(segment):
+        // Use color and texture to guess material type
+        
+        hue = GetHue(segment.meanColor)
+        saturation = GetSaturation(segment.meanColor)
+        brightness = GetBrightness(segment.meanColor)
+        textureComplexity = segment.texture.complexity
+        
+        // Foliage: green, medium saturation
+        IF hue >= 90 AND hue <= 150 AND saturation > 0.3:
+            RETURN "foliage"
+        END IF
+        
+        // Wood: brown/orange, low saturation
+        IF hue >= 20 AND hue <= 40 AND saturation < 0.5:
+            IF textureComplexity > 0.3:
+                RETURN "wood"
+            END IF
+        END IF
+        
+        // Stone: gray, very low saturation
+        IF saturation < 0.2 AND brightness > 0.3 AND brightness < 0.7:
+            RETURN "stone"
+        END IF
+        
+        // Water: blue-green, high saturation
+        IF hue >= 170 AND hue <= 210 AND saturation > 0.4:
+            RETURN "water"
+        END IF
+        
+        // Sky: light blue, high brightness
+        IF hue >= 190 AND hue <= 220 AND brightness > 0.7:
+            RETURN "sky"
+        END IF
+        
+        RETURN "generic"
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>💡 Pro Workflow:</strong> Paint your composition in broad strokes, establish values and colors, then run automated detail generation as a final pass. You maintain creative control while the algorithm handles tedious repetitive work!
+                </blockquote>
+
+                <h3>Intelligent Detail Placement</h3>
+                
+                <div class="card">
+                    <h4>Smart Placement Algorithm</h4>
+                    <pre><code>// Avoid uniform distribution - make it look natural
+FUNCTION IntelligentPlacement(region, elementCount):
+    placements = []
+    
+    // Create importance map
+    importanceMap = GenerateImportanceMap(region)
+    
+    // Poisson disk sampling with importance weighting
+    candidates = []
+    attempts = 0
+    maxAttempts = elementCount * 10
+    
+    WHILE placements.length < elementCount AND attempts < maxAttempts:
+        // Sample position weighted by importance
+        candidate = SampleByImportance(region, importanceMap)
+        
+        // Check minimum distance to existing placements
+        minDist = CalculateMinDistance(candidate, region.depthEstimate)
+        
+        IF IsValidPlacement(candidate, placements, minDist):
+            placements.push(candidate)
+        END IF
+        
+        attempts++
+    END WHILE
+    
+    RETURN placements
+END FUNCTION
+
+FUNCTION GenerateImportanceMap(region):
+    // Higher importance = more details
+    importanceMap = CreateMap(region.bounds)
+    
+    // More important near edges
+    FOR EACH pixel IN region.bounds:
+        distToEdge = DistanceToNearestEdge(pixel, region.edges)
+        edgeImportance = exp(-distToEdge / 20)  // Falloff
+        
+        // More important in focal areas
+        distToFocus = DistanceToFocalPoint(pixel)
+        focalImportance = 1.0 - (distToFocus / maxDistance)
+        
+        // More important in foreground
+        depth = EstimateDepth(pixel)
+        depthImportance = 1.0 - depth
+        
+        // Combine factors
+        importance = edgeImportance * 0.3 +
+                    focalImportance * 0.4 +
+                    depthImportance * 0.3
+        
+        importanceMap[pixel] = importance
+    END FOR
+    
+    RETURN importanceMap
+END FUNCTION</code></pre>
+                </div>
+            </section>
+
+
+            <!-- Section 4: Fractal & Noise Brushes -->
+            <section id="fractal-noise" class="lesson-section">
+                <h2>Fractal & Noise Brushes 🌀</h2>
+                
+                <p>Nature is full of <strong>self-similar patterns</strong> - coastlines, mountains, trees, clouds. Fractals and noise functions let you harness these patterns to create infinitely detailed, organic-looking art with minimal effort!</p>
+
+                <blockquote>
+                    <strong>🌟 The Fractal Principle:</strong> "A fractal is a pattern where each part, no matter how small, resembles the whole." This principle appears everywhere in nature - and in the best procedural brushes!
+                </blockquote>
+
+                <h3>Understanding Fractal Brushes</h3>
+                
+                <canvas id="fractal-demo" width="800" height="450" style="max-width: 100%; height: auto; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; margin: 1rem 0;"></canvas>
+                
+                <script>
+                    const fractCanvas = document.getElementById('fractal-demo');
+                    const fractCtx = fractCanvas.getContext('2d');
+                    
+                    // Handle high DPI
+                    const fractScale = window.devicePixelRatio || 1;
+                    fractCanvas.width = 800 * fractScale;
+                    fractCanvas.height = 450 * fractScale;
+                    fractCtx.scale(fractScale, fractScale);
+                    
+                    // Background
+                    fractCtx.fillStyle = '#f5f5f5';
+                    fractCtx.fillRect(0, 0, 800, 450);
+                    
+                    // Title
+                    fractCtx.fillStyle = '#333';
+                    fractCtx.font = 'bold 18px Arial';
+                    fractCtx.textAlign = 'center';
+                    fractCtx.fillText('Fractal & Noise Pattern Examples', 400, 25);
+                    
+                    // Example 1: Fractal Tree
+                    fractCtx.fillStyle = '#666';
+                    fractCtx.font = '13px Arial';
+                    fractCtx.textAlign = 'center';
+                    fractCtx.fillText('Fractal Tree (Self-Similar)', 130, 60);
+                    
+                    function drawFractalTree(x, y, length, angle, depth, branchAngle) {
+                        if (depth === 0) return;
+                        
+                        const endX = x + Math.cos(angle) * length;
+                        const endY = y + Math.sin(angle) * length;
+                        
+                        fractCtx.strokeStyle = `rgba(101, 67, 33, ${depth / 7})`;
+                        fractCtx.lineWidth = depth * 0.8;
+                        fractCtx.beginPath();
+                        fractCtx.moveTo(x, y);
+                        fractCtx.lineTo(endX, endY);
+                        fractCtx.stroke();
+                        
+                        const newLength = length * 0.7;
+                        drawFractalTree(endX, endY, newLength, angle - branchAngle, depth - 1, branchAngle);
+                        drawFractalTree(endX, endY, newLength, angle + branchAngle, depth - 1, branchAngle);
+                    }
+                    
+                    drawFractalTree(130, 160, 35, -Math.PI / 2, 7, 0.5);
+                    
+                    // Example 2: Perlin Noise Terrain
+                    fractCtx.fillText('Perlin Noise (Smooth)', 330, 60);
+                    
+                    // Simple Perlin-like noise visualization
+                    for(let x = 0; x < 120; x++) {
+                        const noiseValue = Math.sin(x * 0.05) * 0.3 + 
+                                         Math.sin(x * 0.02) * 0.4 + 
+                                         Math.sin(x * 0.01) * 0.3;
+                        const height = 80 + noiseValue * 40;
+                        
+                        fractCtx.fillStyle = 'rgba(76, 175, 80, 0.6)';
+                        fractCtx.fillRect(270 + x, height, 1, 160 - height);
+                    }
+                    
+                    // Example 3: Fractal Brownian Motion
+                    fractCtx.fillText('FBM (Multiple Octaves)', 530, 60);
+                    
+                    for(let x = 0; x < 120; x++) {
+                        let fbm = 0;
+                        let amplitude = 1;
+                        let frequency = 0.02;
+                        
+                        // 4 octaves
+                        for(let i = 0; i < 4; i++) {
+                            fbm += Math.sin(x * frequency) * amplitude;
+                            amplitude *= 0.5;
+                            frequency *= 2;
+                        }
+                        
+                        const height = 80 + fbm * 30;
+                        fractCtx.fillStyle = 'rgba(156, 39, 176, 0.6)';
+                        fractCtx.fillRect(470 + x, height, 1, 160 - height);
+                    }
+                    
+                    // Example 4: Mandelbrot Set Preview
+                    fractCtx.fillText('Mandelbrot Set', 130, 195);
+                    
+                    const mandelbrotSize = 100;
+                    for(let px = 0; px < mandelbrotSize; px++) {
+                        for(let py = 0; py < mandelbrotSize; py++) {
+                            // Map to complex plane
+                            const x0 = (px / mandelbrotSize) * 3.5 - 2.5;
+                            const y0 = (py / mandelbrotSize) * 2 - 1;
+                            
+                            let x = 0, y = 0;
+                            let iteration = 0;
+                            const maxIteration = 50;
+                            
+                            while(x*x + y*y <= 4 && iteration < maxIteration) {
+                                const xtemp = x*x - y*y + x0;
+                                y = 2*x*y + y0;
+                                x = xtemp;
+                                iteration++;
+                            }
+                            
+                            const brightness = iteration === maxIteration ? 0 : (iteration / maxIteration) * 255;
+                            fractCtx.fillStyle = `rgb(${brightness}, ${brightness * 0.5}, ${brightness * 0.8})`;
+                            fractCtx.fillRect(80 + px, 210 + py, 1, 1);
+                        }
+                    }
+                    
+                    // Example 5: Worley Noise (Cellular)
+                    fractCtx.fillText('Worley/Cellular Noise', 330, 195);
+                    
+                    // Generate random points
+                    const cellPoints = [];
+                    for(let i = 0; i < 20; i++) {
+                        cellPoints.push({
+                            x: 270 + Math.random() * 120,
+                            y: 210 + Math.random() * 100
+                        });
+                    }
+                    
+                    // Draw Worley pattern
+                    for(let x = 270; x < 390; x += 2) {
+                        for(let y = 210; y < 310; y += 2) {
+                            // Find distance to nearest point
+                            let minDist = Infinity;
+                            cellPoints.forEach(point => {
+                                const dist = Math.sqrt(Math.pow(x - point.x, 2) + Math.pow(y - point.y, 2));
+                                minDist = Math.min(minDist, dist);
+                            });
+                            
+                            const brightness = Math.min(255, minDist * 3);
+                            fractCtx.fillStyle = `rgb(${brightness}, ${brightness}, ${brightness})`;
+                            fractCtx.fillRect(x, y, 2, 2);
+                        }
+                    }
+                    
+                    // Example 6: Turbulence
+                    fractCtx.fillText('Turbulence (Abs Noise)', 530, 195);
+                    
+                    for(let x = 0; x < 120; x++) {
+                        for(let y = 0; y < 100; y++) {
+                            let turbulence = 0;
+                            let amplitude = 1;
+                            let frequency = 0.02;
+                            
+                            for(let i = 0; i < 3; i++) {
+                                turbulence += Math.abs(Math.sin(x * frequency) * Math.cos(y * frequency)) * amplitude;
+                                amplitude *= 0.5;
+                                frequency *= 2;
+                            }
+                            
+                            const brightness = Math.min(255, turbulence * 200);
+                            fractCtx.fillStyle = `rgb(${brightness}, ${brightness * 0.7}, ${brightness * 0.5})`;
+                            fractCtx.fillRect(470 + x, 210 + y, 1, 1);
+                        }
+                    }
+                    
+                    // Bottom: Practical Applications
+                    fractCtx.fillStyle = '#333';
+                    fractCtx.font = 'bold 14px Arial';
+                    fractCtx.textAlign = 'center';
+                    fractCtx.fillText('Practical Applications in Art', 400, 340);
+                    
+                    fractCtx.font = '11px Arial';
+                    fractCtx.fillStyle = '#666';
+                    
+                    const applications = [
+                        'Fractals: Trees, lightning, cracks, blood vessels',
+                        'Perlin: Terrain, clouds, organic surfaces, skin',
+                        'FBM: Mountains, detailed landscapes, natural textures',
+                        'Worley: Stone, reptile scales, cellular structures',
+                        'Turbulence: Marble, fire, energy effects, chaos'
+                    ];
+                    
+                    applications.forEach((app, i) => {
+                        fractCtx.fillText(app, 400, 365 + i * 16);
+                    });
+                </script>
+
+                <div class="card">
+                    <h4>Fractal & Noise Functions Comparison</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Function</th>
+                                <th>Characteristics</th>
+                                <th>Computation Cost</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Perlin Noise</strong></td>
+                                <td>Smooth, continuous gradients</td>
+                                <td>Medium</td>
+                                <td>Natural terrain, clouds, organic forms</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Simplex Noise</strong></td>
+                                <td>Like Perlin but faster, less artifacts</td>
+                                <td>Low-Medium</td>
+                                <td>Real-time applications, same uses as Perlin</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Worley Noise</strong></td>
+                                <td>Cellular, organic cell patterns</td>
+                                <td>High</td>
+                                <td>Stone, scales, cracked surfaces, cells</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FBM (Fractal Brownian)</strong></td>
+                                <td>Multiple octaves, highly detailed</td>
+                                <td>High</td>
+                                <td>Complex terrain, detailed clouds, rich textures</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Turbulence</strong></td>
+                                <td>Absolute value of noise, chaotic</td>
+                                <td>Medium</td>
+                                <td>Marble, fire, energy, swirls</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Domain Warping</strong></td>
+                                <td>Noise distorted by other noise</td>
+                                <td>Very High</td>
+                                <td>Complex organic patterns, surreal effects</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Implementing Fractal Brushes</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🌀 Fractal Brownian Motion Brush</h4>
+                    <pre><code>CLASS FBMBrush:
+    octaves = 4           // Number of noise layers
+    lacunarity = 2.0      // Frequency multiplier per octave
+    persistence = 0.5     // Amplitude multiplier per octave
+    
+    FUNCTION Paint(position, pressure, size):
+        // Generate FBM value for this position
+        fbmValue = FractalBrownianMotion(
+            position.x, 
+            position.y,
+            octaves,
+            lacunarity,
+            persistence
+        )
+        
+        // Map FBM value to brush properties
+        // FBM typically ranges from -1 to 1
+        normalizedFBM = (fbmValue + 1.0) / 2.0  // Now 0 to 1
+        
+        // Use FBM to vary size
+        actualSize = size * (0.5 + normalizedFBM * 0.5)
+        
+        // Use FBM to vary opacity
+        actualOpacity = pressure * (0.3 + normalizedFBM * 0.7)
+        
+        // Use FBM to vary color (for terrain/organic effects)
+        colorShift = normalizedFBM * 40  // Hue shift
+        shiftedColor = ShiftHue(baseColor, colorShift)
+        
+        // Apply the stamp
+        DrawStamp(position, actualSize, actualOpacity, shiftedColor)
+    END FUNCTION
+    
+    FUNCTION FractalBrownianMotion(x, y, octaves, lacunarity, persistence):
+        value = 0.0
+        amplitude = 1.0
+        frequency = 1.0
+        maxValue = 0.0  // For normalization
+        
+        FOR i FROM 0 TO octaves - 1:
+            // Get noise value at this frequency
+            noiseValue = PerlinNoise(x * frequency, y * frequency)
+            
+            // Accumulate
+            value += noiseValue * amplitude
+            maxValue += amplitude
+            
+            // Adjust for next octave
+            amplitude *= persistence
+            frequency *= lacunarity
+        END FOR
+        
+        // Normalize to -1 to 1 range
+        RETURN value / maxValue
+    END FUNCTION
+    
+    FUNCTION PerlinNoise(x, y):
+        // Get integer parts
+        xi = floor(x)
+        yi = floor(y)
+        
+        // Get fractional parts
+        xf = x - xi
+        yf = y - yi
+        
+        // Get gradients at corners
+        g00 = GradientAt(xi, yi)
+        g10 = GradientAt(xi + 1, yi)
+        g01 = GradientAt(xi, yi + 1)
+        g11 = GradientAt(xi + 1, yi + 1)
+        
+        // Calculate dot products
+        d00 = Dot(g00, xf, yf)
+        d10 = Dot(g10, xf - 1, yf)
+        d01 = Dot(g01, xf, yf - 1)
+        d11 = Dot(g11, xf - 1, yf - 1)
+        
+        // Interpolate
+        u = Fade(xf)
+        v = Fade(yf)
+        
+        x1 = Lerp(d00, d10, u)
+        x2 = Lerp(d01, d11, u)
+        
+        RETURN Lerp(x1, x2, v)
+    END FUNCTION
+    
+    FUNCTION Fade(t):
+        // Smoothstep function: 6t^5 - 15t^4 + 10t^3
+        RETURN t * t * t * (t * (t * 6 - 15) + 10)
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+
+                <h3>Advanced Fractal Techniques</h3>
+                
+                <div class="card">
+                    <h4>Technique 1: Domain Warping</h4>
+                    <p>Use noise to distort the input coordinates of other noise - creates incredibly organic patterns!</p>
+                    <pre><code>FUNCTION DomainWarpedNoise(x, y):
+    // First layer of noise to warp coordinates
+    warpX = FBM(x * 0.5, y * 0.5, octaves: 2)
+    warpY = FBM(x * 0.5 + 100, y * 0.5, octaves: 2)
+    
+    // Scale the warp
+    warpStrength = 40
+    warpedX = x + warpX * warpStrength
+    warpedY = y + warpY * warpStrength
+    
+    // Sample noise at warped coordinates
+    finalNoise = FBM(warpedX * 0.02, warpedY * 0.02, octaves: 4)
+    
+    RETURN finalNoise
+END FUNCTION
+
+// Creates flowing, organic patterns like wood grain or marble</code></pre>
+
+                    <h4>Technique 2: Ridged Multifractal</h4>
+                    <p>Creates sharp ridges - perfect for mountain ranges and dramatic terrain!</p>
+                    <pre><code>FUNCTION RidgedMultifractal(x, y, octaves):
+    value = 0.0
+    amplitude = 1.0
+    frequency = 1.0
+    
+    FOR i FROM 0 TO octaves - 1:
+        // Get noise
+        noise = PerlinNoise(x * frequency, y * frequency)
+        
+        // Create ridge: 1 - |noise|
+        noise = 1.0 - abs(noise)
+        
+        // Square for sharper ridges
+        noise = noise * noise
+        
+        // Accumulate
+        value += noise * amplitude
+        
+        // Next octave
+        amplitude *= 0.5
+        frequency *= 2.0
+    END FOR
+    
+    RETURN value
+END FUNCTION</code></pre>
+
+                    <h4>Technique 3: Cellular/Worley Noise</h4>
+                    <pre><code>FUNCTION WorleyNoise(x, y, pointDensity):
+    // Generate feature points in a grid
+    cellSize = 1.0 / pointDensity
+    
+    // Find which cell we're in
+    cellX = floor(x / cellSize)
+    cellY = floor(y / cellSize)
+    
+    minDist = Infinity
+    secondMinDist = Infinity
+    
+    // Check this cell and neighbors
+    FOR offsetX FROM -1 TO 1:
+        FOR offsetY FROM -1 TO 1:
+            checkX = cellX + offsetX
+            checkY = cellY + offsetY
+            
+            // Get random point in this cell
+            point = GetCellPoint(checkX, checkY, cellSize)
+            
+            // Calculate distance
+            dist = Distance(x, y, point.x, point.y)
+            
+            IF dist < minDist:
+                secondMinDist = minDist
+                minDist = dist
+            ELSE IF dist < secondMinDist:
+                secondMinDist = dist
+            END IF
+        END FOR
+    END FOR
+    
+    // Return distance(s) - can use different combinations
+    RETURN {
+        f1: minDist,                    // Distance to nearest
+        f2: secondMinDist,              // Distance to second nearest
+        f2_minus_f1: secondMinDist - minDist  // Cell border
+    }
+END FUNCTION
+
+FUNCTION GetCellPoint(cellX, cellY, cellSize):
+    // Deterministic random point for this cell
+    seed = Hash(cellX, cellY)
+    random = PseudoRandom(seed)
+    
+    RETURN {
+        x: (cellX + random.x) * cellSize,
+        y: (cellY + random.y) * cellSize
+    }
+END FUNCTION</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>🎨 Artist's Application:</strong> Combine multiple noise functions for rich results! Use FBM for overall shape, Worley for cellular detail, turbulence for chaos, and domain warping for organic flow. Layer them like you layer paint!
+                </blockquote>
+
+                <h3>Practical Fractal Brush Applications</h3>
+                
+                <div class="card">
+                    <h4>Application 1: Mountain Terrain Brush</h4>
+                    <pre><code>CLASS MountainTerrainBrush:
+    
+    FUNCTION Paint(position, size):
+        FOR x FROM position.x - size TO position.x + size:
+            // Calculate height using ridged multifractal
+            height = RidgedMultifractal(x * 0.01, 0, octaves: 5)
+            
+            // Scale height
+            actualHeight = height * size * 2
+            
+            // Calculate color based on height
+            IF height < 0.3:
+                color = RGB(76, 175, 80)  // Green (low)
+            ELSE IF height < 0.6:
+                color = RGB(139, 69, 19)  // Brown (mid)
+            ELSE IF height < 0.8:
+                color = RGB(128, 128, 128)  // Gray (high)
+            ELSE:
+                color = RGB(255, 255, 255)  // White (peak/snow)
+            END IF
+            
+            // Add noise to color
+            colorNoise = PerlinNoise(x * 0.05, height * 10)
+            color = VaryColor(color, colorNoise * 20)
+            
+            // Draw vertical line for this x
+            DrawLine(
+                x, position.y,
+                x, position.y - actualHeight,
+                color
+            )
+        END FOR
+    END FUNCTION
+END CLASS</code></pre>
+
+                    <h4>Application 2: Organic Cloud Brush</h4>
+                    <pre><code>CLASS OrganicCloudBrush:
+    
+    FUNCTION Paint(position, size, pressure):
+        // Use FBM for cloud shape
+        FOR offsetX FROM -size TO size:
+            FOR offsetY FROM -size TO size:
+                px = position.x + offsetX
+                py = position.y + offsetY
+                
+                // Calculate distance from center
+                dist = sqrt(offsetX * offsetX + offsetY * offsetY)
+                IF dist > size: CONTINUE
+                
+                // Use FBM for density
+                density = FBM(px * 0.01, py * 0.01, octaves: 3)
+                
+                // Fade out from center
+                falloff = 1.0 - (dist / size)
+                
+                // Combine
+                opacity = density * falloff * pressure * 0.3
+                
+                IF opacity > 0.05:
+                    // Add color variation
+                    brightness = 220 + density * 35
+                    color = RGB(brightness, brightness, brightness)
+                    
+                    BlendPixel(px, py, color, opacity)
+                END IF
+            END FOR
+        END FOR
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+            </section>
+
+            <!-- Section 5: L-Systems -->
+            <section id="l-systems" class="lesson-section">
+                <h2>L-Systems & Recursive Patterns 🌿</h2>
+                
+                <p><strong>L-Systems</strong> (Lindenmayer Systems) are a mathematical formalism for describing the growth of plants and other organic structures. They're perfect for generating realistic trees, plants, and natural patterns!</p>
+
+                <blockquote>
+                    <strong>🌱 The L-System Principle:</strong> Start with a simple axiom (seed), apply rewriting rules repeatedly, interpret the result as drawing commands. Simple rules create complex, natural-looking structures!
+                </blockquote>
+
+                <h3>Understanding L-Systems</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🌳 L-System Basics</h4>
+                    <pre><code>// Simple L-System Example: Plant Growth
+
+Axiom: F
+Rules: 
+  F → F[+F]F[-F]F
+
+Interpretation:
+  F = Draw forward
+  + = Turn right 25°
+  - = Turn left 25°
+  [ = Push position/angle to stack
+  ] = Pop position/angle from stack
+
+Generation:
+  0: F
+  1: F[+F]F[-F]F
+  2: F[+F]F[-F]F[+F[+F]F[-F]F]F[+F]F[-F]F[-F[+F]F[-F]F]F[+F]F[-F]F
+  (Continues exponentially...)
+
+Result: Natural-looking branching plant!</code></pre>
+                </div>
+
+                <h3>L-System Implementation</h3>
+                
+                <div class="card">
+                    <h4>Complete L-System Engine</h4>
+                    <pre><code>CLASS LSystemGenerator:
+    axiom = ""
+    rules = {}
+    angle = 25
+    iterations = 0
+    
+    FUNCTION Initialize(axiom, rules, angle, iterations):
+        this.axiom = axiom
+        this.rules = rules
+        this.angle = angle
+        this.iterations = iterations
+    END FUNCTION
+    
+    FUNCTION Generate():
+        current = axiom
+        
+        // Apply rules iteratively
+        FOR i FROM 0 TO iterations - 1:
+            current = ApplyRules(current)
+        END FOR
+        
+        RETURN current
+    END FUNCTION
+    
+    FUNCTION ApplyRules(input):
+        output = ""
+        
+        FOR EACH character IN input:
+            IF rules.hasKey(character):
+                // Apply rule
+                output += rules[character]
+            ELSE:
+                // No rule, keep character
+                output += character
+            END IF
+        END FOR
+        
+        RETURN output
+    END FUNCTION
+    
+    FUNCTION Interpret(commands, startPosition, startAngle, stepSize):
+        position = startPosition
+        angle = startAngle
+        stack = []  // For storing state
+        
+        FOR EACH command IN commands:
+            SWITCH command:
+                CASE 'F':  // Draw forward
+                    newPosition = position + PolarToCartesian(stepSize, angle)
+                    DrawLine(position, newPosition)
+                    position = newPosition
+                
+                CASE 'f':  // Move forward (no draw)
+                    position += PolarToCartesian(stepSize, angle)
+                
+                CASE '+':  // Turn right
+                    angle += this.angle * DEG_TO_RAD
+                
+                CASE '-':  // Turn left
+                    angle -= this.angle * DEG_TO_RAD
+                
+                CASE '[':  // Push state
+                    stack.push({position: position, angle: angle})
+                
+                CASE ']':  // Pop state
+                    state = stack.pop()
+                    position = state.position
+                    angle = state.angle
+                
+                CASE '|':  // Turn around
+                    angle += PI
+            END SWITCH
+        END FOR
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+
+                <h3>L-System Plant Examples</h3>
+                
+                <div class="card">
+                    <h4>Collection of Plant L-Systems</h4>
+                    
+                    <p><strong>1. Simple Tree</strong></p>
+                    <pre><code>Axiom: F
+Rules: F → FF+[+F-F-F]-[-F+F+F]
+Angle: 22.5°
+Iterations: 4
+
+Result: Realistic deciduous tree</code></pre>
+
+                    <p><strong>2. Bush/Shrub</strong></p>
+                    <pre><code>Axiom: F
+Rules: F → F[+F]F[-F][F]
+Angle: 20°
+Iterations: 5
+
+Result: Dense, bushy plant</code></pre>
+
+                    <p><strong>3. Fern</strong></p>
+                    <pre><code>Axiom: X
+Rules: 
+  X → F+[[X]-X]-F[-FX]+X
+  F → FF
+Angle: 25°
+Iterations: 6
+
+Result: Realistic fern frond</code></pre>
+
+                    <p><strong>4. Seaweed/Kelp</strong></p>
+                    <pre><code>Axiom: F
+Rules: F → F[+F]F[-F]+F
+Angle: 15°
+Iterations: 5
+
+Result: Organic seaweed shape</code></pre>
+
+                    <p><strong>5. Branching Coral</strong></p>
+                    <pre><code>Axiom: F
+Rules: F → FF-[-F+F]+[+F-F]
+Angle: 25°
+Iterations: 4
+
+Result: Coral-like branching structure</code></pre>
+                </div>
+
+                <h3>Advanced L-System Techniques</h3>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>🔬 Stochastic L-Systems</h4>
+                    <p>Add randomness for more natural variation!</p>
+                    <pre><code>// Instead of deterministic rules, use probability
+
+Rules:
+  F → F[+F]F[-F]F (50%)
+  F → F[++F][-F]F (30%)
+  F → F[+F][--F]F (20%)
+
+FUNCTION ApplyStochasticRules(character):
+    IF character == 'F':
+        random = Random(0, 1)
+        
+        IF random < 0.5:
+            RETURN "F[+F]F[-F]F"
+        ELSE IF random < 0.8:
+            RETURN "F[++F][-F]F"
+        ELSE:
+            RETURN "F[+F][--F]F"
+        END IF
+    END IF
+    
+    RETURN character
+END FUNCTION
+
+// Each generation creates unique variation!</code></pre>
+
+                    <h4>🎨 Parametric L-Systems</h4>
+                    <p>Pass parameters through the system for fine control!</p>
+                    <pre><code>// Parameters can control length, thickness, etc.
+
+Axiom: F(10,1)
+Rules: F(l,w) → F(l*0.7,w*0.8)[+F(l*0.5,w*0.6)][-F(l*0.5,w*0.6)]
+
+Interpretation:
+  F(l,w) = Draw forward length l, width w
+  
+Result: Branches taper naturally!</code></pre>
+
+                    <h4>🌈 Context-Sensitive L-Systems</h4>
+                    <p>Rules depend on neighboring symbols!</p>
+                    <pre><code>// Syntax: left < symbol > right → replacement
+
+Rules:
+  F < F > F → F    // F between two Fs stays F
+  F < F >   → F[+F] // F before nothing branches
+    < F > F → F[-F] // F after nothing branches
+    
+// Creates more realistic, context-aware growth!</code></pre>
+                </div>
+
+                <h3>Combining L-Systems with Art</h3>
+                
+                <div class="card">
+                    <h4>Artistic L-System Brush</h4>
+                    <pre><code>CLASS ArtisticLSystemBrush:
+    lsystem = LSystemGenerator()
+    
+    FUNCTION Paint(position, size, style):
+        // Choose L-System based on style
+        SWITCH style:
+            CASE "tree":
+                lsystem.Initialize(
+                    axiom: "F",
+                    rules: {"F": "FF+[+F-F-F]-[-F+F+F]"},
+                    angle: 22.5,
+                    iterations: 4
+                )
+            CASE "fern":
+                lsystem.Initialize(
+                    axiom: "X",
+                    rules: {
+                        "X": "F+[[X]-X]-F[-FX]+X",
+                        "F": "FF"
+                    },
+                    angle: 25,
+                    iterations: 5
+                )
+            CASE "bush":
+                lsystem.Initialize(
+                    axiom: "F",
+                    rules: {"F": "F[+F]F[-F][F]"},
+                    angle: 20,
+                    iterations: 4
+                )
+        END SWITCH
+        
+        // Generate structure
+        commands = lsystem.Generate()
+        
+        // Calculate step size based on desired size
+        // (More iterations = more detailed = smaller steps)
+        stepSize = size / pow(2, lsystem.iterations)
+        
+        // Interpret with artistic flourishes
+        InterpretArtistically(commands, position, stepSize, style)
+    END FUNCTION
+    
+    FUNCTION InterpretArtistically(commands, position, stepSize, style):
+        currentPos = position
+        currentAngle = -PI / 2  // Point up
+        stack = []
+        depth = 0  // Track depth for coloring
+        
+        FOR EACH command IN commands:
+            SWITCH command:
+                CASE 'F':
+                    newPos = currentPos + PolarToCartesian(stepSize, currentAngle)
+                    
+                    // Artistic additions:
+                    
+                    // 1. Color based on depth
+                    color = CalculateDepthColor(depth, style)
+                    
+                    // 2. Width based on depth (thicker at base)
+                    width = max(1, 5 - depth * 0.5)
+                    
+                    // 3. Add slight wobble for organic feel
+                    wobble = PerlinNoise(currentPos.x * 0.1, currentPos.y * 0.1) * 2
+                    adjustedAngle = currentAngle + wobble * 0.1
+                    
+                    // 4. Draw with artistic style
+                    DrawStylizedLine(currentPos, newPos, width, color, style)
+                    
+                    // 5. Maybe add leaves at tips
+                    IF depth > lsystem.iterations - 2:
+                        IF Random() < 0.3:
+                            DrawLeaf(newPos, adjustedAngle, style)
+                        END IF
+                    END IF
+                    
+                    currentPos = newPos
+                
+                CASE '+':
+                    // Add slight randomness to angle
+                    currentAngle += (lsystem.angle + Random(-3, 3)) * DEG_TO_RAD
+                
+                CASE '-':
+                    currentAngle -= (lsystem.angle + Random(-3, 3)) * DEG_TO_RAD
+                
+                CASE '[':
+                    stack.push({
+                        position: currentPos,
+                        angle: currentAngle,
+                        depth: depth
+                    })
+                    depth++
+                
+                CASE ']':
+                    state = stack.pop()
+                    currentPos = state.position
+                    currentAngle = state.angle
+                    depth = state.depth
+            END SWITCH
+        END FOR
+    END FUNCTION
+    
+    FUNCTION CalculateDepthColor(depth, style):
+        IF style == "tree":
+            // Trunk = brown, branches = brown, leaves = green
+            IF depth < 2:
+                RETURN RGB(101, 67, 33)  // Brown trunk
+            ELSE IF depth < 4:
+                RETURN RGB(139, 90, 43)  // Lighter brown branches
+            ELSE:
+                RETURN RGB(76, 175, 80)  // Green leaves
+            END IF
+        ELSE IF style == "fern":
+            // Gradient from dark to light green
+            greenShade = 100 + depth * 15
+            RETURN RGB(76, greenShade, 80)
+        END IF
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>💡 Pro Tip:</strong> L-Systems are perfect for <strong>instant forests</strong>! Generate multiple trees with slight parameter variations, place them procedurally, and you have a complete forest in seconds instead of hours!
+                </blockquote>
+            </section>
+
+
+            <!-- Section 6: Pattern-Based Workflows -->
+            <section id="pattern-workflows" class="lesson-section">
+                <h2>Pattern-Based Workflows 🔄</h2>
+                
+                <p>Pattern-based workflows leverage <strong>repetition with variation</strong> to create complex artwork efficiently. Instead of painting every instance manually, you create smart systems that handle repetitive elements while maintaining artistic variation.</p>
+
+                <h3>Pattern Workflow Strategies</h3>
+                
+                <div class="mermaid">
+                    flowchart TD
+                        A[Identify Repeating Elements] --> B{Pattern Type?}
+                        
+                        B -->|Geometric| C[Tile System]
+                        B -->|Organic| D[Scatter System]
+                        B -->|Linear| E[Path System]
+                        
+                        C --> C1[Define Base Tile]
+                        C1 --> C2[Create Variations]
+                        C2 --> C3[Arrange Grid/Pattern]
+                        
+                        D --> D1[Define Element Template]
+                        D1 --> D2[Generate Variations]
+                        D2 --> D3[Scatter with Rules]
+                        
+                        E --> E1[Define Path]
+                        E1 --> E2[Place Along Path]
+                        E2 --> E3[Vary Parameters]
+                        
+                        C3 --> F[Refine & Polish]
+                        D3 --> F
+                        E3 --> F
+                        
+                        F --> G{Satisfactory?}
+                        G -->|No| H[Adjust Parameters]
+                        G -->|Yes| I[Complete]
+                        
+                        H --> B
+                        
+                        style B fill:#667eea
+                        style F fill:#4CAF50
+                        style I fill:#e91e63
+                </div>
+
+                <h3>Workflow 1: Brick Wall Generator</h3>
+                
+                <div class="card">
+                    <h4>Complete Brick Pattern System</h4>
+                    <pre><code>CLASS BrickWallGenerator:
+    brickWidth = 60
+    brickHeight = 30
+    mortarThickness = 4
+    colorVariation = 15  // Hue degrees
+    damageLevel = 0.2    // 0-1
+    
+    FUNCTION Generate(width, height, position):
+        rows = floor(height / (brickHeight + mortarThickness))
+        
+        FOR row FROM 0 TO rows - 1:
+            // Calculate offset for running bond pattern
+            offset = (row % 2) * (brickWidth / 2)
+            
+            // Calculate how many bricks fit
+            bricksInRow = ceil(width / (brickWidth + mortarThickness)) + 1
+            
+            FOR col FROM 0 TO bricksInRow - 1:
+                brickX = position.x + offset + col * (brickWidth + mortarThickness)
+                brickY = position.y + row * (brickHeight + mortarThickness)
+                
+                // Generate varied brick
+                GenerateBrick(brickX, brickY)
+            END FOR
+        END FOR
+        
+        // Add mortar
+        GenerateMortar(position, width, height)
+    END FUNCTION
+    
+    FUNCTION GenerateBrick(x, y):
+        // Base color with variation
+        baseHue = 15  // Reddish
+        hue = baseHue + Random(-colorVariation, colorVariation)
+        sat = 0.6 + Random() * 0.2
+        bright = 0.4 + Random() * 0.2
+        brickColor = HSL(hue, sat, bright)
+        
+        // Draw base brick
+        DrawRectangle(x, y, brickWidth, brickHeight, brickColor)
+        
+        // Add texture
+        AddBrickTexture(x, y, brickWidth, brickHeight)
+        
+        // Maybe add damage
+        IF Random() < damageLevel:
+            AddBrickDamage(x, y, brickWidth, brickHeight)
+        END IF
+        
+        // Add lighting (top lighter, bottom darker)
+        AddBrickLighting(x, y, brickWidth, brickHeight)
+    END FUNCTION
+    
+    FUNCTION AddBrickTexture(x, y, width, height):
+        // Add small details
+        detailCount = Random(5, 15)
+        
+        FOR i FROM 0 TO detailCount:
+            dx = x + Random() * width
+            dy = y + Random() * height
+            size = Random(1, 3)
+            
+            // Darker spots
+            detailColor = RGB(
+                Random(100, 140),
+                Random(60, 100),
+                Random(40, 80)
+            )
+            
+            DrawSpot(dx, dy, size, detailColor, opacity: 0.3)
+        END FOR
+        
+        // Add subtle grain
+        FOR gx FROM x TO x + width STEP 2:
+            FOR gy FROM y TO y + height STEP 2:
+                IF Random() > 0.7:
+                    noise = PerlinNoise(gx * 0.1, gy * 0.1)
+                    alpha = abs(noise) * 0.1
+                    DrawPixel(gx, gy, RGB(0,0,0), alpha)
+                END IF
+            END FOR
+        END FOR
+    END FUNCTION
+    
+    FUNCTION AddBrickDamage(x, y, width, height):
+        damageType = Random()
+        
+        IF damageType < 0.4:
+            // Chip in corner
+            chipSize = Random(3, 8)
+            corner = RandomChoice(["topLeft", "topRight", "bottomLeft", "bottomRight"])
+            DrawChip(x, y, width, height, corner, chipSize)
+        ELSE IF damageType < 0.7:
+            // Crack
+            startX = x + Random() * width
+            DrawCrack(startX, y, startX + Random(-5,5), y + height)
+        ELSE:
+            // Weathering stain
+            stainX = x + Random() * width
+            stainY = y + Random() * height
+            DrawWeatheringStain(stainX, stainY, size: Random(5,15))
+        END IF
+    END FUNCTION
+    
+    FUNCTION AddBrickLighting(x, y, width, height):
+        // Top highlight
+        highlightGradient = CreateGradient(
+            start: {x: x, y: y},
+            end: {x: x, y: y + height * 0.3},
+            startColor: RGB(255,255,255),
+            endColor: TRANSPARENT
+        )
+        DrawGradient(highlightGradient, opacity: 0.1)
+        
+        // Bottom shadow
+        shadowGradient = CreateGradient(
+            start: {x: x, y: y + height * 0.7},
+            end: {x: x, y: y + height},
+            startColor: TRANSPARENT,
+            endColor: RGB(0,0,0)
+        )
+        DrawGradient(shadowGradient, opacity: 0.15)
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+
+                <h3>Workflow 2: Crowd Generator</h3>
+                
+                <div class="card">
+                    <h4>Procedural Crowd System</h4>
+                    <pre><code>CLASS CrowdGenerator:
+    
+    FUNCTION Generate(area, density, perspective):
+        // Calculate positions based on perspective
+        positions = GenerateCrowdPositions(area, density, perspective)
+        
+        // Sort by depth (paint back to front)
+        positions.sortBy(position => position.y)
+        
+        // Generate each person
+        FOR EACH position IN positions:
+            GeneratePerson(position, perspective)
+        END FOR
+    END FUNCTION
+    
+    FUNCTION GenerateCrowdPositions(area, density, perspective):
+        positions = []
+        targetCount = area.width * area.height * density * 0.001
+        
+        // Use Poisson disk for natural spacing
+        minDistance = 15 / density
+        
+        WHILE positions.length < targetCount:
+            candidate = {
+                x: area.x + Random() * area.width,
+                y: area.y + Random() * area.height
+            }
+            
+            // Adjust for perspective
+            candidate = ApplyPerspective(candidate, area, perspective)
+            
+            // Check spacing
+            IF ValidSpacing(candidate, positions, minDistance):
+                positions.push(candidate)
+            END IF
+        END WHILE
+        
+        RETURN positions
+    END FUNCTION
+    
+    FUNCTION ApplyPerspective(position, area, perspective):
+        // More distant (higher y) = smaller, denser
+        depthFactor = (position.y - area.y) / area.height
+        
+        // Apply perspective distortion
+        position.scaleMultiplier = 1.0 - depthFactor * perspective.strength
+        position.depth = depthFactor
+        
+        RETURN position
+    END FUNCTION
+    
+    FUNCTION GeneratePerson(position, perspective):
+        // Size based on depth
+        baseHeight = 40
+        height = baseHeight * position.scaleMultiplier
+        width = height * 0.4
+        
+        // Random appearance
+        appearance = {
+            bodyColor: RandomClothingColor(),
+            hairColor: RandomHairColor(),
+            skinTone: RandomSkinTone(),
+            pose: RandomChoice(["standing", "walking", "sitting"])
+        }
+        
+        // Simplified silhouette
+        IF height > 15:  // Enough detail
+            DrawDetailedPerson(position, width, height, appearance)
+        ELSE:  // Too small, just silhouette
+            DrawSimplifiedPerson(position, width, height, appearance)
+        END IF
+        
+        // Add depth cues
+        ApplyDepthEffects(position, height)
+    END FUNCTION
+    
+    FUNCTION DrawDetailedPerson(pos, width, height, appearance):
+        // Head
+        headSize = width * 0.5
+        DrawEllipse(pos.x, pos.y, headSize, headSize, appearance.skinTone)
+        
+        // Hair
+        DrawHair(pos.x, pos.y, headSize, appearance.hairColor)
+        
+        // Body
+        bodyY = pos.y + headSize
+        bodyHeight = height * 0.6
+        DrawRectangle(pos.x - width/2, bodyY, width, bodyHeight, 
+                     appearance.bodyColor)
+        
+        // Legs
+        legY = bodyY + bodyHeight
+        legHeight = height * 0.4
+        legWidth = width * 0.4
+        
+        DrawRectangle(pos.x - width/3, legY, legWidth, legHeight,
+                     Darken(appearance.bodyColor, 0.3))
+        DrawRectangle(pos.x + width/10, legY, legWidth, legHeight,
+                     Darken(appearance.bodyColor, 0.3))
+    END FUNCTION
+    
+    FUNCTION DrawSimplifiedPerson(pos, width, height, appearance):
+        // Just a simple silhouette
+        avgColor = AverageColor(appearance.bodyColor, appearance.hairColor)
+        DrawEllipse(pos.x, pos.y + height/2, width/2, height/2, avgColor)
+    END FUNCTION
+    
+    FUNCTION ApplyDepthEffects(position, height):
+        // Distant figures are less saturated and lighter
+        desaturation = position.depth * 0.4
+        lightening = position.depth * 0.3
+        blur = position.depth * 2
+        
+        ApplyEffect(position, {
+            desaturate: desaturation,
+            lighten: lightening,
+            blur: blur
+        })
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+
+                <h3>Workflow 3: Foliage Distribution</h3>
+                
+                <div class="card" style="background: #e8f5e9; border-left: 4px solid #4CAF50;">
+                    <h4>🌿 Smart Foliage Placement System</h4>
+                    <pre><code>CLASS FoliageDistributionSystem:
+    
+    FUNCTION Distribute(terrain, foliageTypes, rules):
+        // Analyze terrain for placement suitability
+        suitabilityMap = AnalyzeTerrain(terrain, rules)
+        
+        // Place each foliage type
+        FOR EACH foliageType IN foliageTypes:
+            PlaceFoliageType(terrain, foliageType, suitabilityMap)
+        END FOR
+    END FUNCTION
+    
+    FUNCTION AnalyzeTerrain(terrain, rules):
+        suitabilityMap = CreateMap(terrain.size)
+        
+        FOR EACH point IN terrain:
+            suitability = 0
+            
+            // Factor 1: Slope (trees prefer flat areas)
+            slope = CalculateSlope(point, terrain)
+            IF slope < rules.maxSlope:
+                suitability += (1.0 - slope / rules.maxSlope) * 0.3
+            END IF
+            
+            // Factor 2: Elevation (different plants at different heights)
+            elevation = terrain.GetElevation(point)
+            elevationSuitability = CalculateElevationSuitability(
+                elevation, 
+                rules.preferredElevation,
+                rules.elevationTolerance
+            )
+            suitability += elevationSuitability * 0.3
+            
+            // Factor 3: Existing vegetation (clumping)
+            nearbyVegetation = CountNearbyVegetation(point, radius: 50)
+            IF nearbyVegetation > 0 AND nearbyVegetation < 5:
+                suitability += 0.2  // Good - some neighbors but not crowded
+            ELSE IF nearbyVegetation >= 5:
+                suitability -= 0.3  // Too crowded
+            END IF
+            
+            // Factor 4: Distance from water
+            distToWater = DistanceToWater(point, terrain)
+            IF distToWater < rules.waterProximityPreference:
+                suitability += 0.2
+            END IF
+            
+            suitabilityMap[point] = Clamp(suitability, 0, 1)
+        END FOR
+        
+        RETURN suitabilityMap
+    END FUNCTION
+    
+    FUNCTION PlaceFoliageType(terrain, foliageType, suitabilityMap):
+        // Generate candidates
+        candidates = []
+        targetCount = terrain.area * foliageType.density
+        
+        FOR attempt FROM 0 TO targetCount * 5:
+            // Sample position weighted by suitability
+            position = SampleBySuitability(suitabilityMap)
+            
+            // Check if valid
+            IF IsValidFoliagePlacement(position, foliageType, terrain):
+                candidates.push(position)
+                
+                IF candidates.length >= targetCount:
+                    BREAK
+                END IF
+            END IF
+        END FOR
+        
+        // Place foliage at valid positions
+        FOR EACH position IN candidates:
+            PlaceFoliageInstance(position, foliageType, terrain)
+        END FOR
+    END FUNCTION
+    
+    FUNCTION PlaceFoliageInstance(position, foliageType, terrain):
+        // Vary size based on local conditions
+        fertility = CalculateFertility(position, terrain)
+        size = foliageType.baseSize * (0.7 + fertility * 0.6)
+        
+        // Vary appearance
+        hueShift = Random(-foliageType.colorVariation, 
+                         foliageType.colorVariation)
+        color = ShiftHue(foliageType.baseColor, hueShift)
+        
+        // Rotate for variety
+        rotation = Random(0, TWO_PI)
+        
+        // Draw using appropriate method
+        IF foliageType.type == "tree":
+            DrawTree(position, size, color, rotation)
+        ELSE IF foliageType.type == "bush":
+            DrawBush(position, size, color)
+        ELSE IF foliageType.type == "grass":
+            DrawGrassPatch(position, size, color, rotation)
+        END IF
+        
+        // Update terrain data
+        RegisterVegetation(position, foliageType, terrain)
+    END FUNCTION
+END CLASS</code></pre>
+                </div>
+
+                <blockquote>
+                    <strong>💡 Workflow Principle:</strong> The best pattern-based workflows are <strong>tunable</strong>. Expose parameters (density, variation, rules) so you can adjust the result without rewriting code. Think like a game designer - give yourself sliders and controls!
+                </blockquote>
+            </section>
+
+            <!-- Section 7: Master Project -->
+            <section id="project" class="lesson-section">
+                <h2>Master Project: Procedural Landscape Generator 🏆</h2>
+                
+                <p>Time to synthesize everything you've learned! Create a <strong>complete procedural landscape generator</strong> that can create diverse, detailed landscapes with a single button press - then customize them artistically!</p>
+
+                <div class="exercise-card">
+                    <h3>🎯 Project Overview</h3>
+                    
+                    <p><strong>Your Mission:</strong> Build a comprehensive landscape generation system that combines terrain generation, vegetation placement, atmospheric effects, and artistic refinement - all driven by procedural algorithms!</p>
+                    
+                    <div class="card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; margin: 2rem 0;">
+                        <h4>🌄 System Requirements</h4>
+                        <ul>
+                            <li>✅ Terrain generation using fractal algorithms</li>
+                            <li>✅ Automatic vegetation distribution with biomes</li>
+                            <li>✅ Water body generation (rivers, lakes)</li>
+                            <li>✅ Sky and atmospheric effects</li>
+                            <li>✅ Detail generation system</li>
+                            <li>✅ Manual refinement tools</li>
+                            <li>✅ Export multiple variations</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Core Components to Implement</h4>
+                    
+                    <div class="card">
+                        <h5>Component 1: Terrain Generator</h5>
+                        <p><strong>Must Include:</strong></p>
+                        <ul>
+                            <li>FBM or ridged multifractal for terrain height</li>
+                            <li>Adjustable parameters (roughness, height scale, features)</li>
+                            <li>Erosion simulation (optional but recommended)</li>
+                            <li>Multiple terrain types (mountains, hills, plains, valleys)</li>
+                            <li>Smooth transitions between terrain types</li>
+                        </ul>
+                        <p><strong>Deliverable:</strong> System that generates varied terrain from seed values</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h5>Component 2: Biome System</h5>
+                        <p><strong>Must Include:</strong></p>
+                        <ul>
+                            <li>At least 4 biome types (forest, desert, grassland, tundra/alpine)</li>
+                            <li>Biome placement based on elevation and climate</li>
+                            <li>Smooth transitions between biomes</li>
+                            <li>Biome-specific vegetation types</li>
+                            <li>Color palettes per biome</li>
+                        </ul>
+                        <p><strong>Deliverable:</strong> Varied landscapes with distinct ecological zones</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h5>Component 3: Vegetation Generator</h5>
+                        <p><strong>Must Include:</strong></p>
+                        <ul>
+                            <li>L-System or fractal trees (at least 2 species)</li>
+                            <li>Grass/ground cover system</li>
+                            <li>Bushes and shrubs</li>
+                            <li>Intelligent placement (respect terrain, clustering)</li>
+                            <li>LOD system (distant vegetation simplified)</li>
+                            <li>Variation in size, color, and form</li>
+                        </ul>
+                        <p><strong>Deliverable:</strong> Rich, varied vegetation that looks natural</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h5>Component 4: Water System</h5>
+                        <p><strong>Must Include:</strong></p>
+                        <ul>
+                            <li>Automatic water body placement in low areas</li>
+                            <li>Rivers following terrain flow</li>
+                            <li>Water reflections (simplified)</li>
+                            <li>Shoreline detail</li>
+                            <li>Different water colors (clear, murky, deep)</li>
+                        </ul>
+                        <p><strong>Deliverable:</strong> Believable water features integrated with terrain</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h5>Component 5: Atmospheric System</h5>
+                        <p><strong>Must Include:</strong></p>
+                        <ul>
+                            <li>Sky generation with gradient</li>
+                            <li>Procedural clouds (FBM-based)</li>
+                            <li>Atmospheric perspective application</li>
+                            <li>Fog/mist in valleys</li>
+                            <li>Time-of-day variations (dawn, noon, sunset)</li>
+                        </ul>
+                        <p><strong>Deliverable:</strong> Convincing atmosphere and depth</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h5>Component 6: Detail Generator</h5>
+                        <p><strong>Must Include:</strong></p>
+                        <ul>
+                            <li>Rock scatter system</li>
+                            <li>Ground texture detail</li>
+                            <li>Foreground detail enhancement</li>
+                            <li>Edge detail along ridges</li>
+                            <li>Manual detail brush tools</li>
+                        </ul>
+                        <p><strong>Deliverable:</strong> Rich detail that draws the eye</p>
+                    </div>
+                </div>
+
+                <h3>Implementation Phases</h3>
+                
+                <div class="card">
+                    <h4>Phase 1: Foundation (Week 1)</h4>
+                    <ul>
+                        <li>Implement core terrain generation</li>
+                        <li>Create basic biome system</li>
+                        <li>Test multiple seeds for variety</li>
+                        <li>Establish parameter system</li>
+                    </ul>
+                    
+                    <h4>Phase 2: Population (Week 2)</h4>
+                    <ul>
+                        <li>Implement vegetation generators</li>
+                        <li>Create placement algorithms</li>
+                        <li>Add water body generation</li>
+                        <li>Test biome-vegetation interactions</li>
+                    </ul>
+                    
+                    <h4>Phase 3: Atmosphere (Week 3)</h4>
+                    <ul>
+                        <li>Implement sky and cloud systems</li>
+                        <li>Add atmospheric effects</li>
+                        <li>Implement time-of-day system</li>
+                        <li>Refine depth and perspective</li>
+                    </ul>
+                    
+                    <h4>Phase 4: Detail & Polish (Week 4)</h4>
+                    <ul>
+                        <li>Add detail generation systems</li>
+                        <li>Create manual refinement tools</li>
+                        <li>Optimize performance</li>
+                        <li>Generate portfolio variations</li>
+                    </ul>
+                </div>
+
+                <h3>Deliverables</h3>
+                
+                <div class="card">
+                    <h4>What to Submit</h4>
+                    
+                    <p><strong>1. Working Generator System</strong></p>
+                    <ul>
+                        <li>Complete procedural landscape generator</li>
+                        <li>Parameter control interface (sliders, seeds)</li>
+                        <li>Random generation capability</li>
+                        <li>Manual refinement tools</li>
+                    </ul>
+                    
+                    <p><strong>2. Generated Landscapes (8-10 variations)</strong></p>
+                    <ul>
+                        <li>Show diversity of system capabilities</li>
+                        <li>At least 2 per biome type</li>
+                        <li>Different times of day</li>
+                        <li>Different weather/atmospheric conditions</li>
+                        <li>High resolution (3000×2000+ pixels)</li>
+                    </ul>
+                    
+                    <p><strong>3. Technical Documentation</strong></p>
+                    <pre><code>Document Structure:
+
+├── System Overview
+│   ├── Architecture diagram
+│   ├── Component descriptions
+│   └── Data flow explanation
+│
+├── Algorithm Documentation
+│   ├── Terrain generation algorithm
+│   ├── Vegetation placement rules
+│   ├── Water flow calculation
+│   └── Atmospheric rendering
+│
+├── Parameter Reference
+│   ├── All adjustable parameters
+│   ├── Value ranges and effects
+│   └── Recommended presets
+│
+├── Code Documentation
+│   ├── Key algorithms with explanations
+│   ├── Performance considerations
+│   └── Optimization techniques used
+│
+└── Results & Analysis
+    ├── Generated variations showcase
+    ├── Strengths and limitations
+    ├── Future improvements
+    └── Lessons learned</code></pre>
+                    
+                    <p><strong>4. Video Demonstration (3-5 minutes)</strong></p>
+                    <ul>
+                        <li>Show generation process from scratch</li>
+                        <li>Demonstrate parameter adjustments</li>
+                        <li>Show manual refinement tools</li>
+                        <li>Generate multiple variations live</li>
+                    </ul>
+                    
+                    <p><strong>5. Source Code & Assets</strong></p>
+                    <ul>
+                        <li>Well-commented code</li>
+                        <li>Organized file structure</li>
+                        <li>Custom brushes used</li>
+                        <li>Texture libraries</li>
+                        <li>README with setup instructions</li>
+                    </ul>
+                </div>
+
+                <h3>Evaluation Criteria</h3>
+                
+                <div class="card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Criteria</th>
+                                <th>Weight</th>
+                                <th>Evaluation Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>System Completeness</strong></td>
+                                <td>25%</td>
+                                <td>
+                                    • All required components implemented<br>
+                                    • Features work as specified<br>
+                                    • System is robust and reliable<br>
+                                    • Good parameter control
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Algorithm Quality</strong></td>
+                                <td>25%</td>
+                                <td>
+                                    • Sophisticated algorithms used<br>
+                                    • Proper implementation of techniques<br>
+                                    • Good use of noise/fractals<br>
+                                    • Smart placement rules
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Artistic Quality</strong></td>
+                                <td>20%</td>
+                                <td>
+                                    • Landscapes look natural and believable<br>
+                                    • Good composition and depth<br>
+                                    • Effective atmosphere<br>
+                                    • Aesthetically pleasing results
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Variation & Diversity</strong></td>
+                                <td>15%</td>
+                                <td>
+                                    • System generates diverse results<br>
+                                    • Different biomes feel distinct<br>
+                                    • Sufficient randomness<br>
+                                    • Avoids repetitive patterns
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Performance & Optimization</strong></td>
+                                <td>10%</td>
+                                <td>
+                                    • Generates in reasonable time<br>
+                                    • Efficient algorithms<br>
+                                    • LOD system implemented<br>
+                                    • No significant lag
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Documentation</strong></td>
+                                <td>5%</td>
+                                <td>
+                                    • Clear technical documentation<br>
+                                    • Code well-commented<br>
+                                    • Good presentation<br>
+                                    • Video demonstration
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>💡 Success Tips</h4>
+                    <ul>
+                        <li><strong>Start simple:</strong> Get basic terrain working before adding complexity</li>
+                        <li><strong>Test frequently:</strong> Generate hundreds of variations to find edge cases</li>
+                        <li><strong>Use references:</strong> Study real landscape photos for natural patterns</li>
+                        <li><strong>Embrace happy accidents:</strong> Sometimes bugs create interesting features!</li>
+                        <li><strong>Make it tunable:</strong> Every magic number should be a parameter</li>
+                        <li><strong>Cache results:</strong> Pre-compute expensive operations</li>
+                        <li><strong>Think in layers:</strong> Build complexity through composition</li>
+                        <li><strong>Document as you go:</strong> Don't wait until the end!</li>
+                    </ul>
+                </div>
+
+                <blockquote>
+                    <strong>🏆 Portfolio Impact:</strong> A working procedural landscape generator demonstrates mastery of algorithms, artistic vision, AND systems thinking. This is the kind of project that gets you noticed by game studios, VFX companies, and technical art teams!</blockquote>
+            </section>
+
+            <!-- Summary Section -->
+            <section id="summary" class="lesson-section">
+                <h2>Summary & Resources 🎓</h2>
+                
+                <div class="card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white;">
+                    <h3>🎯 Mastery Achievements Unlocked!</h3>
+                    <p>Congratulations on completing this journey into procedural art systems! You've gained skills that set you apart as a technical artist:</p>
+                    <ul style="columns: 2; column-gap: 2rem;">
+                        <li>✅ Generative pattern algorithms</li>
+                        <li>✅ Rule-based painting systems</li>
+                        <li>✅ Automated detail generation</li>
+                        <li>✅ Fractal mathematics (FBM, ridged)</li>
+                        <li>✅ Noise functions (Perlin, Worley, turbulence)</li>
+                        <li>✅ L-Systems for organic growth</li>
+                        <li>✅ Pattern-based workflows</li>
+                        <li>✅ Procedural placement algorithms</li>
+                        <li>✅ Biome and ecosystem simulation</li>
+                        <li>✅ Performance optimization for generation</li>
+                        <li>✅ Parameter-driven creativity</li>
+                        <li>✅ Complete landscape generation pipeline</li>
+                    </ul>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                
+                <div class="card">
+                    <h4>🌀 The Procedural Mindset</h4>
+                    <blockquote style="border-left: 4px solid #667eea; padding-left: 1rem;">
+                        <p><em>"Procedural art isn't about replacing the artist - it's about <strong>multiplying their creative power</strong>. One set of rules can generate infinite variations. One algorithm can paint what would take hours manually. The artist becomes a director, orchestrating systems rather than painting every pixel."</em></p>
+                    </blockquote>
+                    
+                    <p><strong>Remember:</strong></p>
+                    <ol>
+                        <li><strong>Rules encode creativity:</strong> Well-designed rules capture artistic principles algorithmically</li>
+                        <li><strong>Variation creates life:</strong> Pure randomness is chaos; controlled variation is natural</li>
+                        <li><strong>Composition beats chaos:</strong> Layer simple systems to create complexity</li>
+                        <li><strong>Parameters are power:</strong> Tunability turns algorithms into art tools</li>
+                        <li><strong>Constraints breed creativity:</strong> Working within algorithmic limits sparks innovation</li>
+                        <li><strong>Performance matters:</strong> A slow generator isn't useful, no matter how good</li>
+                        <li><strong>Document everything:</strong> Future you won't remember why that magic number is 0.847</li>
+                    </ol>
+                </div>
+
+                <h3>Advanced Resources</h3>
+                
+                <div class="card">
+                    <h4>📚 Essential Reading</h4>
+                    
+                    <p><strong>Procedural Generation:</strong></p>
+                    <ul>
+                        <li>"Procedural Generation in Game Design" by Tanya X. Short & Tarn Adams</li>
+                        <li>"The Algorithmic Beauty of Plants" by Przemyslaw Prusinkiewicz</li>
+                        <li>"Texturing and Modeling: A Procedural Approach" (Perlin, Ebert, et al.)</li>
+                        <li>"The Nature of Code" by Daniel Shiffman (free online)</li>
+                    </ul>
+                    
+                    <p><strong>Fractals & Noise:</strong></p>
+                    <ul>
+                        <li>"The Fractal Geometry of Nature" by Benoit Mandelbrot</li>
+                        <li>Ken Perlin's original papers on Perlin and Simplex noise</li>
+                        <li>"Noise and Turbulence" by Ken Musgrave</li>
+                    </ul>
+                    
+                    <p><strong>L-Systems:</strong></p>
+                    <ul>
+                        <li>"The Algorithmic Beauty of Plants" (Prusinkiewicz & Lindenmayer)</li>
+                        <li>"L-Systems Notes" - various academic papers</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>🔗 Online Resources</h4>
+                    
+                    <p><strong>Interactive Learning:</strong></p>
+                    <ul>
+                        <li>Shadertoy.com - Explore procedural shaders</li>
+                        <li>The Book of Shaders - Free online noise/procedural tutorial</li>
+                        <li>OpenProcessing.org - Share and learn procedural sketches</li>
+                    </ul>
+                    
+                    <p><strong>Tools & Experiments:</strong></p>
+                    <ul>
+                        <li>Processing / p5.js - Quick procedural prototyping</li>
+                        <li>Context Free Art - Grammar-based art tool</li>
+                        <li>Houdini - Professional procedural 3D software</li>
+                        <li>Substance Designer - Node-based procedural textures</li>
+                    </ul>
+                    
+                    <p><strong>Communities:</strong></p>
+                    <ul>
+                        <li>r/proceduralgeneration - Reddit community</li>
+                        <li>Procedural Generation Discord servers</li>
+                        <li>Technical Art communities</li>
+                    </ul>
+                </div>
+
+                <h3>What's Next?</h3>
+                
+                <div class="card" style="background: #fff3e0; border-left: 4px solid #ff9800;">
+                    <h4>🚀 Continue Your Journey</h4>
+                    
+                    <p><strong>Immediate Challenges:</strong></p>
+                    <ul>
+                        <li>Complete the procedural landscape generator project</li>
+                        <li>Create specialized generators (cities, dungeons, creatures)</li>
+                        <li>Experiment with domain warping and advanced noise</li>
+                        <li>Build a procedural portrait/character generator</li>
+                        <li>Create animated procedural effects</li>
+                    </ul>
+                    
+                    <p><strong>Advanced Topics:</strong></p>
+                    <ul>
+                        <li>Wave Function Collapse algorithm</li>
+                        <li>Grammar-based generation systems</li>
+                        <li>Machine learning for pattern generation</li>
+                        <li>Procedural animation systems</li>
+                        <li>Real-time terrain generation</li>
+                        <li>Procedural music visualization</li>
+                    </ul>
+                    
+                    <p><strong>Module 2 Preview:</strong></p>
+                    <p>You've mastered Module 1: Master-Level Brush Engineering! Next, we'll dive into <strong>Module 2: Industry-Specific Pipelines</strong>, where you'll learn production workflows for game art, film/animation, and publishing. You'll take your procedural skills and apply them to real-world professional scenarios!</p>
+                </div>
+
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem;">
+                    <h4 style="text-align: center;">🎓 From User to Creator to Inventor</h4>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        You started Module 1 learning brush physics. You learned to simulate traditional media. Now you've learned to <strong>create entire worlds with algorithms</strong>. This progression - from understanding tools, to creating tools, to inventing systems - is the mark of a master technical artist.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                        Procedural systems are the future of art production. Game worlds, movie effects, architectural visualization - they all rely on artists who can <strong>encode creativity into algorithms</strong>. You now have that power. Use it wisely, use it creatively, and most importantly - use it to make art that couldn't exist any other way!
+                    </p>
+                </div>
+
+                <div class="card" style="text-align: center; padding: 3rem; background: #f8f9fa;">
+                    <h3>🌟 Share Your Procedural Creations!</h3>
+                    <p style="margin-bottom: 2rem;">When you complete your landscape generator (or any procedural system), share it! Tag with <strong>#ProceduralArtSystems</strong> and <strong>#GenerativeArt</strong></p>
+                    <p style="font-size: 0.9rem; color: #666;">The procedural art community loves seeing new approaches and clever algorithms!</p>
+                </div>
+            </section>
+
+            <!-- Lesson Navigation -->
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="organic_simulation_brushes_part_a.html" class="nav-button">
+                    <span class="nav-icon">←</span>
+                    <span class="nav-text">Previous: Organic Simulation</span>
+                </a>
+                <a href="index.html" class="nav-button">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Course Home</span>
+                </a>
+                <a href="index.html#module-2" class="nav-button next-lesson">
+                    <span class="nav-text">Next Module: Industry Pipelines</span>
+                    <span class="nav-icon">→</span>
+                </a>
+            </nav>
+
+            <!-- Module Completion -->
+            <div class="card" style="background: linear-gradient(135deg, #4CAF50 0%, #45B7A0 100%); color: white; margin: 3rem 0;">
+                <h3 style="text-align: center;">🎉 Module 1 Complete!</h3>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 1rem;">You've completed all three lessons in Master-Level Brush Engineering!</p>
+                <div style="text-align: center;">
+                    <button id="complete-lesson" style="background: white; color: #4CAF50; border: none; padding: 1rem 2rem; font-size: 1.1rem; font-weight: bold; border-radius: 2rem; cursor: pointer; transition: transform 0.2s;">
+                        Mark Module 1 Complete 🎊
+                    </button>
+                </div>
+                <p id="completion-message" style="text-align: center; margin-top: 1rem; display: none; font-weight: bold;">
+                    🏆 Congratulations! You're a Master Brush Engineer! 🏆
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #2c3e50; color: white; padding: 3rem 0; margin-top: 4rem;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div>
+                    <h4>🌀 Advanced Course</h4>
+                    <p style="line-height: 1.8; color: #bdc3c7;">
+                        Master procedural systems and create algorithmic art that generates infinite variations!
+                    </p>
+                </div>
+                <div>
+                    <h4>Module 1 Complete!</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0;">✅ <a href="brush_physics_mathematics_part_a.html" style="color: #ecf0f1;">Brush Physics & Math</a></li>
+                        <li style="padding: 0.5rem 0;">✅ <a href="organic_simulation_brushes_part_a.html" style="color: #ecf0f1;">Organic Simulation</a></li>
+                        <li style="padding: 0.5rem 0;">✅ <a href="procedural_art_systems_part_a.html" style="color: #ecf0f1;">Procedural Systems</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="index.html#module-2" style="color: #4CAF50; font-weight: bold;">→ Start Module 2</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0;"><a href="https://paintstormstudio.com" target="_blank" style="color: #ecf0f1;">Paintstorm Studio</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="../paintstorm_int/index.html" style="color: #ecf0f1;">Intermediate Course</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="#" style="color: #ecf0f1;">Procedural Examples</a></li>
+                        <li style="padding: 0.5rem 0;"><a href="#" style="color: #ecf0f1;">Algorithm Library</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <p style="line-height: 1.8; color: #bdc3c7;">
+                        Join fellow procedural artists and share your generative creations!
+                    </p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="color: #3498db; margin-right: 1rem;">Discord</a>
+                        <a href="#" style="color: #3498db; margin-right: 1rem;">Reddit</a>
+                        <a href="#" style="color: #3498db;">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #34495e;">
+                <p>&copy; 2024 Paintstorm Studio Advanced Course. Engineering creativity through algorithms! 🌀</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #95a5a6;">
+                    Where mathematics meets artistry, and algorithms create beauty.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle TOC
+        function toggleTOC() {
+            const tocList = document.getElementById('toc-list');
+            const tocIcon = document.getElementById('toc-toggle-icon');
+            
+            if (tocList.style.maxHeight === '0px' || tocList.style.maxHeight === '') {
+                tocList.style.maxHeight = '500px';
+                tocIcon.style.transform = 'rotate(0deg)';
+            } else {
+                tocList.style.maxHeight = '0px';
+                tocIcon.style.transform = 'rotate(-90deg)';
+            }
+        }
+        
+        // Progress indicator
+        window.addEventListener('scroll', () => {
+            const progress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.querySelector('.progress-bar').style.width = `${Math.min(progress, 100)}%`;
+        });
+
+        // Mobile menu
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            themeToggle.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+            
+            themeToggle.addEventListener('click', () => {
+                const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+            });
+        }
+
+        // Completion tracking
+        const completeButton = document.getElementById('complete-lesson');
+        if (completeButton) {
+            if (localStorage.getItem('module_1_completed') === 'true') {
+                completeButton.textContent = 'Module Completed ✓';
+                completeButton.style.background = '#4CAF50';
+                completeButton.style.color = 'white';
+                document.getElementById('completion-message').style.display = 'block';
+            }
+            
+            completeButton.addEventListener('click', () => {
+                localStorage.setItem('lesson_1_3_completed', 'true');
+                localStorage.setItem('module_1_completed', 'true');
+                completeButton.textContent = 'Module Completed ✓';
+                completeButton.style.background = '#4CAF50';
+                completeButton.style.color = 'white';
+                document.getElementById('completion-message').style.display = 'block';
+                
+                // Epic confetti!
+                for (let i = 0; i < 100; i++) {
+                    setTimeout(() => createConfetti(), i * 30);
+                }
+            });
+        }
+        
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.style.cssText = `position:fixed;width:10px;height:10px;background:${['#f093fb','#f5576c','#4facfe','#00f2fe','#4CAF50','#FFD700'][Math.floor(Math.random()*6)]};left:${Math.random()*100}vw;top:-20px;opacity:1;pointer-events:none;z-index:9999;border-radius:50%`;
+            document.body.appendChild(confetti);
+            
+            const duration = 3000 + Math.random() * 2000;
+            const start = Date.now();
+            
+            function animate() {
+                const progress = (Date.now() - start) / duration;
+                if (progress < 1) {
+                    confetti.style.top = (progress * window.innerHeight) + 'px';
+                    confetti.style.opacity = (1 - progress);
+                    requestAnimationFrame(animate);
+                } else {
+                    document.body.removeChild(confetti);
+                }
+            }
+            animate();
+        }
+    </script>
+</body>
+</html>
