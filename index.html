@@ -1,1100 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Advanced Paintstorm Studio Course - Master-level techniques for professional digital artists ready to launch their careers">
-    <meta name="keywords" content="Paintstorm Studio, advanced, digital art, professional, master techniques, career, concept art, illustration">
-    <meta name="author" content="Paintstorm Advanced Tutorial">
-    <title>Paintstorm Studio Advanced Course</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="icon" type="image/png" href="favicon.png">
-    
-    <style>
-        /* Hero section styles */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            border-radius: 0 0 2rem 2rem;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-        }
-        
-        .cta-button {
-            padding: 1rem 2rem;
-            background: white;
-            color: #764ba2;
-            text-decoration: none;
-            border-radius: 2rem;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        
-        .cta-button.secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-        
-        /* Module cards */
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        
-        .module-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .module-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-        
-        .module-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-        
-        .module-card.module1::before {
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-        
-        .module-card.module2::before {
-            background: linear-gradient(90deg, #f093fb, #f5576c);
-        }
-        
-        .module-card.module3::before {
-            background: linear-gradient(90deg, #4facfe, #00f2fe);
-        }
-        
-        .module-card.module4::before {
-            background: linear-gradient(90deg, #43e97b, #38f9d7);
-        }
-        
-        .module-card.module5::before {
-            background: linear-gradient(90deg, #fa709a, #fee140);
-        }
-        
-        .module-card.module6::before {
-            background: linear-gradient(90deg, #30cfd0, #330867);
-        }
-        
-        .module-card.module7::before {
-            background: linear-gradient(90deg, #ff9a56, #ff6a88);
-        }
-        
-        .module-card.module8::before {
-            background: linear-gradient(90deg, #fa8bff, #2bd2ff);
-        }
-        
-        .module-number {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .lesson-list {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0;
-        }
-        
-        .lesson-list li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .lesson-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .lesson-list a {
-            text-decoration: none;
-            color: #333;
-            display: flex;
-            align-items: center;
-            transition: color 0.3s;
-        }
-        
-        .lesson-list a:hover {
-            color: #764ba2;
-        }
-        
-        .lesson-list .lesson-icon {
-            margin-right: 0.75rem;
-            font-size: 1.2rem;
-        }
-        
-        .lesson-list .project-badge {
-            margin-left: auto;
-            padding: 0.25rem 0.75rem;
-            background: #e8f5e9;
-            color: #2e7d32;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: bold;
-        }
-        
-        /* Features section */
-        .features {
-            background: #f8f9fa;
-            padding: 3rem 0;
-            margin: 3rem 0;
-            border-radius: 1rem;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 0 2rem;
-        }
-        
-        .feature-card {
-            text-align: center;
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        /* Stats section */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-            text-align: center;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-        }
-        
-        .stat-label {
-            color: #666;
-            margin-top: 0.5rem;
-        }
-        
-        /* Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .modules-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Progress tracker */
-        .progress-tracker {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin: 2rem 0;
-        }
-        
-        .progress-bar-container {
-            background: #f0f0f0;
-            height: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 1rem 0;
-        }
-        
-        .progress-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-        
-        /* Prerequisites banner */
-        .prerequisites-banner {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            text-align: center;
-        }
-        
-        .prerequisites-banner h3 {
-            margin-bottom: 1rem;
-        }
-        
-        .prerequisites-banner a {
-            color: white;
-            text-decoration: underline;
-            font-weight: bold;
-        }
-        
-        /* FAQ Section */
-        .faq-section {
-            margin: 3rem 0;
-        }
-        
-        .faq-item {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .faq-question {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .faq-answer {
-            color: #666;
-            line-height: 1.6;
-            display: none;
-            padding-top: 0.5rem;
-        }
-        
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-        
-        .faq-toggle {
-            transition: transform 0.3s;
-        }
-        
-        .faq-item.active .faq-toggle {
-            transform: rotate(180deg);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paintstorm Studio — Advanced Level (Site Index)</title>
+  <link rel="icon" href="/favicon.png" />
+  <link rel="stylesheet" href="styles/main.css" />
 
-        .module-section {
-            margin-bottom: 4rem;
-        }
-    </style>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+
+  <style>
+    :root { --maxw: 1100px; --ink: #0f172a; --muted: #475569; --code-bg: #f5f5f7; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; margin: 0; color: var(--ink); background: #ffffff; }
+    header, nav, main, footer { max-width: var(--maxw); margin: 0 auto; padding: 1rem; }
+    .title { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+    .tag { display: inline-block; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 999px; padding: .1rem .6rem; font-size: .85rem; }
+    .subtitle { color: var(--muted); }
+    .hero { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1rem; }
+    .breadcrumbs { font-size: .9rem; color: var(--muted); padding: 0 1rem; max-width: var(--maxw); margin: 0 auto; }
+    .breadcrumbs a { color: inherit; text-decoration: none; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } .grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
+    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 1rem; background: #fff; }
+    .card h3 { margin-top: 0; }
+    .btn { display: inline-block; padding: .6rem .9rem; border-radius: 8px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; }
+    pre { overflow: auto; background: var(--code-bg); color: #111; padding: .75rem; border-radius: 8px; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+    .figure { text-align: center; margin: 1rem 0; }
+    .figure figcaption { font-size: .9rem; color: var(--muted); }
+    svg { max-width: 100%; height: auto; }
+    canvas { max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; background: #ffffff; }
+    .footnote { font-size: .9rem; color: var(--muted); }
+    .control { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+    .control label { font-size: .9rem; color: var(--muted); }
+  </style>
 </head>
 <body>
-    <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="skip-to-main">Skip to main content</a>
-    
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">🎨 Paintstorm Studio - Advanced</a>
-            <div class="nav-links">
-                <a href="#modules">Modules</a>
-                <a href="#about">About</a>
-                <a href="#faq">FAQ</a>
-                <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-            </div>
-        </div>
-    </nav>
+  <header>
+    <div class="title">
+      <h1>Paintstorm Studio — Advanced Level</h1>
+      <span class="tag">🎨 Paintstorm</span>
+      <span class="tag">🧠 Advanced</span>
+      <span class="tag">🚀 Speed &amp; Control</span>
+    </div>
+    <p class="subtitle">Precision meets speed: build pro-grade brushes, manage complex scenes, and craft production-ready art with consistent workflows.</p>
+    <div class="hero">
+      <p><strong>What to expect:</strong> deep brush engine tuning, advanced masks &amp; FX, perspective guides, symmetry power moves, and workflow automation (workspaces &amp; hotkeys). 🧰</p>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>🚀 Paintstorm Studio Advanced</h1>
-        <p>Master-Level Professional Digital Art Training</p>
-        <p style="font-size: 1rem; opacity: 0.9;">Keep on keeping on!</p>
-        <div class="cta-buttons">
-            <a href="brush_physics_mathematics.html" class="cta-button">Start Learning</a>
-            <a href="#modules" class="cta-button secondary">Explore Modules</a>
+  <nav aria-label="Primary">
+    <a class="btn" href="#roadmap">Roadmap</a>
+    <a class="btn" href="#lessons">Lessons</a>
+    <a class="btn" href="#resources">Resources</a>
+    <a class="btn" href="#how-to-use">How to use</a>
+  </nav>
+
+  <div class="breadcrumbs" aria-label="Breadcrumb">
+    <span>Home</span> › <span>Paintstorm Studio</span> › <span>Advanced Level</span>
+  </div>
+
+  <main>
+    <section id="roadmap">
+      <h2>Roadmap</h2>
+      <figure class="figure">
+        <div class="mermaid">
+flowchart LR
+  A[Start — Advanced Index] --> B[Advanced Brush Engine]
+  B --> C[Gradient Maps &amp; Adjustments]
+  C --> D[Perspective Guides &amp; Rulers]
+  D --> E[Advanced Masks, FX &amp; Layer Tricks]
+  E --> F[Custom Workspaces &amp; Hotkeys]
+  F --> Project[Illustrated Poster 🎯]
         </div>
+        <figcaption>Go from precision controls to a polished, poster-ready illustration.</figcaption>
+      </figure>
     </section>
 
-    <!-- Main Content -->
-    <main id="main-content">
-        <div class="container">
-            
-            <!-- Prerequisites Banner -->
-            <div class="prerequisites-banner">
-                <h3>⚠️ Before You Start</h3>
-                <p>This advanced course requires strong intermediate skills. Make sure you've completed the <a href="https://rays-paintstorm-int.netlify.app/" target="_blank">Paintstorm Studio Intermediate Course</a> or have equivalent professional experience with digital painting, advanced brushwork, complex lighting, and portfolio development.</p>
-            </div>
+    <section id="lessons">
+      <h2>Lessons</h2>
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Advanced Brush Engine</h3>
+          <p>Dual-tip looks, rotation/tilt curves, spacing/jitter finesse, and controlled randomness.</p>
+          <p>
+            <a class="btn btn-primary" href="lesson_advanced_brush_engine.html">Open lesson</a>
+            <a class="btn" href="lesson_advanced_brush_engine.md">View .md</a>
+          </p>
+        </article>
+        <article class="card">
+          <h3>Gradient Maps &amp; Adjustments</h3>
+          <p>Global mood control with gradient maps, curves, HSL — as reversible, stacked passes.</p>
+          <p>
+            <a class="btn btn-primary" href="lesson_gradients_and_adjustments.html">Open lesson</a>
+            <a class="btn" href="lesson_gradients_and_adjustments.md">View .md</a>
+          </p>
+        </article>
+        <article class="card">
+          <h3>Perspective Guides &amp; Rulers</h3>
+          <p>One/two/three-point guides, ellipses, and grids to stabilize scene structure.</p>
+          <p>
+            <a class="btn btn-primary" href="lesson_perspective_and_guides.html">Open lesson</a>
+            <a class="btn" href="lesson_perspective_and_guides.md">View .md</a>
+          </p>
+        </article>
+        <article class="card">
+          <h3>Advanced Masks, FX &amp; Layers</h3>
+          <p>Compound masks, light FX passes, edge glow, and texture integration without muddying.</p>
+          <p>
+            <a class="btn btn-primary" href="lesson_advanced_masks_fx.html">Open lesson</a>
+            <a class="btn" href="lesson_advanced_masks_fx.md">View .md</a>
+          </p>
+        </article>
+        <article class="card">
+          <h3>Custom Workspaces &amp; Hotkeys</h3>
+          <p>Layout presets, quick menus, and focused shortcut maps for different tasks.</p>
+          <p>
+            <a class="btn btn-primary" href="lesson_custom_workspaces_and_hotkeys.html">Open lesson</a>
+            <a class="btn" href="lesson_custom_workspaces_and_hotkeys.md">View .md</a>
+          </p>
+        </article>
+        <article class="card">
+          <h3>Project — Illustrated Poster</h3>
+          <p>Plan, light, and finish an A3 poster with a clean value hierarchy and punchy color.</p>
+          <p>
+            <a class="btn btn-primary" href="project_illustrated_poster.html">Open project</a>
+            <a class="btn" href="project_illustrated_poster.md">View .md</a>
+          </p>
+        </article>
+      </div>
 
-            <!-- Stats Section -->
-            <div class="stats">
-                <div class="stat-card">
-                    <span class="stat-number">8</span>
-                    <span class="stat-label">Master Modules</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">24</span>
-                    <span class="stat-label">Professional Lessons</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">100+</span>
-                    <span class="stat-label">Portfolio Projects</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">Career</span>
-                    <span class="stat-label">Launch Ready</span>
-                </div>
-            </div>
+      <figure class="figure">
+        <svg viewBox="0 0 560 160" role="img" aria-label="Poster layout sketch">
+          <rect x="0" y="0" width="560" height="160" fill="#ffffff"/>
+          <rect x="40" y="20" width="160" height="120" fill="#f8fafc" stroke="#cbd5e1"/>
+          <line x1="40" y1="60" x2="200" y2="60" stroke="#cbd5e1" />
+          <line x1="40" y1="100" x2="200" y2="100" stroke="#cbd5e1" />
+          <rect x="230" y="20" width="290" height="120" fill="#fef3c7" stroke="#f59e0b"/>
+          <text x="236" y="36" font-size="12" fill="#111827">Illustration Area</text>
+          Sorry, your browser does not support inline SVG.
+        </svg>
+        <figcaption>We’ll scaffold a poster layout, then paint into it with advanced controls.</figcaption>
+      </figure>
+    </section>
 
-            <!-- Progress Tracker -->
-            <div class="progress-tracker" id="progress-tracker">
-                <h2>📊 Your Mastery Progress</h2>
-                <div class="progress-bar-container">
-                    <div class="progress-bar-fill" id="progress-bar"></div>
-                </div>
-                <p id="progress-text">Ready to achieve mastery! Start with Module 1: Master-Level Brush Engineering.</p>
-            </div>
+    <section id="resources">
+      <h2>Resources</h2>
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Brush tuning checklist</h3>
+          <pre><code>&lt;!-- Starting points --&gt;
+Tip: soft round / custom oval
+Spacing: 5–12%
+Jitter: &lt; 10% (controlled)
+Rotation: Tilt + slight random
+Texture: Paper Medium (Depth 15–25%)</code></pre>
+        </article>
+        <article class="card">
+          <h3>Interactive — gradient map preview</h3>
+          <p>Click to place colors on a simple gradient; the canvas applies the map to a grayscale sphere.</p>
+          <div class="control">
+            <button id="reset_map" class="btn">Reset Map</button>
+          </div>
+          <canvas id="ps_advanced_canvas_gradientmap" width="560" height="240"></canvas>
+        </article>
+      </div>
+    </section>
 
-            <!-- Learning Path Section -->
-            <section id="modules">
-                <h2 style="text-align: center; font-size: 2.5rem; margin: 3rem 0;">🎯 Professional Mastery Path</h2>
-                
-                <!-- Module 1: Master-Level Brush Engineering -->
-                <div class="module-section" id="module-1">
-                    <h3 style="color: #667eea; margin-bottom: 1.5rem;">🔧 Module 1: Master-Level Brush Engineering</h3>
-                    <p style="margin-bottom: 2rem;">Create sophisticated brush systems with advanced dynamics, procedural generation, and professional-level control.</p>
-                    
-                    <div class="modules-grid">
-                        <div class="module-card module1">
-                            <span class="module-number">1.1</span>
-                            <h3>Brush Physics & Mathematics</h3>
-                            <p>Advanced dynamics algorithms, scatter patterns, and procedural brush creation.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="brush_physics_mathematics.html">
-                                        <span class="lesson-icon">🔬</span>
-                                        Brush Physics & Mathematics
-                                        <span class="project-badge">Custom Pack</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+    <section id="how-to-use">
+      <h2>How to use this site</h2>
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Artist-first approach</h3>
+          <p>We integrate tools into projects immediately. Each lesson ends with a tiny deliverable you can show — not just settings to memorize.</p>
+          <pre><code>&lt;!-- Versioning --&gt;
+poster_city_night_v001.psd
+poster_city_night_v002.psd</code></pre>
+        </article>
+        <article class="card">
+          <h3>Comparative notes</h3>
+          <ul>
+            <li><strong>Krita:</strong> excellent Color Smudge &amp; assistants for perspective.</li>
+            <li><strong>Photoshop:</strong> strong adjustment layers and smart objects.</li>
+            <li><strong>Corel Painter:</strong> deep paper &amp; brush realism options.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
 
-                        <div class="module-card module1">
-                            <span class="module-number">1.2</span>
-                            <h3>Organic Simulation Brushes</h3>
-                            <p>Natural media simulation including watercolor, oil paint, pencil, and traditional techniques.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="organic_simulation_brushes.html">
-                                        <span class="lesson-icon">🎨</span>
-                                        Organic Simulation Brushes
-                                        <span class="project-badge">Media Study</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+  <footer>
+    <p class="footnote">© <span id="year"></span> Paintstorm Advanced • Favicon at <code>/favicon.png</code>. Built with ❤️ for learners.</p>
+    <p style="margin-top: 15px; text-align: center;"><a href="https://rays-home.netlify.app/contact" style="color: #667eea;">📬 Contact</a> &middot; <a href="https://rays-home.netlify.app/" style="color: #667eea;">← Back to Ray's House of Fun</a></p>
+  </footer>
 
-                        <div class="module-card module1">
-                            <span class="module-number">1.3</span>
-                            <h3>Procedural Art Systems</h3>
-                            <p>Generative patterns, rule-based painting, and automated detail generation.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="procedural_art_systems.html">
-                                        <span class="lesson-icon">⚙️</span>
-                                        Procedural Art Systems
-                                        <span class="project-badge">Generator</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+  <script>
+    // Canvas demo: unique id ps_advanced_canvas_gradientmap
+    (function(){
+      const c = document.getElementById('ps_advanced_canvas_gradientmap');
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      const resetBtn = document.getElementById('reset_map');
 
-                <!-- Module 2: Industry-Specific Pipelines -->
-                <div class="module-section" id="module-2">
-                    <h3 style="color: #f093fb; margin-bottom: 1.5rem;">🎮 Module 2: Industry-Specific Pipelines</h3>
-                    <p style="margin-bottom: 2rem;">Professional workflows for game art, film, animation, and publishing industries.</p>
-                    
-                    <div class="modules-grid">
-                        <div class="module-card module2">
-                            <span class="module-number">2.1</span>
-                            <h3>Game Art Production</h3>
-                            <p>Concept to game-ready assets, PBR texturing, and real-time optimization.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="game_art_production.html">
-                                        <span class="lesson-icon">🎮</span>
-                                        Game Art Production
-                                        <span class="project-badge">Asset Package</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module2">
-                            <span class="module-number">2.2</span>
-                            <h3>Film & Animation</h3>
-                            <p>Storyboarding, color scripts, production painting, and VFX concept art.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="film_animation_production.html">
-                                        <span class="lesson-icon">🎬</span>
-                                        Film & Animation Production
-                                        <span class="project-badge">Sequence</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module2">
-                            <span class="module-number">2.3</span>
-                            <h3>Publishing & Editorial</h3>
-                            <p>Book covers, interior illustrations, and print/digital workflows.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="publishing_editorial.html">
-                                        <span class="lesson-icon">📚</span>
-                                        Publishing & Editorial
-                                        <span class="project-badge">Book Chapter</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Module 3: Advanced Rendering Techniques -->
-                <div class="module-section" id="module-3">
-                    <h3 style="color: #4facfe; margin-bottom: 1.5rem;">💎 Module 3: Advanced Rendering Techniques</h3>
-                    <p style="margin-bottom: 2rem;">Master photorealism, stylized realism, and abstract integration at professional levels.</p>
-                    
-                    <div class="modules-grid">
-                        <div class="module-card module3">
-                            <span class="module-number">3.1</span>
-                            <h3>Photorealistic Painting</h3>
-                            <p>Hyperrealistic techniques, micro-detail management, and surface complexity.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="photorealistic_painting.html">
-                                        <span class="lesson-icon">📸</span>
-                                        Photorealistic Painting
-                                        <span class="project-badge">Portrait</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module3">
-                            <span class="module-number">3.2</span>
-                            <h3>Stylized Realism</h3>
-                            <p>Selective realism, artistic interpretation, and style consistency.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="stylized_realism.html">
-                                        <span class="lesson-icon">🎭</span>
-                                        Stylized Realism
-                                        <span class="project-badge">Character Series</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module3">
-                            <span class="module-number">3.3</span>
-                            <h3>Abstract Integration</h3>
-                            <p>Reality-abstraction fusion, geometric integration, and experimental techniques.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="abstract_integration.html">
-                                        <span class="lesson-icon">🌀</span>
-                                        Abstract Integration
-                                        <span class="project-badge">Experimental</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Module 4: Complex Scene Construction -->
-                <div class="module-section" id="module-4">
-                    <h3 style="color: #43e97b; margin-bottom: 1.5rem;">🏛️ Module 4: Complex Scene Construction</h3>
-                    <p style="margin-bottom: 2rem;">Build epic environments, crowd scenes, and architectural masterpieces with professional detail management.</p>
-                    
-                    <div class="modules-grid">
-                        <div class="module-card module4">
-                            <span class="module-number">4.1</span>
-                            <h3>Epic Environments</h3>
-                            <p>Large-scale composition, massive detail, and environmental storytelling.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="epic_environments.html">
-                                        <span class="lesson-icon">🏔️</span>
-                                        Epic Environments
-                                        <span class="project-badge">Vista</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module4">
-                            <span class="module-number">4.2</span>
-                            <h3>Crowd Scenes</h3>
-                            <p>Managing multiple figures, compositional grouping, and narrative through crowds.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="crowd_scenes.html">
-                                        <span class="lesson-icon">👥</span>
-                                        Crowd Scenes
-                                        <span class="project-badge">Battle Scene</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module4">
-                            <span class="module-number">4.3</span>
-                            <h3>Architectural Visualization</h3>
-                            <p>Accurate perspective, material rendering, and atmospheric integration.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="architectural_visualization.html">
-                                        <span class="lesson-icon">🏗️</span>
-                                        Architectural Visualization
-                                        <span class="project-badge">Concept</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Module 5: Professional Specializations -->
-                <div class="module-section" id="module-5">
-                    <h3 style="color: #fa709a; margin-bottom: 1.5rem;">🎭 Module 5: Professional Specializations</h3>
-                    <p style="margin-bottom: 2rem;">Master specialized fields including creature design, vehicle/mech design, and fashion illustration.</p>
-                    
-                    <div class="modules-grid">
-                        <div class="module-card module5">
-                            <span class="module-number">5.1</span>
-                            <h3>Creature Design Mastery</h3>
-                            <p>Anatomy invention, believable biology, and creature in environment.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="creature_design_mastery.html">
-                                        <span class="lesson-icon">🐉</span>
-                                        Creature Design Mastery
-                                        <span class="project-badge">Design Bible</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module5">
-                            <span class="module-number">5.2</span>
-                            <h3>Vehicle & Mech Design</h3>
-                            <p>Functional design, mechanical details, and action scenes.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="vehicle_mech_design.html">
-                                        <span class="lesson-icon">🚀</span>
-                                        Vehicle & Mech Design
-                                        <span class="project-badge">Concept Package</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module5">
-                            <span class="module-number">5.3</span>
-                            <h3>Fashion & Costume</h3>
-                            <p>Fabric behavior, historical accuracy, and fashion illustration style.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="fashion_costume.html">
-                                        <span class="lesson-icon">👗</span>
-                                        Fashion & Costume Design
-                                        <span class="project-badge">Collection</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Module 6: Business & Career Development -->
-                <div class="module-section" id="module-6">
-                    <h3 style="color: #30cfd0; margin-bottom: 1.5rem;">💰 Module 6: Business & Career Development</h3>
-                    <p style="margin-bottom: 2rem;">Professional business strategies, freelancing mastery, and studio pipeline integration.</p>
-                    
-                    <div class="modules-grid">
-                        <div class="module-card module6">
-                            <span class="module-number">6.1</span>
-                            <h3>Freelance Mastery</h3>
-                            <p>Pricing strategies, contracts, project management, and client psychology.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="freelance_mastery.html">
-                                        <span class="lesson-icon">💼</span>
-                                        Freelance Mastery
-                                        <span class="project-badge">Business Plan</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module6">
-                            <span class="module-number">6.2</span>
-                            <h3>Studio Pipeline Integration</h3>
-                            <p>Team collaboration, version control, and production deadlines.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="studio_pipeline_integration.html">
-                                        <span class="lesson-icon">🏢</span>
-                                        Studio Pipeline Integration
-                                        <span class="project-badge">Collaboration</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module6">
-                            <span class="module-number">6.3</span>
-                            <h3>Teaching & Content Creation</h3>
-                            <p>Tutorial creation, streaming, Patreon strategies, and audience building.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="teaching_content_creation.html">
-                                        <span class="lesson-icon">🎓</span>
-                                        Teaching & Content Creation
-                                        <span class="project-badge">Mini-Course</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Module 7: Experimental & Innovation -->
-                <div class="module-section" id="module-7">
-                    <h3 style="color: #ff9a56; margin-bottom: 1.5rem;">🚀 Module 7: Experimental & Innovation</h3>
-                    <p style="margin-bottom: 2rem;">Push creative boundaries with experimental techniques and innovative style development.</p>
-                    
-                    <div class="modules-grid">
-                        <div class="module-card module7">
-                            <span class="module-number">7.1</span>
-                            <h3>Experimental Techniques</h3>
-                            <p>NPR, mixed media, procedural art, and breaking traditional rules.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="experimental_techniques.html">
-                                        <span class="lesson-icon">🎨</span>
-                                        Experimental Techniques
-                                        <span class="project-badge">Series</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module7">
-                            <span class="module-number">7.2</span>
-                            <h3>Innovation & Style Development</h3>
-                            <p>Develop unique voice, signature techniques, and artistic philosophy.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="innovation_style_development.html">
-                                        <span class="lesson-icon">💫</span>
-                                        Innovation & Style Development
-                                        <span class="project-badge">Signature Style</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module7">
-                            <span class="module-number">7.3</span>
-                            <h3>Push Beyond Boundaries</h3>
-                            <p>Cutting-edge techniques, emerging technologies, and industry disruption.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="push_beyond_boundaries.html">
-                                        <span class="lesson-icon">🌟</span>
-                                        Push Beyond Boundaries
-                                        <span class="project-badge">Pioneer</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Module 8: Mastery Projects -->
-                <div class="module-section" id="module-8">
-                    <h3 style="color: #fa8bff; margin-bottom: 1.5rem;">🏆 Module 8: Mastery Projects</h3>
-                    <p style="margin-bottom: 2rem;">Complete your journey with portfolio excellence, capstone project, and career launch planning.</p>
-                    
-                    <div class="modules-grid">
-                        <div class="module-card module8">
-                            <span class="module-number">8.1</span>
-                            <h3>Portfolio Excellence</h3>
-                            <p>Curation strategies, presentation optimization, and personal branding.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="building_professional_portfolio.html">
-                                        <span class="lesson-icon">📁</span>
-                                        Portfolio Excellence
-                                        <span class="project-badge">Overhaul</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module8">
-                            <span class="module-number">8.2</span>
-                            <h3>Capstone Project</h3>
-                            <p>Multi-week comprehensive project combining all course skills.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="capstone_project.html">
-                                        <span class="lesson-icon">🎯</span>
-                                        Capstone Project
-                                        <span class="project-badge">Mastery Demo</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="module-card module8">
-                            <span class="module-number">8.3</span>
-                            <h3>Career Launch</h3>
-                            <p>Post-course action plan, career roadmap, and long-term mastery path.</p>
-                            <ul class="lesson-list">
-                                <li>
-                                    <a href="career_launch.html">
-                                        <span class="lesson-icon">🚀</span>
-                                        Career Launch
-                                        <span class="project-badge">Future</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Features Section -->
-            <section class="features">
-                <h2 style="text-align: center; margin-bottom: 2rem;">✨ Course Highlights</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h4>Career-Ready Training</h4>
-                        <p>Professional workflows and industry pipelines for immediate employment.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">💼</div>
-                        <h4>Business Mastery</h4>
-                        <p>Freelancing, contracts, pricing, and professional client management.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🚀</div>
-                        <h4>Master Techniques</h4>
-                        <p>Advanced brush engineering, procedural systems, and specialized fields.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎨</div>
-                        <h4>Portfolio Launch</h4>
-                        <p>Complete professional portfolio and 5-year career development plan.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- About Section -->
-            <section id="about" style="margin: 4rem 0;">
-                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem;">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">📖 About This Advanced Course</h2>
-                    <p style="font-size: 1.1rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
-                        This advanced course is the pinnacle of digital art education, designed for artists ready to launch professional careers. Through 8 comprehensive modules and 24 master-level lessons, you'll develop industry-standard skills in specialized fields including game art, film production, publishing, creature design, and more.
-                    </p>
-                    <p style="font-size: 1.1rem; line-height: 1.8; max-width: 800px; margin: 2rem auto 0;">
-                        You'll master advanced brush engineering with procedural systems, learn professional pipelines used in major studios, develop business acumen for freelancing or employment, and create a comprehensive portfolio that demonstrates mastery across multiple disciplines. The course culminates in a complete career launch plan with actionable steps for the next 5 years of your professional journey.
-                    </p>
-                </div>
-            </section>
-
-            <!-- FAQ Section -->
-            <section id="faq" class="faq-section">
-                <h2 style="text-align: center; margin-bottom: 2rem;">❓ Frequently Asked Questions</h2>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Do I need to complete the intermediate course first?
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Yes, or you should have equivalent professional-level experience. This course assumes mastery of advanced brushwork, complex lighting, composition theory, and portfolio development. The intermediate course provides the foundation needed for advanced techniques.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        How long will it take to complete this course?
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        The course contains approximately 80-100 hours of instruction and practice across 24 comprehensive lessons. Most students complete the course in 6-12 months with consistent practice (10-15 hours per week). The capstone project and career planning may add additional time depending on your depth and detail level.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Will this prepare me for professional work?
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Absolutely! This course is specifically designed to prepare you for professional employment or freelancing. You'll learn industry pipelines, business practices, client management, and specialized skills across multiple fields. The final module includes a comprehensive 5-year career launch plan with actionable steps for entering the industry.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        What industries does this course prepare me for?
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        The course covers professional workflows for game art, film and animation, publishing and editorial, concept art, creature and vehicle design, fashion illustration, and freelance illustration. You'll learn to adapt your skills to multiple industries or specialize deeply in one field based on your career goals.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        What makes this different from other digital art courses?
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        This course goes beyond technical skills to include advanced brush engineering, procedural systems, industry-specific pipelines, business development, and comprehensive career planning. It's designed as complete professional training rather than isolated technique tutorials. The capstone project and 5-year career plan ensure you launch with strategy, not just skills.
-                    </div>
-                </div>
-            </section>
-
-            <!-- Call to Action -->
-            <section style="text-align: center; margin: 4rem 0;">
-                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 3rem; color: white;">
-                    <h2 style="margin-bottom: 1rem;">🚀 Ready to Launch Your Professional Career?</h2>
-                    <p style="font-size: 1.2rem; margin-bottom: 2rem;">Transform your passion into a profession with master-level training!</p>
-                    <a href="brush_physics_mathematics.html" class="cta-button" style="font-size: 1.2rem; padding: 1.2rem 3rem; background: white; color: #667eea;">
-                        Begin Your Mastery Journey →
-                    </a>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer style="background: #2c3e50; color: white; padding: 3rem 0; margin-top: 4rem;">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                <div>
-                    <h4>Course Navigation</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.5rem 0;"><a href="brush_physics_mathematics.html" style="color: #ecf0f1;">Module 1: Brush Engineering</a></li>
-                        <li style="padding: 0.5rem 0;"><a href="#modules" style="color: #ecf0f1;">All Modules</a></li>
-                        <li style="padding: 0.5rem 0;"><a href="https://rays-paintstorm-int.netlify.app/" target="_blank" style="color: #ecf0f1;">Intermediate Course</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Resources</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.5rem 0;"><a href="https://www.paintstormstudio.com/" target="_blank" style="color: #ecf0f1;">Paintstorm Studio</a></li>
-                        <li style="padding: 0.5rem 0;"><a href="https://www.paintstormstudio.com/forum/" target="_blank" style="color: #ecf0f1;">Community Forum</a></li>
-                        <li style="padding: 0.5rem 0;"><a href="#" style="color: #ecf0f1;">Download Assets</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>About</h4>
-                    <p style="line-height: 1.6; color: #bdc3c7;">
-                        Advanced master-level course for professional digital artists ready to launch careers in concept art, illustration, and specialized fields.
-                    </p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #34495e;">
-                <p>&copy; 2024 Paintstorm Studio Advanced Course. Keep on keeping on! 🚀</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Theme toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', currentTheme);
-            themeToggle.textContent = currentTheme === 'light' ? '🌙' : '☀️';
-            
-            themeToggle.addEventListener('click', () => {
-                const current = document.documentElement.getAttribute('data-theme');
-                const newTheme = current === 'light' ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
-            });
+      // create grayscale sphere base
+      const base = document.createElement('canvas');
+      base.width = 560; base.height = 240;
+      const bctx = base.getContext('2d');
+      function drawSphere(){
+        bctx.clearRect(0,0,base.width,base.height);
+        const cx = 180, cy = 120, r = 80;
+        // background
+        const bg = bctx.createLinearGradient(0,0,0,base.height);
+        bg.addColorStop(0,'#ffffff'); bg.addColorStop(1,'#f8fafc');
+        bctx.fillStyle = bg; bctx.fillRect(0,0,base.width,base.height);
+        // table
+        bctx.fillStyle = 'rgba(0,0,0,0.06)'; bctx.fillRect(0,150,base.width,2);
+        // sphere shading
+        for (let y=-r; y&lt;=r; y++){
+          const width = Math.sqrt(Math.max(0, r*r - y*y));
+          const lx = cx - width, ly = cy + y;
+          const gx = bctx.createLinearGradient(lx, ly, lx + width*2, ly);
+          gx.addColorStop(0, '#eeeeee');
+          gx.addColorStop(0.5, '#999999');
+          gx.addColorStop(1, '#222222');
+          bctx.fillStyle = gx;
+          bctx.fillRect(lx, ly, width*2, 1);
         }
+        // highlight
+        bctx.beginPath(); bctx.arc(cx-30, cy-30, 12, 0, Math.PI*2);
+        bctx.fillStyle = 'rgba(255,255,255,0.8)'; bctx.fill();
+      }
+      drawSphere();
 
-        // Progress tracking
-        function updateProgress() {
-            const lessons = [
-                'lesson_1_1_completed', 'lesson_1_2_completed', 'lesson_1_3_completed',
-                'lesson_2_1_completed', 'lesson_2_2_completed', 'lesson_2_3_completed',
-                'lesson_3_1_completed', 'lesson_3_2_completed', 'lesson_3_3_completed',
-                'lesson_4_1_completed', 'lesson_4_2_completed', 'lesson_4_3_completed',
-                'lesson_5_1_completed', 'lesson_5_2_completed', 'lesson_5_3_completed',
-                'lesson_6_1_completed', 'lesson_6_2_completed', 'lesson_6_3_completed',
-                'lesson_7_1_completed', 'lesson_7_2_completed', 'lesson_7_3_completed',
-                'lesson_8_1_completed', 'lesson_8_2_completed', 'lesson_8_3_completed'
-            ];
-            
-            let completed = 0;
-            lessons.forEach(lesson => {
-                if (localStorage.getItem(lesson) === 'true') {
-                    completed++;
-                }
-            });
-            
-            const percentage = (completed / lessons.length) * 100;
-            const progressBar = document.getElementById('progress-bar');
-            const progressText = document.getElementById('progress-text');
-            
-            if (progressBar) {
-                progressBar.style.width = `${percentage}%`;
-            }
-            
-            if (progressText) {
-                if (completed === 0) {
-                    progressText.textContent = 'Ready to achieve mastery! Start with Module 1: Master-Level Brush Engineering.';
-                } else if (completed === lessons.length) {
-                    progressText.textContent = '🎉 Congratulations! You\'ve achieved mastery and completed the advanced course!';
-                } else {
-                    progressText.textContent = `${completed} of ${lessons.length} lessons completed (${Math.round(percentage)}%) - Keep on keeping on!`;
-                }
-            }
+      // gradient map stops
+      let stops = [
+        { t: 0.0, col: [20, 30, 60] },
+        { t: 0.5, col: [180, 80, 160] },
+        { t: 1.0, col: [240, 220, 140] },
+      ];
+
+      c.addEventListener('click', (e)=>{
+        const t = e.offsetX / c.width;
+        const hue = (e.offsetY / c.height) * 360;
+        const col = hslToRgb(hue/360, 0.7, 0.5);
+        stops.push({ t, col });
+        stops.sort((a,b)=>a.t-b.t);
+        render();
+      });
+      resetBtn.addEventListener('click', ()=>{
+        stops = [
+          { t: 0.0, col: [20, 30, 60] },
+          { t: 0.5, col: [180, 80, 160] },
+          { t: 1.0, col: [240, 220, 140] },
+        ];
+        render();
+      });
+
+      function hslToRgb(h, s, l){
+        // from h,s,l in [0,1]
+        const a = s * Math.min(l, 1-l);
+        function f(n){
+          const k = (n + h*12) % 12;
+          const color = l - a * max(-1, min(k-3, min(9-k, 1)));
+          return Math.round(255 * color);
         }
-        
-        // Update progress on page load
-        updateProgress();
+        function min(a,b){ return a<b?a:b; }
+        function max(a,b){ return a>b?a:b; }
+        return [f(0), f(8), f(4)];
+      }
 
-        // FAQ toggle
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                faqItem.classList.toggle('active');
-            });
+      function lerp(a,b,t){ return a + (b-a)*t; }
+      function lerpCol(c0,c1,t){ return [lerp(c0[0],c1[0],t), lerp(c0[1],c1[1],t), lerp(c0[2],c1[2],t)]; }
+      function sampleGradient(t){
+        for (let i=0;i&lt;stops.length-1;i++){
+          const s0 = stops[i], s1 = stops[i+1];
+          if (t &gt;= s0.t &amp;&amp; t &lt;= s1.t){
+            const k = (t - s0.t) / Math.max(1e-6, (s1.t - s0.t));
+            return lerpCol(s0.col, s1.col, k);
+          }
+        }
+        return stops[stops.length-1].col;
+      }
+
+      function render(){
+        // draw base to canvas
+        ctx.drawImage(base, 0, 0);
+        // get pixels and remap by gradient (based on luminance)
+        const img = ctx.getImageData(0,0,c.width,c.height);
+        for (let i=0;i&lt;img.data.length;i+=4){
+          const r = img.data[i], g = img.data[i+1], b = img.data[i+2];
+          const lum = (0.2126*r + 0.7152*g + 0.0722*b)/255; // [0..1]
+          const col = sampleGradient(lum);
+          img.data[i] = col[0];
+          img.data[i+1] = col[1];
+          img.data[i+2] = col[2];
+          // keep alpha
+        }
+        ctx.putImageData(img, 0, 0);
+
+        // draw gradient strip with stops
+        const stripY = c.height - 24;
+        for (let x=0; x&lt;c.width; x++){
+          const t = x / c.width;
+          const col = sampleGradient(t);
+          ctx.fillStyle = 'rgb(' + col[0] + ',' + col[1] + ',' + col[2] + ')';
+          ctx.fillRect(x, stripY, 1, 24);
+        }
+        stops.forEach(s => {
+          const x = Math.round(s.t * c.width);
+          ctx.fillStyle = '#111827';
+          ctx.fillRect(x-1, stripY-6, 2, 30);
         });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.6s ease-out both';
-                }
-            });
-        }, observerOptions);
-
-        // Observe module cards
-        document.querySelectorAll('.module-card').forEach(card => {
-            observer.observe(card);
-        });
-    </script>
+      }
+      render();
+    })();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
