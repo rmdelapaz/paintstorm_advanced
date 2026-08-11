@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paintstorm Studio — Advanced: Advanced Brush Engine</title>
+  <link rel="icon" href="/favicon.png" />
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- Mermaid — initialized by course-enhancements.js for theme awareness -->
+  <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      window.__mermaid = mermaid;
+      const isDark = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      mermaid.initialize({ startOnLoad: true, theme: isDark ? 'dark' : 'default',
+          themeVariables: isDark ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                                 : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' } });
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+  <nav class="main-nav"><div class="nav-container">
+      <a href="index.html" class="nav-logo">🎨 Paintstorm Studio</a>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <div class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#lessons">All Lessons</a>
+          <span class="nav-divider"></span>
+          <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+          <a href="https://rays-home.netlify.app/contact">Contact</a>
+          <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+      </div>
+  </div></nav>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#lessons">Advanced Lessons</a></li>
+      <li aria-current="page">Advanced Brush Engine</li>
+  </ul></nav>
+
+  <main id="main-content"><div class="container">
+  <header>
+    <div class="title">
+      <h1>Paintstorm Studio — Advanced Brush Engine</h1>
+      <span class="tag">🎨 Paintstorm</span>
+      <span class="tag">🖌️ Brush Engine</span>
+      <span class="tag">✨ Dynamics</span>
+    </div>
+    <p class="lead">A single Paintstorm stroke is a small orchestra — a tip, a texture, a dozen dynamic curves and a color mixer all playing at once — and this lesson hands you the baton.</p>
+    <div class="card card-info">
+      <p><strong>Goal:</strong> Build expressive, custom brushes by layering dual tips, texture and pattern, and dynamics curves that map pressure, tilt, velocity and rotation to size, opacity, angle and color — then tame randomness so every stroke reads as deliberate intention rather than noise.</p>
+    </div>
+  </header>
+
+  <details class="card toc-card" open>
+      <summary aria-label="Toggle table of contents"><span class="toc-icon" aria-hidden="true">📑</span><span class="toc-label">In This Lesson</span><span class="toc-chevron" aria-hidden="true">▾</span></summary>
+      <nav aria-label="Table of Contents"><ol>
+          <li><a href="#overview" class="toc-link">Overview</a></li>
+          <li><a href="#practice" class="toc-link">Hands-on practice</a></li>
+          <li><a href="#demos" class="toc-link">Demos &amp; visual aids</a></li>
+          <li><a href="#wrapup" class="toc-link">What you've learned</a></li>
+      </ol></nav>
+  </details>
+
+  <section id="overview" class="lesson-section">
+    <h2>Overview / How it works</h2>
+    <p>Every mark Paintstorm lays down is assembled from four cooperating layers. Understanding the order they fire in is the key to predictable brushes. First comes the <strong>Tip</strong> — the shape stamped along the path, whether a hard round dab, a chalk nib, or an imported PNG. Next, a <strong>Texture / Pattern</strong> modulates that stamp: a grain layer breaks up flat coverage like tooth on paper, while a pattern can tile an actual image through the stroke. Then the <strong>Dynamics</strong> system reads your input devices and reshapes the stamp in real time. Finally the <strong>Mixing</strong> stage decides how fresh paint interacts with what is already on the canvas — pure opacity, wet blending, or full color pickup.</p>
+
+    <p>The mental model that matters most: a brush is not a picture, it is a <em>machine that stamps a shape many times per second</em>. Paintstorm places the tip at intervals along your path — that interval is <strong>Spacing</strong> — and at each placement it can jitter position, rotate the stamp, resize it, shift its opacity, and even nudge its hue. Low spacing (2–6%) produces a continuous ribbon; high spacing (40%+) produces a dotted, stampy stroke you can turn into foliage, sparks or stitching.</p>
+
+    <blockquote>A brush feels alive not because it is random, but because it responds. Dynamics are a conversation between your hand and the canvas; jitter is seasoning, not the meal.</blockquote>
+
+    <p>The engine's real power lives in the <strong>Dynamics panel</strong>, where each parameter (Size, Opacity, Angle, Scatter, Color and more) gets its own response <strong>curve</strong>. The curve's horizontal axis is an input — Pen Pressure, Tilt, Velocity (speed of the stroke), Rotation (barrel roll on supported pens), or a Random generator — and the vertical axis is how strongly that input drives the target. A steep curve makes the brush hair-trigger sensitive; a gentle, delayed curve gives you a long soft ramp before anything happens. Because every target can be driven by any input, a well-built brush turns subtle hand gestures into a wide expressive range.</p>
+
+    <div class="card card-info">
+      <p><strong>The four layers, in order:</strong></p>
+      <ul>
+        <li><strong>Tip</strong> — the base shape stamped along the path (round, custom PNG, or a second "dual" tip).</li>
+        <li><strong>Texture / Pattern</strong> — grain and image that break up or fill the stamp.</li>
+        <li><strong>Dynamics</strong> — curves that map pressure, tilt, velocity, rotation and random onto size, opacity, angle, scatter and color.</li>
+        <li><strong>Mixing</strong> — how the new paint blends with existing pixels (opacity, wet mix, color pickup).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="practice" class="lesson-section">
+    <h2>Hands-on practice</h2>
+    <p>Let's build a <strong>dual-tip textured brush</strong> from a plain round — a versatile "dry inker" that keeps a crisp edge but breaks up on the surface like a wax pencil, and swells naturally with pressure. Work top-down through the Brush Settings panel.</p>
+
+    <ol>
+      <li><strong>Start from a hard round.</strong> Duplicate a clean round brush so you never overwrite a default, then rename the copy "Dry Inker". Set the base <em>Diameter</em> to something mid-range (say 40 px) so curve behavior is easy to read while tuning.</li>
+      <li><strong>Set spacing for a solid ribbon.</strong> In the Tip / Shape section, drop <em>Spacing</em> to about 4–6%. Too high and the stroke turns beady; too low wastes performance. Draw a test line to confirm it reads as one continuous mark.</li>
+      <li><strong>Add the second (dual) tip.</strong> Enable the <em>Dual Tip</em> (second shape) and load a speckled or chalk stamp. The dual tip multiplies against the primary, carving grain-shaped holes into each dab. Keep its scale small relative to the main tip so it reads as surface texture, not blobs.</li>
+      <li><strong>Layer in a Texture grain.</strong> Turn on <em>Texture</em> and pick a paper/canvas grain. Set its <em>Depth</em> low (20–35%) — this is the difference between "tooth on the page" and "someone smeared mud." The grain should whisper, especially in light passes.</li>
+      <li><strong>Map Pressure to Size.</strong> Open <em>Dynamics → Size</em>, set the input to <em>Pen Pressure</em>, and shape a curve that stays thin through the first third of travel, then ramps up. This gives you fine control in the light range where most linework happens.</li>
+      <li><strong>Map Pressure to Opacity — gently.</strong> Add a second Pressure curve on <em>Opacity</em>, but keep a floor around 15–20% so a feather-light touch still leaves a visible ghost. A brush that vanishes completely at low pressure is frustrating to feather with.</li>
+      <li><strong>Add Velocity to Size for taper.</strong> Route <em>Velocity</em> onto Size with a mild inverse relationship: fast flicks thin out, slow deliberate strokes stay full. This is what gives hand-drawn lines their living, whip-like ends.</li>
+      <li><strong>Use Tilt for a chisel edge.</strong> If your pen reports tilt, map <em>Tilt</em> to <em>Angle</em> and to Size so laying the pen over widens and orients the stamp — instant broad-nib shading without switching brushes.</li>
+      <li><strong>Introduce a whisper of randomness.</strong> In <em>Scatter</em> and <em>Angle</em>, add a small <em>Random</em> amount (a few percent) so repeated dabs don't line up mechanically. Then draw a slow curve and a fast one; adjust until the texture looks organic but the edge stays trustworthy.</li>
+      <li><strong>Set the mixing mode and save.</strong> For an inker, keep Mixing off (pure opacity) so color stays clean. Save the brush into a custom set, and export it so you can reuse it across projects.</li>
+    </ol>
+
+    <div class="card card-warning">
+      <p><strong>⚠️ Pitfall:</strong> Stacking randomness on <em>every</em> parameter at once turns a brush to mush. Add jitter to one target, test, then decide if a second even helps. If you can't describe in a sentence what a given curve is <em>for</em>, delete it.</p>
+    </div>
+
+    <div class="card card-success">
+      <p><strong>✅ Tip:</strong> Tune curves against real marks, not the thumbnail. Keep a scratch layer open and draw the same test gesture — a slow S, a fast flick, a dot — after every change. Your hand, not the preview, is the final judge.</p>
+    </div>
+  </section>
+
+  <section id="demos" class="lesson-section">
+    <h2>Demos &amp; visual aids</h2>
+    <p>The diagram below traces one stroke through the engine. Notice that your input devices feed the Dynamics stage, which reshapes the stamp <em>before</em> mixing decides how it lands on the canvas.</p>
+
+    <div class="mermaid">graph LR; A[Pen input pressure tilt velocity rotation]-->B[Dynamics curves]; T[Tip shape]-->S[Stamp]; X[Texture and pattern]-->S; B-->S; S-->M[Mixing stage]; M-->C[Canvas]</div>
+
+    <p>Use this map as a cheat sheet when you cannot decide which input should drive which target. There is rarely a single correct answer, but these pairings feel natural to most painters:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Input</th><th>Best-fit target</th><th>What it gives you</th><th>Watch out for</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Pen Pressure</td><td>Size &amp; Opacity</td><td>Weight and build-up under a firmer push</td><td>No opacity floor makes light touches disappear</td></tr>
+          <tr><td>Tilt</td><td>Angle &amp; Size</td><td>Broad chisel/shading edge when the pen lays over</td><td>Needs a tilt-capable pen; noisy on cheap digitizers</td></tr>
+          <tr><td>Velocity (speed)</td><td>Size (inverse)</td><td>Natural tapering flicks and living line ends</td><td>Too strong and slow strokes balloon unpredictably</td></tr>
+          <tr><td>Rotation (barrel)</td><td>Angle</td><td>Calligraphic nib you can twist mid-stroke</td><td>Only some pens report barrel rotation</td></tr>
+          <tr><td>Random</td><td>Scatter, Angle, Color</td><td>Organic break-up for foliage, grain, sparks</td><td>Overuse reads as noise, not intent</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <p><strong>Reading a dynamics curve:</strong> The X axis is the incoming signal (0 = no pressure/slow/flat pen), the Y axis is the resulting amount. A curve hugging the bottom-left then rising late = "ignore the light range, react in the heavy range." A curve that starts high and dips = an inverse map, perfect for velocity-driven taper. Flatten a curve to a horizontal line to effectively switch a dynamic off without deleting your setup.</p>
+    </div>
+  </section>
+
+  <section id="wrapup" class="lesson-section">
+    <h2>What you've learned</h2>
+    <p>You now see a Paintstorm brush the way the engine does: an ordered pipeline of Tip, Texture, Dynamics and Mixing, driven by a stack of independent response curves. You built a dual-tip textured inker, mapped pressure, velocity and tilt onto meaningful targets, and learned to dose randomness so it flavors a stroke instead of drowning it.</p>
+
+    <div class="card card-success">
+      <p><strong>✅ Key takeaways:</strong></p>
+      <ul>
+        <li>A brush is a stamping machine — <strong>Spacing</strong> sets whether it draws a ribbon or a trail of dabs.</li>
+        <li>Any <strong>input</strong> (pressure, tilt, velocity, rotation, random) can drive any <strong>target</strong> (size, opacity, angle, scatter, color) through its own curve.</li>
+        <li>Shape curves against real test marks; keep an <strong>opacity floor</strong> so light touches still register.</li>
+        <li>Add jitter to one target at a time — if you can't name a curve's purpose, remove it.</li>
+      </ul>
+    </div>
+
+    <div class="card card-info">
+      <p><strong>Next:</strong> Take your new brushes further:</p>
+      <ul>
+        <li><a href="lesson_gradients_and_adjustments.html">Gradient Maps &amp; Adjustments</a> — unify all those custom strokes under one coherent color mood.</li>
+        <li><a href="lesson_advanced_masks_fx.html">Advanced Masks &amp; FX</a> — confine your expressive brushwork with masks and blend effects.</li>
+        <li><a href="lesson_custom_workspaces_and_hotkeys.html">Custom Workspaces &amp; Hotkeys</a> — bind your favorite brushes for instant recall.</li>
+      </ul>
+    </div>
+  </section>
+
+  <nav class="lesson-nav" aria-label="Lesson Navigation"><a href="index.html" class="home-link">🏠 Course Home</a></nav>
+  </div></main>
+
+  <footer class="site-footer">
+      <p>&copy; 2025 Ray de la Paz. Paintstorm Studio — Advanced. All rights reserved.</p>
+      <div class="footer-links"><a href="https://rays-home.netlify.app/">Ray's House of Fun</a><a href="https://rays-home.netlify.app/contact">Contact</a><a href="#" id="print-button">Print Page</a></div>
+      <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+  </footer>
+
+  <script src="js/clipboard.js"></script>
+  <script src="js/course-enhancements.js"></script>
+</body>
+</html>

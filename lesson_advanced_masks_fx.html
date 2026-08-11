@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paintstorm Studio — Advanced: Advanced Masks, FX &amp; Layers</title>
+  <link rel="icon" href="/favicon.png" />
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- Mermaid — initialized by course-enhancements.js for theme awareness -->
+  <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      window.__mermaid = mermaid;
+      const isDark = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      mermaid.initialize({ startOnLoad: true, theme: isDark ? 'dark' : 'default',
+          themeVariables: isDark ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                                 : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' } });
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+  <nav class="main-nav"><div class="nav-container">
+      <a href="index.html" class="nav-logo">🎨 Paintstorm Studio</a>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <div class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#lessons">All Lessons</a>
+          <span class="nav-divider"></span>
+          <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+          <a href="https://rays-home.netlify.app/contact">Contact</a>
+          <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+      </div>
+  </div></nav>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#lessons">Advanced Lessons</a></li>
+      <li aria-current="page">Advanced Masks, FX &amp; Layers</li>
+  </ul></nav>
+
+  <main id="main-content"><div class="container">
+  <header>
+    <div class="title">
+      <h1>Paintstorm Studio — Advanced Masks, FX &amp; Layers</h1>
+      <span class="tag">🎨 Paintstorm</span>
+      <span class="tag">🎭 Masks</span>
+      <span class="tag">✨ FX</span>
+    </div>
+    <p class="lead">Masks and blend modes are how professionals add light, texture, and mood non-destructively. In this lesson you'll build compound masks, stack a light-FX pass with rim glow, and fold in photo texture at low opacity — all while keeping your darks clean and your mid-tones from turning to mud.</p>
+    <div class="card card-info">
+      <p><strong>Goal:</strong> Build compound/stacked masks, add Screen/Add glow and Multiply shadow FX passes, refine mask edges, and integrate texture overlays through masks without muddying — so effects sit <em>in</em> the painting rather than on top of it.</p>
+    </div>
+  </header>
+
+  <details class="card toc-card" open>
+      <summary aria-label="Toggle table of contents"><span class="toc-icon" aria-hidden="true">📑</span><span class="toc-label">In This Lesson</span><span class="toc-chevron" aria-hidden="true">▾</span></summary>
+      <nav aria-label="Table of Contents"><ol>
+          <li><a href="#overview" class="toc-link">Overview</a></li>
+          <li><a href="#practice" class="toc-link">Hands-on practice</a></li>
+          <li><a href="#demos" class="toc-link">Demos &amp; visual aids</a></li>
+          <li><a href="#wrapup" class="toc-link">What you've learned</a></li>
+      </ol></nav>
+  </details>
+
+  <section id="overview" class="lesson-section">
+    <h2>Overview / How it works</h2>
+    <p>A <strong>layer mask</strong> is a grayscale channel attached to a layer: white reveals the pixels, black hides them, gray partially reveals. Nothing is erased — you paint the mask, not the art, so every decision is reversible. A <strong>clipping layer</strong> is different: it confines a new layer's pixels to the non-transparent area of the layer directly beneath it. Both constrain where paint shows, but they answer different questions.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Layer mask</th><th>Clipping layer</th></tr></thead>
+        <tbody>
+          <tr><td>Controls visibility by</td><td>A grayscale mask you paint</td><td>The alpha of the layer below</td></tr>
+          <tr><td>Reversible</td><td>Yes — repaint the mask</td><td>Yes — unclip anytime</td></tr>
+          <tr><td>Best for</td><td>Soft reveals, blending seams, cut-outs</td><td>Painting light/shadow onto an existing shape</td></tr>
+          <tr><td>Edge control</td><td>Blur/level the mask</td><td>Follows the base shape exactly</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Compound masks</strong> come from stacking these tools: clip a shading layer to a base, then add a mask to <em>that</em> layer to fade the shading, and group the lot under a folder that carries its own mask. Each level narrows where paint can land, giving surgical control without a single destructive erase.</p>
+
+    <h3>Blend modes for FX</h3>
+    <p>Blend modes decide how a layer mathematically combines with what's beneath. A few carry most of the FX workload:</p>
+    <ul>
+      <li><strong>Screen / Add (Linear Dodge):</strong> brighten only — perfect for glow, light shafts, sparks, and rim light. Add is punchier and can blow out fast; Screen is gentler.</li>
+      <li><strong>Multiply:</strong> darken only — ideal for shadow, ambient occlusion in crevices, and cast shadows. It never lightens, so it keeps shadow color coherent.</li>
+      <li><strong>Overlay / Soft Light:</strong> contrast and texture — lighten the lights and darken the darks around 50% gray. Soft Light is the subtle sibling; use it to lay in texture and push local contrast.</li>
+    </ul>
+
+    <blockquote>Effects should look like they were lit or built into the scene, not stickered on top. Low opacity, a mask, and the right blend mode do that; a full-strength layer rarely does.</blockquote>
+  </section>
+
+  <section id="practice" class="lesson-section">
+    <h2>Hands-on practice</h2>
+    <p>Start from a rendered form — a metal helmet, a fruit, any object with clear light and shadow. You'll add a shadow pass, a glow pass, a rim light, and a texture overlay, each masked.</p>
+    <ol>
+      <li><strong>Group the base.</strong> Select your finished object layers and group them into a folder named <em>Object</em>. FX passes will clip or mask against this group.</li>
+      <li><strong>Shadow pass (Multiply).</strong> Add a new layer set to <strong>Multiply</strong>, clip it to the group. With a soft low-opacity brush in a desaturated cool tone, deepen the core shadows and contact shadows. Because it's Multiply, it only darkens — the hue stays consistent.</li>
+      <li><strong>Light-FX pass (Screen/Add).</strong> Add a layer set to <strong>Screen</strong>, clip it. Paint warm light where the key hits: top planes, highlights, the near edge of forms. Switch to <strong>Add</strong> only for the hottest speculars and pull opacity back so it glows rather than blows out.</li>
+      <li><strong>Rim / edge glow.</strong> New Screen layer, <em>not</em> clipped this time. Trace a thin bright line along the object's silhouette where a back light would catch it. Then add a mask to this layer and, with a soft black brush, knock the glow back everywhere except where the rim faces the light — that variation sells it.</li>
+      <li><strong>Refine mask edges.</strong> On any mask, blur it slightly for a soft transition, or run Levels on the mask to tighten a fuzzy edge into a crisp one. Painting white/black at low flow lets you feather reveals by hand.</li>
+      <li><strong>Texture overlay.</strong> Paste a photo texture (concrete, paper, hammered metal) above the object, set it to <strong>Overlay</strong> or <strong>Soft Light</strong>, and drop opacity to 15–35%. Add a mask and hide the texture off the object and out of the cleanest highlights so it reads as surface, not a decal.</li>
+      <li><strong>Guard the darks.</strong> Check your deepest shadows. If texture or FX has crept into them, mask it out — the darkest values should stay clean and near-neutral so the image keeps depth.</li>
+      <li><strong>Global glow FX (optional).</strong> Merge a copy to the top, blur it, set to Screen at low opacity for an atmospheric bloom. Mask it off faces you want to stay sharp.</li>
+    </ol>
+
+    <div class="card card-success">
+      <p>✅ <strong>Tip:</strong> Name and color-code your FX layers (Shadow · Light · Rim · Texture · Bloom). When something looks off you'll know exactly which pass to dial back instead of hunting through a stack.</p>
+    </div>
+    <div class="card card-warning">
+      <p>⚠️ <strong>Pitfall — muddy mid-tones:</strong> Overlay and Soft Light desaturate and gray toward the middle when stacked too heavily. If mid-tones go flat and lifeless, reduce texture opacity, mask it out of the mid-values, or add a touch of saturation back on a separate pass.</p>
+    </div>
+  </section>
+
+  <section id="demos" class="lesson-section">
+    <h2>Demos &amp; visual aids</h2>
+    <p>The diagram shows a typical FX stack, bottom to top — each pass constrained by clipping or a mask.</p>
+
+    <div class="mermaid">graph TD; A[Base object group]--&gt;B[Multiply shadow]; B--&gt;C[Screen light]; C--&gt;D[Rim glow with mask]; D--&gt;E[Overlay texture low opacity]; E--&gt;F[Screen bloom]; F--&gt;G[Guard the darks];</div>
+
+    <figure class="figure">
+      <svg viewBox="0 0 300 170" width="300" height="170" role="img" aria-label="A stack of layers each with an attached mask thumbnail">
+        <g stroke="#64748b" stroke-width="1.5" fill="none">
+          <rect x="60" y="20" width="120" height="22" />
+          <rect x="60" y="52" width="120" height="22" />
+          <rect x="60" y="84" width="120" height="22" />
+          <rect x="60" y="116" width="120" height="22" />
+        </g>
+        <g stroke="#94a3b8" stroke-width="1.5" fill="none">
+          <rect x="188" y="20" width="22" height="22" />
+          <rect x="188" y="52" width="22" height="22" />
+          <rect x="188" y="84" width="22" height="22" />
+          <rect x="188" y="116" width="22" height="22" />
+        </g>
+        <text x="66" y="35" fill="#64748b" font-size="10">Bloom (Screen)</text>
+        <text x="66" y="67" fill="#64748b" font-size="10">Texture (Overlay)</text>
+        <text x="66" y="99" fill="#64748b" font-size="10">Light (Screen/Add)</text>
+        <text x="66" y="131" fill="#64748b" font-size="10">Shadow (Multiply)</text>
+        <text x="184" y="158" fill="#64748b" font-size="10">masks →</text>
+      </svg>
+      <figcaption>Each FX layer carries its own mask, so any pass can be revealed or hidden per pixel without touching the art.</figcaption>
+    </figure>
+
+    <p>Reach for the mode that matches the job:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Blend mode</th><th>Does</th><th>Use it for</th><th>Watch out for</th></tr></thead>
+        <tbody>
+          <tr><td>Multiply</td><td>Darkens only</td><td>Core &amp; contact shadow, AO, grime</td><td>Can crush darks — keep opacity modest</td></tr>
+          <tr><td>Screen</td><td>Lightens only</td><td>Glow, light shafts, soft highlights</td><td>Washes out over light areas</td></tr>
+          <tr><td>Add / Linear Dodge</td><td>Lightens, additive</td><td>Hot speculars, sparks, rim light</td><td>Blows out fast — low opacity</td></tr>
+          <tr><td>Overlay</td><td>Contrast around 50% gray</td><td>Texture, punchy contrast</td><td>Oversaturates and darkens</td></tr>
+          <tr><td>Soft Light</td><td>Gentle contrast</td><td>Subtle texture, tonal nudges</td><td>Muddies mid-tones if stacked</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card card-info">
+      <p><strong>Non-destructive habit:</strong> If you're tempted to erase, add a mask and paint black instead. Future-you can always bring it back.</p>
+    </div>
+  </section>
+
+  <section id="wrapup" class="lesson-section">
+    <h2>What you've learned</h2>
+    <ul>
+      <li>Layer masks control visibility with a grayscale channel; clipping layers borrow the alpha of the layer below — combine them for compound, surgical control.</li>
+      <li>Multiply darkens (shadow), Screen/Add lighten (glow, rim), Overlay/Soft Light add texture and contrast.</li>
+      <li>Build FX as separate, named passes: shadow, light, rim glow, texture, bloom — each masked so you can dial it back.</li>
+      <li>Integrate photo texture at low opacity through a mask so it reads as surface, not a decal.</li>
+      <li>Guard your darkest values and mid-tones from creeping FX to avoid mud and preserve depth.</li>
+    </ul>
+
+    <div class="card card-success">
+      <p>✅ <strong>Carry it forward:</strong> The best FX are invisible as effects — they read as light, material, and atmosphere that were always there.</p>
+    </div>
+
+    <p><strong>Keep going:</strong></p>
+    <ul>
+      <li><a href="lesson_perspective_and_guides.html">Perspective Guides &amp; Rulers</a> — build the scene structure your FX will light.</li>
+      <li><a href="lesson_advanced_brush_engine.html">Advanced Brush Engine</a> — craft the textured brushes that feed your Overlay passes.</li>
+      <li><a href="lesson_gradients_and_adjustments.html">Gradients &amp; Adjustments</a> — grade the finished, masked image for a unified mood.</li>
+    </ul>
+
+    <nav class="lesson-nav" aria-label="Lesson Navigation"><a href="index.html" class="home-link">🏠 Course Home</a></nav>
+  </section>
+
+  </div></main>
+
+  <footer class="site-footer">
+      <p>&copy; 2025 Ray de la Paz. Paintstorm Studio — Advanced. All rights reserved.</p>
+      <div class="footer-links"><a href="https://rays-home.netlify.app/">Ray's House of Fun</a><a href="https://rays-home.netlify.app/contact">Contact</a><a href="#" id="print-button">Print Page</a></div>
+      <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+  </footer>
+
+  <script src="js/clipboard.js"></script>
+  <script src="js/course-enhancements.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paintstorm Studio — Advanced: Perspective Guides &amp; Rulers</title>
+  <link rel="icon" href="/favicon.png" />
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- Mermaid — initialized by course-enhancements.js for theme awareness -->
+  <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      window.__mermaid = mermaid;
+      const isDark = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      mermaid.initialize({ startOnLoad: true, theme: isDark ? 'dark' : 'default',
+          themeVariables: isDark ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                                 : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' } });
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+  <nav class="main-nav"><div class="nav-container">
+      <a href="index.html" class="nav-logo">🎨 Paintstorm Studio</a>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <div class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#lessons">All Lessons</a>
+          <span class="nav-divider"></span>
+          <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+          <a href="https://rays-home.netlify.app/contact">Contact</a>
+          <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+      </div>
+  </div></nav>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#lessons">Advanced Lessons</a></li>
+      <li aria-current="page">Perspective Guides &amp; Rulers</li>
+  </ul></nav>
+
+  <main id="main-content"><div class="container">
+  <header>
+    <div class="title">
+      <h1>Paintstorm Studio — Perspective Guides &amp; Rulers</h1>
+      <span class="tag">🎨 Paintstorm</span>
+      <span class="tag">📐 Perspective</span>
+      <span class="tag">📏 Guides</span>
+    </div>
+    <p class="lead">Solid drawings sit on a believable stage. In this lesson you'll stabilize scene structure with one-, two-, and three-point perspective guides, snap strokes to vanishing points, and use ellipse, radial, symmetry, and grid overlays so every box, wheel, and building reads as if it lives in real space.</p>
+    <div class="card card-info">
+      <p><strong>Goal:</strong> Set up and paint against Paintstorm's perspective rulers so your scene structure stays consistent — the right number of vanishing points, an intentional horizon, and clean cylinders — while avoiding the classic distortions that give amateur work away.</p>
+    </div>
+  </header>
+
+  <details class="card toc-card" open>
+      <summary aria-label="Toggle table of contents"><span class="toc-icon" aria-hidden="true">📑</span><span class="toc-label">In This Lesson</span><span class="toc-chevron" aria-hidden="true">▾</span></summary>
+      <nav aria-label="Table of Contents"><ol>
+          <li><a href="#overview" class="toc-link">Overview</a></li>
+          <li><a href="#practice" class="toc-link">Hands-on practice</a></li>
+          <li><a href="#demos" class="toc-link">Demos &amp; visual aids</a></li>
+          <li><a href="#wrapup" class="toc-link">What you've learned</a></li>
+      </ol></nav>
+  </details>
+
+  <section id="overview" class="lesson-section">
+    <h2>Overview / How it works</h2>
+    <p>Every perspective system starts with two decisions: where the <strong>horizon line</strong> sits and where the <strong>vanishing points</strong> land. The horizon is eye level — the height at which your viewer's eyes float. Anything above it is seen from below; anything below it is seen from above. Vanishing points are the spots on (or off) the horizon where receding parallel edges converge.</p>
+    <p>Paintstorm exposes this as live <strong>rulers/guides</strong> you can paint against. Once a perspective guide is active, brush strokes can <em>snap</em> to the nearest guide line so freehand strokes stay dead straight and correctly angled toward the vanishing point. That turns perspective from a mental calculation into muscle memory — you paint loosely and the guide keeps you honest.</p>
+
+    <h3>Choosing your point count</h3>
+    <ul>
+      <li><strong>One-point:</strong> one vanishing point on the horizon. Faces parallel to the picture plane stay flat; only depth edges converge. Best for interiors, corridors, roads, and straight-on box studies.</li>
+      <li><strong>Two-point:</strong> two vanishing points, usually pushed wide apart on the horizon. Verticals stay vertical; the two side planes each recede to their own point. The everyday workhorse for buildings and objects seen from a corner.</li>
+      <li><strong>Three-point:</strong> add a third point above or below the horizon so verticals also converge. Use it for dramatic worm's-eye or bird's-eye shots — looking up a skyscraper or down into a canyon.</li>
+    </ul>
+
+    <blockquote>Perspective is not decoration you add at the end — it is the skeleton you build on first. Set the horizon, place the points, then paint.</blockquote>
+
+    <div class="card card-info">
+      <p><strong>Rule of thumb:</strong> keep vanishing points far apart. When two points crowd near the object, edges fan out too fast and the object balloons. Widely spaced points give a calm, natural-looking box.</p>
+    </div>
+  </section>
+
+  <section id="practice" class="lesson-section">
+    <h2>Hands-on practice</h2>
+    <p>Work through these steps on a fresh landscape canvas. You'll build a two-point street scene, drop a cylinder on it, and thumbnail with a grid.</p>
+    <ol>
+      <li><strong>Set the horizon.</strong> On a new layer, drag a single horizontal line across roughly the lower third of the canvas. A low horizon makes buildings tower; a centered horizon feels neutral. Commit to eye level now — everything else references it.</li>
+      <li><strong>Enable the perspective guide.</strong> Open the Guides / Rulers panel and choose <em>Perspective</em>. Select the <strong>two-point</strong> preset. Two draggable vanishing-point handles appear on the horizon — slide them wide, well past the canvas edges, so convergence stays gentle.</li>
+      <li><strong>Turn on stroke snapping.</strong> Enable <em>Snap to guide</em> (magnet). Now any stroke you begin near a guide line locks to the correct receding angle. Test it: draw the top and bottom edges of a building block — both should race cleanly toward the same vanishing point.</li>
+      <li><strong>Block the main forms.</strong> Rough in two or three building masses. Keep verticals truly vertical (two-point keeps them un-converged) and let only the depth edges snap to the points. Paint on a dedicated <em>structure</em> layer so you can dim it later.</li>
+      <li><strong>Add a cylinder with an ellipse guide.</strong> For a lamppost or barrel, switch to the <strong>ellipse</strong> guide. Align its minor axis with the object's vertical center line, then snap strokes around it. Ellipses get rounder the farther they are from the horizon and flatten to a line as they approach it.</li>
+      <li><strong>Use radial / symmetry for a wheel or fan.</strong> Switch to the <strong>radial (symmetry)</strong> guide, set the spoke count, and center it on a wheel hub. Every stroke mirrors around the pivot, so spokes and rims stay evenly distributed.</li>
+      <li><strong>Thumbnail with a grid.</strong> For layout exploration or tiling tests, enable the <strong>grid</strong> overlay. Use it to check that big shapes divide the frame pleasingly (rule-of-thirds) and, for tiling textures, that edges line up seam-to-seam.</li>
+      <li><strong>Dim the guides and review.</strong> Lower the guide opacity or hide the structure layer and judge the painting on its own. If a form looks wrong with guides off, the drawing is wrong — fix it before rendering.</li>
+    </ol>
+
+    <div class="card card-success">
+      <p>✅ <strong>Tip:</strong> Keep the perspective guide on its own toggle and paint the actual art on separate layers. You can hide the scaffolding for a clean review, then bring it back to extend the scene later.</p>
+    </div>
+    <div class="card card-warning">
+      <p>⚠️ <strong>Pitfall — twinning:</strong> Placing two objects at exactly the same size, height, and spacing on the horizon makes the eye read them as clones and kills depth. Vary size, overlap, and interval so forms clearly sit at different distances.</p>
+    </div>
+  </section>
+
+  <section id="demos" class="lesson-section">
+    <h2>Demos &amp; visual aids</h2>
+    <p>The flowchart below shows the decision path from scene idea to snapped strokes. Follow it whenever you start a structured piece.</p>
+
+    <div class="mermaid">graph TD; A[Scene idea]--&gt;B[Place horizon line]; B--&gt;C{How many faces recede}; C--&gt;D[One point]; C--&gt;E[Two point]; C--&gt;F[Three point]; D--&gt;G[Enable guide]; E--&gt;G; F--&gt;G; G--&gt;H[Turn on snapping]; H--&gt;I[Block forms]; I--&gt;J[Add ellipse or radial]; J--&gt;K[Dim guides and review];</div>
+
+    <figure class="figure">
+      <svg viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Two-point perspective box with a horizon line and two vanishing points">
+        <line x1="0" y1="70" x2="320" y2="70" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4 3" />
+        <circle cx="12" cy="70" r="3" fill="#64748b" />
+        <circle cx="308" cy="70" r="3" fill="#64748b" />
+        <!-- front vertical edge -->
+        <line x1="150" y1="55" x2="150" y2="140" stroke="#64748b" stroke-width="2" />
+        <!-- edges to left VP -->
+        <line x1="150" y1="55" x2="70" y2="72" stroke="#94a3b8" stroke-width="1.5" />
+        <line x1="150" y1="140" x2="70" y2="118" stroke="#94a3b8" stroke-width="1.5" />
+        <line x1="70" y1="72" x2="70" y2="118" stroke="#64748b" stroke-width="2" />
+        <!-- edges to right VP -->
+        <line x1="150" y1="55" x2="235" y2="66" stroke="#94a3b8" stroke-width="1.5" />
+        <line x1="150" y1="140" x2="235" y2="112" stroke="#94a3b8" stroke-width="1.5" />
+        <line x1="235" y1="66" x2="235" y2="112" stroke="#64748b" stroke-width="2" />
+        <text x="12" y="60" fill="#64748b" font-size="11">VP</text>
+        <text x="296" y="60" fill="#64748b" font-size="11">VP</text>
+        <text x="200" y="30" fill="#64748b" font-size="11">horizon = eye level</text>
+      </svg>
+      <figcaption>A two-point box: verticals stay upright while the two side planes recede to vanishing points on the horizon.</figcaption>
+    </figure>
+
+    <p>Use this table to pick the right system for a shot:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>System</th><th>Vanishing points</th><th>Verticals</th><th>Best for</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>One-point</td><td>1 on horizon</td><td>Vertical &amp; horizontal stay flat</td><td>Corridors, roads, straight-on interiors</td></tr>
+          <tr><td>Two-point</td><td>2 on horizon</td><td>Stay vertical</td><td>Buildings from a corner, product shots, props</td></tr>
+          <tr><td>Three-point</td><td>2 on horizon + 1 above/below</td><td>Also converge</td><td>Worm's-eye towers, bird's-eye cityscapes</td></tr>
+          <tr><td>Ellipse guide</td><td>—</td><td>—</td><td>Cylinders: barrels, cans, columns, lampposts</td></tr>
+          <tr><td>Radial / symmetry</td><td>1 pivot</td><td>—</td><td>Wheels, gears, fans, mandalas, rose windows</td></tr>
+          <tr><td>Grid overlay</td><td>—</td><td>—</td><td>Thumbnail composition, seamless tiling tests</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card card-warning">
+      <p>⚠️ <strong>Edge distortion:</strong> Anything far from the center of the cone of vision stretches unnaturally — spheres go egg-shaped, boxes shear. If a form near the frame edge looks wrong, either widen the vanishing-point spread (a longer virtual lens) or recompose so the subject sits nearer center.</p>
+    </div>
+  </section>
+
+  <section id="wrapup" class="lesson-section">
+    <h2>What you've learned</h2>
+    <ul>
+      <li>The horizon line <em>is</em> eye level; place it deliberately because everything references it.</li>
+      <li>Choose one-, two-, or three-point based on how many faces recede and whether verticals should converge.</li>
+      <li>Enable Paintstorm's perspective guide, spread the vanishing points wide, and turn on snapping so freehand strokes lock to the correct angle.</li>
+      <li>Ellipse guides handle cylinders; radial/symmetry guides handle wheels; grid overlays drive thumbnails and tiling.</li>
+      <li>Avoid twinning, a mis-set horizon, crowded points, and edge distortion — the four tells of shaky perspective.</li>
+    </ul>
+
+    <div class="card card-success">
+      <p>✅ <strong>Carry it forward:</strong> Perspective is scaffolding. Build it first, paint on layers above it, then hide it for an honest review.</p>
+    </div>
+
+    <p><strong>Keep going:</strong></p>
+    <ul>
+      <li><a href="lesson_advanced_masks_fx.html">Advanced Masks, FX &amp; Layers</a> — light your perspective scene with glow and shadow passes.</li>
+      <li><a href="lesson_gradients_and_adjustments.html">Gradients &amp; Adjustments</a> — grade the finished scene and add atmospheric depth.</li>
+      <li><a href="project_illustrated_poster.html">Project: Illustrated Poster</a> — put perspective, masks, and grading together in one piece.</li>
+    </ul>
+
+    <nav class="lesson-nav" aria-label="Lesson Navigation"><a href="index.html" class="home-link">🏠 Course Home</a></nav>
+  </section>
+
+  </div></main>
+
+  <footer class="site-footer">
+      <p>&copy; 2025 Ray de la Paz. Paintstorm Studio — Advanced. All rights reserved.</p>
+      <div class="footer-links"><a href="https://rays-home.netlify.app/">Ray's House of Fun</a><a href="https://rays-home.netlify.app/contact">Contact</a><a href="#" id="print-button">Print Page</a></div>
+      <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+  </footer>
+
+  <script src="js/clipboard.js"></script>
+  <script src="js/course-enhancements.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paintstorm Studio — Advanced: Gradient Maps &amp; Adjustments</title>
+  <link rel="icon" href="/favicon.png" />
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- Mermaid — initialized by course-enhancements.js for theme awareness -->
+  <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      window.__mermaid = mermaid;
+      const isDark = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      mermaid.initialize({ startOnLoad: true, theme: isDark ? 'dark' : 'default',
+          themeVariables: isDark ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                                 : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' } });
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+  <nav class="main-nav"><div class="nav-container">
+      <a href="index.html" class="nav-logo">🎨 Paintstorm Studio</a>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <div class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#lessons">All Lessons</a>
+          <span class="nav-divider"></span>
+          <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+          <a href="https://rays-home.netlify.app/contact">Contact</a>
+          <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+      </div>
+  </div></nav>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#lessons">Advanced Lessons</a></li>
+      <li aria-current="page">Gradient Maps &amp; Adjustments</li>
+  </ul></nav>
+
+  <main id="main-content"><div class="container">
+  <header>
+    <div class="title">
+      <h1>Paintstorm Studio — Gradient Maps &amp; Adjustments</h1>
+      <span class="tag">🎨 Paintstorm</span>
+      <span class="tag">🌈 Gradient Maps</span>
+      <span class="tag">🎚️ Adjustments</span>
+    </div>
+    <p class="lead">The difference between a flat sketch and a painting that glows is rarely more brushwork — it's a well-judged gradient map and a curve, dropped on top like colored stage lighting.</p>
+    <div class="card card-info">
+      <p><strong>Goal:</strong> Take command of a picture's global mood using gradient maps, curves and HSL as reversible, stacked passes — knowing when to work destructively and when to keep every edit live, maskable and undoable.</p>
+    </div>
+  </header>
+
+  <details class="card toc-card" open>
+      <summary aria-label="Toggle table of contents"><span class="toc-icon" aria-hidden="true">📑</span><span class="toc-label">In This Lesson</span><span class="toc-chevron" aria-hidden="true">▾</span></summary>
+      <nav aria-label="Table of Contents"><ol>
+          <li><a href="#overview" class="toc-link">Overview</a></li>
+          <li><a href="#practice" class="toc-link">Hands-on practice</a></li>
+          <li><a href="#demos" class="toc-link">Demos &amp; visual aids</a></li>
+          <li><a href="#wrapup" class="toc-link">What you've learned</a></li>
+      </ol></nav>
+  </details>
+
+  <section id="overview" class="lesson-section">
+    <h2>Overview / How it works</h2>
+    <p>There are two ways to change color in Paintstorm, and choosing the right one is half the skill. A <strong>destructive</strong> edit — applying an adjustment straight onto a pixel layer — bakes the result in immediately. It's fast and light, but once you paint over it or move on, that decision is permanent. An <strong>adjustment-pass</strong> approach instead keeps the correction on its own layer above the artwork, so the pixels underneath are never touched. You can dial it back, mask it, reorder it, or throw it away tomorrow. For anything that sets mood, you want passes.</p>
+
+    <p>The star of mood control is the <strong>gradient map</strong>. It works by ignoring your image's existing colors entirely and reading only its <em>luminance</em> — how light or dark each pixel is. It then remaps that brightness onto a color <strong>ramp</strong> you define: the darkest tones pick up the color at the left of the ramp, the brightest tones the color at the right, and midtones blend between. Map shadows to a deep violet and highlights to a warm cream and a gray sketch instantly reads as candlelit. Because it keys off value, a gradient map only looks as good as your underlying value structure — which is exactly why painters block in values first.</p>
+
+    <blockquote>Value does the work; color takes the credit. A gradient map can't invent form that your light-and-dark structure didn't already establish.</blockquote>
+
+    <p><strong>Curves</strong> are your value and contrast surgeon. The curve plots input brightness against output brightness; a gentle S-shape deepens shadows and lifts highlights for punchier contrast, while lifting the black point floods the shadows with air and haze. Working on the individual R, G and B channels lets you push color into the lights or shadows precisely — pull the blue channel's shadow end up for cool nighttime darks. Finally, <strong>HSL</strong> and selective color let you grab one band — say, only the greens — and shift its hue, saturation or lightness without disturbing the rest of the frame, ideal for retuning foliage or calming an overcooked skin tone.</p>
+
+    <div class="card card-info">
+      <p><strong>The three workhorses:</strong></p>
+      <ul>
+        <li><strong>Gradient Map</strong> — luminance to color ramp; sets overall palette and mood in one move.</li>
+        <li><strong>Curves</strong> — reshapes value and contrast globally or per channel; the precision tool for light.</li>
+        <li><strong>HSL / Selective Color</strong> — targeted hue/saturation/lightness shifts on a chosen color band.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="practice" class="lesson-section">
+    <h2>Hands-on practice</h2>
+    <p>Let's grade a finished-but-flat illustration into a warm, moody scene using a stack of reversible passes: a <strong>warm-shadow / cool-light gradient map</strong>, a contrast curve, and a targeted HSL nudge. Keep the original art untouched underneath the whole time.</p>
+
+    <ol>
+      <li><strong>Confirm your values first.</strong> Temporarily view the piece in grayscale (a desaturating pass, or the value check) and make sure lights, mids and darks are clearly separated. A gradient map amplifies whatever value structure exists — fix muddy values <em>before</em> grading, not after.</li>
+      <li><strong>Add a gradient-map pass on top.</strong> Create the gradient map as a new adjustment layer above all artwork so it's non-destructive. Nothing below it is altered — you're viewing the art <em>through</em> the map.</li>
+      <li><strong>Build a warm-shadow / cool-light ramp.</strong> Set the ramp's dark end to a warm desaturated brown-violet, the midpoint to a muted rose, and the light end to a cool pale cream. This "warm dark, cool light" split reads as intimate interior light. Reverse it (cool darks, warm lights) for open daylight instead.</li>
+      <li><strong>Pull the opacity back.</strong> A gradient map at 100% usually looks synthetic. Drop the pass to 60–80% so the original local colors bleed through and the grade feels integrated rather than painted-over.</li>
+      <li><strong>Stack a Curves pass for contrast.</strong> Add a Curves adjustment above the gradient map. Draw a soft S — anchor the midpoint, dip the shadows, lift the highlights — to restore the punch a gradient map can flatten.</li>
+      <li><strong>Cool the shadows on a channel.</strong> Still in Curves, switch to the Blue channel and raise its dark end slightly. This pushes cool blue into the darks for atmosphere without touching the highlights.</li>
+      <li><strong>Target one color with HSL.</strong> Add an HSL/selective pass and isolate a single band — say the greens of some foliage — then shift its hue toward teal and drop saturation a touch so it recedes and stops competing with your focal point.</li>
+      <li><strong>Mask a pass to protect the focal point.</strong> On the gradient-map layer's mask, paint black over your character's face so the local skin color shows through at full strength while the environment stays fully graded. This is how you keep the hero reading while the world takes on mood.</li>
+      <li><strong>Judge, then commit lightly.</strong> Toggle each pass on and off to confirm it earns its place. Leave the stack live for as long as you can; only flatten a copy for export, never your master file.</li>
+    </ol>
+
+    <div class="card card-warning">
+      <p><strong>⚠️ Pitfall:</strong> Grading to fix bad values. If a gradient map makes an area look worse, the underlying value is usually the culprit. No color ramp rescues a picture where the darks and lights aren't separated — go back down the stack and repaint the value.</p>
+    </div>
+
+    <div class="card card-success">
+      <p><strong>✅ Tip:</strong> Name every adjustment layer for what it does — "GradientMap warm/cool", "Curves S-contrast", "HSL foliage" — and group them. A month later you'll thank yourself, and the whole grade travels as a reusable recipe.</p>
+    </div>
+  </section>
+
+  <section id="demos" class="lesson-section">
+    <h2>Demos &amp; visual aids</h2>
+    <p>Think of your corrections as a stack of transparent gels the viewer looks through, bottom to top. Order matters: each pass sees the combined result of everything below it.</p>
+
+    <div class="mermaid">graph LR; A[Base artwork values]-->B[Gradient map warm dark cool light]; B-->C[Curves contrast and channel tint]; C-->D[HSL selective color shift]; D-->E[Masks limit each pass]; E-->F[Final graded image]</div>
+
+    <p>Reach for the right tool by asking what you're trying to change — palette, value, or one specific color:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Adjustment</th><th>What it changes</th><th>Reach for it when…</th><th>Keep reversible by…</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Gradient Map</td><td>Whole palette, keyed to luminance</td><td>You want to set a unified mood or unify mismatched colors fast</td><td>Placing it on its own pass at reduced opacity</td></tr>
+          <tr><td>Curves (RGB)</td><td>Global value &amp; contrast</td><td>The piece is flat or the darks/lights need shaping</td><td>Using an adjustment layer, not baking onto pixels</td></tr>
+          <tr><td>Curves (per channel)</td><td>Color cast in lights or shadows</td><td>You want cool shadows or warm highlights precisely</td><td>Editing R/G/B ends on the same live pass</td></tr>
+          <tr><td>HSL / Selective</td><td>One color band's hue/sat/lightness</td><td>A single color (foliage, skin, sky) is off</td><td>Masking the pass to the region you targeted</td></tr>
+          <tr><td>Brightness / Saturation</td><td>Broad exposure &amp; intensity</td><td>Quick global lift or a saturation pullback</td><td>Applying on a duplicate or adjustment pass</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <p><strong>Reading a gradient ramp:</strong> Left = shadows, right = highlights, and the stops between control the midtone journey. Two well-chosen stops (a warm dark and a cool light) already carry a scene; add a third mid stop only when you want the transition to bend through a distinct color — like a sunset passing through orange on its way from red to yellow.</p>
+    </div>
+  </section>
+
+  <section id="wrapup" class="lesson-section">
+    <h2>What you've learned</h2>
+    <p>You can now steer a picture's entire mood from the top of the layer stack without ever risking the art below. You know a gradient map reads value and repaints it as a palette, that curves are your precision tool for contrast and color cast, and that HSL lets you fix one color band in isolation — all as stacked, masked, reversible passes.</p>
+
+    <div class="card card-success">
+      <p><strong>✅ Key takeaways:</strong></p>
+      <ul>
+        <li>Prefer <strong>adjustment passes</strong> over baked-in edits for anything that sets mood — reorderable, maskable, undoable.</li>
+        <li>A <strong>gradient map</strong> keys off luminance, so it only ever looks as good as your value structure.</li>
+        <li><strong>Curves</strong> shape contrast globally; per-channel curves inject cool shadows or warm lights.</li>
+        <li><strong>Mask</strong> passes to protect focal points, and name every layer so the grade is a reusable recipe.</li>
+      </ul>
+    </div>
+
+    <div class="card card-info">
+      <p><strong>Next:</strong> Put your grading skills to work:</p>
+      <ul>
+        <li><a href="lesson_advanced_masks_fx.html">Advanced Masks &amp; FX</a> — go deeper on the masking and blend modes that make selective grading sing.</li>
+        <li><a href="lesson_advanced_brush_engine.html">Advanced Brush Engine</a> — build the expressive brushes whose colors your grade will later unify.</li>
+        <li><a href="project_illustrated_poster.html">Project: Illustrated Poster</a> — apply gradient maps and adjustment passes to a finished piece end to end.</li>
+      </ul>
+    </div>
+  </section>
+
+  <nav class="lesson-nav" aria-label="Lesson Navigation"><a href="index.html" class="home-link">🏠 Course Home</a></nav>
+  </div></main>
+
+  <footer class="site-footer">
+      <p>&copy; 2025 Ray de la Paz. Paintstorm Studio — Advanced. All rights reserved.</p>
+      <div class="footer-links"><a href="https://rays-home.netlify.app/">Ray's House of Fun</a><a href="https://rays-home.netlify.app/contact">Contact</a><a href="#" id="print-button">Print Page</a></div>
+      <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+  </footer>
+
+  <script src="js/clipboard.js"></script>
+  <script src="js/course-enhancements.js"></script>
+</body>
+</html>

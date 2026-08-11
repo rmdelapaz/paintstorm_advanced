@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paintstorm Studio — Advanced: Project — Illustrated Poster</title>
+  <link rel="icon" href="/favicon.png" />
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- Mermaid — initialized by course-enhancements.js for theme awareness -->
+  <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      window.__mermaid = mermaid;
+      const isDark = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      mermaid.initialize({ startOnLoad: true, theme: isDark ? 'dark' : 'default',
+          themeVariables: isDark ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                                 : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' } });
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+  <nav class="main-nav"><div class="nav-container">
+      <a href="index.html" class="nav-logo">🎨 Paintstorm Studio</a>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <div class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#lessons">All Lessons</a>
+          <span class="nav-divider"></span>
+          <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+          <a href="https://rays-home.netlify.app/contact">Contact</a>
+          <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+      </div>
+  </div></nav>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#lessons">Advanced Lessons</a></li>
+      <li aria-current="page">Project — Illustrated Poster</li>
+  </ul></nav>
+
+  <main id="main-content"><div class="container">
+  <header>
+    <div class="title">
+      <h1>Paintstorm Studio — Project — Illustrated Poster</h1>
+      <span class="tag">🎨 Paintstorm</span>
+      <span class="tag">🖼️ Project</span>
+      <span class="tag">🎯 Capstone</span>
+    </div>
+    <p class="lead">This is your capstone. Everything from the Advanced course — brushes, adjustments, perspective, masks, and a tuned workspace — comes together into one finished, print-ready A3 poster with a clean value hierarchy and punchy color.</p>
+    <div class="card card-info">
+      <p><strong>Goal:</strong> Plan, light, and finish an A3 illustrated poster with a clean value hierarchy and punchy color, applying everything from the Advanced course.</p>
+    </div>
+  </header>
+
+  <details class="card toc-card" open>
+      <summary aria-label="Toggle table of contents"><span class="toc-icon" aria-hidden="true">📑</span><span class="toc-label">In This Lesson</span><span class="toc-chevron" aria-hidden="true">▾</span></summary>
+      <nav aria-label="Table of Contents"><ol>
+          <li><a class="toc-link" href="#plan">Plan the poster</a></li>
+          <li><a class="toc-link" href="#steps">Step-by-step build</a></li>
+          <li><a class="toc-link" href="#demos">Demos &amp; visual aids</a></li>
+          <li><a class="toc-link" href="#export">Export &amp; review</a></li>
+      </ol></nav>
+  </details>
+
+  <section id="plan" class="lesson-section">
+    <h2>Plan the poster</h2>
+    <p>A poster succeeds or fails before you lay a stroke. It must read from across a room, communicate one idea, and reward a closer look. Spend real time here — planning is the cheapest place to fix a composition.</p>
+
+    <h3>Brief &amp; audience</h3>
+    <p>Write a one-sentence brief and pin it to the top of your file: <em>"A moody night-market poster that makes a viewer want to visit."</em> Decide the audience and the read distance — an event poster on a wall is scanned in two seconds, so the focal point and any type must survive being squinted at. Note the single idea; anything that does not serve it is a candidate for cutting.</p>
+
+    <h3>Thumbnails</h3>
+    <p>Sketch six to ten tiny thumbnails, each no larger than a matchbook. Work only in silhouette and big value masses — no detail. You are hunting for a strong <strong>value pattern</strong> and a clear focal point, not a finished drawing. Pick the two strongest, then push those a little further before committing.</p>
+
+    <h3>A3 canvas setup</h3>
+    <p>Set up print-correct from the start so nothing has to be rebuilt later. A3 is <strong>297 &times; 420 mm</strong>. At 300 dpi that is roughly <strong>3508 &times; 4961 px</strong>. Create the canvas in that size, sRGB or your print profile, and keep a margin.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Setting</th><th>Value</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Canvas size</td><td>3508 &times; 4961 px</td><td>A3 (297 &times; 420 mm) at 300 dpi — true print resolution.</td></tr>
+          <tr><td>Resolution</td><td>300 dpi</td><td>Standard for crisp offset and inkjet printing.</td></tr>
+          <tr><td>Orientation</td><td>Portrait</td><td>Classic poster proportion; swap if the brief calls for it.</td></tr>
+          <tr><td>Safe margin</td><td>~10 mm inset</td><td>Keep focal content off the trim edge.</td></tr>
+          <tr><td>Bleed (if printing full-bleed)</td><td>+3 mm all sides</td><td>Extend background art past trim so no white edge shows.</td></tr>
+          <tr><td>Color space</td><td>sRGB / print profile</td><td>Consistent color from screen to press.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card card-warning">
+      <p>⚠️ <strong>Pitfall:</strong> Starting on a screen-sized 1920 px canvas "to save memory" and scaling up later gives you soft, mushy edges at print size. Start at full A3 resolution.</p>
+    </div>
+
+    <h3>Value plan &amp; focal hierarchy</h3>
+    <p>Assign a deliberate value structure before painting: pick where your lightest light and darkest dark will meet — that highest-contrast point is your focal magnet, and there should be only one. Group everything else into two or three simple value families so the eye reads big shapes first. A common, reliable plan is a dark frame around a lit focal zone.</p>
+    <blockquote>If your poster reads clearly as a squinted, three-value grayscale thumbnail, color will only make it better. If it does not, no amount of rendering or color will save it.</blockquote>
+  </section>
+
+  <section id="steps" class="lesson-section">
+    <h2>Step-by-step build</h2>
+    <p>Work top-down: big shapes and value first, refinement last. Save incrementally (<code>poster_v001.psd</code>, <code>poster_v002.psd</code>…) at every phase.</p>
+
+    <h3>1 · Block-in</h3>
+    <p>On a mid-value background, lay in the largest shapes with a big opaque brush at 100% flow. Work in grayscale or a very limited palette so you judge value honestly. Match the value pattern from your chosen thumbnail — do not add detail yet. Keep foreground, midground, and background on separate layers so you can adjust depth later.</p>
+
+    <h3>2 · Rendering with the advanced brush engine</h3>
+    <p>Switch to your <strong>Render</strong> workspace and bring in the tuned brushes from <a href="lesson_advanced_brush_engine.html">Advanced Brush Engine</a>. Use dual-tip and textured brushes for surface variety, tilt/rotation curves for natural mark direction, and the mixer to soften transitions in shadow while keeping edges crisp at the focal point. Control your edges deliberately — hard edges pull the eye, soft edges recede.</p>
+    <div class="card card-success">
+      <p>✅ <strong>Tip:</strong> Reserve your hardest, highest-contrast edges for the focal area only. Everywhere else, let edges lose and soften so nothing competes.</p>
+    </div>
+
+    <h3>3 · Mood via gradient maps &amp; adjustments</h3>
+    <p>With values solid, unify color using the techniques from <a href="lesson_gradients_and_adjustments.html">Gradient Maps &amp; Adjustments</a>. Drop a gradient map over the whole piece (cool darks, warm lights is a dependable night-market recipe), then use Curves and HSL as stacked, reversible adjustment layers to push contrast and saturation toward the focal point. Keep these non-destructive so you can dial the mood without repainting.</p>
+
+    <h3>4 · Light FX &amp; edge glow</h3>
+    <p>Add the atmosphere pass using <a href="lesson_advanced_masks_fx.html">Advanced Masks, FX &amp; Layers</a>. On a layer set to Add/Screen, paint warm light bloom around lamps and signs, add edge glow where a rim light catches a silhouette, and use compound masks so glow spills only where it should. A whisper of this goes a long way — the focal point should be the brightest, warmest spot in the frame.</p>
+    <div class="card card-warning">
+      <p>⚠️ <strong>Pitfall:</strong> Global glow or a heavy overlay flattens contrast and kills the value hierarchy you worked to build. Mask FX tightly and check the grayscale after.</p>
+    </div>
+
+    <h3>5 · Perspective-guided structure</h3>
+    <p>Wherever built structure appears — buildings, stalls, signage, floor tiles — stabilize it with <a href="lesson_perspective_and_guides.html">Perspective Guides &amp; Rulers</a>. Set one- or two-point guides matching your horizon, use ellipse guides for lanterns and wheels, and let the guides keep converging lines honest. Correct structure now, while shapes are still simple, is far easier than fixing a wonky building after rendering.</p>
+
+    <h3>6 · Final unify &amp; punch</h3>
+    <p>Step back into your <strong>Review</strong> workspace, flip the canvas horizontally to catch drawing errors, and squint to confirm the value read still holds. Add a top adjustment for final contrast and a subtle vignette to seat the focal point. Confirm the poster still works at thumbnail size — that is how your audience will first see it.</p>
+  </section>
+
+  <section id="demos" class="lesson-section">
+    <h2>Demos &amp; visual aids</h2>
+    <p>The pipeline, end to end — each stage locks in before the next so you never render on top of a broken foundation:</p>
+    <div class="mermaid">graph LR; A[Brief]--&gt;B[Thumbnails]; B--&gt;C[Value plan]; C--&gt;D[Block in]; D--&gt;E[Render]; E--&gt;F[Gradient map]; F--&gt;G[Light FX]; G--&gt;H[Perspective fix]; H--&gt;I[Review]; I--&gt;J[Export A3];</div>
+    <p>The layout sketch below shows a dependable poster skeleton: a dark frame, a lit focal zone off-center, and a reserved band for title type.</p>
+    <figure class="figure">
+      <svg viewBox="0 0 300 420" role="img" aria-label="A3 poster layout sketch with focal zone and title band" width="220">
+        <rect x="0" y="0" width="300" height="420" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+        <rect x="18" y="18" width="264" height="384" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6 6"/>
+        <ellipse cx="150" cy="180" rx="95" ry="95" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+        <circle cx="150" cy="165" r="34" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+        <rect x="40" y="300" width="220" height="70" fill="#ffffff" stroke="#64748b" stroke-width="1"/>
+        <line x1="60" y1="325" x2="240" y2="325" stroke="#94a3b8" stroke-width="6"/>
+        <line x1="60" y1="345" x2="200" y2="345" stroke="#cbd5e1" stroke-width="4"/>
+        <text x="150" y="60" font-size="13" fill="#334155" text-anchor="middle">Dark frame</text>
+        <text x="150" y="185" font-size="12" fill="#92400e" text-anchor="middle">Focal glow</text>
+        <text x="150" y="292" font-size="12" fill="#334155" text-anchor="middle">Title band</text>
+      </svg>
+      <figcaption>Focal magnet high in the frame, title band anchored low — the eye lands on the glow, then drops to the type.</figcaption>
+    </figure>
+    <div class="card card-info">
+      <p><strong>Self-check:</strong> desaturate the whole file to grayscale. Can you still find the focal point in under a second? If not, widen the value gap there before you add any more color.</p>
+    </div>
+  </section>
+
+  <section id="export" class="lesson-section">
+    <h2>Export &amp; review</h2>
+
+    <h3>A3 print settings</h3>
+    <p>Deliver a print-ready file, not just a web JPEG. Confirm the document is still 3508 &times; 4961 px at 300 dpi, then export according to what the printer asks for.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Setting</th><th>Value</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Dimensions</td><td>3508 &times; 4961 px</td><td>True A3 at 300 dpi; verify before flatten.</td></tr>
+          <tr><td>Format</td><td>TIFF or high-quality PDF</td><td>Best for print; keep a layered PSD master too.</td></tr>
+          <tr><td>Color profile</td><td>Embed sRGB (or printer's CMYK)</td><td>Ask the print shop; convert to CMYK only if they require it.</td></tr>
+          <tr><td>Bleed</td><td>+3 mm all sides</td><td>Only if the design runs full-bleed.</td></tr>
+          <tr><td>Web preview</td><td>~1500 px longest edge, sRGB JPEG</td><td>Separate smaller export for sharing online.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Color &amp; flatten checklist</h3>
+    <ul>
+      <li>Merge a flattened copy — never flatten your only master. Keep the layered PSD.</li>
+      <li>Confirm all adjustment layers are on and reading correctly on the merged copy.</li>
+      <li>Check the darkest darks are not pure black clipping and brightest lights are not blown out.</li>
+      <li>Soft-proof if your printer provides a profile; watch saturated warms that may shift in CMYK.</li>
+      <li>Zoom to 100% and scan for stray brush marks, hard mask edges, or leftover guide layers.</li>
+    </ul>
+
+    <h3>Self-review rubric</h3>
+    <p>Grade your own poster honestly against these criteria before you call it done.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Criterion</th><th>What good looks like</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Value hierarchy</strong></td><td>Reads clearly in grayscale; one obvious focal point; big shapes group into 2–3 value families.</td></tr>
+          <tr><td><strong>Focal clarity</strong></td><td>Highest contrast and sharpest edges land only on the focal area; the eye goes there first.</td></tr>
+          <tr><td><strong>Color &amp; mood</strong></td><td>Unified palette with intentional temperature; saturation peaks at the focal point, not everywhere.</td></tr>
+          <tr><td><strong>Edge control</strong></td><td>Deliberate mix of hard and soft edges; background edges lose, focal edges hold.</td></tr>
+          <tr><td><strong>Structure</strong></td><td>Perspective is consistent; built forms sit believably in space with no drifting verticals.</td></tr>
+          <tr><td><strong>Light FX</strong></td><td>Glow and atmosphere support the focal point without flattening overall contrast.</td></tr>
+          <tr><td><strong>Read at distance</strong></td><td>Still communicates its one idea as a small thumbnail and from across a room.</td></tr>
+          <tr><td><strong>Print readiness</strong></td><td>Correct A3 size, 300 dpi, bleed/margin handled, layered master saved.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card card-success">
+      <p>✅ <strong>Tip:</strong> Sit on the finished file overnight, then open the thumbnail cold in the morning. First-glance reactions expose weak focal reads that tired eyes miss.</p>
+    </div>
+
+    <p><strong>Skills applied, and where you learned them:</strong> block-in and rendering draw on the <a href="lesson_advanced_brush_engine.html">Advanced Brush Engine</a>; mood and unity come from <a href="lesson_gradients_and_adjustments.html">Gradient Maps &amp; Adjustments</a>; structure is stabilized with <a href="lesson_perspective_and_guides.html">Perspective Guides &amp; Rulers</a>; atmosphere and edge glow use <a href="lesson_advanced_masks_fx.html">Advanced Masks, FX &amp; Layers</a>; and the whole build stays fast and comfortable thanks to <a href="lesson_custom_workspaces_and_hotkeys.html">Custom Workspaces &amp; Hotkeys</a>.</p>
+  </section>
+
+  <nav class="lesson-nav" aria-label="Lesson Navigation"><a href="index.html" class="home-link">🏠 Course Home</a></nav>
+  </div></main>
+
+  <footer class="site-footer">
+      <p>&copy; 2025 Ray de la Paz. Paintstorm Studio — Advanced. All rights reserved.</p>
+      <div class="footer-links"><a href="https://rays-home.netlify.app/">Ray's House of Fun</a><a href="https://rays-home.netlify.app/contact">Contact</a><a href="#" id="print-button">Print Page</a></div>
+      <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+  </footer>
+
+  <script src="js/clipboard.js"></script>
+  <script src="js/course-enhancements.js"></script>
+</body>
+</html>

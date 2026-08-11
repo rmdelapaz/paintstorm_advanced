@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paintstorm Studio — Advanced: Custom Workspaces &amp; Hotkeys</title>
+  <link rel="icon" href="/favicon.png" />
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- Mermaid — initialized by course-enhancements.js for theme awareness -->
+  <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      window.__mermaid = mermaid;
+      const isDark = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      mermaid.initialize({ startOnLoad: true, theme: isDark ? 'dark' : 'default',
+          themeVariables: isDark ? { primaryColor: '#334155', primaryTextColor: '#e2e8f0', primaryBorderColor: '#6366f1', lineColor: '#94a3b8', secondaryColor: '#1e293b', tertiaryColor: '#0f172a' }
+                                 : { primaryColor: '#eff6ff', primaryTextColor: '#1e293b', primaryBorderColor: '#3b82f6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' } });
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+  <nav class="main-nav"><div class="nav-container">
+      <a href="index.html" class="nav-logo">🎨 Paintstorm Studio</a>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <div class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#lessons">All Lessons</a>
+          <span class="nav-divider"></span>
+          <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+          <a href="https://rays-home.netlify.app/contact">Contact</a>
+          <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+      </div>
+  </div></nav>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#lessons">Advanced Lessons</a></li>
+      <li aria-current="page">Custom Workspaces &amp; Hotkeys</li>
+  </ul></nav>
+
+  <main id="main-content"><div class="container">
+  <header>
+    <div class="title">
+      <h1>Paintstorm Studio — Custom Workspaces &amp; Hotkeys</h1>
+      <span class="tag">🎨 Paintstorm</span>
+      <span class="tag">🧩 Workspaces</span>
+      <span class="tag">⌨️ Hotkeys</span>
+    </div>
+    <p class="lead">Tool-switching is friction, and friction is where paintings go to die. In this lesson you will tune Paintstorm around <em>your</em> hands so the interface disappears and the work stays in front of you.</p>
+    <div class="card card-info">
+      <p><strong>Goal:</strong> Configure layout presets, quick/radial menus, and task-focused shortcut maps so tool-switching disappears and you stay in flow.</p>
+    </div>
+  </header>
+
+  <details class="card toc-card" open>
+      <summary aria-label="Toggle table of contents"><span class="toc-icon" aria-hidden="true">📑</span><span class="toc-label">In This Lesson</span><span class="toc-chevron" aria-hidden="true">▾</span></summary>
+      <nav aria-label="Table of Contents"><ol>
+          <li><a class="toc-link" href="#overview">Why speed &amp; ergonomics matter</a></li>
+          <li><a class="toc-link" href="#practice">Workspaces, menus &amp; hotkey maps</a></li>
+          <li><a class="toc-link" href="#demos">Demos &amp; visual aids</a></li>
+          <li><a class="toc-link" href="#wrapup">Wrap-up &amp; next steps</a></li>
+      </ol></nav>
+  </details>
+
+  <section id="overview" class="lesson-section">
+    <h2>Why speed &amp; ergonomics matter</h2>
+    <p>Every painting is a race between your idea and your patience. The idea is fresh at the start and decays with every second you spend hunting through menus for the eyedropper or dragging a slider to change brush size. Reducing that overhead is not about vanity speed — it is about <strong>finishing while you still care</strong>. A well-tuned workspace keeps the decisions creative (value, edge, color) instead of clerical (where is that panel again?).</p>
+    <p>Ergonomics is the other half. A painting session can run for hours, and a hand that stretches across the keyboard for every undo will cramp long before the piece is done. The goal is a cluster of keys your non-drawing hand can reach without looking, so your eyes never leave the canvas.</p>
+    <ul>
+      <li><strong>Flow over features.</strong> The fastest tool is the one you never have to think about reaching for.</li>
+      <li><strong>Eyes on canvas.</strong> If an action pulls your gaze to a toolbar, it is a candidate for a hotkey or a radial menu.</li>
+      <li><strong>Consistency compounds.</strong> The same map across every session builds muscle memory that pays off for years.</li>
+    </ul>
+    <blockquote>Design your workspace once, deliberately, and it will pay you back on every painting that follows. The interface should serve the hand, not the other way around.</blockquote>
+    <div class="card card-info">
+      <p><strong>Rule of thumb:</strong> if you perform an action more than a dozen times per session, it deserves a dedicated key or a slot in your quick menu.</p>
+    </div>
+  </section>
+
+  <section id="practice" class="lesson-section">
+    <h2>Workspaces, menus &amp; hotkey maps</h2>
+
+    <h3>Docking &amp; saving layout presets</h3>
+    <p>Paintstorm lets you drag panels — Brushes, Layers, Color, Mixer, Navigator — into docked positions, float them, or collapse them to slim tabs. Once a layout feels right, save it as a named preset (Window &rarr; Save Workspace / Panels &rarr; Save Set) so you can recall it instantly. The trick is to build a <em>different</em> preset for each phase of work rather than one crowded do-everything screen.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Preset</th><th>Panels forward</th><th>Panels hidden</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Sketch</strong></td><td>Brushes, Navigator, small Color</td><td>Mixer, Adjustments, most FX</td><td>Maximum canvas, minimal decisions — just line and mass.</td></tr>
+          <tr><td><strong>Render</strong></td><td>Mixer, Color, Layers, Brush detail</td><td>Navigator, guides</td><td>Blending and value work want the mixer and full color controls.</td></tr>
+          <tr><td><strong>Review</strong></td><td>Navigator, Adjustments, Layers</td><td>Brushes, Mixer</td><td>Step back, flip, check values and comp without temptation to fiddle.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card card-success">
+      <p>✅ <strong>Tip:</strong> Bind your three presets to <kbd>F1</kbd>/<kbd>F2</kbd>/<kbd>F3</kbd>. Switching phase then costs one keypress instead of a minute of dragging panels.</p>
+    </div>
+
+    <h3>The radial (quick) menu &amp; popup palettes</h3>
+    <p>Paintstorm's radial menu is a wheel of your most-used commands that pops up under the cursor on a single key or a tablet button. Because items are arranged by <em>angle</em>, you learn them as directions — "brush size is up-left, eyedropper is right" — and eventually flick to them without reading. Reserve the wheel for actions that are frequent but do not deserve a dedicated key.</p>
+    <ul>
+      <li><strong>Popup color:</strong> a keystroke that summons the color picker under the cursor, so you never travel to a corner panel to mix.</li>
+      <li><strong>Popup brush list:</strong> a compact favorites palette at the cursor for swapping between your five or six workhorse brushes.</li>
+      <li><strong>Radial commands:</strong> flip canvas, rotate reset, toggle symmetry, new layer, merge down — mid-frequency actions that would clutter the keyboard.</li>
+    </ul>
+
+    <h3>Building a focused hotkey map</h3>
+    <p>Assign these in Edit &rarr; Hotkeys (or the Shortcuts panel). Keep the highest-frequency actions on keys your left hand rests on. The map below is a proven starting point for a right-handed artist — mirror it if you draw with your left hand.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Action</th><th>Suggested key</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Brush size − / +</td><td><kbd>[</kbd> / <kbd>]</kbd></td><td>The single most-used pair — keep it under the fingers.</td></tr>
+          <tr><td>Opacity − / +</td><td><kbd>,</kbd> / <kbd>.</kbd></td><td>Or number row 1–9 for direct opacity jumps.</td></tr>
+          <tr><td>Eyedropper (hold)</td><td><kbd>Alt</kbd></td><td>Momentary pick — release to return to the brush.</td></tr>
+          <tr><td>Undo / Redo</td><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></td><td>Leave these on defaults; every app agrees.</td></tr>
+          <tr><td>Flip canvas horizontal</td><td><kbd>Shift</kbd>+<kbd>M</kbd></td><td>The best cheap error-check you have — use it constantly.</td></tr>
+          <tr><td>Rotate canvas / reset</td><td><kbd>R</kbd> (hold) / <kbd>Shift</kbd>+<kbd>R</kbd></td><td>Rotate to paint comfortable strokes, then snap back to 0°.</td></tr>
+          <tr><td>Mixer / smudge brush</td><td><kbd>M</kbd></td><td>Toggle to your blending brush for soft transitions.</td></tr>
+          <tr><td>Eraser toggle</td><td><kbd>E</kbd></td><td>Toggle back to <kbd>B</kbd> for brush.</td></tr>
+          <tr><td>Save / Save version</td><td><kbd>Ctrl</kbd>+<kbd>S</kbd> / <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd></td><td>Version key saves an incremented file — save often.</td></tr>
+          <tr><td>Radial / quick menu</td><td><kbd>Space</kbd> variant or tablet button</td><td>Your wheel of mid-frequency commands.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Left-hand keyboard vs tablet buttons</h3>
+    <p>You have two surfaces for shortcuts, and they are best used for different jobs. Tablet ExpressKeys and pen barrel buttons sit right by your drawing hand, so put the actions you fire <em>while a stroke is in progress</em> there — momentary eyedropper, modifier for straight lines, the radial menu. A dedicated left-hand keypad (or the left third of a normal keyboard) is better for the broad map of named actions where a little reach is acceptable.</p>
+    <div class="card card-warning">
+      <p>⚠️ <strong>Pitfall:</strong> Do not duplicate the same action on both the tablet and a nearby key and expect to remember which is which. Pick one home for each action and commit.</p>
+    </div>
+
+    <h3>Avoiding conflicts &amp; documenting your map</h3>
+    <p>Before you assign a key, check whether Paintstorm or your OS already claims it. Common collisions: <kbd>Ctrl</kbd>+<kbd>Space</kbd> (OS input switch), function keys stolen by the tablet driver, and <kbd>Tab</kbd> (often toggles all panels). Paintstorm will usually warn you when a binding is already in use — do not click past that warning.</p>
+    <ul>
+      <li>Keep a plain-text or image cheat-sheet of your map next to your monitor for the first two weeks.</li>
+      <li>Export your hotkey/workspace configuration and store it with your backups — rebuilding from memory after a reinstall is miserable.</li>
+      <li>Change one binding at a time. Muscle memory is fragile; a wholesale remap resets you to beginner speed for days.</li>
+    </ul>
+    <div class="card card-success">
+      <p>✅ <strong>Tip:</strong> Screenshot your radial menu and hotkey panel and drop both into a single reference image named <code>my_paintstorm_map.png</code>. It doubles as the doc you will thank yourself for later.</p>
+    </div>
+  </section>
+
+  <section id="demos" class="lesson-section">
+    <h2>Demos &amp; visual aids</h2>
+    <p>The diagram below shows the ideal decision path when you reach for an action mid-painting: the more often you use something, the closer to your fingers it should live.</p>
+    <div class="mermaid">graph LR; A[Need an action]--&gt;B[How often]; B--&gt;C[Very frequent]; B--&gt;D[Mid frequency]; B--&gt;E[Rare]; C--&gt;F[Dedicated key]; D--&gt;G[Radial menu]; E--&gt;H[Panel or menu]; F--&gt;I[Stay in flow]; G--&gt;I; H--&gt;I;</div>
+    <p>Read it as a triage: high-frequency actions earn a home-row key, mid-frequency ones go on the radial wheel, and rare ones can stay buried in a panel where they cost nothing to ignore.</p>
+    <div class="card card-info">
+      <p><strong>Try it:</strong> For one painting, keep a tally of every time you pause to find a tool. The five actions you tallied most are exactly the five keys to fix first.</p>
+    </div>
+  </section>
+
+  <section id="wrapup" class="lesson-section">
+    <h2>Wrap-up &amp; next steps</h2>
+    <p>You now have a repeatable recipe: build task presets, load the radial menu with mid-frequency commands, map the high-frequency actions to keys under your resting hand, split work sensibly between keyboard and tablet, and document the whole thing so it survives a reinstall. Spend twenty minutes setting this up and you will earn it back on your very next piece.</p>
+    <ul>
+      <li>Save your three workspace presets and bind them to function keys today.</li>
+      <li>Fill your radial menu with flip, rotate-reset, symmetry, and new-layer.</li>
+      <li>Export your config and add the cheat-sheet image to your backups.</li>
+    </ul>
+    <p><strong>Where this fits in the Advanced course:</strong></p>
+    <ul>
+      <li>The keys you set here drive the <a href="lesson_advanced_brush_engine.html">Advanced Brush Engine</a> — size, opacity, and mixer toggles are the ones you will lean on hardest.</li>
+      <li>A "Review" workspace pairs perfectly with <a href="lesson_gradients_and_adjustments.html">Gradient Maps &amp; Adjustments</a>, where you step back and judge mood.</li>
+      <li>Bind guide toggles for <a href="lesson_perspective_and_guides.html">Perspective Guides &amp; Rulers</a> so structure snaps on and off without hunting.</li>
+      <li>Quick-menu slots for mask and FX passes speed up <a href="lesson_advanced_masks_fx.html">Advanced Masks, FX &amp; Layers</a>.</li>
+      <li>Return here — <a href="lesson_custom_workspaces_and_hotkeys.html">Custom Workspaces &amp; Hotkeys</a> — whenever a new tool starts stealing your attention.</li>
+    </ul>
+    <p>Put it all to work in the <a href="project_illustrated_poster.html">Illustrated Poster capstone</a>, where a tuned workspace is the difference between a relaxed build and a frustrating one.</p>
+  </section>
+
+  <nav class="lesson-nav" aria-label="Lesson Navigation"><a href="index.html" class="home-link">🏠 Course Home</a></nav>
+  </div></main>
+
+  <footer class="site-footer">
+      <p>&copy; 2025 Ray de la Paz. Paintstorm Studio — Advanced. All rights reserved.</p>
+      <div class="footer-links"><a href="https://rays-home.netlify.app/">Ray's House of Fun</a><a href="https://rays-home.netlify.app/contact">Contact</a><a href="#" id="print-button">Print Page</a></div>
+      <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+  </footer>
+
+  <script src="js/clipboard.js"></script>
+  <script src="js/course-enhancements.js"></script>
+</body>
+</html>
