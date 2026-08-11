@@ -205,7 +205,7 @@ poster_city_night_v002.psd</code></pre>
         // table
         bctx.fillStyle = 'rgba(0,0,0,0.06)'; bctx.fillRect(0,150,base.width,2);
         // sphere shading
-        for (let y=-r; y&lt;=r; y++){
+        for (let y=-r; y<=r; y++){
           const width = Math.sqrt(Math.max(0, r*r - y*y));
           const lx = cx - width, ly = cy + y;
           const gx = bctx.createLinearGradient(lx, ly, lx + width*2, ly);
@@ -261,9 +261,9 @@ poster_city_night_v002.psd</code></pre>
       function lerp(a,b,t){ return a + (b-a)*t; }
       function lerpCol(c0,c1,t){ return [lerp(c0[0],c1[0],t), lerp(c0[1],c1[1],t), lerp(c0[2],c1[2],t)]; }
       function sampleGradient(t){
-        for (let i=0;i&lt;stops.length-1;i++){
+        for (let i=0;i<stops.length-1;i++){
           const s0 = stops[i], s1 = stops[i+1];
-          if (t &gt;= s0.t &amp;&amp; t &lt;= s1.t){
+          if (t >= s0.t && t <= s1.t){
             const k = (t - s0.t) / Math.max(1e-6, (s1.t - s0.t));
             return lerpCol(s0.col, s1.col, k);
           }
@@ -276,7 +276,7 @@ poster_city_night_v002.psd</code></pre>
         ctx.drawImage(base, 0, 0);
         // get pixels and remap by gradient (based on luminance)
         const img = ctx.getImageData(0,0,c.width,c.height);
-        for (let i=0;i&lt;img.data.length;i+=4){
+        for (let i=0;i<img.data.length;i+=4){
           const r = img.data[i], g = img.data[i+1], b = img.data[i+2];
           const lum = (0.2126*r + 0.7152*g + 0.0722*b)/255; // [0..1]
           const col = sampleGradient(lum);
@@ -289,7 +289,7 @@ poster_city_night_v002.psd</code></pre>
 
         // draw gradient strip with stops
         const stripY = c.height - 24;
-        for (let x=0; x&lt;c.width; x++){
+        for (let x=0; x<c.width; x++){
           const t = x / c.width;
           const col = sampleGradient(t);
           ctx.fillStyle = 'rgb(' + col[0] + ',' + col[1] + ',' + col[2] + ')';
