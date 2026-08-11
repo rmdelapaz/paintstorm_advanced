@@ -9,63 +9,52 @@
 
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
+    window.__mermaid = mermaid;
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: prefersDark
+        ? { primaryColor: '#334155', primaryBorderColor: '#6366f1' }
+        : { primaryColor: '#eff6ff', primaryBorderColor: '#3b82f6' }
+    });
   </script>
-
-  <style>
-    :root { --maxw: 1100px; --ink: #0f172a; --muted: #475569; --code-bg: #f5f5f7; }
-    * { box-sizing: border-box; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; margin: 0; color: var(--ink); background: #ffffff; }
-    header, nav, main, footer { max-width: var(--maxw); margin: 0 auto; padding: 1rem; }
-    .title { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
-    .tag { display: inline-block; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 999px; padding: .1rem .6rem; font-size: .85rem; }
-    .subtitle { color: var(--muted); }
-    .hero { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1rem; }
-    .breadcrumbs { font-size: .9rem; color: var(--muted); padding: 0 1rem; max-width: var(--maxw); margin: 0 auto; }
-    .breadcrumbs a { color: inherit; text-decoration: none; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-    @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } .grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
-    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 1rem; background: #fff; }
-    .card h3 { margin-top: 0; }
-    .btn { display: inline-block; padding: .6rem .9rem; border-radius: 8px; border: 1px solid #e5e7eb; text-decoration: none; color: inherit; }
-    pre { overflow: auto; background: var(--code-bg); color: #111; padding: .75rem; border-radius: 8px; }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
-    .figure { text-align: center; margin: 1rem 0; }
-    .figure figcaption { font-size: .9rem; color: var(--muted); }
-    svg { max-width: 100%; height: auto; }
-    canvas { max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; background: #ffffff; }
-    .footnote { font-size: .9rem; color: var(--muted); }
-    .control { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
-    .control label { font-size: .9rem; color: var(--muted); }
-  </style>
 </head>
 <body>
-  <header>
-    <div class="title">
-      <h1>Paintstorm Studio — Advanced Level</h1>
-      <span class="tag">🎨 Paintstorm</span>
-      <span class="tag">🧠 Advanced</span>
-      <span class="tag">🚀 Speed &amp; Control</span>
-    </div>
-    <p class="subtitle">Precision meets speed: build pro-grade brushes, manage complex scenes, and craft production-ready art with consistent workflows.</p>
-    <div class="hero">
-      <p><strong>What to expect:</strong> deep brush engine tuning, advanced masks &amp; FX, perspective guides, symmetry power moves, and workflow automation (workspaces &amp; hotkeys). 🧰</p>
-    </div>
-  </header>
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
 
-  <nav aria-label="Primary">
-    <a class="btn" href="#roadmap">Roadmap</a>
-    <a class="btn" href="#lessons">Lessons</a>
-    <a class="btn" href="#resources">Resources</a>
-    <a class="btn" href="#how-to-use">How to use</a>
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">🎨 Paintstorm Studio</a>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#roadmap">Roadmap</a>
+        <a href="#lessons">Lessons</a>
+        <a href="#resources">Resources</a>
+        <a href="#how-to-use">How to use</a>
+        <span class="nav-divider"></span>
+        <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+        <a href="https://rays-home.netlify.app/contact">Contact</a>
+        <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+      </div>
+    </div>
   </nav>
 
-  <div class="breadcrumbs" aria-label="Breadcrumb">
-    <span>Home</span> › <span>Paintstorm Studio</span> › <span>Advanced Level</span>
-  </div>
+  <main id="main-content">
+    <div class="container">
+      <header>
+        <h1>Paintstorm Studio — Advanced Level
+          <span class="tag">🎨 Paintstorm</span>
+          <span class="tag">🧠 Advanced</span>
+          <span class="tag">🚀 Speed &amp; Control</span>
+        </h1>
+        <p class="lead">Precision meets speed: build pro-grade brushes, manage complex scenes, and craft production-ready art with consistent workflows.</p>
+        <div class="card card-info">
+          <p><strong>What to expect:</strong> deep brush engine tuning, advanced masks &amp; FX, perspective guides, symmetry power moves, and workflow automation (workspaces &amp; hotkeys). 🧰</p>
+        </div>
+      </header>
 
-  <main>
-    <section id="roadmap">
+    <section id="roadmap" class="lesson-section">
       <h2>Roadmap</h2>
       <figure class="figure">
         <div class="mermaid">
@@ -81,7 +70,7 @@ flowchart LR
       </figure>
     </section>
 
-    <section id="lessons">
+    <section id="lessons" class="lesson-section">
       <h2>Lessons</h2>
       <div class="grid grid-3">
         <article class="card">
@@ -148,7 +137,7 @@ flowchart LR
       </figure>
     </section>
 
-    <section id="resources">
+    <section id="resources" class="lesson-section">
       <h2>Resources</h2>
       <div class="grid grid-2">
         <article class="card">
@@ -171,7 +160,7 @@ Texture: Paper Medium (Depth 15–25%)</code></pre>
       </div>
     </section>
 
-    <section id="how-to-use">
+    <section id="how-to-use" class="lesson-section">
       <h2>How to use this site</h2>
       <div class="grid grid-2">
         <article class="card">
@@ -191,11 +180,13 @@ poster_city_night_v002.psd</code></pre>
         </article>
       </div>
     </section>
+    </div>
   </main>
 
-  <footer>
-    <p class="footnote">© <span id="year"></span> Paintstorm Advanced • Favicon at <code>/favicon.png</code>. Built with ❤️ for learners.</p>
-    <p style="margin-top: 15px; text-align: center;"><a href="https://rays-home.netlify.app/contact" style="color: #667eea;">📬 Contact</a> &middot; <a href="https://rays-home.netlify.app/" style="color: #667eea;">← Back to Ray's House of Fun</a></p>
+  <footer class="site-footer">
+    <p>&copy; 2025 Ray de la Paz. Paintstorm Studio — Advanced. All rights reserved.</p>
+    <div class="footer-links"><a href="https://rays-home.netlify.app/">Ray's House of Fun</a><a href="https://rays-home.netlify.app/contact">Contact</a><a href="#" id="print-button">Print Page</a></div>
+    <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
   </footer>
 
   <script>
@@ -318,7 +309,10 @@ poster_city_night_v002.psd</code></pre>
       }
       render();
     })();
-    document.getElementById('year').textContent = new Date().getFullYear();
+    (function(){ var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear(); })();
   </script>
+
+  <script src="js/clipboard.js"></script>
+  <script src="js/course-enhancements.js"></script>
 </body>
 </html>
